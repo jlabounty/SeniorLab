@@ -5,7 +5,6 @@ int convertDataFiles()
 
 	std::string data_path = "/home/josh/github/SeniorLab/Compton/data/";
 	UnpackSPE(data_path+"Co_57_Weak_090716_140819.Spe");
-	UnpackSPE(data_path+"Co_57_Weak_090716_140819.Spe");
 	UnpackSPE(data_path+"Co_60_Weak_090716_134748.Spe");
 	UnpackSPE(data_path+"Co_60_Weak_090716_135450.Spe");
 	UnpackSPE(data_path+"Co_60_Weak_090716_140110.Spe");
