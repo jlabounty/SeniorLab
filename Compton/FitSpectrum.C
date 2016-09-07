@@ -5,6 +5,7 @@ int FitSpectrum()
 
 	int i;
 	std::string file_name = "Cs_137_Weak_090716_141039.root";
+	//std::string file_name = "Co_60_Weak_090716_140110.root";
 	TFile *f = new TFile(("./data/"+file_name).c_str());
 	TH1F *h = new TH1F();
 	h = (TH1F*)f->Get("h");
@@ -13,19 +14,25 @@ int FitSpectrum()
 
 	//------------------------------------------------------------------------------------------------
 	
-	int nbins = h->GetSize();
-//	TCanvas *c2 = new TCanvas();
-	TH1F *d1 = new TH1F("d1","",h->GetSize(),0,h->GetSize());
+	int nbins = h->GetSize() -2;
+	TCanvas *c2 = new TCanvas();
+	h->Draw();
+	TH1F *d1 = new TH1F("d1","",nbins,0,nbins);
 
-	Float_t * source = new float[h->GetSize()];
+	Float_t * source = new float[nbins];
 
 	TSpectrum *s = new TSpectrum();
 	for (i = 0; i < nbins; i++) source[i]=h->GetBinContent(i + 1);  
 //	s->Background(source,nbins,30,TSpectrum::kBackDecreasingWindow,TSpectrum::kBackOrder2,kFALSE,TSpectrum::kBackSmoothing3,kFALSE);
-	s->Background(source,nbins,30,TSpectrum::kBackDecreasingWindow,TSpectrum::kBackOrder8,kTRUE,TSpectrum::kBackSmoothing5,kTRUE);     
+	s->Background(source,nbins,30,TSpectrum::kBackDecreasingWindow,TSpectrum::kBackOrder2,kTRUE,TSpectrum::kBackSmoothing11,kFALSE);     
 	for (i = 0; i < nbins; i++) d1->SetBinContent(i + 1,source[i]);  
 	d1->SetLineColor(kRed);
 	d1->Draw("SAME L");  
+
+	TCanvas *c3 = new TCanvas();
+	TH1F *h3 = (TH1F*)h->Clone("h3");
+	h3->Add(d1,-1);
+	h3->Draw();
 
 	//------------------------------------------------------------------------------------------------
 
@@ -45,7 +52,7 @@ int FitSpectrum()
 	TSpectrum *s = new TSpectrum();
 
 	//searching for candidate peaks positions
-	nfound = s->SearchHighRes(source, dest, nbins, 2, 0.5, kFALSE, 1, kFALSE, 0);
+	nfound = s->SearchHighRes(source, dest, nbins, 1, 60, kFALSE, 1, kFALSE, 0);
 	Bool_t *FixPos = new Bool_t[nfound];
 	Bool_t *FixAmp = new Bool_t[nfound];     
 
@@ -100,6 +107,8 @@ int FitSpectrum()
 	pm->SetMarkerStyle(23);
 	pm->SetMarkerColor(kRed);
 	pm->SetMarkerSize(1);	
+
+//	Fit1->Close();
 
 	return 0;
 }
