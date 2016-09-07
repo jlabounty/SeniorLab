@@ -42,6 +42,13 @@ int UnpackSPE(std::string file_name)
 		t->Fill();
 	}
 
+	TH1F *h = new TH1F("h","Binned Histogram of Data", count.size(), 0, count.size());
+	for(int i = 0; i < count.size(); i++)
+	{
+		h->SetBinContent(i,count[i]);
+	}
+
+
 	f.Write();
 	f.Close();
 
