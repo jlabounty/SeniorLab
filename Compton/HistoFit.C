@@ -3,7 +3,9 @@ int HistoFit()
 	TFile *file = new TFile("./data/Cs_137_Weak_090716_141039.root");
 	TH1D *his = file->Get("h");
 	TF1 *fSignal = new TF1("fSignal","gaus",650.,2000.);
+		fSignal->SetLineColor(kBlue);
 	TF1 *fBackground = new TF1("fBackground","pol0+expo(1)",650.,2000.);
+		fBackground->SetLineColor(kGreen);
 	TF1 *fSpectrum = new TF1("fSpectrum","gaus+pol0(3)+expo(4)",650.,2000.);
 	fSpectrum->SetParNames("Strength","Mean","Sigma","Back1","Back2","Back3");
 	fSpectrum->SetParameters(100, 1000, 2, 50, 0, 0);
