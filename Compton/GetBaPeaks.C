@@ -1,6 +1,6 @@
 int GetBaPeaks()
 {
-  TFile *baFile = new TFile("../SeniorLab/Compton/data/Ba_133_Weak_091216_133430.root"); 
+  TFile *baFile = new TFile("./data/Ba_133_Weak_091216_133430.root"); 
   TH1D *baHraw = new TH1D();
   baHraw = (TH1D*)baFile->Get("h");
   TCanvas *c1 = new TCanvas();
@@ -65,22 +65,22 @@ int GetBaPeaks()
 
   energy.push_back(302.);
   mean.push_back(Peak_302);
-  stdev.push_back(Peak_302);
+  stdev.push_back(Stdv_302);
   energy.push_back(356.);
   mean.push_back(Peak_356);
-  stdev.push_back(Peak_356);
+  stdev.push_back(Stdv_356);
 
   //Output the data to a root file                                                   
   //Create a root file to store the data taken from the files                        
   std::string file_root = "OutputFile.root";
   TFile f(("./"+file_root).c_str(),"UPDATE");
-  TTree *t = new TTree("t","Peaks of Functions and their Standard Deviations");
+	TTree *t = (TTree*)f.Get("t");
   double mean_i, stdev_i, energy_i;
 
-  TBranch *b_mean = t->Branch("mean",&mean_i,"Mean bin of the energy peak/D");
-  TBranch *b_stdev = t->Branch("stdev",&mean_i,"Standard deviation of gaussian fit t\
-o the energy peak/D");
-  TBranch *b_energy = t->Branch("energy",&energy_i,"Known energy of the peak/D");
+
+        t->SetBranchAddress("mean",&mean_i);
+        t->SetBranchAddress("stdev",&stdev_i);
+        t->SetBranchAddress("energy",&energy_i);
 
   //Fill the output file branches with the data from the file                        
   for(int i = 0; i < mean.size(); i++)

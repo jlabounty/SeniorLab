@@ -1,6 +1,8 @@
 #include "headers/exist_test.h"
 
 #include "GetCsPeaks.C"
+#include "GetNaPeaks.C"
+#include "GetBaPeaks.C"
 
 int BinToEnergy()
 {
@@ -20,6 +22,8 @@ int BinToEnergy()
 
 	//Run Fitting macros which write to file
 	GetCsPeaks();
+	GetBaPeaks();
+	GetNaPeaks();
 
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
@@ -52,7 +56,7 @@ int BinToEnergy()
         //Use blank histogram to set the parameters of the canvas
         TH1F *blank = new TH1F("blank",title.c_str(),10, 0, 2048);
                 blank->GetYaxis()->SetRangeUser(0, 2048);
-                blank->GetXaxis()->SetTitle("Energy (MeV)");
+                blank->GetXaxis()->SetTitle("Energy (keV)");
                 //blank->GetYaxis()->SetTitle("B_{0} - B_{i} (mT)");    //Shielding Factor y-axis
                 blank->GetYaxis()->SetTitle("Bin Number");              //Internal vs. External Field y-axis
                 blank->GetXaxis()->SetNdivisions(505);
@@ -66,7 +70,7 @@ int BinToEnergy()
 	TF1 *fit1 = new TF1("fit1","pol1");
 	gr->Fit("fit1","0 Q");
 	double slope = fit1->GetParameter(1);
-	cout << "The slope is: " << slope << " Bins/MeV" << endl;
+	cout << "The slope is: " << slope << " Bins/keV" << endl;
 
 	TF1 *f1 = new TF1("f1", "pol1", 0, 2048);
 		f1->SetParameter(0, fit1->GetParameter(0));
