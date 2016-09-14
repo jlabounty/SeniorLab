@@ -21,10 +21,15 @@ int BinToEnergy()
 	f.Close();
 
 	//Run Fitting macros which write to file
-	GetCsPeaks();
-	GetBaPeaks();
-	GetNaPeaks();
-
+	GetCsPeaks("data/Cs_137_Weak_091216_122105.root");
+	GetCsPeaks("data/Cs_137_Weak_091216_124114.root");
+	GetBaPeaks("data/Ba_133_Weak_091216_132314.root");
+	GetBaPeaks("data/Ba_133_Weak_091216_133430.root");
+	GetBaPeaks("data/Ba_133_Weak_091216_134204.root");
+	GetNaPeaks("data/Na_22_Weak_091216_142051.root");
+	GetNaPeaks("data/Na_22_Weak_091216_142706.root");
+	GetNaPeaks("data/Na_22_Weak_091216_143229.root");
+	
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 
@@ -48,17 +53,16 @@ int BinToEnergy()
 
 	std::string title = "Known Energy vs. Bin Numbers";
 
-        TCanvas *c = new TCanvas("c",title.c_str(),750,750);        //Makes canvas large enough for png printing.
+        TCanvas *c = new TCanvas("c",title.c_str(),750,750);     //Makes canvas large enough for png printing.
 		c->cd();
 		c->SetGridx(1);
 		c->SetGridy(1);
-		c->SetFixedAspectRatio();
+		//		c->SetFixedAspectRatio();
         //Use blank histogram to set the parameters of the canvas
         TH1F *blank = new TH1F("blank",title.c_str(),10, 0, 2048);
                 blank->GetYaxis()->SetRangeUser(0, 2048);
                 blank->GetXaxis()->SetTitle("Energy (keV)");
-                //blank->GetYaxis()->SetTitle("B_{0} - B_{i} (mT)");    //Shielding Factor y-axis
-                blank->GetYaxis()->SetTitle("Bin Number");              //Internal vs. External Field y-axis
+                blank->GetYaxis()->SetTitle("Bin Number");
                 blank->GetXaxis()->SetNdivisions(505);
                 blank->GetYaxis()->SetNdivisions(505);
                 blank->SetLineColor(0);
