@@ -24,13 +24,13 @@ int GetCsPeaks()
   cout << "Fit Statistics..." << endl;
   cout << "Chi-Squared: " << Chi_032 << endl;
   cout << "Degrees of Freedom: " << NDF_032 << endl;
-  cout << "Reduced Chi-Squared: " << Red_032 << endl << endl;
+  cout << "Reduced Chi-Squared: " << Red_032 << endl;
 
   double Peak_032 = fGausStat_032->GetParameter(1);
   double Stdv_032 = fGausStat_032->GetParameter(2);
   // cout << fGausStat_032->GetChisquare() << endl;
   // cout << fGausStat_032->GetNDF() << endl;
-  cout << "Peak Occurs at: " << Peak_032 << " +/- " << Stdv_032 << endl;
+  cout << "Peak Occurs at: " << Peak_032 << " +/- " << Stdv_032 << endl << endl;
 
   energy.push_back(32.0);
   mean.push_back(Peak_032);
@@ -68,13 +68,18 @@ int GetCsPeaks()
 	//Output the data to a root file
 	//Create a root file to store the data taken from the files
 	std::string file_root = "OutputFile.root";
-	TFile f(("./"+file_root).c_str(),"RECREATE");
-	TTree *t = new TTree("t","Peaks of Functions and their Standard Deviations");
+	TFile f(("./"+file_root).c_str(),"UPDATE");
+//	TTree *t = new TTree("t","Peaks of Functions and their Standard Deviations");
+	TTree *t = (TTree*)f.Get("t");
 	double mean_i, stdev_i, energy_i; 
 
-	TBranch *b_mean = t->Branch("mean",&mean_i,"Mean bin of the energy peak/D");
-	TBranch *b_stdev = t->Branch("stdev",&mean_i,"Standard deviation of gaussian fit to the energy peak/D");
-	TBranch *b_energy = t->Branch("energy",&energy_i,"Known energy of the peak/D");
+//	TBranch *b_mean = t->Branch("mean",&mean_i,"Mean bin of the energy peak/D");
+//	TBranch *b_stdev = t->Branch("stdev",&stdev_i,"Standard deviation of gaussian fit to the energy peak/D");
+//	TBranch *b_energy = t->Branch("energy",&energy_i,"Known energy of the peak/D");
+	t->SetBranchAddress("mean",&mean_i);
+	t->SetBranchAddress("stdev",&stdev_i);
+	t->SetBranchAddress("energy",&energy_i);
+
 
 	//Fill the output file branches with the data from the file 
 	for(int i = 0; i < mean.size(); i++)
