@@ -31,28 +31,32 @@ int GetBaPeaks(
   cout << "=======================" << endl;
 
   cout << "=======================" << endl;
-  cout << "Fit Statistics..." << endl;
-  cout << "-----------------------" << endl;
-  cout << "Chi-Squared: " << Chi_300 << endl;
-  cout << "Degrees of Freedom: " << NDF_300 << endl;
-  cout << "Reduced Chi-Squared: " << Red_300 << endl;
-  cout << "=======================" << endl;
-
-  cout << "=======================" << endl;
-  cout << "Finding 302 keV Peak..." << endl;
+  cout << "!Finding 302 keV Peak!" << endl;
   cout << "-----------------------" << endl;
   double Peak_302 = fGausStat_300->GetParameter(1);
   double Stdv_302 = fGausStat_300->GetParameter(2);
   cout << "Peak Occurs at: " << endl;
   cout << Peak_302 << " +/- " << Stdv_302 << endl;
+  cout << "-----------------------" << endl;
+  cout << "-----Fit Statistics----" << endl;
+  cout << "-----------------------" << endl;
+  cout << "Chi-Sq     |  " << Chi_300 << endl;
+  cout << "DoF        |  " << NDF_300 << endl;
+  cout << "Red Chi-Sq |  " << Red_300 << endl;
   cout << "=======================" << endl;
   cout << "=======================" << endl;
-  cout << "Finding 356 keV Peak..." << endl;
+  cout << "!Finding 356 keV Peak!" << endl;
   cout << "-----------------------" << endl;
   double Peak_356 = fGausStat_300->GetParameter(4);
   double Stdv_356 = fGausStat_300->GetParameter(5);
   cout << "Peak Occurs at: " << endl;
   cout << Peak_356 << " +/- " << Stdv_356 << endl;
+  cout << "-----------------------" << endl;
+  cout << "-----Fit Statistics----" << endl;
+  cout << "-----------------------" << endl;
+  cout << "Chi-Sq     |  " << Chi_300 << endl;
+  cout << "DoF        |  " << NDF_300 << endl;
+  cout << "Red Chi-Sq |  " << Red_300 << endl;
   cout << "=======================" << endl;
 
 

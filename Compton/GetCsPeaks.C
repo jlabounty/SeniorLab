@@ -23,16 +23,27 @@ int GetCsPeaks(
   double Chi_032 = fGausStat_032->GetChisquare();
   double NDF_032 = fGausStat_032->GetNDF();
   double Red_032 = Chi_032/NDF_032;
-  cout << "Fit Statistics..." << endl;
-  cout << "Chi-Squared: " << Chi_032 << endl;
-  cout << "Degrees of Freedom: " << NDF_032 << endl;
-  cout << "Reduced Chi-Squared: " << Red_032 << endl;
 
+  cout << "=======================" << endl;
+  cout << "!                     !" << endl;
+  cout << "!       Cs-137        !" << endl;
+  cout << "!                     !" << endl;
+  cout << "=======================" << endl;
+
+  cout << "=======================" << endl;
+  cout << "!!Finding 32 keV Peak!!" << endl;
+  cout << "-----------------------" << endl;
   double Peak_032 = fGausStat_032->GetParameter(1);
   double Stdv_032 = fGausStat_032->GetParameter(2);
-  // cout << fGausStat_032->GetChisquare() << endl;
-  // cout << fGausStat_032->GetNDF() << endl;
-  cout << "Peak Occurs at: " << Peak_032 << " +/- " << Stdv_032 << endl << endl;
+  cout << "Peak Occurs at: " << endl;
+  cout << Peak_032 << " +/- " << Stdv_032 << endl;
+  cout << "-----------------------" << endl;
+  cout << "-----Fit Statistics----" << endl;
+  cout << "-----------------------" << endl;
+  cout << "Chi-Sq     |  " << Chi_032 << endl;
+  cout << "DoF        |  " << NDF_032 << endl;
+  cout << "Red Chi-Sq |  " << Red_032 << endl;
+  cout << "=======================" << endl;
 
   energy.push_back(32.0);
   mean.push_back(Peak_032);
@@ -52,14 +63,21 @@ int GetCsPeaks(
   double Chi_662 = fGausStat_662->GetChisquare();
   double NDF_662 = fGausStat_662->GetNDF();
   double Red_662 = Chi_662/NDF_662;
-  cout << "Fit Statistics..." << endl;
-  cout << "Chi-Squared: " << Chi_662 << endl;
-  cout << "Degrees of Freedom: " << NDF_662 << endl;
-  cout << "Reduced Chi-Squared: " << Red_662 << endl;
 
+  cout << "=======================" << endl;
+  cout << "!Finding 661.6 keV Peak!" << endl;
+  cout << "-----------------------" << endl;
   double Peak_662 = fGausStat_662->GetParameter(1);
   double Stdv_662 = fGausStat_662->GetParameter(2);
-  cout << "Peak Occurs at: " << Peak_662 << " +/- " << Stdv_662 << endl;
+  cout << "Peak Occurs at: " << endl;
+  cout << Peak_662 << " +/- " << Stdv_662 << endl;
+  cout << "-----------------------" << endl;
+  cout << "-----Fit Statistics----" << endl;
+  cout << "-----------------------" << endl;
+  cout << "Chi-Sq     |  " << Chi_662 << endl;
+  cout << "DoF        |  " << NDF_662 << endl;
+  cout << "Red Chi-Sq |  " << Red_662 << endl;
+  cout << "=======================" << endl;
   
   energy.push_back(661.6);
   mean.push_back(Peak_662);
