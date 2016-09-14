@@ -4,7 +4,7 @@ int convertDataFiles()
 {
 
 	std::string data_path = "/home/josh/github/SeniorLab/Compton/data/";
-	/*
+
 	//Measurement Files from 9/7
 	UnpackSPE(data_path+"Co_57_Weak_090716_140819.Spe");
 	UnpackSPE(data_path+"Co_60_Weak_090716_134748.Spe");
@@ -16,7 +16,7 @@ int convertDataFiles()
 	UnpackSPE(data_path+"Cs_137_Weak_090716_130600.Spe");
 	UnpackSPE(data_path+"Cs_137_Weak_090716_141039.Spe");
 	UnpackSPE(data_path+"Na_22_Weak_090716_131442.Spe");
-	*/
+
 
 	//Files from 9/12
 	UnpackSPE(data_path+"Co_57_Weak_091216_140228.Spe");
@@ -36,6 +36,9 @@ int convertDataFiles()
 	UnpackSPE(data_path+"Background_091216_120951.Spe");
 	UnpackSPE(data_path+"Background_091216_120413.Spe");
 	UnpackSPE(data_path+"Background_091216_115701.Spe");
+	UnpackSPE(data_path+"Na_22_Weak_091216_142051.Spe");
+	UnpackSPE(data_path+"Na_22_Weak_091216_142706.Spe");
+	UnpackSPE(data_path+"Na_22_Weak_091216_143229.Spe");
 
 	return 0;
 }

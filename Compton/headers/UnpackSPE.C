@@ -42,7 +42,9 @@ int UnpackSPE(std::string file_name)
 		t->Fill();
 	}
 
-	TH1F *h = new TH1F("h","Binned Histogram of Data", count.size(), 0, count.size());
+	std::string file_name_2 = file_name;
+	std::string element = (file_name_2.erase(file_name_2.size()-24,24)).erase(0,41);
+	TH1F *h = new TH1F("h",("Histogram of "+element).c_str(), count.size(), 0, count.size());
 	for(int i = 0; i < count.size(); i++)
 	{
 		h->SetBinContent(i,count[i]);
