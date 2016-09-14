@@ -3,7 +3,7 @@
 int convertDataFiles()
 {
 
-	std::string data_path = "/home/josh/github/SeniorLab/Compton/data/";
+	std::string data_path = "data/";
 
 	//Measurement Files from 9/7
 	UnpackSPE(data_path+"Co_57_Weak_090716_140819.Spe");
