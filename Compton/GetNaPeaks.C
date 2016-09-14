@@ -1,6 +1,8 @@
-int GetNaPeaks()
+int GetNaPeaks(
+	       TString infile = "data/Na_22_Weak_091216_143229.root"
+)
 {
-  TFile *naFile = new TFile("./data/Na_22_Weak_091216_142051.root"); 
+  TFile *naFile = TFile::Open(infile); 
   TH1D *naHraw = new TH1D();
   naHraw = (TH1D*)naFile->Get("h");
   TCanvas *c1 = new TCanvas();
@@ -21,14 +23,28 @@ int GetNaPeaks()
   double Chi_511 = fGausStat_511->GetChisquare();
   double NDF_511 = fGausStat_511->GetNDF();
   double Red_511 = Chi_511/NDF_511;
+
+  cout << "=======================" << endl;
+  cout << "!                     !" << endl;
+  cout << "!        Na-22        !" << endl;
+  cout << "!                     !" << endl;
+  cout << "=======================" << endl;
+
+  cout << "=======================" << endl;
   cout << "Fit Statistics..." << endl;
+  cout << "-----------------------" << endl;
   cout << "Chi-Squared: " << Chi_511 << endl;
   cout << "Degrees of Freedom: " << NDF_511 << endl;
   cout << "Reduced Chi-Squared: " << Red_511 << endl;
+  cout << "=======================" << endl;
 
+  cout << "=======================" << endl;
+  cout << "Finding 511 keV Peak..." << endl;
+  cout << "-----------------------" << endl;
   double Peak_511 = fGausStat_511->GetParameter(1);
   double Stdv_511 = fGausStat_511->GetParameter(2);
   cout << "Peak Occurs at: " << Peak_511 << " +/- " << Stdv_511 << endl;
+  cout << "=======================" << endl;
 
   /*========Na-22 1274 keV Peak=========*/
 
@@ -43,14 +59,22 @@ int GetNaPeaks()
   double Chi_1274 = fGausStat_1274->GetChisquare();
   double NDF_1274 = fGausStat_1274->GetNDF();
   double Red_1274 = Chi_1274/NDF_1274;
+
+  cout << "=======================" << endl;
   cout << "Fit Statistics..." << endl;
+  cout << "-----------------------" << endl;
   cout << "Chi-Squared: " << Chi_1274 << endl;
   cout << "Degrees of Freedom: " << NDF_1274 << endl;
   cout << "Reduced Chi-Squared: " << Red_1274 << endl;
+  cout << "=======================" << endl;
 
+  cout << "=======================" << endl;
+  cout << "Finding 1274 keV Peak..." << endl;
+  cout << "-----------------------" << endl;
   double Peak_1274 = fGausStat_1274->GetParameter(1);
   double Stdv_1274 = fGausStat_1274->GetParameter(2);
   cout << "Peak Occurs at: " << Peak_1274 << " +/- " << Stdv_1274 << endl;
+  cout << "=======================" << endl;
 
   /*===================================*/
 

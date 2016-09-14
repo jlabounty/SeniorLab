@@ -1,6 +1,8 @@
-int GetCsPeaks()
+int GetCsPeaks(
+	       TString infile = "data/Cs_137_Weak_090716_141039.root"
+)
 {
-  TFile *csFile = new TFile("data/Cs_137_Weak_090716_141039.root"); 
+  TFile *csFile = TFile::Open(infile); 
   TH1D *csHraw = new TH1D();
   csHraw = (TH1D*)csFile->Get("h");
   TCanvas *c1 = new TCanvas();

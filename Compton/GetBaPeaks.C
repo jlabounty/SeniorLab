@@ -1,6 +1,8 @@
-int GetBaPeaks()
+int GetBaPeaks(
+	       TString infile = "data/Ba_133_Weak_091216_133430.root"
+)
 {
-  TFile *baFile = new TFile("./data/Ba_133_Weak_091216_133430.root"); 
+  TFile *baFile = TFile::Open(infile);
   TH1D *baHraw = new TH1D();
   baHraw = (TH1D*)baFile->Get("h");
   TCanvas *c1 = new TCanvas();
@@ -21,6 +23,13 @@ int GetBaPeaks()
   double Chi_300 = fGausStat_300->GetChisquare();
   double NDF_300 = fGausStat_300->GetNDF();
   double Red_300 = Chi_300/NDF_300;
+
+  cout << "=======================" << endl;
+  cout << "!                     !" << endl;
+  cout << "!       Ba-133        !" << endl;
+  cout << "!                     !" << endl;
+  cout << "=======================" << endl;
+
   cout << "=======================" << endl;
   cout << "Fit Statistics..." << endl;
   cout << "-----------------------" << endl;
