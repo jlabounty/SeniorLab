@@ -38,11 +38,11 @@ int GetCsPeaks(
   cout << "Peak Occurs at: " << endl;
   cout << Peak_032 << " +/- " << Stdv_032 << endl;
   cout << "-----------------------" << endl;
-  cout << "Fit Statistics..." << endl;
+  cout << "-----Fit Statistics----" << endl;
   cout << "-----------------------" << endl;
-  cout << "Chi-Squared: " << Chi_032 << endl;
-  cout << "Degrees of Freedom: " << NDF_032 << endl;
-  cout << "Reduced Chi-Squared: " << Red_032 << endl;
+  cout << "Chi-Sq     |  " << Chi_032 << endl;
+  cout << "DoF        |  " << NDF_032 << endl;
+  cout << "Red Chi-Sq |  " << Red_032 << endl;
   cout << "=======================" << endl;
 
   energy.push_back(32.0);
@@ -72,11 +72,11 @@ int GetCsPeaks(
   cout << "Peak Occurs at: " << endl;
   cout << Peak_662 << " +/- " << Stdv_662 << endl;
   cout << "-----------------------" << endl;
-  cout << "Fit Statistics..." << endl;
+  cout << "-----Fit Statistics----" << endl;
   cout << "-----------------------" << endl;
-  cout << "Chi-Squared: " << Chi_662 << endl;
-  cout << "Degrees of Freedom: " << NDF_662 << endl;
-  cout << "Reduced Chi-Squared: " << Red_662 << endl;
+  cout << "Chi-Sq     |  " << Chi_662 << endl;
+  cout << "DoF        |  " << NDF_662 << endl;
+  cout << "Red Chi-Sq |  " << Red_662 << endl;
   cout << "=======================" << endl;
   
   energy.push_back(661.6);

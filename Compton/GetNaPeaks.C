@@ -40,9 +40,9 @@ int GetNaPeaks(
   cout << "-----------------------" << endl;
   cout << "----Fit Statistics-----" << endl;
   cout << "-----------------------" << endl;
-  cout << "Chi-Squared: " << Chi_511 << endl;
-  cout << "Degrees of Freedom: " << NDF_511 << endl;
-  cout << "Reduced Chi-Squared: " << Red_511 << endl;
+  cout << "Chi-Sq     |  " << Chi_511 << endl;
+  cout << "DoF        |  " << NDF_511 << endl;
+  cout << "Red Chi-Sq |  " << Red_511 << endl;
   cout << "=======================" << endl;
 
   /*========Na-22 1274 keV Peak=========*/
@@ -69,9 +69,9 @@ int GetNaPeaks(
   cout << "-----------------------" << endl;
   cout << "----Fit Statistics-----" << endl;
   cout << "-----------------------" << endl;
-  cout << "Chi-Squared: " << Chi_1274 << endl;
-  cout << "Degrees of Freedom: " << NDF_1274 << endl;
-  cout << "Reduced Chi-Squared: " << Red_1274 << endl;
+  cout << "Chi-Sq     |  " << Chi_1274 << endl;
+  cout << "DoF        |  " << NDF_1274 << endl;
+  cout << "Red Chi-Sq |  " << Red_1274 << endl;
   cout << "=======================" << endl;
 
   /*===================================*/

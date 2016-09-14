@@ -38,11 +38,11 @@ int GetBaPeaks(
   cout << "Peak Occurs at: " << endl;
   cout << Peak_302 << " +/- " << Stdv_302 << endl;
   cout << "-----------------------" << endl;
-  cout << "Fit Statistics..." << endl;
+  cout << "-----Fit Statistics----" << endl;
   cout << "-----------------------" << endl;
-  cout << "Chi-Squared: " << Chi_300 << endl;
-  cout << "Degrees of Freedom: " << NDF_300 << endl;
-  cout << "Reduced Chi-Squared: " << Red_300 << endl;
+  cout << "Chi-Sq     |  " << Chi_300 << endl;
+  cout << "DoF        |  " << NDF_300 << endl;
+  cout << "Red Chi-Sq |  " << Red_300 << endl;
   cout << "=======================" << endl;
   cout << "=======================" << endl;
   cout << "!Finding 356 keV Peak!" << endl;
@@ -52,11 +52,11 @@ int GetBaPeaks(
   cout << "Peak Occurs at: " << endl;
   cout << Peak_356 << " +/- " << Stdv_356 << endl;
   cout << "-----------------------" << endl;
-  cout << "Fit Statistics..." << endl;
+  cout << "-----Fit Statistics----" << endl;
   cout << "-----------------------" << endl;
-  cout << "Chi-Squared: " << Chi_300 << endl;
-  cout << "Degrees of Freedom: " << NDF_300 << endl;
-  cout << "Reduced Chi-Squared: " << Red_300 << endl;
+  cout << "Chi-Sq     |  " << Chi_300 << endl;
+  cout << "DoF        |  " << NDF_300 << endl;
+  cout << "Red Chi-Sq |  " << Red_300 << endl;
   cout << "=======================" << endl;
 
 
