@@ -6,6 +6,7 @@ int convertDataFiles()
 	std::string data_path = "data/";
 
 	//Measurement Files from 9/7
+/*
 	UnpackSPE(data_path+"Co_57_Weak_090716_140819.Spe");
 	UnpackSPE(data_path+"Co_60_Weak_090716_134748.Spe");
 	UnpackSPE(data_path+"Co_60_Weak_090716_135450.Spe");
@@ -16,9 +17,10 @@ int convertDataFiles()
 	UnpackSPE(data_path+"Cs_137_Weak_090716_130600.Spe");
 	UnpackSPE(data_path+"Cs_137_Weak_090716_141039.Spe");
 	UnpackSPE(data_path+"Na_22_Weak_090716_131442.Spe");
-
+*/
 
 	//Files from 9/12
+/*
 	UnpackSPE(data_path+"Co_57_Weak_091216_140228.Spe");
 	UnpackSPE(data_path+"Co_57_Weak_091216_135650.Spe");
 	UnpackSPE(data_path+"Co_57_Weak_091216_134953.Spe");
@@ -39,6 +41,16 @@ int convertDataFiles()
 	UnpackSPE(data_path+"Na_22_Weak_091216_142051.Spe");
 	UnpackSPE(data_path+"Na_22_Weak_091216_142706.Spe");
 	UnpackSPE(data_path+"Na_22_Weak_091216_143229.Spe");
+*/
+	//Files from 9/14
+	UnpackSPE(data_path+"Cs_137_Angle_30_AlScatter_091416_143045.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_25_AlScatter_091416_134820.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_20_AlScatter_091416_133342.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_18_AlScatter_091416_132231.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_45_AlScatter_091416_125458.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_0_AlScatter_091416_124734.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_0_NoScatter_091416_124126.Spe");
+	UnpackSPE(data_path+"Cs_137_Weak_091416_123659.Spe");
 
 	return 0;
 }
