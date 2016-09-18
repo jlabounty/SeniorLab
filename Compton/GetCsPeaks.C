@@ -128,7 +128,7 @@ int GetCsPeaks(
 
 
 	gStyle->SetOptStat(0);
-	std::string title = "Known Energy vs. Bin Numbers";
+	std::string title = "^{137}Cs Uncalibrated Spectrum";
 
 	TCanvas *c22 = new TCanvas("c22",title.c_str(),750,750);     //Makes canvas large enough for png printing.
 		c22->cd();
@@ -136,15 +136,15 @@ int GetCsPeaks(
 		c22->SetGridy(1);
 //		c->SetFixedAspectRatio();
 	//Use blank histogram to set the parameters of the canvas
-	TH1F *blank = new TH1F("blank",title.c_str(),10, 0, 2048);
-		blank->GetYaxis()->SetRangeUser(0, 2600);
-		blank->GetXaxis()->SetTitle("Energy (keV)");
-		blank->GetYaxis()->SetTitle("Bin Number");
-		blank->GetYaxis()->SetTitleOffset(1.65);
-		blank->GetXaxis()->SetNdivisions(505);
-		blank->GetYaxis()->SetNdivisions(505);
-		blank->SetLineColor(0);
-	blank->Draw();
+	TH1F *blank3 = new TH1F("blank",title.c_str(),10, 0, 2048);
+		blank3->GetYaxis()->SetRangeUser(0, 2600);
+		blank3->GetXaxis()->SetTitle("Bin Number");
+		blank3->GetYaxis()->SetTitle("Photon Count");
+		blank3->GetYaxis()->SetTitleOffset(1.65);
+		blank3->GetXaxis()->SetNdivisions(505);
+		blank3->GetYaxis()->SetNdivisions(505);
+		blank3->SetLineColor(0);
+	blank3->Draw();
 
 	TH1D *hist = new TH1D();
 	hist = (TH1D*)csFile->Get("h");
@@ -156,7 +156,34 @@ int GetCsPeaks(
 
 //	c22->Print("./plots/CsBinnedSpectrum.png");
 
-	
+	TCanvas *c2 = new TCanvas();
+
+	TH1F *blank2 = new TH1F("blank2","^{137}Cs Calibrated Spectrum",10, 0, 1000);
+		blank2->GetYaxis()->SetRangeUser(0, 2800);
+		blank2->GetXaxis()->SetTitle("Energy (keV)");
+		blank2->GetYaxis()->SetTitle("Photon Count");
+		blank2->GetYaxis()->SetTitleOffset(1.65);
+		blank2->GetXaxis()->SetNdivisions(505);
+		blank2->GetYaxis()->SetNdivisions(505);
+		blank2->SetLineColor(0);
+	blank2->Draw();
+
+	TTree *t2 = (TTree*)csFile->Get("t");	
+	t2->Draw("Count:Bin","","goff");
+	vector<double> v_count, v_bin;
+	for(int i = 0; i < t2->GetEntries(); i++)
+	{
+		v_count.push_back(t2->GetV1()[i]);
+		v_bin.push_back(t2->GetV2()[i] / 1.23564);
+
+	}
+	TGraph *gr1 = new TGraph(v_count.size(), &(v_bin[0]), &(v_count[0]));
+	gr1->Draw("p SAME");
+
+//	c2->Print("./plots/CsCalibSpectrum.png");
+
+
+
 
   return 0;
 }
