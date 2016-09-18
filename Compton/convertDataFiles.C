@@ -43,13 +43,13 @@ int convertDataFiles()
 	UnpackSPE(data_path+"Na_22_Weak_091216_143229.Spe");
 */
 	//Files from 9/14
-	UnpackSPE(data_path+"Cs_137_Angle_30_AlScatter_091416_143045.Spe");
-	UnpackSPE(data_path+"Cs_137_Angle_25_AlScatter_091416_134820.Spe");
-	UnpackSPE(data_path+"Cs_137_Angle_20_AlScatter_091416_133342.Spe");
-	UnpackSPE(data_path+"Cs_137_Angle_18_AlScatter_091416_132231.Spe");
-	UnpackSPE(data_path+"Cs_137_Angle_45_AlScatter_091416_125458.Spe");
-	UnpackSPE(data_path+"Cs_137_Angle_0_AlScatter_091416_124734.Spe");
-	UnpackSPE(data_path+"Cs_137_Angle_0_NoScatter_091416_124126.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_030_AlScatter_091416_143045.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_025_AlScatter_091416_134820.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_020_AlScatter_091416_133342.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_018_AlScatter_091416_132231.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_045_AlScatter_091416_125458.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_000_AlScatter_091416_124734.Spe");
+	UnpackSPE(data_path+"Cs_137_Angle_000_NoScatter_091416_124126.Spe");
 	UnpackSPE(data_path+"Cs_137_Weak_091416_123659.Spe");
 
 	return 0;
