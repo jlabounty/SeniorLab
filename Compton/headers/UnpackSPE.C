@@ -13,11 +13,21 @@ int UnpackSPE(std::string file_name)
 	std::string str;
 	vector<int> bin, count;
 	int count_i, bin_i;
+	vector<double> time;
+	double measurement_time, live_time;
 
 	int line_count = 1;
 	while (std::getline(file, str))
 	{
-		if(line_count > 12 && line_count < 2060)
+		if(line_count == 9)
+		{
+			if(file >> live_time >> measurement_time) 
+			{
+				time.push_back(measurement_time);
+				cout << measurement_time << endl;
+			}
+		}
+		else if(line_count > 12 && line_count < 2060)
 		{
 			if(file >> count_i)
 			{
@@ -34,6 +44,7 @@ int UnpackSPE(std::string file_name)
 
 	TBranch *b_bin = t->Branch("Bin",&bin_i,"Bin Number/I");
 	TBranch *b_count = t->Branch("Count",&count_i,"Count of Photons in Bin/I");
+	TBranch *b_time = t->Branch("Time",&measurement_time,"Time the measurement was live/D");
 
 	for(int i = 0; i< count.size(); i++)
 	{
