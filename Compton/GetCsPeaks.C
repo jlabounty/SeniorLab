@@ -126,5 +126,37 @@ int GetCsPeaks(
   f.Write();
   f.Close();
 
+
+	gStyle->SetOptStat(0);
+	std::string title = "Known Energy vs. Bin Numbers";
+
+	TCanvas *c22 = new TCanvas("c22",title.c_str(),750,750);     //Makes canvas large enough for png printing.
+		c22->cd();
+		c22->SetGridx(1);
+		c22->SetGridy(1);
+//		c->SetFixedAspectRatio();
+	//Use blank histogram to set the parameters of the canvas
+	TH1F *blank = new TH1F("blank",title.c_str(),10, 0, 2048);
+		blank->GetYaxis()->SetRangeUser(0, 2600);
+		blank->GetXaxis()->SetTitle("Energy (keV)");
+		blank->GetYaxis()->SetTitle("Bin Number");
+		blank->GetYaxis()->SetTitleOffset(1.65);
+		blank->GetXaxis()->SetNdivisions(505);
+		blank->GetYaxis()->SetNdivisions(505);
+		blank->SetLineColor(0);
+	blank->Draw();
+
+	TH1D *hist = new TH1D();
+	hist = (TH1D*)csFile->Get("h");
+	hist->Draw("SAME");
+	fStat_662->SetLineColor(kBlue);
+	fStat_662->Draw("SAME");
+	fStat_032->SetLineColor(kRed);
+	fStat_032->Draw("SAME");
+
+//	c22->Print("./plots/CsBinnedSpectrum.png");
+
+	
+
   return 0;
 }
