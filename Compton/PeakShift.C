@@ -23,11 +23,35 @@ int PeakShift()
 
 	//Run Fitting macros which write to file
 	vector<std::string> files;
-	vector<double> means;
-	files.push_back("data/Cs_137_Angle_030_AlScatter_091416_143045.root");
-		means.push_back(800);
+	vector<double> means, fit_low, fit_high;
+//	files.push_back("");
+//		means.push_back();
+//		fit_low.push_back(650);
+//		fit_high.push_back(2000);
+	files.push_back("data/Cs_137_Angle_000_AlScatter_091416_124734.root");
+		means.push_back(920);
+		fit_low.push_back(650);
+		fit_high.push_back(2000);
+	files.push_back("data/Cs_137_Angle_018_AlScatter_091416_132231.root");
+		means.push_back(890);
+		fit_low.push_back(600);
+		fit_high.push_back(2000);
+	files.push_back("data/Cs_137_Angle_020_AlScatter_091416_133342.root");
+		means.push_back(875);
+		fit_low.push_back(650);
+		fit_high.push_back(2000);
 	files.push_back("data/Cs_137_Angle_025_AlScatter_091416_134820.root");
 		means.push_back(875);
+		fit_low.push_back(820);
+		fit_high.push_back(2000);
+	files.push_back("data/Cs_137_Angle_030_AlScatter_091416_143045.root");
+		means.push_back(800);
+		fit_low.push_back(650);
+		fit_high.push_back(2000);
+	files.push_back("data/Cs_137_Angle_045_AlScatter_091416_125458.root");
+		means.push_back(700);
+		fit_low.push_back(550);
+		fit_high.push_back(2000);
 	vector<double> angle;
 	std::string angle_string;
 	int angle_i;
@@ -41,7 +65,7 @@ int PeakShift()
 		angle_i = std::atoi(angle_string.c_str());
 		cout << "Angle: " <<  angle_i << endl;
 		angle.push_back(angle_i);
-		GetCsPeaks_Angle(files[i], means[i], angle[i]);
+		GetCsPeaks_Angle(files[i], means[i], angle[i], fit_low[i], fit_high[i]);
 	}
 
 	//Perform analysis on output data

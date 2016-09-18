@@ -1,7 +1,9 @@
 int GetCsPeaks_Angle(
 	       TString infile = "data/Cs_137_Weak_090716_141039.root",
 	      double mean_est = 661.6,
-	      double angle = 90 
+	      double angle = 90,
+	      double fit_low = 650.,
+	      double fit_high = 2000.
 )
 {
   TFile *csFile = TFile::Open(infile); 
@@ -25,13 +27,13 @@ int GetCsPeaks_Angle(
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *csHist_662 = (TH1D*)h->Clone("csHraw");
   /*Define Spectrum Fit*/
-  TF1 *fSpec_662 = new TF1("fSpec_662", "gaus+pol0(3)+expo(4)", 650., 2000.);
+  TF1 *fSpec_662 = new TF1("fSpec_662", "gaus+pol0(3)+expo(4)", fit_low, fit_high);
   /*Estimate Parameters of Fit Function*/
   fSpec_662->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
   fSpec_662->SetParameters(100, mean_est, 2, 50, 0, 0);
   TCanvas *c3 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  csHist_662->Fit("fSpec_662", "Q", "", 650., 2000.);
+  csHist_662->Fit("fSpec_662", "Q", "", fit_low, fit_high);
 
   /*Obtain Fit Function from Histogram*/
   TF1 *fStat_662 = csHist_662->GetFunction("fSpec_662");
@@ -114,7 +116,7 @@ int GetCsPeaks_Angle(
 	blank2->Draw();
 
 	TTree *t2 = (TTree*)csFile->Get("t");	
-	t2->Draw("Count:Bin","","goff");
+	t2->Draw("Count:Bin:Time","","goff");
 	vector<double> v_count, v_bin;
 	for(int i = 0; i < t2->GetEntries(); i++)
 	{
@@ -127,31 +129,32 @@ int GetCsPeaks_Angle(
 
 //	c2->Print("./plots/CsCalibSpectrum.png");
 
-
   /*===================================*/
 
 	//Calculation of dsigma / dOmega
-	double Y_theta = sumundercurve;		//Photons recieved with scatterer at angle theta
-/**/	double flux = 5.0*TMath::Power(10,3);	//Flux. Counts/(cm^2 * s)
-/**/	double r_ScatToDet = 10;		//Distance from detector to scattering point
-/**/	double r_SourceToDet = 20;		//Distance from source to dectector.
-	double dOmega = 45.6 / TMath::Power(r_ScatToDet,2);	//Angle subtended by detector. Crystal area / r^2
-	double epsilon = 0.55;			//Correction to dOmega bc of detector efficiency
-/**/	double d_scatter = 1;			//Diameter of the scatterer
-/**/	double h_scatter = 1;			//Height of the scatterer
-	double rho_Al = 2.7;			//Density of Al (g/cm^3)
-	double A_Al = 27.0;			//Atomic weight of Al
-	double Z_Al = 13.0;			//Number of protons/electrons in Al atom
-	double AvoNum = TMath::Na();		//Avogadros Number
-	double N_e;				//Number of electrons in the path of beam
-/**/	double N_gamma = TMath::Power(10,2);	//Number of photons which impact the detector with no scat.
-	double I_o;				//Flux density at target
-	double dsigma_dOmega;			//Angular Dependance on scattering probability
+	double Y_theta = sumundercurve/(t->GetV3()[0]);			//Photons recieved with scatterer at angle theta
+/**/	double r_SourceToScat = 10;					//Distance from detector to scattering point
+/**/	double r_SourceToDet = 20;					//Distance from source to dectector.
+	double Area_detector = 45.6;					//cm^2
+	double N_gamma = 902.049;					//Number of photons which impact the detector per second with no scattering
+	double flux = N_gamma/Area_detector;				//Flux. Counts/(cm^2 * s)
+	double dOmega = Area_detector / TMath::Power(r_SourceToScat,2);	//Angle subtended by detector. Crystal area / r^2
+	double epsilon = 0.55;						//Correction to dOmega bc of detector efficiency
+/**/	double d_scatter = 4;						//Diameter of the scatterer
+/**/	double h_scatter = 1;						//Height of the scatterer
+	double rho_Al = 2.7;						//Density of Al (g/cm^3)
+	double A_Al = 27.0;						//Atomic weight of Al
+	double Z_Al = 13.0;						//Number of protons/electrons in Al atom
+	double AvoNum = TMath::Na();					//Avogadros Number
+	double N_e;							//Number of electrons in the path of beam
+	double dsigma_dOmega;						//Angular Dependance on scattering probability
 
-	double flux_target = (flux / epsilon)*TMath::Power((r_SourceToDet / r_ScatToDet),2);	//photons/(cm^2 * s)
+	double flux_target = (flux / epsilon)*TMath::Power((r_SourceToDet / r_SourceToScat),2);	//photons/(cm^2 * s)
+
 	N_e = TMath::Pi()*TMath::Power((d_scatter / 2.0),2)*h_scatter*rho_Al*(AvoNum / A_Al)*Z_Al; //electrons
 
-	dsigma_dOmega = Y_theta / (dOmega * N_gamma * N_e * flux_target);
+//	dsigma_dOmega = Y_theta / (dOmega * N_gamma * N_e * flux_target);
+	dsigma_dOmega = Y_theta / (dOmega * N_e * flux_target);
 
 	cout << "dsigma_dOmega: " << dsigma_dOmega << endl;
 
@@ -184,6 +187,10 @@ int GetCsPeaks_Angle(
   f.Write();
   f.Close();
 
+	c1->Close();
+	c2->Close();
+	c22->Close();
+	c3->Close();
 
   return 0;
 }

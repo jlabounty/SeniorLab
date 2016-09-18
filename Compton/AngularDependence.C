@@ -12,7 +12,7 @@ int AngularDependence()
 
 //	TH1F *blank = new TH1F("blank","Comparison of Experimental Data with KN and Thompson Formulas",10, 0, 180);
 	TH1F *blank = new TH1F("blank","",10, 0, 180);
-		blank->GetYaxis()->SetRangeUser(0, TMath::Power(10,-25));
+		blank->GetYaxis()->SetRangeUser(0, 6.0*TMath::Power(10,-25));
 		blank->GetXaxis()->SetTitle("#theta_{detector} (Degrees)");
 		blank->GetYaxis()->SetTitle("d#sigma/d#Omega (cm^{2}/st)");
 		blank->GetYaxis()->SetTitleOffset(1.55);
@@ -51,8 +51,11 @@ int AngularDependence()
 	TFile f(("./"+file_root).c_str(),"UPDATE");
 	TTree *t = (TTree*)f.Get("t");
 	t->Draw("dsigma_dOmega:angle","","SAME");
-	cout << t->GetV1()[0] << endl;
-	cout << t->GetV2()[0] << endl;
+	cout << "Angle    |    dSigma/dOmega" << endl;
+	for (int i = 0; i < t->GetEntries(); i++)
+	{
+		cout << t->GetV2()[i] << "       |     " << t->GetV1()[i] << endl;
+	}
 	leg->AddEntry(t,"Data","p");
 
 
