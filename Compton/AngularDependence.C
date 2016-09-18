@@ -46,10 +46,20 @@ int AngularDependence()
 	thompson->Draw("SAME");
 	leg->AddEntry(thompson,"Thompson","l");
 
+	//Plot Data on the Same Axis
+	std::string file_root = "OutputFile_PeakShift.root";
+	TFile f(("./"+file_root).c_str(),"UPDATE");
+	TTree *t = (TTree*)f.Get("t");
+	t->Draw("dsigma_dOmega:angle","","SAME");
+	cout << t->GetV1()[0] << endl;
+	cout << t->GetV2()[0] << endl;
+	leg->AddEntry(t,"Data","p");
+
+
 	leg->Draw();
 
 	c->Update();
-	c->Print("./plots/KNvsThompson.png");
+//	c->Print("./plots/KNvsThompson.png");
 
 	return 0;
 }

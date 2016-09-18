@@ -9,11 +9,14 @@ int PeakShift()
         std::string file_root = "OutputFile_PeakShift.root";
         TFile f(("./"+file_root).c_str(),"RECREATE");
         TTree *t = new TTree("t","Peaks of Functions and their Standard Deviations");
-        double mean_i, stdev_i, energy_i; 
+        double mean_i, stdev_i, energy_i, integral_i, dsigma_dOmega_i, angle_i2; 
 
         TBranch *b_mean = t->Branch("mean",&mean_i,"Mean bin of the energy peak/D");
         TBranch *b_stdev = t->Branch("stdev",&stdev_i,"Standard deviation of gaussian fit to the energy peak/D");
         TBranch *b_energy = t->Branch("energy",&energy_i,"Known energy of the peak/D");
+        TBranch *b_integral = t->Branch("integral",&integral_i,"Integral under gaussian curve/D");
+        TBranch *b_dsigma_dOmega = t->Branch("dsigma_dOmega",&dsigma_dOmega_i,"dsigma_dOmega/D");
+        TBranch *b_angle = t->Branch("angle",&angle_i2,"Angle of detector wrt source/D");
 
 	f.Write();
 	f.Close();
@@ -22,15 +25,15 @@ int PeakShift()
 	vector<std::string> files;
 	vector<double> means;
 	files.push_back("data/Cs_137_Angle_030_AlScatter_091416_143045.root");
-	means.push_back(800);
-//	files.push_back("data/Cs_137_Angle_025_AlScatter_091416_134820.root");
+		means.push_back(800);
+	files.push_back("data/Cs_137_Angle_025_AlScatter_091416_134820.root");
+		means.push_back(875);
 	vector<double> angle;
 	std::string angle_string;
 	int angle_i;
 	std::string file1;
 	for(int i = 0; i < files.size(); i++)
 	{
-		GetCsPeaks_Angle(files[i], means[i]);
 		file1 = files[i];
 		angle_string = ((file1.erase(0,18)).erase(3,file1.size()-3));
 		if(angle_string[0] == '0') angle_string.erase(0,1);
@@ -38,7 +41,7 @@ int PeakShift()
 		angle_i = std::atoi(angle_string.c_str());
 		cout << "Angle: " <<  angle_i << endl;
 		angle.push_back(angle_i);
-		angle.push_back(angle_i);
+		GetCsPeaks_Angle(files[i], means[i], angle[i]);
 	}
 
 	//Perform analysis on output data
@@ -63,39 +66,6 @@ int PeakShift()
 	}
 
 	f.Close();
-/*
-	std::string title = "Known Energy vs. Bin Numbers";
 
-        TCanvas *c = new TCanvas("c",title.c_str(),750,750);     //Makes canvas large enough for png printing.
-		c->cd();
-		c->SetGridx(1);
-		c->SetGridy(1);
-		//		c->SetFixedAspectRatio();
-        //Use blank histogram to set the parameters of the canvas
-        TH1F *blank = new TH1F("blank",title.c_str(),10, 0, 2048);
-                blank->GetYaxis()->SetRangeUser(0, 2048);
-                blank->GetXaxis()->SetTitle("Energy (keV)");
-                blank->GetYaxis()->SetTitle("Bin Number");
-                blank->GetXaxis()->SetNdivisions(505);
-                blank->GetYaxis()->SetNdivisions(505);
-                blank->SetLineColor(0);
-        blank->Draw();
-
-	TGraphErrors *gr = new TGraphErrors(err_energy.size(), &(angle[0]), &(mean[0]), &(err_energy[0]), &(stdev[0]));
-	gr->Draw("p SAME");
-
-	TF1 *fit1 = new TF1("fit1","pol1");
-	gr->Fit("fit1","0 Q");
-	double slope = fit1->GetParameter(1);
-	cout << "The slope is: " << slope << " Bins/keV" << endl;
-
-	TF1 *f1 = new TF1("f1", "pol1", 0, 2048);
-		f1->SetParameter(0, fit1->GetParameter(0));
-		f1->SetParameter(1, fit1->GetParameter(1));
-		f1->SetLineStyle(7);
-	f1->Draw("l SAME");
-	
-	c->Update();
-*/
 	return 0;
 }

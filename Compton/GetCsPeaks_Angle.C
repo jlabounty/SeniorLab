@@ -1,6 +1,7 @@
 int GetCsPeaks_Angle(
 	       TString infile = "data/Cs_137_Weak_090716_141039.root",
-	       double mean_est = 661.6 
+	      double mean_est = 661.6,
+	      double angle = 90 
 )
 {
   TFile *csFile = TFile::Open(infile); 
@@ -62,35 +63,7 @@ int GetCsPeaks_Angle(
   mean.push_back(Peak_662);
   stdev.push_back(Stdv_662);
 
-
-
-
-
-  /*===================================*/
-
-  /*Output the data to a root file*/
-  /*Create a root file to store the data taken from the files*/
-  std::string file_root = "OutputFile_PeakShift.root";
-  TFile f(("./"+file_root).c_str(),"UPDATE");
-  TTree *t = (TTree*)f.Get("t");
-  double mean_i, stdev_i, energy_i; 
-
-  t->SetBranchAddress("mean",&mean_i);
-  t->SetBranchAddress("stdev",&stdev_i);
-  t->SetBranchAddress("energy",&energy_i);
-
-  /*Fill the output file branches with the data from the file*/
-  for(int i = 0; i < mean.size(); i++)
-    {
-      mean_i = mean[i];
-      energy_i = energy[i];
-      stdev_i = stdev[i];
-      t->Fill();
-    }
-
-  f.Write();
-  f.Close();
-
+//*************************************************************************
 
 	gStyle->SetOptStat(0);
 	std::string title = "^{137}Cs Uncalibrated Spectrum";
@@ -116,6 +89,15 @@ int GetCsPeaks_Angle(
 	hist->Draw("SAME");
 	fStat_662->SetLineColor(kBlue);
 	fStat_662->Draw("SAME");
+	Double_t param[6];
+	fSpec_662->GetParameters(param);
+	TF1 *fSignal = new TF1("fSignal","gaus",0.,2048.);
+		fSignal->SetLineColor(kGreen);
+		fSignal->SetParameters(param);
+	fSignal->Draw("SAME");
+	Double_t sumundercurve;
+	sumundercurve = fSignal->Integral(0,2048);
+	cout << "sumundercurve = " << sumundercurve << endl;
 
 //	c22->Print("./plots/CsBinnedSpectrum.png");
 
@@ -142,13 +124,65 @@ int GetCsPeaks_Angle(
 	}
 	TGraph *gr1 = new TGraph(v_count.size(), &(v_bin[0]), &(v_count[0]));
 	gr1->Draw("p SAME");
-	TF1 *fSignal = new TF1("fSignal","gaus",0.,2000.);
-	fSignal->SetLineColor(kGreen);
-	fSignal->SetParameters(param);
 
 //	c2->Print("./plots/CsCalibSpectrum.png");
 
 
+  /*===================================*/
+
+	//Calculation of dsigma / dOmega
+	double Y_theta = sumundercurve;		//Photons recieved with scatterer at angle theta
+/**/	double flux = 5.0*TMath::Power(10,3);	//Flux. Counts/(cm^2 * s)
+/**/	double r_ScatToDet = 10;		//Distance from detector to scattering point
+/**/	double r_SourceToDet = 20;		//Distance from source to dectector.
+	double dOmega = 45.6 / TMath::Power(r_ScatToDet,2);	//Angle subtended by detector. Crystal area / r^2
+	double epsilon = 0.55;			//Correction to dOmega bc of detector efficiency
+/**/	double d_scatter = 1;			//Diameter of the scatterer
+/**/	double h_scatter = 1;			//Height of the scatterer
+	double rho_Al = 2.7;			//Density of Al (g/cm^3)
+	double A_Al = 27.0;			//Atomic weight of Al
+	double Z_Al = 13.0;			//Number of protons/electrons in Al atom
+	double AvoNum = TMath::Na();		//Avogadros Number
+	double N_e;				//Number of electrons in the path of beam
+/**/	double N_gamma = TMath::Power(10,2);	//Number of photons which impact the detector with no scat.
+	double I_o;				//Flux density at target
+	double dsigma_dOmega;			//Angular Dependance on scattering probability
+
+	double flux_target = (flux / epsilon)*TMath::Power((r_SourceToDet / r_ScatToDet),2);	//photons/(cm^2 * s)
+	N_e = TMath::Pi()*TMath::Power((d_scatter / 2.0),2)*h_scatter*rho_Al*(AvoNum / A_Al)*Z_Al; //electrons
+
+	dsigma_dOmega = Y_theta / (dOmega * N_gamma * N_e * flux_target);
+
+	cout << "dsigma_dOmega: " << dsigma_dOmega << endl;
+
+
+  /*===================================*/
+
+  /*Output the data to a root file*/
+  /*Create a root file to store the data taken from the files*/
+  std::string file_root = "OutputFile_PeakShift.root";
+  TFile f(("./"+file_root).c_str(),"UPDATE");
+  TTree *t = (TTree*)f.Get("t");
+  double mean_i, stdev_i, energy_i; 
+
+  t->SetBranchAddress("mean",&mean_i);
+  t->SetBranchAddress("stdev",&stdev_i);
+  t->SetBranchAddress("energy",&energy_i);
+  t->SetBranchAddress("angle",&angle);
+  t->SetBranchAddress("integral",&sumundercurve);
+  t->SetBranchAddress("dsigma_dOmega",&dsigma_dOmega);
+
+  /*Fill the output file branches with the data from the file*/
+  for(int i = 0; i < mean.size(); i++)
+    {
+      mean_i = mean[i];
+      energy_i = energy[i];
+      stdev_i = stdev[i];
+      t->Fill();
+    }
+
+  f.Write();
+  f.Close();
 
 
   return 0;
