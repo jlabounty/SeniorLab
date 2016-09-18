@@ -1,14 +1,12 @@
 #include "headers/exist_test.h"
 
-#include "GetCsPeaks.C"
-#include "GetNaPeaks.C"
-#include "GetBaPeaks.C"
+#include "GetCsPeaks_Angle.C"
 
 int PeakShift()
 {
 
 	//Create Empty Root File
-        std::string file_root = "OutputFile.root";
+        std::string file_root = "OutputFile_PeakShift.root";
         TFile f(("./"+file_root).c_str(),"RECREATE");
         TTree *t = new TTree("t","Peaks of Functions and their Standard Deviations");
         double mean_i, stdev_i, energy_i; 
@@ -22,17 +20,22 @@ int PeakShift()
 
 	//Run Fitting macros which write to file
 	vector<std::string> files;
-	files.push_back("data/Cs_137_Weak_091216_122105.root");
-	files.push_back("data/Cs_137_Weak_091216_124114.root");
+	vector<double> means;
+	files.push_back("data/Cs_137_Angle_030_AlScatter_091416_143045.root");
+	means.push_back(800);
+//	files.push_back("data/Cs_137_Angle_025_AlScatter_091416_134820.root");
 	vector<double> angle;
-	double angle_i;
+	std::string angle_string;
+	int angle_i;
 	std::string file1;
 	for(int i = 0; i < files.size(); i++)
 	{
-		GetCsPeaks(files[i]);
+		GetCsPeaks_Angle(files[i], means[i]);
 		file1 = files[i];
-//		double angle_i = std::atoi((file1.erase(0,18)).erase(3,file1.size()-3));
-		double angle_i = std::atoi("220");
+		angle_string = ((file1.erase(0,18)).erase(3,file1.size()-3));
+		if(angle_string[0] == '0') angle_string.erase(0,1);
+		cout << angle_string << endl;
+		angle_i = std::atoi(angle_string.c_str());
 		cout << "Angle: " <<  angle_i << endl;
 		angle.push_back(angle_i);
 		angle.push_back(angle_i);
@@ -41,7 +44,7 @@ int PeakShift()
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 
-	std::string file = "./OutputFile.root";
+	std::string file = "./OutputFile_PeakShift.root";
 	TFile f(file.c_str());
 	TTree *t = (TTree*)f.Get("t");
 	t->Draw("mean:stdev:energy","","goff");
@@ -60,7 +63,7 @@ int PeakShift()
 	}
 
 	f.Close();
-
+/*
 	std::string title = "Known Energy vs. Bin Numbers";
 
         TCanvas *c = new TCanvas("c",title.c_str(),750,750);     //Makes canvas large enough for png printing.
@@ -93,5 +96,6 @@ int PeakShift()
 	f1->Draw("l SAME");
 	
 	c->Update();
+*/
 	return 0;
 }
