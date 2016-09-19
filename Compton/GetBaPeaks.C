@@ -1,5 +1,6 @@
 int GetBaPeaks(
-	       TString infile = "data/Ba_133_Weak_091216_133430.root"
+	       // TString infile = "data/Ba_133_Weak_091216_134204.root"
+	       TString infile = "data/Ba_133_Weak_091216_132314.root"
 )
 {
   TFile *baFile = TFile::Open(infile);
@@ -16,7 +17,7 @@ int GetBaPeaks(
   /*Define Spectrum Fit Function*/
   TF1 *fSpec_300 = new TF1("fSpec_300", "gaus+gaus(3)+pol0(6)+expo(7)", 375., 800.);
   /*Estimate Parameters of Fit*/
-  fSpec_300->SetParameters(100, 400, 2, 100 , 550, 2,  50, 0, 0);
+  fSpec_300->SetParameters(100, 440, 2, 100 , 525, 2,  50, 0, 0);
   TCanvas *c2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
   baHist_300->Fit("fSpec_300", "Q", "", 375., 800.);
@@ -111,6 +112,9 @@ int GetBaPeaks(
 
   f.Write();
   f.Close();
+
+  c1->Close();
+  c2->Close();
 
   return 0;
 }

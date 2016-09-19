@@ -7,7 +7,6 @@ int GetCsPeaks(
   csHraw = (TH1D*)csFile->Get("h");
   TCanvas *c1 = new TCanvas();
   csHraw->Draw();
-
   vector<double> mean, stdev, energy;
 
   /*========Cs-137 32 keV Peak=========*/
@@ -156,32 +155,10 @@ int GetCsPeaks(
 
 //	c22->Print("./plots/CsBinnedSpectrum.png");
 
-	TCanvas *c2 = new TCanvas();
-
-	TH1F *blank2 = new TH1F("blank2","^{137}Cs Calibrated Spectrum",10, 0, 1000);
-		blank2->GetYaxis()->SetRangeUser(0, 2800);
-		blank2->GetXaxis()->SetTitle("Energy (keV)");
-		blank2->GetYaxis()->SetTitle("Photon Count");
-		blank2->GetYaxis()->SetTitleOffset(1.65);
-		blank2->GetXaxis()->SetNdivisions(505);
-		blank2->GetYaxis()->SetNdivisions(505);
-		blank2->SetLineColor(0);
-	blank2->Draw();
-
-	TTree *t2 = (TTree*)csFile->Get("t");	
-	t2->Draw("Count:Bin","","goff");
-	vector<double> v_count, v_bin;
-	for(int i = 0; i < t2->GetEntries(); i++)
-	{
-		v_count.push_back(t2->GetV1()[i]);
-		v_bin.push_back(t2->GetV2()[i] / 1.23564);
-
-	}
-	TGraph *gr1 = new TGraph(v_count.size(), &(v_bin[0]), &(v_count[0]));
-	gr1->Draw("p SAME");
-
-//	c2->Print("./plots/CsCalibSpectrum.png");
-
+  c1->Close();
+  c2->Close();
+  c3->Close();
+  c22->Close();
 
 
 

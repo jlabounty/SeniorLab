@@ -58,7 +58,7 @@ int GetNaPeaks(
   TF1 *fSpec_1274 = new TF1("fSpec_1274", "gaus+pol0(3)+expo(4)", 1200., 1700.);
   /*Estimate Parameters of Fit*/
   fSpec_1274->SetParameters(100, 1500, 2, 50, 0, 0);
-  TCanvas *c2 = new TCanvas();
+  TCanvas *c3 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
   naHist_1274->Fit("fSpec_1274", "Q", "", 1200., 1700.);
 
@@ -119,6 +119,10 @@ int GetNaPeaks(
 
   f.Write();
   f.Close();
+
+  c1->Close();
+  c2->Close();
+  c3->Close();
 
   return 0;
 }
