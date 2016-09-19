@@ -12,7 +12,7 @@ int AngularDependence()
 
 //	TH1F *blank = new TH1F("blank","Comparison of Experimental Data with KN and Thompson Formulas",10, 0, 180);
 	TH1F *blank = new TH1F("blank","",10, 0, 180);
-		blank->GetYaxis()->SetRangeUser(0, 6.0*TMath::Power(10,-25));
+		blank->GetYaxis()->SetRangeUser(0, 2.0*TMath::Power(10,-24));
 		blank->GetXaxis()->SetTitle("#theta_{detector} (Degrees)");
 		blank->GetYaxis()->SetTitle("d#sigma/d#Omega (cm^{2}/st)");
 		blank->GetYaxis()->SetTitleOffset(1.55);
@@ -52,13 +52,23 @@ int AngularDependence()
 	std::string file_root = "OutputFile_PeakShift.root";
 	TFile f(("./"+file_root).c_str(),"UPDATE");
 	TTree *t = (TTree*)f.Get("t");
-	t->Draw("dsigma_dOmega:angle","","SAME");
+	t->Draw("dsigma_dOmega:angle","","goff");
+	vector<double> dS_dO, angle, err_angle, err_dS_dO;
+	for(int i = 0; i < t->GetEntries(); i++)
+	{
+		dS_dO.push_back(t->GetV1()[i]);
+		angle.push_back(t->GetV2()[i]);
+		err_angle.push_back(5);
+		err_dS_dO.push_back(0);
+	}
+	TGraphErrors *gr1 = new TGraphErrors(angle.size(),&angle[0],&dS_dO[0],&err_angle[0],&err_dS_dO[0]);
+	gr1->Draw("p SAME");
 	cout << "Angle    |    dSigma/dOmega" << endl;
 	for (int i = 0; i < t->GetEntries(); i++)
 	{
 		cout << t->GetV2()[i] << "       |     " << t->GetV1()[i] << endl;
 	}
-	leg->AddEntry(t,"Data","p");
+	leg->AddEntry(gr1,"Data","p");
 
 
 	leg->Draw();
@@ -68,9 +78,8 @@ int AngularDependence()
 
 	TCanvas *c1 = new TCanvas();
 	c1->cd();
-	t->Draw("dsigma_dOmega:angle","","goff");
-	TGraph *gr1 = new TGraph(t->GetEntries(),&(t->GetV2()[0]),&(t->GetV1()[0]));
-	gr1->Draw();
+	TGraphErrors *gr2 = new TGraphErrors(angle.size(),&angle[0],&dS_dO[0],&err_angle[0],&err_dS_dO[0]);
+	gr2->Draw();
 	gr1->Fit("KN");
 	cout << endl << "KN Reduced Chi^2: " << KN->GetChisquare() / KN->GetNDF() << endl;
 	gr1->Fit("thompson");
