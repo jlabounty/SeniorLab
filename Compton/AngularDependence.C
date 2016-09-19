@@ -34,15 +34,15 @@ int AngularDependence()
 	cout << "r0: " << r0 << endl;
 
 	TF1 *KN = new TF1("KN","([0]**2 / 2.0) * ((1 + TMath::Cos(x * TMath::Pi()/180.0)**2)/(1 + [1]*(1 - TMath::Cos(x * TMath::Pi()/180.0)))**2) * (1 + (([1]**2 * (1 - TMath::Cos(x * TMath::Pi()/180.0)))**2)/((1 + TMath::Cos(x * TMath::Pi()/180.0)**2)*(1 + [1]*(1 - TMath::Cos(x * TMath::Pi()/180.0)))))",0,180);
-		KN->SetParameter(0,r0);
-		KN->SetParameter(1,gamma);
+		KN->FixParameter(0,r0);
+		KN->FixParameter(1,gamma);
 		KN->SetLineColor(3);
 //	KN->Draw();
 	KN->Draw("SAME");
 	leg->AddEntry(KN,"Klein-Nishina","l");
 
 	TF1 *thompson = new TF1("thompson","[0]**2 / 2 * (1 + TMath::Cos(x * TMath::Pi()/180.0)**2)",0,180);
-		thompson->SetParameter(0,r0);
+		thompson->FixParameter(0,r0);
 	thompson->Draw("SAME");
 	leg->AddEntry(thompson,"Thompson","l");
 
@@ -62,7 +62,17 @@ int AngularDependence()
 	leg->Draw();
 
 	c->Update();
-//	c->Print("./plots/KNvsThompson.png");
+//	c->Print("./plots/KNvsThompson.png");	c->Print("./plots/KNvsThompson.eps");
+
+	TCanvas *c1 = new TCanvas();
+	c1->cd();
+	t->Draw("dsigma_dOmega:angle","","goff");
+	TGraph *gr1 = new TGraph(t->GetEntries(),&(t->GetV2()[0]),&(t->GetV1()[0]));
+	gr1->Draw();
+	gr1->Fit("KN","Q");
+	cout << endl << "KN Reduced Chi^2: " << KN->GetChisquare() / KN->GetNDF() << endl;
+	gr1->Fit("thompson", "Q");
+	cout << "Thompson Reduced Chi^2: " << thompson->GetChisquare() / thompson->GetNDF() << endl;
 
 	return 0;
 }
