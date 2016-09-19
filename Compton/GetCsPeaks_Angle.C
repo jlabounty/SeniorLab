@@ -1,7 +1,9 @@
+
+
 double get_epsilon(double mean);
 
 int GetCsPeaks_Angle(
-	       TString infile = "data/Cs_137_Weak_090716_141039.root",
+	       TString infile = "data/Cs_137_Angle_000_AlScatter_091416_124734.root",
 	      double mean_est = 661.6,
 	      double angle = 90,
 	      double fit_low = 650.,
@@ -122,8 +124,10 @@ int GetCsPeaks_Angle(
 	vector<double> v_count, v_bin;
 	for(int i = 0; i < t2->GetEntries(); i++)
 	{
+	  double x = t2->GetV2()[i];
 		v_count.push_back(t2->GetV1()[i]);
-		v_bin.push_back(t2->GetV2()[i] / 1.23564);
+		// v_bin.push_back( calibfit->Eval( t2->GetV2()[i] ) );
+		v_bin.push_back( -5.13889 + 0.600313*x + 0.000170654*x**2 );
 
 	}
 	TGraph *gr1 = new TGraph(v_count.size(), &(v_bin[0]), &(v_count[0]));
@@ -190,7 +194,7 @@ int GetCsPeaks_Angle(
   f.Close();
 
 	c1->Close();
-	c2->Close();
+	//	c2->Close();
 	c22->Close();
 	c3->Close();
 
