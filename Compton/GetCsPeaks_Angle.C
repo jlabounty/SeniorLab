@@ -1,3 +1,5 @@
+double get_epsilon(double mean);
+
 int GetCsPeaks_Angle(
 	       TString infile = "data/Cs_137_Weak_090716_141039.root",
 	      double mean_est = 661.6,
@@ -133,15 +135,15 @@ int GetCsPeaks_Angle(
 
 	//Calculation of dsigma / dOmega
 	double Y_theta = sumundercurve/(t->GetV3()[0]);			//Photons recieved with scatterer at angle theta
-/**/	double r_SourceToScat = 10;					//Distance from detector to scattering point
-/**/	double r_SourceToDet = 20;					//Distance from source to dectector.
+	double r_SourceToScat = 21.5*2.54;				//Distance from detector to scattering point
+	double r_SourceToDet = 32.6*2.54;				//Distance from source to dectector.
 	double Area_detector = 45.6;					//cm^2
-	double N_gamma = 902.049;					//Number of photons which impact the detector per second with no scattering
+/**/	double N_gamma = 902.049;					//Number of photons which impact the detector per second with no scattering
 	double flux = N_gamma/Area_detector;				//Flux. Counts/(cm^2 * s)
 	double dOmega = Area_detector / TMath::Power(r_SourceToScat,2);	//Angle subtended by detector. Crystal area / r^2
-	double epsilon = 0.55;						//Correction to dOmega bc of detector efficiency
-/**/	double d_scatter = 4;						//Diameter of the scatterer
-/**/	double h_scatter = 1;						//Height of the scatterer
+	double epsilon = get_epsilon(fSignal->GetParameter(1));		//Correction to dOmega bc of detector efficiency
+	double d_scatter = 2.5*2.54;					//Diameter of the scatterer
+	double h_scatter = (6.0 + (13./16.))*2.45*0.5;			//Height of the scatterer
 	double rho_Al = 2.7;						//Density of Al (g/cm^3)
 	double A_Al = 27.0;						//Atomic weight of Al
 	double Z_Al = 13.0;						//Number of protons/electrons in Al atom
@@ -193,4 +195,9 @@ int GetCsPeaks_Angle(
 	c3->Close();
 
   return 0;
+}
+
+double get_epsilon(double mean)
+{
+	return 0.55;
 }
