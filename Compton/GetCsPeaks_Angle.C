@@ -147,7 +147,7 @@ int GetCsPeaks_Angle(
 	double dOmega = Area_detector / TMath::Power(r_SourceToScat,2);	//Angle subtended by detector. Crystal area / r^2
 	double epsilon = get_epsilon(fSignal->GetParameter(1));		//Correction to dOmega bc of detector efficiency
 	double d_scatter = 2.5*2.54;					//Diameter of the scatterer
-	double h_scatter = (6.0 + (13./16.))*2.45*0.5;			//Height of the scatterer
+	double h_scatter = (6.0 + (13./16.))*2.45*0.75;			//Height of the scatterer
 	double rho_Al = 2.7;						//Density of Al (g/cm^3)
 	double A_Al = 27.0;						//Atomic weight of Al
 	double Z_Al = 13.0;						//Number of protons/electrons in Al atom
@@ -164,7 +164,24 @@ int GetCsPeaks_Angle(
 
 	cout << "dsigma_dOmega: " << dsigma_dOmega << endl;
 
+	//Calculation of error in dsigma_dOmega 
+	double err_Y_theta = 0.05*Y_theta;
+	double err_r_SourceToScat = 0.1*2.54;
+	double err_r_SourceToDet = 0.1*2.54;
+	double err_Area_detector = Area_detector*TMath::Sqrt(TMath::Power((err_r_SourceToDet/ r_SourceToDet),2) + TMath::Power((err_r_SourceToScat / r_SourceToScat),2));
+	double err_N_gamma = 0.05*N_gamma;
+	double err_flux = flux*TMath::Sqrt(TMath::Power(( err_Area_detector / Area_detector ),2) + TMath::Power(( err_N_gamma / N_gamma  ),2));
+	double err_dOmega = dOmega*TMath::Sqrt(TMath::Power(( err_Area_detector / Area_detector ),2) + 2.0*TMath::Power(( err_r_SourceToScat / r_SourceToScat  ),2));
+	double err_epsilon = 0.01*epsilon;
+	double err_d_scatter = 0.1*2.54;
+	double err_h_scatter = 0.5*2.54;
 
+	double err_flux_target = flux_target*TMath::Sqrt( TMath::Power(( err_flux / flux ),2) + TMath::Power(( err_epsilon / epsilon ),2) * 2.0*TMath::Power(( err_r_SourceToDet / r_SourceToDet ),2) * 2.0*TMath::Power(( err_r_SourceToScat / r_SourceToScat ),2));
+
+	double err_N_e = N_e = TMath::Sqrt(2*TMath::Power(( err_d_scatter / d_scatter ),2) + TMath::Power(( err_h_scatter / h_scatter  ),2));
+	double err_dsigma_dOmega = dsigma_dOmega*TMath::Sqrt(TMath::Power(( err_Y_theta / Y_theta ),2) + TMath::Power(( err_dOmega / dOmega  ),2) * TMath::Power(( err_N_e / N_e  ),2)* TMath::Power(( err_flux_target / flux_target ),2));
+
+	cout << "Error: " << err_dsigma_dOmega << endl;
   /*===================================*/
 
   /*Output the data to a root file*/
@@ -180,6 +197,7 @@ int GetCsPeaks_Angle(
   t->SetBranchAddress("angle",&angle);
   t->SetBranchAddress("integral",&sumundercurve);
   t->SetBranchAddress("dsigma_dOmega",&dsigma_dOmega);
+  t->SetBranchAddress("err_dsigma_dOmega",&err_dsigma_dOmega);
 
   /*Fill the output file branches with the data from the file*/
   for(int i = 0; i < mean.size(); i++)
@@ -194,9 +212,9 @@ int GetCsPeaks_Angle(
   f.Close();
 
 	c1->Close();
-	//	c2->Close();
-	c22->Close();
-	c3->Close();
+	c2->Close();
+//	c22->Close();
+//	c3->Close();
 
   return 0;
 }

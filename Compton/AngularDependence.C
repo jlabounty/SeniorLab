@@ -52,21 +52,21 @@ int AngularDependence()
 	std::string file_root = "OutputFile_PeakShift.root";
 	TFile f(("./"+file_root).c_str(),"UPDATE");
 	TTree *t = (TTree*)f.Get("t");
-	t->Draw("dsigma_dOmega:angle","","goff");
+	t->Draw("dsigma_dOmega:angle:err_dsigma_dOmega","","goff");
 	vector<double> dS_dO, angle, err_angle, err_dS_dO;
 	for(int i = 0; i < t->GetEntries(); i++)
 	{
 		dS_dO.push_back(t->GetV1()[i]);
 		angle.push_back(t->GetV2()[i]);
-		err_angle.push_back(5);
-		err_dS_dO.push_back(0);
+		err_angle.push_back(2.5);
+		err_dS_dO.push_back(t->GetV3()[i]);
 	}
 	TGraphErrors *gr1 = new TGraphErrors(angle.size(),&angle[0],&dS_dO[0],&err_angle[0],&err_dS_dO[0]);
 	gr1->Draw("p SAME");
 	cout << "Angle    |    dSigma/dOmega" << endl;
 	for (int i = 0; i < t->GetEntries(); i++)
 	{
-		cout << t->GetV2()[i] << "       |     " << t->GetV1()[i] << endl;
+		cout << t->GetV2()[i] << "       |     " << t->GetV1()[i] << " +/- " << t->GetV3()[i] << endl;
 	}
 	leg->AddEntry(gr1,"Data","p");
 
@@ -81,10 +81,14 @@ int AngularDependence()
 	TGraphErrors *gr2 = new TGraphErrors(angle.size(),&angle[0],&dS_dO[0],&err_angle[0],&err_dS_dO[0]);
 	gr2->Draw();
 	gr1->Fit("KN");
+	KN->Draw("SAME");
 	cout << endl << "KN Reduced Chi^2: " << KN->GetChisquare() / KN->GetNDF() << endl;
 	gr1->Fit("thompson");
+	thompson->Draw("SAME");
 	cout << "Thompson Reduced Chi^2: " << thompson->GetChisquare() / thompson->GetNDF() << endl;
-	c1->Close();
+//	c1->Close();
+
+	c->Update();
 
 	return 0;
 }
