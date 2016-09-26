@@ -1,7 +1,29 @@
-\documentclass[12pt]{article}
+\documentclass[%
+ reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%showpacs,preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+ pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-1}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+%\usepackage{bm}% bold math
 \usepackage{fullpage}
-\usepackage{multicol}
-\usepackage{graphicx}
 \usepackage{epsfig}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -9,21 +31,28 @@
 \usepackage{float}
 \usepackage{pstricks}
 \usepackage{cancel}
-\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{lipsum}
+%\usepackage[nottoc,numbib]{tocbibind} %Uncomment for bibliography to be its own numbered section
 \usepackage{units}
-
-\title{\textbf{Lab Report: Compton Effect} \\ Something something physics}
-\author{Joshua LaBounty --- 109191685 \\ Thomas Krahulik --- 109074342 \\ \smallbreak PHY 445}
+\usepackage{listings}
 
 \begin{document}
 
+\preprint{APS/123-QED}
+
+\title{\textbf{Lab Report: Compton Scattering} \\ \small{And Investigation of the Angular Dependence of the Scattering Probability for Photons}}
+\author{Joshua LaBounty}
+\author{Thomas Krahulik}
+\affiliation{%
+Stony Brook University --- PHY 445
+}%
+
+\date{\today}
+
+\begin{abstract}
+	\lipsum[1]
+\end{abstract}
 \maketitle
-
-\pagebreak
-
-\tableofcontents 
-
-\pagebreak
 
 \section{Background}
 
@@ -35,9 +64,10 @@
 	\frac{d \sigma}{d \Omega}_{Th} = \frac{r_0^2}{2}(1+\cos^2{\theta})
 \end{equation}
 
-\begin{equation}\label{eq:kn}
-	\frac{d \sigma}{d \Omega}_{KN} = \frac{r_0^2}{2} \frac{1 + \cos^2{\theta}}{[1 + \gamma(1 - \cos{\theta})]^2} \left[ 1 + \frac{\gamma^2(1 - \cos{\theta})^2}{(1 + \cos^2{\theta})(1+ \gamma(1 - \cos{\theta}))}\right] \\
-\end{equation}
+\begin{gather}\label{eq:kn}
+	\frac{d \sigma}{d \Omega}_{KN} = \frac{r_0^2}{2} \frac{1 + \cos^2{\theta}}{[1 + \gamma(1 - \cos{\theta})]^2} \nonumber * ~~~~~~~~~~~~\\
+	\left[ 1 + \frac{\gamma^2(1 - \cos{\theta})^2}{(1 + \cos^2{\theta})(1+ \gamma(1 - \cos{\theta}))}\right] 
+\end{gather}
 
 \section{Experimental Setup}
 
@@ -45,9 +75,11 @@
 
 \section{Analysis}
 
+\subsection{Calibration of Detector Energy Scale}
+
 \subsection{Electron Mass}
 
-\subsection{Angular Dependance of the Scattering Probability}
+\subsection{Angular Dependence of the Scattering Probability}
 
 \subsection{Free Electrons in Cu and Al}
 
@@ -73,11 +105,11 @@
 
 \begin{appendix}
 
-\section{Appendix: Derivation of Equation \ref{eq:energy_scatter}}
+\section{Derivation of Equation \ref{eq:energy_scatter}}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.4\textwidth]{../plots/ComptonDiagram.png}
+	\includegraphics[width=0.3\textwidth]{../plots/ComptonDiagram.png}
 	\caption{Diagram showing a photon scattering off an electron at rest. Image courtesy of Wikipedia.}
 \end{figure}
 
