@@ -43,14 +43,12 @@
 \title{\textbf{Lab Report: Compton Scattering} \\ \small{And Investigation of the Angular Dependence of the Scattering Probability for Photons}}
 \author{Joshua LaBounty}
 \author{Thomas Krahulik}
-\affiliation{%
-Stony Brook University --- PHY 445
-}%
+\affiliation{Stony Brook University --- PHY 445}
 
 \date{\today}
 
 \begin{abstract}
-	In this experiment, we perform an investigation of the Compton Effect
+	In this experiment, we test the classical Thompson Formula (Eq. \ref{eq:thompson}) against the Klein-Nishina Formula (Eq. \ref{eq:kn}), its quantum mechanical counterpart. At small angles, the two formulae agree quite well, but at large $\theta$ we see a significant deviation. In order to accomplish this, we look at Compton Scattering of $\gamma$-ray photons produced from the decay of a $^{137}$Cs source. We measure the angular dependence of the scattering probability $d\sigma / d\Omega$ in Aluminium at multiple angles ranging from $0^\circ - 110^\circ$ using a NaI(Tl) scintillating detector. We will also use this phenomenon to measure the mass of the electron and compare the number of free electrons in two different media: Copper and Aluminium.
 \end{abstract}
 \maketitle
 
@@ -64,9 +62,10 @@ Stony Brook University --- PHY 445
 	\frac{d \sigma}{d \Omega}_{Th} = \frac{r_0^2}{2}(1+\cos^2{\theta})
 \end{equation}
 
-\begin{gather}\label{eq:kn}
-	\frac{d \sigma}{d \Omega}_{KN} = \frac{r_0^2}{2} \frac{1 + \cos^2{\theta}}{[1 + \gamma(1 - \cos{\theta})]^2} \nonumber * ~~~~~~~~~~~~\\
+\begin{gather}
+	\frac{d \sigma}{d \Omega}_{KN} = \frac{r_0^2}{2} \frac{1 + \cos^2{\theta}}{[1 + \gamma(1 - \cos{\theta})]^2} \nonumber * ~~~~~~~~~~~~ \\
 	\left[ 1 + \frac{\gamma^2(1 - \cos{\theta})^2}{(1 + \cos^2{\theta})(1+ \gamma(1 - \cos{\theta}))}\right] 
+	\label{eq:kn}
 \end{gather}
 
 \section{Review of Previous Work}
@@ -84,6 +83,8 @@ Stony Brook University --- PHY 445
 \subsection{Free Electrons in Cu and Al}
 
 \section{Theoretical Model}
+
+\subsection{Angular Dependence of the Scattering Probability}
 
 \section{Comparison of Theory and Experiment}
 
