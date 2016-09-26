@@ -25,6 +25,105 @@
 
 \pagebreak
 
-\section{Introduction}
+\section{Background}
+
+\begin{gather}\label{eq:energy_scatter}
+	E_\gamma ' = \frac{E_\gamma}{1 + \frac{E_\gamma}{m_e c^2} (1 - \cos{\theta})}
+\end{gather}
+
+\section{Experimental Setup}
+
+\section{Data Taking}
+
+\section{Analysis}
+
+\subsection{Electron Mass}
+
+\subsection{Angular Dependance of the Scattering Probability}
+
+\subsection{Free Electrons in Cu and Al}
+
+\begin{appendix}
+
+\section{Appendix: Derivation of Equation \ref{eq:energy_scatter}}
+
+This formula can be described semi-classically using only conservation of energy and conservation of momentum. We approximate this interaction as a photon impacting an electron which is currently at rest. The conservation laws require that:
+
+\begin{gather}
+	E_\gamma + E_e = E_\gamma ' + E_e '\nonumber \\
+	\mathbf{p}_\gamma = \mathbf{p}_\gamma' + \mathbf{p}_e' \nonumber
+\end{gather}
+Initially:
+\begin{gather}
+	E_e = m_e c^2 \nonumber
+\end{gather}
+And after the collision:
+\begin{gather}
+	E_e' = \sqrt{(\mathbf{p}_e' c)^2 + (m_e c^2)^2} \nonumber
+\end{gather}
+Substituting these quantities into conservation of energy:
+\begin{gather}
+	E_\gamma + m_e c^2 = E_\gamma' + \sqrt{(\mathbf{p}_e' c)^2 + (m_e c^2)^2} \nonumber \\
+	\downarrow \nonumber \\
+	\mathbf{p}_e^{2'} c^2  = (E_\gamma - E_\gamma' + m_e c^2)^2 - m_e^2 c^4 \nonumber
+\end{gather}
+Now returning to conservation of momentum:
+\begin{gather}
+	\mathbf{p}_e' = \mathbf{p}_\gamma - \mathbf{p}_\gamma' \nonumber
+\end{gather}
+Since these momenta are vector quantities, and we are only interested in a scalar, we can take the dot product:
+\begin{gather}
+	p_e^{2'} = \mathbf{p}_e' \cdot \mathbf{p}_e' = p_\gamma^2 + p_\gamma^{2'} - 2 p_\gamma p_\gamma' \cos{\theta} \nonumber \\
+	p_e^{2'} c^2 =  p_\gamma^2 c^2 + p_\gamma^{2'} c^2 - 2 c^2 p_\gamma p_\gamma' \cos{\theta} \nonumber \\
+	p_e^{2'} c^2 = E_\gamma^2 + E_\gamma^{2'} - 2 E_\gamma E_\gamma' \cos{\theta} \nonumber
+\end{gather}
+We can now equate these two equations for $p_e^{2'} c^2$ and find:
+\begin{gather}
+	(E_\gamma - E_\gamma' + m_e c^2)^2 - m_e^2 c^4 = E_\gamma^2 + E_\gamma^{2'} - 2 E_\gamma E_\gamma' \cos{\theta} \nonumber
+\end{gather}
+We then complete the square and reduce this equation in order to find:
+\begin{gather}
+	2 m_e c^2 (E_\gamma - E_\gamma') = 2 E_\gamma E_\gamma' (1- \cos{\theta}) \nonumber
+\end{gather}
+Which we rearrange to arrive back at Equation \ref{eq:energy_scatter}:
+\begin{gather}
+	E_\gamma ' = \frac{E_\gamma}{1 + \frac{E_\gamma}{m_e c^2} (1 - \cos{\theta})} \nonumber
+\end{gather}
+
+\end{appendix}
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
