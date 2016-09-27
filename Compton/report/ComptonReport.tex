@@ -48,25 +48,29 @@
 \date{\today}
 
 \begin{abstract}
-	In this experiment, we test the classical Thompson Formula (Eq. \ref{eq:thompson}) against the Klein-Nishina Formula (Eq. \ref{eq:kn}), its quantum mechanical counterpart. At small angles, the two formulae agree quite well, but at large $\theta$ we see a significant deviation. In order to accomplish this, we look at Compton Scattering of $\gamma$-ray photons produced from the decay of a $^{137}$Cs source. We measure the angular dependence of the scattering probability $d\sigma / d\Omega$ in Aluminium at multiple angles ranging from $0^\circ - 110^\circ$ using a NaI(Tl) scintillating detector. We will also use this phenomenon to measure the mass of the electron and compare the number of free electrons in two different media: Copper and Aluminium.
+	In this experiment, we test the classical Thompson Formula (Eq. \ref{eq:thompson}) against the Klein-Nishina Formula (Eq. \ref{eq:kn}), its quantum mechanical counterpart. At small angles, the two formulae agree quite well, but at large $\theta$ we see a significant deviation. In order to accomplish this, we look at Compton Scattering of $\gamma$-ray photons produced from the decay of a $^{137}$Cs source. We measure the angular dependence of the scattering probability $d\sigma / d\Omega$ in Aluminum at multiple angles ranging from $0^\circ - 110^\circ$ using a NaI(Tl) scintillating detector. We will also use this phenomenon to measure the mass of the electron and compare the number of free electrons in two different media: Copper and Aluminum.
 \end{abstract}
 \maketitle
 
 \section{Background}
 
+In the early 1920s, A. H. Compton, discovered something peculiar in his study of X-ray scattering. They found that the frequency (and thus the energy) of X-rays decreased after scattering off free electrons in a medium. This result is not consistent with the classical electromagnetic theory of light, as the magnitude of the electromagnetic field cannot be altered by the change in direction constituted by the scattering. However, by considering the concept of light quanta (photons), Compton was able to build a model of the interaction between the incident photons and electrons using conservation of energy and momentum. In particular, he derived a form of the following relation:
 \begin{gather}\label{eq:energy_scatter}
 	E_\gamma ' = \frac{E_\gamma}{1 + \frac{E_\gamma}{m_e c^2} (1 - \cos{\theta})}
 \end{gather}
+This relates the incident energy of the photon with its final energy and the scattering angle. This formula was seen as major evidence in favor of the theory of light quanta, and has been experimentally verified numerous times.
 
+Another facet of Compton's work with X-rays is his examination of the scattering angle. He found that the theoretical scattering probability (which he expressed in terms of $I/I_0$ and we look at as $d\sigma / d\Omega$) was inconsistent with the Thompson prediction:
 \begin{equation}\label{eq:thompson}
 	\frac{d \sigma}{d \Omega}_{Th} = \frac{r_0^2}{2}(1+\cos^2{\theta})
 \end{equation}
-
+Instead he found that, once again, classical theory was inadequate for describing these quantum phenomena. It wasn't until 1928 that Klein and Nishina, using quantum electrodynamics, derived a formula which included not only quantum effects but also relativistic corrections:
 \begin{gather}
 	\frac{d \sigma}{d \Omega}_{KN} = \frac{r_0^2}{2} \frac{1 + \cos^2{\theta}}{[1 + \gamma(1 - \cos{\theta})]^2} \nonumber * ~~~~~~~~~~~~ \\
 	\left[ 1 + \frac{\gamma^2(1 - \cos{\theta})^2}{(1 + \cos^2{\theta})(1+ \gamma(1 - \cos{\theta}))}\right] 
 	\label{eq:kn}
 \end{gather}
+where $\gamma = h\nu / m_e c^2$. A comparison of these two equations can be seen in Figure \ref{KN_vs_Thompson_Theory}.
 
 \section{Review of Previous Work}
 
@@ -83,6 +87,13 @@
 \subsection{Free Electrons in Cu and Al}
 
 \section{Theoretical Model}
+
+\begin{figure}[H]
+	\centering
+%	\includegraphics[width=0.4\textwidth]{../plots/KNvsThompson_TheoryOnly.png}
+	\caption{Comparison of the Theoretical Predictions for the KN and Thompson Models}
+	\label{KN_vs_Thompson_Theory}
+\end{figure}
 
 \subsection{Angular Dependence of the Scattering Probability}
 
@@ -159,6 +170,10 @@ We then complete the square and reduce this equation in order to find:
 Which we rearrange to arrive back at Equation \ref{eq:energy_scatter}:
 \begin{gather}
 	E_\gamma ' = \frac{E_\gamma}{1 + \frac{E_\gamma}{m_e c^2} (1 - \cos{\theta})} \nonumber
+\end{gather}
+Compton's original formulation of this equation is just another form of this equation, rearranging some terms and substituting $\lambda$ for $E_\gamma$ using the relation $E_\gamma = hc/\lambda$.
+\begin{gather}
+	\lambda' = \lambda + \frac{h}{m_e c} (1 - \cos{\theta}) \nonumber
 \end{gather}
 
 \end{appendix}
