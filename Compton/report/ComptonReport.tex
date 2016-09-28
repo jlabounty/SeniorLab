@@ -76,7 +76,19 @@ where $\gamma = h\nu / m_e c^2$. A comparison of these two equations can be seen
 
 \section{Review of Previous Work}
 
+Some smart people did stuff before us... Maybe?
+
 \section{Experimental Setup}
+
+The source of the $\gamma$-rays for this experiment is a $^{137}$Cs sample, measured to emit $300~\mu Ci$ of radiation in 1978 and now emitting only $116~\mu Ci$ due to its decay, completely encased in lead save for a small aperture. This aperture is in line with the $0^\circ$ line on our table. On the other end of this experiment we have a movable detector. This detector consists of a NaI(Tl) scintillating crystal permanently bonded to a photomultiplier and a pre-amplifier. This detector is mounted on a movable platform which pivots around a point on the $0^\circ$ axis. Marks on the table allow us to rotate the detector semi-precisely about this axis to arbitrary angles. Also on this pivot is a mounting point for our scatterers, which consist of Aluminum and Copper cylinders with a hole drilled directly in the center. With the scatterer in place, the $\gamma$-rays which are emitted by the $^{137}$Cs pass through the aperture, scatter off electrons in the Al or Cu cylinders, and then pass into the NaI(Tl) crystal. These $\gamma$-rays produce scintillation photons proportional to their energy in the NaI(Tl) scintillation crystal. These scintillation photons are picked up as an electric signal by the photomultiplier, and then through two levels of amplification before being output to the Multi-Channel Analyzer (MCA). The MCA reconstructs the energy of the incident $\gamma$-rays from the signals and plots a histogram of Numbers of Photons detected vs. Bin Number (where the Bin Number corresponds to an photon energy). From there, the information is saved in a format which can be read into our data analysis software, ROOT.
+
+A diagram of this setup can be seen in Figure \ref{Setup} below:
+\begin{figure}[H]
+	\centering
+%	\includegraphics[width=0.4\textwidth]{../plots/KNvsThompson_TheoryOnly.png}
+	\caption{Experimental Setup}
+	\label{Setup}
+\end{figure}
 
 \section{Measurements}
 
