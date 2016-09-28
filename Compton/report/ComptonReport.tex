@@ -108,13 +108,28 @@ Before the gamma ray scattering from $^{137}Cs$ can be analyzed an energy calibr
 
 \subsection{Angular Dependence of the Scattering Probability}
 
+\begin{gather}\label{eq:fitfunction}
+	f(x) = [0]*e^{\frac{(x-[1])^2}{2*[2]^2}} + e^{[3]+[4]x} + [5]
+\end{gather} 
+
+After calibrating our detector with the weak $^{137}$Cs source, we sought to understand the angular dependence of the scattering probability, or how $d \sigma / d \Omega$ changes with $\theta$. In order to do this, we placed and Al scatterer at the pivot point of our setup and took spectra of a strong $^{137}$Cs source which had previously been encased in lead. We measured the spectra, multiple times, at a number of angles between $0^{\circ}$ and $110^{\circ}$. At each angle, we fit the $661.6~keV$ peak to Equation \ref{eq:fitfunction} and integrated over the gaussian portion. This integral gives us our value for $Y(\theta)$. Using the procedure outlined in Melissinos\footnote{A.C. Melissinos, Experiments in Modern Physics (Academic Press, NY, 1966). 252-265.}, we were able to identify values for $N_e$,$~ N_\gamma$,$~ \epsilon$, and $ d\Omega$ as well, which allowed us to solve for our experimental value of $d \sigma / d \Omega$. We plotted this experimental value alongside both the Klein-Nishina and Thompson formulas (Figure \ref{KN}).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{KNvsThompson_Fit.png}
+	\caption{Data from experimental measurement of $d\sigma/d\Omega$.}
+	\label{KN}
+\end{figure}
+
+\noindent In the coming sections, we will compare this data to the results predicted by both the Thompson and the Klein-Nishina Formulae
+
 \subsection{Free Electrons in Cu and Al}
 
 \section{Theoretical Model}
 
 \begin{figure}[H]
 	\centering
-%	\includegraphics[width=0.4\textwidth]{../plots/KNvsThompson_TheoryOnly.png}
+	\includegraphics[width=0.4\textwidth]{../plots/KNvsThompson_TheoryOnly.png}
 	\caption{Comparison of the Theoretical Predictions for the KN and Thompson Models}
 	\label{KN_vs_Thompson_Theory}
 \end{figure}
