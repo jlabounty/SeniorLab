@@ -3,7 +3,8 @@
 double get_epsilon(double mean);
 
 int GetCsPeaks_Angle(
-	       TString infile = "data/Cs_137_Angle_000_AlScatter_091916_124734.root",
+	      //TString infile = "data/Cs_137_Angle_000_AlScatter_091416_124734.root",
+	      TString infile = "data/Cs_137_Angle_000_NoScatter_091416_124126.root",
 	      double mean_est = 661.6,
 	      double angle = 90,
 	      double fit_low = 650.,
@@ -65,7 +66,8 @@ int GetCsPeaks_Angle(
   cout << "=======================" << endl;
   
   /*Append Values to Vectors*/
-  energy.push_back(0.000170654*(Peak_662**2) + 0.600313*Peak_662 - 5.13889);
+  double mean_energy = 0.000170654*(Peak_662**2) + 0.600313*Peak_662 - 5.13889;
+  energy.push_back(mean_energy);
   mean.push_back(Peak_662);
   stdev.push_back(Stdv_662);
 
@@ -102,7 +104,7 @@ int GetCsPeaks_Angle(
 		fSignal->SetParameters(param);
 	fSignal->Draw("SAME");
 	Double_t sumundercurve;
-	double peaktototal = get_peak2total(fSignal->GetParameter(1));
+	double peaktototal = get_peak2total(mean_energy);
 	sumundercurve = (fSignal->Integral(0,2048) ) / peaktototal;
 	cout << "sumundercurve = " << sumundercurve << endl;
 
@@ -139,16 +141,19 @@ int GetCsPeaks_Angle(
   /*===================================*/
 
 	//Calculation of dsigma / dOmega
-	double Y_theta = sumundercurve/(t->GetV3()[0]);			//Photons recieved with scatterer at angle theta
+	double epsilon = get_epsilon(mean_energy)*100;			//Correction to dOmega bc of detector efficiency. x100 because percentage.
+		cout << "mean energy = " << mean_energy << endl;
+		cout << "epsilon = " << epsilon << endl;
+	double Y_theta = sumundercurve/(t->GetV3()[0]*epsilon);			//Photons recieved with scatterer at angle theta
+		cout << "Y_theta = " << Y_theta << endl;
 	double r_SourceToScat = 21.5*2.54;				//Distance from detector to scattering point
 	double r_SourceToDet = 32.6*2.54;				//Distance from source to dectector.
 	double Area_detector = 45.6;					//cm^2
-/**/	double N_gamma = 902.049 / peaktototal;				//Number of photons which impact the detector per second with no scattering
+/**/	double N_gamma = 902.049 / (get_peak2total(661.6));		//Number of photons which impact the detector per second with no scattering
 	double flux = N_gamma/Area_detector;				//Flux. Counts/(cm^2 * s)
 	double dOmega = Area_detector / TMath::Power(r_SourceToDet,2);	//Angle subtended by detector. Crystal area / r^2
-	double epsilon = get_epsilon(fSignal->GetParameter(1));		//Correction to dOmega bc of detector efficiency
 	double d_scatter = 2.5*2.54;					//Diameter of the scatterer
-	double h_scatter = (6.0 + (13./16.))*2.54*0.75;			//Height of the scatterer
+	double h_scatter = (6.0 + (13./16.))*2.54;			//Height of the scatterer
 	double rho_Al = 2.7;						//Density of Al (g/cm^3)
 	double A_Al = 27.0;						//Atomic weight of Al
 	double Z_Al = 13.0;						//Number of protons/electrons in Al atom
@@ -156,13 +161,13 @@ int GetCsPeaks_Angle(
 	double N_e;							//Number of electrons in the path of beam
 	double dsigma_dOmega;						//Angular Dependance on scattering probability
 
-	double flux_target = (flux / epsilon)*TMath::Power((r_SourceToDet / r_SourceToScat),2);	//photons/(cm^2 *s)
+	double flux_target = (flux / (get_epsilon(661.6)*100))*TMath::Power((r_SourceToDet / r_SourceToScat),2);	//photons/(cm^2 *s)
 
 	N_e = TMath::Pi()*TMath::Power((d_scatter / 2.0),2)*h_scatter*rho_Al*(AvoNum / A_Al)*Z_Al; //electrons
 
-	// dsigma_dOmega = Y_theta / (dOmega * N_gamma * N_e * epsilon);
-	// dsigma_dOmega = Y_theta / (dOmega * N_gamma * N_e * flux_target);
-	dsigma_dOmega = Y_theta / (dOmega * N_e * flux_target * t->GetV3()[0] );
+//	dsigma_dOmega = Y_theta / (dOmega * N_gamma * N_e * epsilon);
+//	dsigma_dOmega = Y_theta / (dOmega * N_gamma * N_e * flux_target);
+	dsigma_dOmega = Y_theta / (dOmega * N_e * flux_target);
 
 	cout << "dsigma_dOmega: " << dsigma_dOmega << endl;
 
@@ -215,8 +220,8 @@ int GetCsPeaks_Angle(
 
 	c1->Close();
 	c2->Close();
-//	c22->Close();
-//	c3->Close();
+	c22->Close();
+	c3->Close();
 
   return 0;
 }
