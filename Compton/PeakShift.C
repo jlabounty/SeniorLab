@@ -29,13 +29,11 @@ int PeakShift()
 //		means.push_back();
 //		fit_low.push_back(650);
 //		fit_high.push_back(2000);
+
+
 	//First Set of Angular Measurements
 /*
 	files.push_back("data/Cs_137_Angle_000_AlScatter_091416_124734.root");
-		means.push_back(920);
-		fit_low.push_back(650);
-		fit_high.push_back(2000);
-	files.push_back("data/Cs_137_Angle_000_AlScatter_092116_115514.root");
 		means.push_back(920);
 		fit_low.push_back(650);
 		fit_high.push_back(2000);
@@ -44,29 +42,13 @@ int PeakShift()
 		means.push_back(890);
 		fit_low.push_back(600);
 		fit_high.push_back(2000);
-	// files.push_back("data/Cs_137_Angle_018_AlScatter_092116_115904.root");
-	// 	means.push_back(890);
-	// 	fit_low.push_back(600);
-	// 	fit_high.push_back(2000);
 
 	files.push_back("data/Cs_137_Angle_020_AlScatter_091416_133342.root");
 		means.push_back(875);
 		fit_low.push_back(650);
 		fit_high.push_back(2000);
-	files.push_back("data/Cs_137_Angle_020_AlScatter_092116_121006.root");
-		means.push_back(875);
-		fit_low.push_back(800);
-		fit_high.push_back(1500);
 
 	files.push_back("data/Cs_137_Angle_025_AlScatter_091416_134820.root");
-		means.push_back(875);
-		fit_low.push_back(820);
-		fit_high.push_back(2000);
-	files.push_back("data/Cs_137_Angle_025_AlScatter_092116_122445.root");
-		means.push_back(875);
-		fit_low.push_back(820);
-		fit_high.push_back(2000);
-	files.push_back("data/Cs_137_Angle_025_AlScatter_092116_122952.root");
 		means.push_back(875);
 		fit_low.push_back(820);
 		fit_high.push_back(2000);
@@ -75,16 +57,8 @@ int PeakShift()
 		means.push_back(800);
 		fit_low.push_back(650);
 		fit_high.push_back(2000);
-	files.push_back("data/Cs_137_Angle_030_AlScatter_092116_132830.root");
-		means.push_back(800);
-		fit_low.push_back(650);
-		fit_high.push_back(2000);
 
 	files.push_back("data/Cs_137_Angle_040_AlScatter_091916_115732.root");
-		means.push_back(800);
-		fit_low.push_back(600);
-		fit_high.push_back(2000);
-	files.push_back("data/Cs_137_Angle_040_AlScatter_092116_124648.root");
 		means.push_back(800);
 		fit_low.push_back(600);
 		fit_high.push_back(2000);
@@ -94,34 +68,18 @@ int PeakShift()
 		means.push_back(700);
 		fit_low.push_back(550);
 		fit_high.push_back(2000);
-	files.push_back("data/Cs_137_Angle_045_AlScatter_092116_130347.root");
-		means.push_back(700);
-		fit_low.push_back(550);
-		fit_high.push_back(2000);
 
 	files.push_back("data/Cs_137_Angle_050_AlScatter_091916_120943.root");
 		means.push_back(600);
 		fit_low.push_back(400);
 		fit_high.push_back(1000);
-	files.push_back("data/Cs_137_Angle_050_AlScatter_092116_131450.root");
-		means.push_back(600);
-		fit_low.push_back(450);
-		fit_high.push_back(900);
 
 	files.push_back("data/Cs_137_Angle_060_AlScatter_091916_122242.root");
 		means.push_back(600);
 		fit_low.push_back(400);
 		fit_high.push_back(1000);
-	// files.push_back("data/Cs_137_Angle_060_AlScatter_092116_132443.root");
-	// 	means.push_back(600);
-	// 	fit_low.push_back(500);
-	// 	fit_high.push_back(900);
 
 	files.push_back("data/Cs_137_Angle_070_AlScatter_091916_123953.root");
-		means.push_back(600);
-		fit_low.push_back(400);
-		fit_high.push_back(1000);
-	files.push_back("data/Cs_137_Angle_070_AlScatter_092116_133313.root");
 		means.push_back(600);
 		fit_low.push_back(400);
 		fit_high.push_back(1000);
@@ -130,16 +88,8 @@ int PeakShift()
 		means.push_back(500);
 		fit_low.push_back(400);
 		fit_high.push_back(600);
-	files.push_back("data/Cs_137_Angle_080_AlScatter_092116_134533.root");
-		means.push_back(500);
-		fit_low.push_back(400);
-		fit_high.push_back(600);
 
 	files.push_back("data/Cs_137_Angle_090_AlScatter_091916_131941.root");
-		means.push_back(500);
-		fit_low.push_back(400);
-		fit_high.push_back(600);
-	files.push_back("data/Cs_137_Angle_090_AlScatter_092116_140030.root");
 		means.push_back(500);
 		fit_low.push_back(400);
 		fit_high.push_back(600);
@@ -148,16 +98,8 @@ int PeakShift()
 		means.push_back(450);
 		fit_low.push_back(200);
 		fit_high.push_back(700);
-	files.push_back("data/Cs_137_Angle_100_AlScatter_092116_141259.root");
-		means.push_back(450);
-		fit_low.push_back(200);
-		fit_high.push_back(700);
 
 	files.push_back("data/Cs_137_Angle_110_AlScatter_091916_140207.root");
-		means.push_back(350);
-		fit_low.push_back(200);
-		fit_high.push_back(500);
-	files.push_back("data/Cs_137_Angle_110_AlScatter_092116_142619.root");
 		means.push_back(350);
 		fit_low.push_back(200);
 		fit_high.push_back(500);
@@ -223,12 +165,6 @@ int PeakShift()
 */
 
 	//FIles 10/3
-/*
-	files.push_back("data/Cs_137_Angle_000_AlScatter_100316_121843.root");
-		means.push_back(920);
-		fit_low.push_back(650);
-		fit_high.push_back(2000);
-*/
 	files.push_back("data/Cs_137_Angle_018_AlScatter_100316_122311.root");
 		means.push_back(860);
 		fit_low.push_back(650);
