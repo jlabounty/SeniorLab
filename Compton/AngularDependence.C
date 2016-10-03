@@ -85,7 +85,17 @@ int AngularDependence()
 		c2->SetGridy(1);
 //		c2->SetFixedAspectRatio();
 	c2->cd();
+	TH1F *blank2 = new TH1F("blank","",10, 0, 180);
+		blank2->GetYaxis()->SetRangeUser(0, 1.0*TMath::Power(10,-25));
+		blank2->GetXaxis()->SetTitle("#theta_{detector} (Degrees)");
+		blank2->GetYaxis()->SetTitle("d#sigma/d#Omega (cm^{2}/st)");
+		blank2->GetYaxis()->SetTitleOffset(1.55);
+		blank2->GetXaxis()->SetNdivisions(505);
+		blank2->GetYaxis()->SetNdivisions(505);
+		blank2->SetLineColor(0);
+	blank2->Draw("p SAME");
 	TGraphErrors *gr2 = new TGraphErrors(angle.size(),&angle[0],&dS_dO[0],&err_angle[0],&err_dS_dO[0]);
+	gr2->SetTitle("");
 	gr2->Draw("ap");
 	gr2->Fit("KN", "R");
 	KN->Draw("SAME");

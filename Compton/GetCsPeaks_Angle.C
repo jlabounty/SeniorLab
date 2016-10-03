@@ -38,7 +38,7 @@ int GetCsPeaks_Angle(
   fSpec_662->SetParameters(100, mean_est, 2, 50, 0, 0);
   TCanvas *c3 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  csHist_662->Fit("fSpec_662", "Q", "", fit_low, fit_high);
+  TFitResultPtr r = csHist_662->Fit("fSpec_662", "QS", "", fit_low, fit_high);
 
   /*Obtain Fit Function from Histogram*/
   TF1 *fStat_662 = csHist_662->GetFunction("fSpec_662");
@@ -98,15 +98,20 @@ int GetCsPeaks_Angle(
 	fStat_662->SetLineColor(kBlue);
 	fStat_662->Draw("SAME");
 	Double_t param[6];
+	Double_t err_param[6];
 	fSpec_662->GetParameters(param);
 	TF1 *fSignal = new TF1("fSignal","gaus",0.,2048.);
 		fSignal->SetLineColor(kGreen);
 		fSignal->SetParameters(param);
+		fSignal->SetParError(0,fSpec_662->GetParError(0));
+		fSignal->SetParError(1,fSpec_662->GetParError(1));
+		fSignal->SetParError(2,fSpec_662->GetParError(2));
 	fSignal->Draw("SAME");
 	Double_t sumundercurve;
 	double peaktototal = get_peak2total(mean_energy);
 	sumundercurve = (fSignal->Integral(0,2048) ) / peaktototal;
-	cout << "sumundercurve = " << sumundercurve << endl;
+	double err_sumundercurve = fSignal->IntegralError(0,2048, r->GetParams(), r->GetCovarianceMatrix()->GetMatrixArray()) / peaktototal;
+	cout << "sumundercurve = " << sumundercurve << " +/- " << err_sumundercurve << endl;
 
 //	c22->Print("./plots/CsBinnedSpectrum.png");
 
@@ -172,14 +177,15 @@ int GetCsPeaks_Angle(
 	cout << "dsigma_dOmega: " << dsigma_dOmega << endl;
 
 	//Calculation of error in dsigma_dOmega 
-	double err_Y_theta = 0.05*Y_theta;
+	double err_epsilon = 0.1*epsilon;
+	double err_peaktototal = peaktototal*0.1;
+	double err_Y_theta = Y_theta*TMath::Sqrt(TMath::Power(err_sumundercurve/(sumundercurve),2)+TMath::Power(err_epsilon/epsilon,2)) ;
 	double err_r_SourceToScat = 0.1*2.54;
 	double err_r_SourceToDet = 0.1*2.54;
 	double err_Area_detector = Area_detector*TMath::Sqrt(TMath::Power((err_r_SourceToDet/ r_SourceToDet),2) + TMath::Power((err_r_SourceToScat / r_SourceToScat),2));
 	double err_N_gamma = 0.05*N_gamma;
 	double err_flux = flux*TMath::Sqrt(TMath::Power(( err_Area_detector / Area_detector ),2) + TMath::Power(( err_N_gamma / N_gamma  ),2));
 	double err_dOmega = dOmega*TMath::Sqrt(TMath::Power(( err_Area_detector / Area_detector ),2) + 2.0*TMath::Power(( err_r_SourceToScat / r_SourceToScat  ),2));
-	double err_epsilon = 0.01*epsilon;
 	double err_d_scatter = 0.1*2.54;
 	double err_h_scatter = 0.5*2.54;
 

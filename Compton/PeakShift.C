@@ -168,7 +168,16 @@ int PeakShift()
 		means.push_back(800);
 		fit_low.push_back(600);
 		fit_high.push_back(2000);
-	
+	files.push_back("data/Cs_137_Angle_030_AlScatter_100316_125213.root");
+		means.push_back(800);
+		fit_low.push_back(650);
+		fit_high.push_back(2000);
+/*
+	files.push_back("data/Cs_137_Angle_040_AlScatter_100316_131109.root");
+		means.push_back(800);
+		fit_low.push_back(600);
+		fit_high.push_back(2000);
+*/	
 
 	vector<double> angle;
 	std::string angle_string;
