@@ -162,7 +162,7 @@ int GetCsPeaks_Angle(
 
 	// dsigma_dOmega = Y_theta / (dOmega * N_gamma * N_e * epsilon);
 	// dsigma_dOmega = Y_theta / (dOmega * N_gamma * N_e * flux_target);
-	dsigma_dOmega = Y_theta / (dOmega * N_e * flux_target * t->GetV3()[0] );
+	dsigma_dOmega = Y_theta / (dOmega * N_e * flux_target );
 
 	cout << "dsigma_dOmega: " << dsigma_dOmega << endl;
 
@@ -188,7 +188,7 @@ int GetCsPeaks_Angle(
 
   /*Output the data to a root file*/
   /*Create a root file to store the data taken from the files*/
-  std::string file_root = "OutputFile_PeakShift.root";
+  std::string file_root = "OutputFile_PeakShift_CuVsAl.root";
   TFile f(("./"+file_root).c_str(),"UPDATE");
   TTree *t = (TTree*)f.Get("t");
   double mean_i, stdev_i, energy_i; 

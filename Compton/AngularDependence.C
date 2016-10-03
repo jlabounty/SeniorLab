@@ -12,7 +12,7 @@ int AngularDependence()
 
 //	TH1F *blank = new TH1F("blank","Comparison of Experimental Data with KN and Thompson Formulas",10, 0, 180);
 	TH1F *blank = new TH1F("blank","",10, 0, 180);
-		blank->GetYaxis()->SetRangeUser(0, 2.0*TMath::Power(10,-24));
+		blank->GetYaxis()->SetRangeUser(0, 1.0*TMath::Power(10,-28));
 		blank->GetXaxis()->SetTitle("#theta_{detector} (Degrees)");
 		blank->GetYaxis()->SetTitle("d#sigma/d#Omega (cm^{2}/st)");
 		blank->GetYaxis()->SetTitleOffset(1.55);
