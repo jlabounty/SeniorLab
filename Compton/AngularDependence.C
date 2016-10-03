@@ -12,7 +12,11 @@ int AngularDependence()
 
 //	TH1F *blank = new TH1F("blank","Comparison of Experimental Data with KN and Thompson Formulas",10, 0, 180);
 	TH1F *blank = new TH1F("blank","",10, 0, 180);
+<<<<<<< HEAD
 		blank->GetYaxis()->SetRangeUser(0, 1.0*TMath::Power(10,-28));
+=======
+		blank->GetYaxis()->SetRangeUser(0, 1.0*TMath::Power(10,-25));
+>>>>>>> c5e286fc7f1ca5d4626fb2da6cee99145d504743
 		blank->GetXaxis()->SetTitle("#theta_{detector} (Degrees)");
 		blank->GetYaxis()->SetTitle("d#sigma/d#Omega (cm^{2}/st)");
 		blank->GetYaxis()->SetTitleOffset(1.55);
@@ -33,20 +37,23 @@ int AngularDependence()
 	cout << "gamma: " << gamma << endl;
 	cout << "r0: " << r0 << endl;
 
-	TF1 *KN = new TF1("KN","[2]*(([0]**2 / 2.0) * ((1 + TMath::Cos(x * TMath::Pi()/180.0)**2)/(1 + [1]*(1 - TMath::Cos(x * TMath::Pi()/180.0)))**2) * (1 + (([1]**2 * (1 - TMath::Cos(x * TMath::Pi()/180.0)))**2)/((1 + TMath::Cos(x * TMath::Pi()/180.0)**2)*(1 + [1]*(1 - TMath::Cos(x * TMath::Pi()/180.0))))))",0,180);
+	TF1 *KN = new TF1("KN","[2]*(([0]**2 / 2.0) * ((1 + TMath::Cos(x * TMath::Pi()/180.0)**2)/(1 + [1]*(1 - TMath::Cos(x * TMath::Pi()/180.0)))**2) * (1 + (([1]**2 * (1 - TMath::Cos(x * TMath::Pi()/180.0)))**2)/((1 + TMath::Cos(x * TMath::Pi()/180.0)**2)*(1 + [1]*(1 - TMath::Cos(x * TMath::Pi()/180.0)))))) + [3]",0,180);
 		KN->FixParameter(0,r0);
 		KN->FixParameter(1,gamma);
 		KN->SetParameter(2,1.0);
+		KN->SetParameter(3,0.0);
 		KN->SetLineColor(3);
 //	KN->Draw();
 	KN->Draw("SAME");
 	leg->AddEntry(KN,"Klein-Nishina","l");
 
-	TF1 *thompson = new TF1("thompson","[1]*([0]**2 / 2 * (1 + TMath::Cos(x * TMath::Pi()/180.0)**2))",0,180);
+	TF1 *thompson = new TF1("thompson","[1]*([0]**2 / 2 * (1 + TMath::Cos(x * TMath::Pi()/180.0)**2)) + [2]",0,180);
 		thompson->FixParameter(0,r0);
 		thompson->SetParameter(1,1.0);
+		thompson->SetParameter(2,0);
 	thompson->Draw("SAME");
 	leg->AddEntry(thompson,"Thompson","l");
+//	c->Print("./plots/KNvsThompson_TheoryOnly.png");	c->Print("./plots/KNvsThompson_TheoryOnly.eps");
 
 	//Plot Data on the Same Axis
 	std::string file_root = "OutputFile_PeakShift.root";
@@ -76,19 +83,22 @@ int AngularDependence()
 	c->Update();
 //	c->Print("./plots/KNvsThompson.png");	c->Print("./plots/KNvsThompson.eps");
 
-	TCanvas *c1 = new TCanvas();
-	c1->cd();
+	TCanvas *c2 = new TCanvas("c2","",750,750);     //Makes canvas large enough for png printing.
+		c2->cd();
+		c2->SetGridx(1);
+		c2->SetGridy(1);
+//		c2->SetFixedAspectRatio();
+	c2->cd();
 	TGraphErrors *gr2 = new TGraphErrors(angle.size(),&angle[0],&dS_dO[0],&err_angle[0],&err_dS_dO[0]);
-	gr2->Draw();
-	gr1->Fit("KN");
+	gr2->Draw("ap");
+	gr2->Fit("KN", "R");
 	KN->Draw("SAME");
 	cout << endl << "KN Reduced Chi^2: " << KN->GetChisquare() / KN->GetNDF() << endl;
-	gr1->Fit("thompson");
+	gr2->Fit("thompson","R");
 	thompson->Draw("SAME");
 	cout << "Thompson Reduced Chi^2: " << thompson->GetChisquare() / thompson->GetNDF() << endl;
 //	c1->Close();
 
-	c->Update();
-
+	leg->Draw();
 	return 0;
 }
