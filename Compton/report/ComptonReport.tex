@@ -72,9 +72,9 @@ Instead he found that, once again, classical theory was inadequate for describin
 	\left[ 1 + \frac{\gamma^2(1 - \cos{\theta})^2}{(1 + \cos^2{\theta})(1+ \gamma(1 - \cos{\theta}))}\right] 
 	\label{eq:kn}
 \end{gather}
-where $\gamma = h\nu / m_e c^2$. A comparison of the angular dependence of these two equations can be seen in Figure \ref{KN_vs_Thompson_Theory}.
+where $\gamma = h\nu / m_e c^2$. Looking at these formulae, we can see that when $\gamma \ll 1$ Klein-Nishina will converge to the classical Thompson formula. This approximation holds for extremely low energy photons, from radio up to the visible spectrum, but fails as one reaches x-rays and $\gamma$-rays. A comparison of the angular dependence of these two equations for out setup can be seen in Figure \ref{KN_vs_Thompson_Theory}.
 
-This particular experiment, and its results, are well documented in various literature.
+This particular experiment, and its results, are well documented in literature. 
 \textbf{*****ADD MORE HERE!!!!}
 
 \section{Experimental Setup}
@@ -143,7 +143,7 @@ Once the calibrated energy scale of the collected data is determined, the angula
 	\frac{1}{E_\gamma '} = \frac{1}{E_\gamma} + \frac{1}{m_{e}c^{2}}(1 - cos\theta)
 \end{gather*}
 
-This form of the equation demonstrates a linear relationship between $\frac{1}{E_\gamma '}$ and $(1 - cos\theta)$ with a slope of $\frac{1}{m_{e}c^{2}}$. Plotting the measured energy of the scattered photon as a function of the angle of the detector yields a plot similar to the one in FIG.~\ref{Fig:EScatFit}.
+This form of the equation demonstrates a linear relationship between $\frac{1}{E_\gamma '}$ and $(1 - \cos\theta)$ with a slope of $\frac{1}{m_{e}c^{2}}$. Plotting the measured energy of the scattered photon as a function of the angle of the detector yields a plot similar to the one in FIG.~\ref{Fig:EScatFit}.
 
 \begin{figure}[H]
 \centering	
@@ -164,7 +164,7 @@ FIG.~\ref{Fig:EScatFit} shows a linear fit applied to the experimental data (sho
 	Y(\theta) = N_\gamma N_e \frac{d\sigma}{d\Omega}d\Omega \rightarrow \frac{d\sigma}{d\Omega} = \frac{Y(\theta)}{N_\gamma N_e d\Omega}
 \end{gather}
 
-After calibrating our detector and using that calibration to determine the electron mass, we sought to understand the angular dependence of the scattering probability for our $\gamma$-rays, or how $d \sigma / d \Omega$ changes with $\theta$. In order to do this, we placed the large Al scatterer at the pivot point of our setup and took spectra of the strong $^{137}$Cs. We measured the spectra, multiple times, at a number of angles between $0^{\circ}$ and $110^{\circ}$. Using Eq. \ref{eq:y_theta}, defined in \cite{milissinos} and \cite{manual}, we can use these spectra to relate the number of photons observed to $d\sigma / d\Omega$. At each angle, we fit the $661.6~keV$ peak to Equation \ref{eq:fitfunction} and integrated over the gaussian portion of our fit (The green curve in Figure \ref{GaussianPortion}), discarding the background photons.
+After calibrating our detector and using that calibration to determine the electron mass, we sought to understand the angular dependence of the scattering probability for our $\gamma$-rays, or how $d \sigma / d \Omega$ changes with $\theta$. In order to do this, we placed the large Al scatterer at the pivot point of our setup and took spectra of the strong $^{137}$Cs source. We placed blocks of lead to obscure the source from the detector, so that the vast majority of $\gamma$-rays we would detect would be those which had scattered through the aluminum. We measured the resulting spectra, multiple times, at a number of angles between $0^{\circ}$ and $110^{\circ}$. Using Eq. \ref{eq:y_theta}, defined in \cite{milissinos} and \cite{manual}, we can use these spectra to relate the number of photons observed to $d\sigma / d\Omega$. At each angle, we fit the $661.6~keV$ peak to Equation \ref{eq:fitfunction} and integrated over the gaussian portion of our fit (The green curve in Figure \ref{GaussianPortion}), discarding the background photons. We then normalized each spectra for the amount of time the measurement took, as the lower angles would take only a few minutes while the higher angles would take upwards of 30.
 
 \begin{figure}[H]
 	\centering
@@ -173,11 +173,11 @@ After calibrating our detector and using that calibration to determine the elect
 	\label{GaussianPortion}
 \end{figure}
 
-This integral gives us our value for $Y(\theta)$. $N_\gamma$ is found in a similar way, but at $\theta = 0^\circ$ and the scatterer absent. To obtain the value of $d\Omega$, we simply measured the area of the detector and the distance from the source to the detector. From these values, the angle subtended by the detector is simply: $d\Omega = A_{det}/r^2$. We then needed to estimate the number of electrons $N_e$ in the scatterer. For this portion of the experiment, we assume that all of the electrons in the Aluminum are free. With this assumption, the expression for $N_e$ reduces to:
+This integral gives us our value for $Y(\theta)$. $N_\gamma$ is found in much the same way, but at $\theta = 0^\circ$ and with the scatterer absent. To obtain the value of $d\Omega$, we simply measured the area of the detector and the distance from the source to the detector. From these values, the angle subtended by the detector is simply: $d\Omega = A_{det}/r^2$. We then needed to estimate the number of electrons $N_e$ in the scatterer. For this portion of the experiment, we assume that all of the electrons in the Aluminum are free. With this assumption, the expression for $N_e$ reduces to:
 \begin{gather}
 	\begin{split}
 		N_e 		& = \pi*\left(\frac{d_{scatter}}{2}\right)^2*h_{scatter}*\rho_{Al}*\frac{N_A}{A_{Al}}*Z_Al \\
-				& = 3.1036*10^{26} \text{ electrons}
+				& = 4.29014*10^{26} \text{ electrons}
 	\end{split} \nonumber
 \end{gather}
 \noindent Having determined all of these values, we created a plot of our experimentally determined $d\sigma / d\Omega$ vs. $\theta$, which can be seen in Figure \ref{KN} below:
@@ -206,7 +206,11 @@ Different metals will have different number of free electrons. This depends on t
 	\label{KN_vs_Thompson_Theory}
 \end{figure}
 
+Theoretically, the angular dependence of the scattering probability is given by either the Thompson Formula (Equation \ref{eq:thompson}) or the Klein-Nishina Formula (Equation \ref{eq:kn}). The theoretical predictions for $d\sigma / d\Omega$ for our particular setup is shown in Figure \ref{KN_vs_Thompson_Theory}. This plot shows that at low $\theta$, for a $661.6~keV$ $\gamma$-ray from $^{137}$Cs decay, the two Formulae converge. However, they quickly diverge as one goes to higher and higher angles. It also shows that our experiment does not exist in the classical approximation ($\gamma_{KN} \ll 1$), and we should expect to see major differences between the two theories at higher and higher angles.
+
 \section{Comparison of Theory and Experiment}
+
+In Figure \ref{KN_vs_Thompson_Theory}, we have plotted the data taken during our measurements on top of the Klein-Nishina and Thompson curves:
 
 \begin{figure}[H]
 	\centering
@@ -214,6 +218,21 @@ Different metals will have different number of free electrons. This depends on t
 	\caption{Comparison of the Theoretical Predictions with Experimental Data}
 	\label{KN_vs_Thompson_Theory}
 \end{figure}
+
+\noindent From this plot, we can clearly see that the Klein-Nishina Formula is much more consistent with our theoretical predictions then the Thompson Formula, especially at higher angles. This is consistent with our predictions that the more advanced quantum mechanical model would win out over the classical model. In order to quantify how well these functions fit our data, we used their functional forms as a fit to our data. We found the $\chi^2$ for the two formulae under two conditions, without any additional free parameters and with the addition of an overall scaling term. The results of the $\chi^2$ minimization can be seen in Table \ref{table:chi_square} below:
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|l|r|r|}
+			\hline
+			Function & \multicolumn{1}{l|}{$\chi^2$ (No Parameters)} & \multicolumn{1}{l|}{$\chi^2$ (w/ Parameters)} \\ \hline
+			\textit{Thompson} & 193.964 & 2.83089 \\ \hline
+			\textit{KN} & 8.54703 & 0.657192 \\ \hline
+		\end{tabular}
+	\end{center}
+	\caption{Comparison of the reduced $\chi^2$ value for the two functions, with and without free parameters.}
+	\label{table:chi_square}
+\end{table}
+\noindent Clearly, Klein-Nishina behaves better both before and after the addition of a free parameter.
 
 \section{Discussion and Conclusions}
 
@@ -297,6 +316,8 @@ Compton's original formulation of this equation is just another form of this equ
 \begin{gather}
 	\lambda' = \lambda + \frac{h}{m_e c} (1 - \cos{\theta}) \nonumber
 \end{gather}
+
+\section{Validation of the $\chi^2$ Minimization in ROOT}
 
 \end{appendix}
 
