@@ -56,17 +56,17 @@
 
 \section{Background and Review of Previous Work}
 
-In the early 1920s, A. H. Compton, discovered something peculiar in his study of X-ray scattering. They found that the frequency (and thus the energy) of X-rays decreased after scattering off free electrons in a medium. This result is not consistent with the classical electromagnetic theory of light, as the magnitude of the electromagnetic field cannot be altered by the change in direction constituted by the scattering. However, by considering the concept of light quanta (photons), Compton was able to build a model of the interaction between the incident photons and electrons using conservation of energy and momentum. In particular, he derived a form of the following relation:
+In the early 1920s, A. H. Compton, discovered something peculiar in his study of X-ray scattering. He found that the frequency (and thus the energy) of X-rays decreased after scattering off free electrons in a medium. This result is not consistent with the classical electromagnetic theory of light, as the magnitude of the electromagnetic field cannot be altered by the change in direction implicit in the scattering process. However, by considering the concept of light quanta (photons), Compton was able to build a model of the interaction between the incident photons and electrons using conservation of energy and momentum. In particular, he derived a form of the following relation:
 \begin{gather}\label{eq:energy_scatter}
 	E_\gamma ' = \frac{E_\gamma}{1 + \frac{E_\gamma}{m_e c^2} (1 - \cos{\theta})}
 \end{gather}
-This relates the incident energy of the photon with its final energy and the scattering angle. This formula was seen as major evidence in favor of the theory of light quanta, and has been experimentally verified numerous times.
+This relates the incident energy of the photon with its final energy and the scattering angle. This relation, once shown experimentally to be true, was seen as major evidence in favor of the theory of light quanta. Through its derivation (see Appendix \ref{section:derivation}), it also provides a direct link between the wavelength and momentum of such quanta. Thus experiments which validate the formula also implicitly validate this crucial relation.
 
 Another facet of Compton's work with X-rays is his examination of the scattering angle. He found that the theoretical scattering probability (which he expressed in terms of $I/I_0$ and we look at as $d\sigma / d\Omega$) was inconsistent with the Thompson prediction:
 \begin{equation}\label{eq:thompson}
 	\frac{d \sigma}{d \Omega}_{Th} = \frac{r_0^2}{2}(1+\cos^2{\theta})
 \end{equation}
-Instead he found that, once again, classical theory was inadequate for describing these quantum phenomena. At low angles, it agrees relatively well, but it fails as the angle of the detector relative to the source increases. It wasn't until 1928 that Klein and Nishina, using quantum electrodynamics, derived a formula which included not only quantum effects but also relativistic corrections:
+Instead he found that, once again, classical theory was inadequate for describing these quantum phenomena. At low angles, it agrees relatively well, but it fails as the angle of the detector relative to the source increases. It wasn't until 1928 that Klein and Nishina, using quantum electrodynamics, derived a formula which included not only quantum effects but also relativistic corrections\cite{kn_paper_original, eisberg}:
 \begin{gather}
 	\frac{d \sigma}{d \Omega}_{KN} = \frac{r_0^2}{2} \frac{1 + \cos^2{\theta}}{[1 + \gamma(1 - \cos{\theta})]^2} \nonumber * ~~~~~~~~~~~~ \\
 	\left[ 1 + \frac{\gamma^2(1 - \cos{\theta})^2}{(1 + \cos^2{\theta})(1+ \gamma(1 - \cos{\theta}))}\right] 
@@ -74,7 +74,9 @@ Instead he found that, once again, classical theory was inadequate for describin
 \end{gather}
 where $\gamma = h\nu / m_e c^2$. Looking at these formulae, we can see that when $\gamma \ll 1$ Klein-Nishina will converge to the classical Thompson formula. This approximation holds for extremely low energy photons, from radio up to the visible spectrum, but fails as one reaches x-rays and $\gamma$-rays. A comparison of the angular dependence of these two equations for out setup can be seen in Figure \ref{KN_vs_Thompson_Theory}.
 
-This particular experiment, and its results, are well documented in literature. 
+This particular experiment, and its results, are well documented in literature. Milissinos\cite{milissinos} describes a procedure for determining $d\sigma / d\Omega$ which is nearly identical to ours, and which was performed in 1962. This same investigation of $d\sigma / d\Omega$ has since been verified many times over \cite{angle_1, angle_2, angle_3}. The implications for physics are profound. It proves that light is primarily a quantum phenomenon, and cannot be completely explained by classical mechanics, as Thompson Scattering attempts to do.
+
+The technique for measuring the electron mass is also well documented, and has been repeated with some alterations by students all over the world \cite{emass_1, emass_2, emass_3}. But the basic underlying truth of the experiment is unchanged: 
 \textbf{*****ADD MORE HERE!!!!}
 
 \section{Experimental Setup}
@@ -210,6 +212,8 @@ Theoretically, the angular dependence of the scattering probability is given by 
 
 \section{Comparison of Theory and Experiment}
 
+\subsection{Angular Dependence of the Scattering Probability}
+
 In Figure \ref{KN_vs_Thompson_Theory}, we have plotted the data taken during our measurements on top of the Klein-Nishina and Thompson curves:
 
 \begin{figure}[H]
@@ -220,6 +224,7 @@ In Figure \ref{KN_vs_Thompson_Theory}, we have plotted the data taken during our
 \end{figure}
 
 \noindent From this plot, we can clearly see that the Klein-Nishina Formula is much more consistent with our theoretical predictions then the Thompson Formula, especially at higher angles. This is consistent with our predictions that the more advanced quantum mechanical model would win out over the classical model. In order to quantify how well these functions fit our data, we used their functional forms as a fit to our data. We found the $\chi^2$ for the two formulae under two conditions, without any additional free parameters and with the addition of an overall scaling term. The results of the $\chi^2$ minimization can be seen in Table \ref{table:chi_square} below:
+
 \begin{table}[htbp]
 	\begin{center}
 		\begin{tabular}{|l|r|r|}
@@ -232,15 +237,38 @@ In Figure \ref{KN_vs_Thompson_Theory}, we have plotted the data taken during our
 	\caption{Comparison of the reduced $\chi^2$ value for the two functions, with and without free parameters.}
 	\label{table:chi_square}
 \end{table}
-\noindent Clearly, Klein-Nishina behaves better both before and after the addition of a free parameter.
+
+\noindent Clearly, Klein-Nishina is more consistent with the data both before and after the addition of a free parameter.
+
+\subsection{Electron Rest Mass}
 
 \section{Discussion and Conclusions}
 
+This experiment could be improved with a stronger and/or more collimated source. 
+
 \section{Author Contributions}
 
-I wrote this... Unless it was wrong, then it was the other guy.
+Both authors believe that the work for this project was split equally, and each offered valuable insight to every section of this report. However, the sections when divided up by principle author are as follows:
 
-\begin{thebibliography}{5}
+\noindent \textbf{Joshua LaBounty}:
+\begin{enumerate}
+	\item Section 1: Background 
+	\item Section 2: Experimental Setup
+	\item Section 3b, 4a, \& 5a: Angular Dependence of the Scattering Probability
+	\item Appendix A: Derivation of Equation \ref{eq:energy_scatter}
+\end{enumerate}
+
+\noindent \textbf{Thomas Krahulik}:
+\begin{enumerate}
+	\item Section 3a: Calibration of Detector Energy Scale
+	\item Section 3b \& 5b: Electron Rest Mass
+	\item Section 3d: Free Electrons in Cu and Al
+	\item Appendix B: Validation of the $\chi^2$ Minimization in ROOT
+\end{enumerate}
+
+\noindent Lab time was also split equally, with one partner taking measurements while the other developed the analysis software used in this report.
+
+\begin{thebibliography}{6}
 	
 	\bibitem{milissinos}
 	A.C. Melissinos, Experiments in Modern Physics (Academic Press, NY, 1966).
@@ -256,13 +284,37 @@ I wrote this... Unless it was wrong, then it was the other guy.
 	
 	\bibitem{manual}
 	R. Lefferts, Compton Scattering (2010).
+	
+	\bibitem{emass_1}
+	 S. Prassanakumar, S. Krishnaveni, and T.K. Umesh. Determination of rest mass energy of the electron by a compton scattering experiment. Eur. J. Physics, 33:65–72, 2012.
+	 
+	\bibitem{emass_2}
+	S.B. Hosur and N.M. Badiger. Determination of rest mass energy of an electron - an undergraduate laboratory experiment. Eur. J. Physics, 28:1233–1239, 2007.
+	
+	\bibitem{emass_3}
+	Mudhole T S and Umakantha N 1977 Determination of the rest mass energy of the electron: a laboratory experiment Am. J. Phys. 45 1119
+	
+	\bibitem{kn_paper_original}
+	Klein, O. \& Nishina, Y. Z. Physik (1929) 52: 853. doi:10.1007/BF01366453
+	
+	\bibitem{angle_1}
+	Kim, Tony Hyun. Compton Scattering (2008). MIT Department of Physics.
+	
+	\bibitem{angle_2}
+	Lacoste-Julien, Simon and Plamondon, Mathieu. Compton Scattering: Light reveals its particle nature (2002). McGill University.
+	
+	\bibitem{angle_3}
+	Nelson, Dylan R. and  Cheung, Joey. Compton Scattering (2007). University of California,  Berkeley.
+	
+	\bibitem{eisberg}
+	R. M. Eisberg et al., Chapter 14: X-Rays. Fundamentals of Modern Physics,  (Wiley, 1961), Physics Library Ref. QC173.E38.
 
 
 \end{thebibliography}
 
 \begin{appendix}
 
-\section{Derivation of Equation \ref{eq:energy_scatter}}
+\section{Derivation of Equation \ref{eq:energy_scatter}} \label{section:derivation}
 
 \begin{figure}[H]
 	\centering
@@ -270,7 +322,7 @@ I wrote this... Unless it was wrong, then it was the other guy.
 	\caption{Diagram showing a photon scattering off an electron at rest. Image courtesy of Wikipedia.}
 \end{figure}
 
-This formula can be described semi-classically using only conservation of energy and conservation of momentum. We approximate this interaction as a photon impacting an electron which is currently at rest. The conservation laws require that:
+This formula can be described semi-classically using only conservation of energy and conservation of momentum. We approximate this interaction as a photon impacting an electron which is currently at rest. We ignore the binding energy of the electron. The conservation laws require that:
 
 \begin{gather}
 	E_\gamma + E_e = E_\gamma ' + E_e '\nonumber \\
