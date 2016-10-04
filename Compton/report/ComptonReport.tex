@@ -212,7 +212,7 @@ Different metals will have different number of free electrons. This depends on t
 	\label{KN_vs_Thompson_Theory}
 \end{figure}
 
-Theoretically, the angular dependence of the scattering probability is given by either the Thompson Formula (Equation \ref{eq:thompson}) or the Klein-Nishina Formula (Equation \ref{eq:kn}). The theoretical predictions for $d\sigma / d\Omega$ for our particular setup is shown in Figure \ref{KN_vs_Thompson_Theory}. This plot shows that at low $\theta$, for a $661.6~keV$ $\gamma$-ray from $^{137}$Cs decay, the two Formulae converge. However, they quickly diverge as one goes to higher and higher angles. It also shows that our experiment does not exist in the classical approximation ($\gamma_{KN} \ll 1$), and we should expect to see major differences between the two theories at higher and higher angles.
+Theoretically, the angular dependence of the scattering probability is given by either the Thompson Formula (Equation \ref{eq:thompson}) or the Klein-Nishina Formula (Equation \ref{eq:kn}). While the look completely dissimilar, we can see that the KN formula will converge to the Thompson in the limit of a very low momentum photon. The theoretical predictions for $d\sigma / d\Omega$ for our particular setup is shown in Figure \ref{KN_vs_Thompson_Theory}. This plot shows that at low $\theta$, for a $661.6~keV$ $\gamma$-ray from $^{137}$Cs decay, the two Formulae converge. However, since our photon does not satisfy the classical approximation of $\gamma_{KN} \ll 1$, they quickly diverge as one goes to higher and higher angles. Thus it is these higher angles which are the most important for our comparison of theory and experiment, which can be found in the coming section.
 
 \section{Comparison of Theory and Experiment}
 
@@ -227,7 +227,7 @@ In Figure \ref{KN_vs_Thompson_Theory}, we have plotted the data taken during our
 	\label{KN_vs_Thompson_Theory}
 \end{figure}
 
-\noindent From this plot, we can clearly see that the Klein-Nishina Formula is much more consistent with our theoretical predictions then the Thompson Formula, especially at higher angles. This is consistent with our predictions that the more advanced quantum mechanical model would win out over the classical model. In order to quantify how well these functions fit our data, we used their functional forms as a fit to our data. We found the $\chi^2$ for the two formulae under two conditions, without any additional free parameters and with the addition of an overall scaling term. The results of the $\chi^2$ minimization can be seen in Table \ref{table:chi_square} below:
+\noindent From this plot, we can clearly see that the Klein-Nishina Formula is much more consistent with our experimental results then the Thompson Formula, crucially at higher angles. This is in line with our predictions that the more advanced quantum mechanical model would win out over the classical model. In order to quantify how well these functions correspond our data, we used their functional forms as a fit to our data. We found the $\chi^2$ for the two formulae under two conditions, without any additional free parameters and with the addition of an overall scaling term. The results of the $\chi^2$ minimization can be seen in Table \ref{table:chi_square} below:
 
 \begin{table}[htbp]
 	\begin{center}
@@ -242,13 +242,16 @@ In Figure \ref{KN_vs_Thompson_Theory}, we have plotted the data taken during our
 	\label{table:chi_square}
 \end{table}
 
-\noindent Clearly, Klein-Nishina is more consistent with the data both before and after the addition of a free parameter.
+\noindent Clearly, Klein-Nishina is more consistent with the data both before and after the addition of a free parameter. However, neither fit has a perfectly reduced $\chi^2$, for a variety of factors. Throughout our analysis, it became apparent that our low angle values of $d\sigma / d\Omega$ were too high and the high angle values were too low, compared to our expectations. This discrepancy changed the shape of our graph from the ideal KN form and made it so that the $\chi^2$ could not be reduced to $\sim 1$. A likely cause of this is a discrepancy in our evaluation of $\epsilon$ and $R_{peak-to-total}$, as we had to extract these values from graphs manually. However, once we added in a degree of freedom to account for this small correction, our $\chi^2$ reduced quite well, and our measurements became superbly consistent with the theoretical predictions of KN.
 
 \subsection{Electron Rest Mass}
 
 \section{Discussion and Conclusions}
+\textbf{ADD MORE HERE!!! Calibrations!!! Electron Mass!!!!}
 
-This experiment could be improved with a stronger and/or more collimated source. 
+From there, we took our measurements of $Y(\theta)$ vs. $\theta$ and created a plot of $d\sigma / d\Omega$ vs. $\theta$. We found that our data was highly consistent with the quantum mechanical Klein-Nishina equation ($\chi^2 = 0.657$), especially at higher angles where the KN formula diverges from the Thompson formula. This is exactly in line with our hypothesis and is yet another proof of the fact that interactions on the atomic scale are primarily quantum mechanical phenomena, and cannot be treated via classical approximations without gross oversimplification.
+
+This experiment could be improved with a stronger and/or more collimated source. We found that our fitting algorithms struggled to identify a gaussian peak if there were too few counts in the peak bin. Qualitatively, we found the ideal number of counts in the peak to be on the order of 100. For the low angles, this was no problem, and the measurement could be completed in just minutes, but for the higher angles we found ourselves needing over 45 minutes to reach the same count number. Were we to have had a stronger source, our count rate would have been much higher, and our measurement time would have been significantly reduced. This extra time could have been used for extra trials or improving our statistical uncertainties in other ways. This experiment could also have been aided by better markings on the tabletop (or a better system for creating our own). This was a large contributer to our uncertainty in the plots of $d\sigma / d\Omega$ and could have been greatly reduced if we had a trusted angular measurement system similar to the $\gamma$-$\gamma$ correlation experiment.
 
 \section{Author Contributions}
 
