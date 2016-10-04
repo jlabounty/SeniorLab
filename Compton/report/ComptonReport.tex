@@ -211,10 +211,10 @@ For this experiment, we measured the scattering cross sections of Al and Cu at a
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|}
 			\hline  & $\frac{d\sigma}{d\Omega}_{1}$ ($10^{-27} m^2$) & $\frac{d\sigma}{d\Omega}_{2}$ ($10^{-27} m^2$) & $\frac{d\sigma}{d\Omega}_{Avg}$ ($10^{-27} m^2$) \\
-			\hline Al, $25^{\circ}$ & $1.083 \pm 0.054$ & $1.159 \pm 0.058$ & $1.121 \pm 0.079$\\
-			\hline Cu, $25^{\circ}$ & $0.4131 \pm 0.0207$ & $0.4322 \pm 0.0216$ & $0.4228 \pm 0.0299$\\
-			\hline Al, $45^{\circ}$ & $0.6836 \pm 0.0342$ & $0.6255 \pm 0.0313$ & $0.6546 \pm 0.0464$\\
-			\hline Cu, $45^{\circ}$ & $0.2703 \pm 0.0135$ & $0.2094 \pm 0.0105$ & $0.2399 \pm 0.0171$\\
+			\hline \begin{tabular}{@{}c@{}}Al \\ $25^{\circ}$ \end{tabular} & $1.083 \pm 0.054$ & $1.159 \pm 0.058$ & $1.121 \pm 0.079$\\
+			\hline \begin{tabular}{@{}c@{}}Cu \\ $25^{\circ}$ \end{tabular}  & $0.4131 \pm 0.0207$ & $0.4322 \pm 0.0216$ & $0.4228 \pm 0.0299$\\
+			\hline \begin{tabular}{@{}c@{}}Al \\ $45^{\circ}$ \end{tabular}  & $0.6836 \pm 0.0342$ & $0.6255 \pm 0.0313$ & $0.6546 \pm 0.0464$\\
+			\hline \begin{tabular}{@{}c@{}}Cu \\ $45^{\circ}$ \end{tabular}  & $0.2703 \pm 0.0135$ & $0.2094 \pm 0.0105$ & $0.2399 \pm 0.0171$\\
 			\hline
 			
 		\end{tabular}
@@ -241,13 +241,13 @@ Theoretically, the angular dependence of the scattering probability is given by 
 
 \subsection{Angular Dependence of the Scattering Probability}
 
-In Figure \ref{KN_vs_Thompson_Theory}, we have plotted the data taken during our measurements on top of the Klein-Nishina and Thompson curves:
+In Figure \ref{KN_vs_Thompson_Unscaled}, we have plotted the data taken during our measurements on top of the Klein-Nishina and Thompson curves:
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{KNvsThompson_Unscaled.png}
 	\caption{Comparison of the Theoretical Predictions with Experimental Data}
-	\label{KN_vs_Thompson_Theory}
+	\label{KN_vs_Thompson_Unscaled}
 \end{figure}
 
 \noindent From this plot, we can clearly see that the Klein-Nishina Formula is much more consistent with our experimental results then the Thompson Formula, crucially at higher angles. This is in line with our predictions that the more advanced quantum mechanical model would win out over the classical model. In order to quantify how well these functions correspond our data, we used their functional forms as a fit to our data. We found the $\chi^2$ for the two formulae under two conditions, without any additional free parameters and with the addition of an overall scaling term. The results of the $\chi^2$ minimization can be seen in Table \ref{table:chi_square} below:
