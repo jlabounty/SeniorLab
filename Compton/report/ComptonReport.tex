@@ -158,7 +158,7 @@ This form of the equation demonstrates a linear relationship between $\frac{1}{E
 	\label{Fig:EScatFit}
 \end{figure}
 
-FIG.~\ref{Fig:EScatFit} shows a linear fit applied to the experimental data (shown in red). Using the slope of this fit, the initial energy of the gamma photon was calculated to be $E_\gamma = 660.5 keV$. 
+FIG.~\ref{Fig:EScatFit} shows a linear fit applied to the experimental data (shown in red). Using the intercept of this fit, the initial energy of the gamma photon was calculated to be $E_\gamma = 665.064 \pm 32.243 keV$ which is consistent with the expected value of $661.5keV$. The slope of this fit can be used to calculate the rest mass of the electron $m_{e}c^{2}$. For this experiment, this rest mass was calculated to be $m_{e}c^{2} = 493.859 \pm 36.185 keV$ which is consistent with the expected value of $511 keV$. The data's consistency with the theoretical rest mass of the electron verifies the relationship between scattered photon energy and scattering angle outlined by Eq.~\ref{eq:energy_scatter}.
 
 \subsection{Angular Dependence of the Scattering Probability}
 
@@ -199,7 +199,30 @@ This integral gives us our value for $Y(\theta)$. $N_\gamma$ is found in much th
 
 \subsection{Free Electrons in Cu and Al}
 
-Different metals will have different number of free electrons. This depends on the relative abundance of different isotopes. Almost $100\%$ of aluminum found on earth is $^{27}$Al, while copper is $69.17 \%$ $^{63}$Cu and $30.83 \%$ $^{65}$Cu. Additionally, the metals occupy different groups of the periodic table, which effects the number of valence electrons available.
+Knowing the scattering cross section of a metal can provide information about the free electrons in that metal. More specifically, the scattering cross sections of metals can be used to compare the number of free electrons in different metals. For this experiment, Compton scattering was used to compare the number of free electrons in aluminum (Al) and the number of free electrons in copper (Cu). The ratio of free electrons in aluminum to free electrons in copper can be found by calculating the ratio of the scattering cross section of aluminum to the scattering cross section of copper.
+
+\begin{equation}
+\frac{e^{-}_{Al}}{e^{-}_{Cu}} = \frac{\frac{d\sigma}{d\Omega}_{Al}}{\frac{d\sigma}{d\Omega}_{Cu}}
+\end{equation}
+
+For this experiment, we measured the scattering cross sections of Al and Cu at angles of $25^{\circ}$ and $45^{\circ}$ in order to account for the angular dependence of cross sections. Using the same procedure as in Section 3c, we calculated the scattering cross sections of copper and aluminum at these angles, obtaining the results shown in Table~\ref{Tab:XSecCompare}. 
+
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline  & $\frac{d\sigma}{d\Omega}_{1}$ ($10^{-27} m^2$) & $\frac{d\sigma}{d\Omega}_{2}$ ($10^{-27} m^2$) & $\frac{d\sigma}{d\Omega}_{Avg}$ ($10^{-27} m^2$) \\
+			\hline Al, $25^{\circ}$ & $1.083 \pm 0.054$ & $1.159 \pm 0.058$ & $1.121 \pm 0.079$\\
+			\hline Cu, $25^{\circ}$ & $0.4131 \pm 0.0207$ & $0.4322 \pm 0.0216$ & $0.4228 \pm 0.0299$\\
+			\hline Al, $45^{\circ}$ & $0.6836 \pm 0.0342$ & $0.6255 \pm 0.0313$ & $0.6546 \pm 0.0464$\\
+			\hline Cu, $45^{\circ}$ & $0.2703 \pm 0.0135$ & $0.2094 \pm 0.0105$ & $0.2399 \pm 0.0171$\\
+			\hline
+			
+		\end{tabular}
+	\end{center}
+	\caption{Scattering Cross Sections of Aluminum and Copper at Varying Angles}
+	\label{Tab:XSecCompare}
+\end{table}
+
 
 \section{Theoretical Model}
 
