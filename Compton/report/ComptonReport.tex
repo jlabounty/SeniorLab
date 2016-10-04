@@ -74,7 +74,7 @@ Instead he found that, once again, classical theory was inadequate for describin
 \end{gather}
 where $\gamma = h\nu / m_e c^2$. Looking at these formulae, we can see that when $\gamma \ll 1$ Klein-Nishina will converge to the classical Thompson formula. This approximation holds for extremely low energy photons, from radio up to the visible spectrum, but fails as one reaches x-rays and $\gamma$-rays. A comparison of the angular dependence of these two equations for out setup can be seen in Figure \ref{KN_vs_Thompson_Theory}.
 
-This particular experiment, and its results, are well documented in literature. Milissinos\cite{milissinos} describes a procedure for determining $d\sigma / d\Omega$ which is nearly identical to ours, and which was performed in 1962. This same investigation of $d\sigma / d\Omega$ has since been verified many times over \cite{angle_1, angle_2, angle_3}. The implications for physics are profound. It proves that light is primarily a quantum phenomenon, and cannot be completely explained by classical mechanics, as Thompson Scattering attempts to do.
+This particular experiment, and its results, are well documented in literature. Milissinos\cite{milissinos} describes a procedure for determining $d\sigma / d\Omega$ which is nearly identical to ours, and which was performed in 1962. This same investigation of $d\sigma / d\Omega$ has since been verified many times over \cite{angle_1, angle_2, angle_3}. The implications for physics are profound. It proves that light is primarily a quantum phenomenon, and cannot be completely explained by classical mechanics, as Thompson Scattering attempts to do. Compton scattering is still a valuable tool in order to explain a number of important phenomenon. In particular, the dominant source of opacity in a number of astrophysical phenomena (Black Holes, Neutron Stars, Nebulae, etc.) is Compton Scattering \cite{nstars}. Thus, in order to build models of these important foci of modern astronomical research, Compton scattering must be understood in depth. New research is also currently being undertaken to make further quantum mechanical corrections to our understanding of Compton scattering \cite{comptonresearch}.
 
 The technique for measuring the electron mass is also well documented, and has been repeated with some alterations by students all over the world \cite{emass_1, emass_2, emass_3}. But the basic underlying truth of the experiment is unchanged: we can use a form of Equation \ref{eq:energy_scatter} to relate the electron mass with the scattering angle $\theta$ and the energy of the scattered $\gamma$-ray $E_\gamma '$. This method provided one of the earliest accurate measurements of the electron mass. We will also use this technique to compare the number of free electrons in two different materials, and compare the results with our assumption that all the electrons in the metal are free. The number of free electrons in a material is an important quantity to know in the world of both electronics and chemistry, because it not only effects how conductive a metal is but also how it will behave in any number of chemical reactions.
 
@@ -82,16 +82,16 @@ Below we detail the setup used to measure all of these quantities.
 
 \section{Experimental Setup}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.4\textwidth]{Setup.png}
-	\caption{Experimental Setup, taken from \cite{manual}.}
-	\label{Setup}
-\end{figure}
-
 The source of the $\gamma$-rays for this experiment is a $^{137}$Cs sample, measured to emit $300~\mu Ci$ of radiation in 1978 and now emitting only $116~\mu Ci$ due to its decay, completely encased in lead save for a small aperture. This aperture is in line with the $0^\circ$ line on our table. On the other end of this experiment we have a movable detector. This detector consists of a NaI(Tl) scintillating crystal permanently bonded to a photomultiplier and a pre-amplifier. This detector is mounted on a movable platform which pivots around a point on the $0^\circ$ axis. Marks on the table allow us to rotate the detector semi-precisely about this axis to arbitrary angles. Also on this pivot is a mounting point for our scatterers, which consist of Aluminum and Copper cylinders with a hole drilled directly in the center. 
 
-With the scatterer in place, the $\gamma$-rays which are emitted by the $^{137}$Cs pass through the aperture, scatter off electrons in the Al or Cu cylinders, and then pass into the NaI(Tl) crystal. These $\gamma$-rays produce scintillation photons proportional to their energy in the NaI(Tl) scintillation crystal. These scintillation photons are picked up as an electric signal by the photomultiplier, and then through two levels of amplification before being output to the Multi-Channel Analyzer (MCA). The MCA reconstructs the energy of the incident $\gamma$-rays from the signals and plots a histogram of Numbers of Photons detected vs. Bin Number (where the Bin Number corresponds to an photon energy). From there, the information is saved in a format which can be read into our data analysis software, ROOT. A diagram of this setup can be seen in Figure \ref{Setup}.
+With the scatterer in place, the $\gamma$-rays which are emitted by the $^{137}$Cs pass through the aperture, scatter off electrons in the Al or Cu cylinders, and then pass into the NaI(Tl) crystal. These $\gamma$-rays produce scintillation photons proportional to their energy in the NaI(Tl) scintillation crystal. These scintillation photons are picked up as an electric signal by the photomultiplier, and then through two levels of amplification before being output to the Multi-Channel Analyzer (MCA). The MCA reconstructs the energy of the incident $\gamma$-rays from the signals and plots a histogram of Numbers of Photons detected vs. Bin Number (where the Bin Number corresponds to an photon energy). From there, the information is saved in a format which can be read into our data analysis software, ROOT. This software is developed and maintained by scientists at CERN, and contains many useful fitting and histogram manipulation packages. We also performed independent cross checks of its $\chi^2$ minimization techniques, which can be found in Appendix \ref{section:root}. A diagram of this setup can be seen in Figure \ref{Setup}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Setup_full.png}
+	\caption{Experimental Setup, modified from Figure 1 in \cite{manual}.}
+	\label{Setup}
+\end{figure}
 
 \section{Measurements}
 
@@ -170,19 +170,19 @@ FIG.~\ref{Fig:EScatFit} shows a linear fit applied to the experimental data (sho
 	Y(\theta) = N_\gamma N_e \frac{d\sigma}{d\Omega}d\Omega \rightarrow \frac{d\sigma}{d\Omega} = \frac{Y(\theta)}{N_\gamma N_e d\Omega}
 \end{gather}
 
-After calibrating our detector and using that calibration to determine the electron mass, we sought to understand the angular dependence of the scattering probability for our $\gamma$-rays, or how $d \sigma / d \Omega$ changes with $\theta$. In order to do this, we placed the large Al scatterer at the pivot point of our setup and took spectra of the strong $^{137}$Cs source. We placed blocks of lead to obscure the source from the detector, so that the vast majority of $\gamma$-rays we would detect would be those which had scattered through the aluminum. We measured the resulting spectra, multiple times, at a number of angles between $0^{\circ}$ and $110^{\circ}$. Using Eq. \ref{eq:y_theta}, defined in \cite{milissinos} and \cite{manual}, we can use these spectra to relate the number of photons observed to $d\sigma / d\Omega$. At each angle, we fit the $661.6~keV$ peak to Equation \ref{eq:fitfunction} and integrated over the gaussian portion of our fit (The green curve in Figure \ref{GaussianPortion}), discarding the background photons. We then normalized each spectra for the amount of time the measurement took, as the lower angles would take only a few minutes while the higher angles would take upwards of 30.
+After calibrating our detector and using that calibration to determine the electron mass, we sought to understand the angular dependence of the scattering probability for our $\gamma$-rays, or how $d \sigma / d \Omega$ changes with $\theta$. In order to do this, we placed the large Al scatterer at the pivot point of our setup and took spectra of the strong $^{137}$Cs source. We positioned thick blocks of lead to obscure the source from the detector, so that the vast majority of $\gamma$-rays we would detect would be those which had scattered through the aluminum. We measured the resulting spectra, multiple times, at a number of angles between $0^{\circ}$ and $110^{\circ}$. Using Eq. \ref{eq:y_theta}, defined in \cite{milissinos} and \cite{manual}, we can use these spectra to relate the number of photons observed to $d\sigma / d\Omega$. At each angle, we fit the $661.6~keV$ peak to Equation \ref{eq:fitfunction} and integrated over the gaussian portion of our fit (The green curve in Figure \ref{GaussianPortion}), discarding the background photons. We then normalized each spectra for the amount of time the measurement took, as the lower angles would take only a few seconds while the higher angles would take upwards of 30 minutes to get the same number of counts in the peak bins.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{GaussianPortion.png}
-	\caption{Plot showing the total fit (blue) and gaussian fit (green) for the spectrum of $^{137}$Cs at $\theta = 110^\circ$.}
+	\caption{Plot showing the total fit (blue) and gaussian fit (green) for the spectrum of $^{137}$Cs at $\theta = 30^\circ$.}
 	\label{GaussianPortion}
 \end{figure}
 
 This integral gives us our value for $Y(\theta)$. $N_\gamma$ is found in much the same way, but at $\theta = 0^\circ$ and with the scatterer absent. To obtain the value of $d\Omega$, we simply measured the area of the detector and the distance from the source to the detector. From these values, the angle subtended by the detector is simply: $d\Omega = A_{det}/r^2$. We then needed to estimate the number of electrons $N_e$ in the scatterer. For this portion of the experiment, we assume that all of the electrons in the Aluminum are free. With this assumption, the expression for $N_e$ reduces to:
 \begin{gather}
 	\begin{split}
-		N_e 		& = \pi*\left(\frac{d_{scatter}}{2}\right)^2*h_{scatter}*\rho_{Al}*\frac{N_A}{A_{Al}}*Z_Al \\
+		N_e 		& = \pi*\left(\frac{d_{scatter}}{2}\right)^2*h_{scatter}*\rho_{Al}*\frac{N_A}{A_{Al}}*Z_{Al} \\
 				& = 4.29014*10^{26} \text{ electrons}
 	\end{split} \nonumber
 \end{gather}
@@ -195,7 +195,7 @@ This integral gives us our value for $Y(\theta)$. $N_\gamma$ is found in much th
 	\label{KN}
 \end{figure}
 
-\noindent At a glance, we can see that the data does not appear to exhibit the $(1 - \cos{\theta})$ dependence predicted by the Thompson formula at angles greater than $90^\circ$, and is roughly consistent with the shape predicted by the Klein-Nishina Formula. In the coming sections, we will compare this data in a more rigorous way to the results predicted by both the Thompson and Klein-Nishina Formulae
+\noindent At a glance, we can see that the data does not appear to exhibit the $(1 - \cos{\theta})$ dependence predicted by the Thompson formula, a feature most prominent at angles $\ge 90^\circ$, and appears to be roughly consistent with the shape predicted by the Klein-Nishina Formula. The error bars in $d \sigma / d\Omega$ were calculated by propagating through the errors in each of its components (Equation \ref{eq:y_theta}) using techniques from \cite{bevington} and assuming an error in the position of the detector of $\pm 2^\circ$ due to the poor markings on the table. A link to a repository containing the source code for these calculations can be found in Appendix \ref{section:analysis_code}. In the coming sections, we will compare this data in a more rigorous way to the results predicted by both the Thompson and Klein-Nishina Formulae.
 
 \subsection{Free Electrons in Cu and Al}
 
@@ -270,7 +270,7 @@ Both authors believe that the work for this project was split equally, and each 
 	\item Appendix B: Validation of the $\chi^2$ Minimization in ROOT
 \end{enumerate}
 
-\noindent Lab time was also split equally, with one partner taking measurements while the other developed the analysis software used in this report.
+\noindent Lab time was also split equally, with one partner often taking measurements while the other developed the analysis software used in this report.
 
 \begin{thebibliography}{6}
 	
@@ -312,6 +312,12 @@ Both authors believe that the work for this project was split equally, and each 
 	
 	\bibitem{eisberg}
 	R. M. Eisberg et al., Chapter 14: X-Rays. Fundamentals of Modern Physics,  (Wiley, 1961), Physics Library Ref. QC173.E38.
+	
+	\bibitem{nstars}
+	J. Madej, A. Różańska, A. Majczyna, M. Należyty. Computations of Compton scattering redistribution function in plasma. arXiv:1602.05088
+	
+	\bibitem{comptonresearch}
+	E B Karlsson, O Hartmann, C A Chatzidimitriou-Dreismann, and T Abdul-Redah. The hydrogen anomaly in neutron Compton scattering: new experiments and a quantitative theoretical explanation (2016). IOP Measurement Science and Technology, Volume 27, Number 8.
 
 
 \end{thebibliography}
@@ -373,7 +379,15 @@ Compton's original formulation of this equation is just another form of this equ
 	\lambda' = \lambda + \frac{h}{m_e c} (1 - \cos{\theta}) \nonumber
 \end{gather}
 
-\section{Validation of the $\chi^2$ Minimization in ROOT}
+\section{Validation of the $\chi^2$ Minimization in ROOT} \label{section:root}
+
+\section{Analysis Code} \label{section:analysis_code}
+
+All of the analysis code used for this lab can be found in the following git repository: 
+\begin{verbatim}
+https://github.com/jlabounty/SeniorLab/tree
+/master/Compton
+\end{verbatim}
 
 \end{appendix}
 
