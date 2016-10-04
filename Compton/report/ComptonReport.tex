@@ -200,11 +200,9 @@ This integral gives us our value for $Y(\theta)$. $N_\gamma$ is found in much th
 \subsection{Free Electrons in Cu and Al}
 
 Knowing the scattering cross section of a metal can provide information about the free electrons in that metal. More specifically, the scattering cross sections of metals can be used to compare the number of free electrons in different metals. For this experiment, Compton scattering was used to compare the number of free electrons in aluminum (Al) and the number of free electrons in copper (Cu). The ratio of free electrons in aluminum to free electrons in copper can be found by calculating the ratio of the scattering cross section of aluminum to the scattering cross section of copper.
-
-\begin{equation}
+\begin{gather}
 \frac{e^{-}_{Al}}{e^{-}_{Cu}} = \frac{\frac{d\sigma}{d\Omega}_{Al}}{\frac{d\sigma}{d\Omega}_{Cu}}
-\end{equation}
-
+\end{gather}
 For this experiment, we measured the scattering cross sections of Al and Cu at angles of $25^{\circ}$ and $45^{\circ}$ in order to account for the angular dependence of cross sections. Using the same procedure as in Section 3c, we calculated the scattering cross sections of copper and aluminum at these angles, obtaining the results shown in Table~\ref{Tab:XSecCompare}. 
 
 \begin{table}[htbp]
@@ -276,13 +274,16 @@ In this experiment, we measured the relationship between the scattered photon en
 \begin{gather*}
 	E_\gamma ' = \frac{E_\gamma}{1 + \frac{E_\gamma}{m_e c^2} (1 - \cos{\theta})}
 \end{gather*}
-When the inverse is taken of each side of this equation, we can see that there should be a linear relationship between $\frac{1}{E_{\gamma}}$ and $1 - cos(\theta)$. 
+When the inverse is taken of each side of this equation, we can see that there should be a linear relationship between $\frac{1}{E_{\gamma}}$ and $1 - cos(\theta)$. Using the slope of this relationship, we could calculate the rest mass of the electron, for which we obtained a value of $493.859 \pm 36.185 keV$. To verify that our linear fit was consistent with our data, we performed a calculation of the minimum chi-squared and obtained a value of $\chi^{2} = 0.675$.  This measurement of the electron's rest mass is consistent with the theoretical value of $511 keV$. 
 
 \subsection{Free Electrons in Cu and Al}
 In this experiment, we obtained measurements of the scattering cross sections of aluminum and copper in order to compare the number of free electrons in each of these metals. These measurements were taken at two different scattering angles, $25^{\circ}$ and $45^{\circ}$. Using the ratio of the metals' cross sections, we calculated the ratio of free electrons to be $\frac{e^{-}_{Al}}{e^{-}_{Cu}} = 2.65 \pm 0.26$ for $25^{\circ}$ and $\frac{e^{-}_{Al}}{e^{-}_{Cu}} = 2.73 \pm 0.27$ for $45^{\circ}$. These values are consistent with the expected values based on theory. The free electrons in a metal refer to the valence electrons of an atom of that metal. Aluminum has three valence electrons and copper typically has one valence electron although it can also have two valence electrons. This means that the ratio of free electrons for aluminum to copper should be somewhere between 3.0 and 1.5, depending on which ion of copper is predominant in the metal. The consistency of these results with the expected values verifies that the scattering cross sections of metals depends on the number of free electrons available. It also confirms that the free electrons in a metal refer to the valence electrons in an atom, not the total number of electrons.
 
 \section{Discussion and Conclusions}
-\textbf{ADD MORE HERE!!! Calibrations!!! Electron Mass!!!!}
+
+Our first step in this experiment was to calibrate the energy scale used by the MCA program in our setup. This program stored information regarding the energy of detected photons in channels that did not explicitly provide the energy of the photons. In order to figure out the relationship between these channels and photon energy, we measured nuclear decay spectra of several radioactive samples with known energy peaks in the spectra. Using data of energy vs channel number, we could find a relationship between these two values in order to calibrate the spectra we measured for our samples. With this method we identified a quadratic behavior between the energy and channel number. This quadratic relationship was most likely a result of imperfections in the electronics that cause the detection system to be non-linear.
+
+After calibrating the energy scale of our detecting equipment, we measured the scattered photon energy as a function of the scattering angle to identify the relationship between these values. We compared our data to Eq.~\ref{eq:energy_scatter} to confirm that the relationship we observed was consistent with theory. To test this consistency, we calculated the rest mass of the electron $m_{e}c^{2}$ and obtained a value consistent with the theoretical value of $511 keV$ when we considered uncertainties in our measurement. This measurement verifies the dependence of the energy of the scattered photon on the scattering angle expressed in Eq.~\ref{eq:energy_scatter}.
 
 From there, we took our measurements of $Y(\theta)$ vs. $\theta$ and created a plot of $d\sigma / d\Omega$ vs. $\theta$. We found that our data was highly consistent with the quantum mechanical Klein-Nishina equation ($\chi^2 = 0.657$), especially at higher angles where the KN formula diverges from the Thompson formula. This is exactly in line with our hypothesis and is yet another proof of the fact that interactions on the atomic scale are primarily quantum mechanical phenomena, and cannot be treated via classical approximations without gross oversimplification.
 
