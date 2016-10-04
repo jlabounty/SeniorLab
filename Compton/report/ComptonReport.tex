@@ -223,7 +223,7 @@ For this experiment, we measured the scattering cross sections of Al and Cu at a
 	\label{Tab:XSecCompare}
 \end{table}
 
-Using these to calculate the Al-Cu ratio of free electrons yields $ \frac{e^{-}_{Al}}{e^{-}_{Cu}} = 2.65 \pm 0.26$ for $25^{\circ}$ and $\frac{e^{-}_{Al}}{e^{-}_{Cu}} = 2.73 \pm 0.0.27$ for $45^{\circ}$. These two values are consistent with each other, and, as we will discuss later, are consistent with the expected range of values based on theory.
+Using these to calculate the Al-Cu ratio of free electrons yields $ \frac{e^{-}_{Al}}{e^{-}_{Cu}} = 2.65 \pm 0.26$ for $25^{\circ}$ and $\frac{e^{-}_{Al}}{e^{-}_{Cu}} = 2.73 \pm 0.27$ for $45^{\circ}$. These two values are consistent with each other, and, as we will discuss later, are consistent with the expected range of values based on theory.
 
 \section{Theoretical Model}
 
@@ -237,6 +237,9 @@ Using these to calculate the Al-Cu ratio of free electrons yields $ \frac{e^{-}_
 \end{figure}
 
 Theoretically, the angular dependence of the scattering probability is given by either the Thompson Formula (Equation \ref{eq:thompson}) or the Klein-Nishina Formula (Equation \ref{eq:kn}). While the look completely dissimilar, we can see that the KN formula will converge to the Thompson in the limit of a very low momentum photon. The theoretical predictions for $d\sigma / d\Omega$ for our particular setup is shown in Figure \ref{KN_vs_Thompson_Theory}. This plot shows that at low $\theta$, for a $661.6~keV$ $\gamma$-ray from $^{137}$Cs decay, the two Formulae converge. However, since our photon does not satisfy the classical approximation of $\gamma_{KN} \ll 1$, they quickly diverge as one goes to higher and higher angles. Thus it is these higher angles which are the most important for our comparison of theory and experiment, which can be found in the coming section.
+
+\subsection{Free Electrons in Cu and Al}
+Compton scattering is an effect of photons interacting with free electrons in a substance so the number of free electrons is directly related to the scattering cross section of the substance. For a metal, such as Cu or Al, the number of free electrons depends on the number of valence electrons of that metal rather than the total number of electrons of the atom. Copper has 29 total electrons, but only has one or two valence electrons. Meanwhile aluminum has 13 total electrons with three of them being valence electrons. This means the ratio of total electrons for aluminum to copper is 0.5 but the ratio of free electrons for aluminum to copper is between 1.5 and 3.0 depending on the type of copper ions ($Cu^{+1}$ or $Cu^{+2}$) in the metal. As is discussed later, comparison of the scattering cross sections of copper and aluminum shows that the number of valence electrons determines the cross section of a metal, not the total number of electrons.
 
 \section{Comparison of Theory and Experiment}
 
@@ -269,6 +272,14 @@ In Figure \ref{KN_vs_Thompson_Unscaled}, we have plotted the data taken during o
 \noindent Clearly, Klein-Nishina is more consistent with the data both before and after the addition of a free parameter. However, neither fit has a perfectly reduced $\chi^2$, for a variety of factors. Throughout our analysis, it became apparent that our low angle values of $d\sigma / d\Omega$ were too high and the high angle values were too low, compared to our expectations. This discrepancy changed the shape of our graph from the ideal KN form and made it so that the $\chi^2$ could not be reduced to $\sim 1$. A likely cause of this is a discrepancy in our evaluation of $\epsilon$ and $R_{peak-to-total}$, as we had to extract these values from graphs manually. However, once we added in a degree of freedom to account for this small correction, our $\chi^2$ reduced quite well, and our measurements became superbly consistent with the theoretical predictions of KN.
 
 \subsection{Electron Rest Mass}
+In this experiment, we measured the relationship between the scattered photon energy $E_{\gamma}$ and the scattering angle $\theta$ to test Eq.~\ref{eq:energy_scatter}.
+\begin{gather*}
+	E_\gamma ' = \frac{E_\gamma}{1 + \frac{E_\gamma}{m_e c^2} (1 - \cos{\theta})}
+\end{gather*}
+When the inverse is taken of each side of this equation, we can see that there should be a linear relationship between $\frac{1}{E_{\gamma}}$ and $1 - cos(\theta)$. 
+
+\subsection{Free Electrons in Cu and Al}
+In this experiment, we obtained measurements of the scattering cross sections of aluminum and copper in order to compare the number of free electrons in each of these metals. These measurements were taken at two different scattering angles, $25^{\circ}$ and $45^{\circ}$. Using the ratio of the metals' cross sections, we calculated the ratio of free electrons to be $\frac{e^{-}_{Al}}{e^{-}_{Cu}} = 2.65 \pm 0.26$ for $25^{\circ}$ and $\frac{e^{-}_{Al}}{e^{-}_{Cu}} = 2.73 \pm 0.27$ for $45^{\circ}$. These values are consistent with the expected values based on theory. The free electrons in a metal refer to the valence electrons of an atom of that metal. Aluminum has three valence electrons and copper typically has one valence electron although it can also have two valence electrons. This means that the ratio of free electrons for aluminum to copper should be somewhere between 3.0 and 1.5, depending on which ion of copper is predominant in the metal. The consistency of these results with the expected values verifies that the scattering cross sections of metals depends on the number of free electrons available. It also confirms that the free electrons in a metal refer to the valence electrons in an atom, not the total number of electrons.
 
 \section{Discussion and Conclusions}
 \textbf{ADD MORE HERE!!! Calibrations!!! Electron Mass!!!!}
