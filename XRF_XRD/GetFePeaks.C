@@ -1,5 +1,5 @@
-int GetCsPeaks(
-	       TString infile = "data/Cs_137_Weak_090716_141039.root"
+int GetFePeaks(
+	       TString infile = "data/Fe_055_100516_140912.root"
 )
 {
   TFile *feFile = TFile::Open(infile); 
@@ -13,12 +13,12 @@ int GetCsPeaks(
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *feHist_005 = (TH1D*)h->Clone("feHraw");
   /*Define Spectrum Fit Function*/
-  TF1 *fSpec_005 = new TF1("fSpec_005", "gaus+pol2(3)", 20., 100.);
+  TF1 *fSpec_005 = new TF1("fSpec_005", "gaus", 235., 250.);
   /*Estimate Parameters of Fit*/
-  fSpec_005->SetParameters(100, 75, 2, 200, 1);
+  fSpec_005->SetParameters(240, 75, 2);
   TCanvas *c2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  feHist_032->Fit("fSpec_005", "Q", "", 20., 100.);
+  feHist_005->Fit("fSpec_005", "Q", "", 235., 250.);
 
   /*Obtain Fit Function from Histogram*/
   TF1 *fStat_005 = feHist_005->GetFunction("fSpec_005");
@@ -62,13 +62,13 @@ int GetCsPeaks(
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *feHist_006 = (TH1D*)h->Clone("feHraw");
   /*Define Spectrum Fit*/
-  TF1 *fSpec_006 = new TF1("fSpec_006", "gaus+pol0(3)+expo(4)", 650., 2000.);
+  TF1 *fSpec_006 = new TF1("fSpec_006", "gaus", 260., 275.);
   /*Estimate Parameters of Fit Function*/
-  fSpec_006->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
-  fSpec_006->SetParameters(100, 1000, 2, 50, 0, 0);
+  // fSpec_006->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
+  fSpec_006->SetParameters(270, 1000, 2);
   TCanvas *c3 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  feHist_006->Fit("fSpec_006", "Q", "", 650., 2000.);
+  feHist_006->Fit("fSpec_006", "Q", "", 260., 275.);
 
   /*Obtain Fit Function from Histogram*/
   TF1 *fStat_006 = feHist_006->GetFunction("fSpec_006");
@@ -155,10 +155,10 @@ int GetCsPeaks(
 
 //	c22->Print("./plots/CsBinnedSpectrum.png");
 
-  c1->Close();
-  c2->Close();
-  c3->Close();
-  c22->Close();
+  // c1->Close();
+  // c2->Close();
+  // c3->Close();
+  // c22->Close();
 
 
 
