@@ -451,28 +451,23 @@ Compton's original formulation of this equation is just another form of this equ
 
 \section{Validation of the $\chi^2$ Minimization in ROOT} \label{section:root}
 For this experiment, we used ROOT, a c++ based data analysis software, to plot and fit functions to our data. To verify that ROOT calculates a correct value for $\chi^{2}$, we performed a hand calculation cross check with a simple set of data. The data set we used for this cross check was $\{ (11.0 \pm 0.0, 23.0 \pm 0.5), (14.0 \pm 0.0, 25.0 \pm 0.5), (20.0 \pm 0.0, 35.0 \pm 0.5), (25.0 \pm 0.0, 39.0 \pm 0.5) \}$. We plotted this data and fit it to a linear function $f(x) = [0] + [1]*x$. This plot is shown in Fig.~\ref{Fig:rootproof}.
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{rootproof.png}
 	\caption{Sample Data Fitted to a Line}
 	\label{Fig:rootproof}
 \end{figure}
-
 The function obtained from this fit was $f(x) = 9.11111 + 1.22222x$ with a chi-squared of $\chi ^{2} = 16.8889$. We then performed a hand calculation of the $\chi ^{2}$ using Eq.~\ref{eq:chisq}.
-\begin{equation}\label{eq:chisq}
+\begin{gather}\label{eq:chisq}
 \chi ^{2} = \sum \frac{(f(x_i) - y_i)^{2}}{\sigma_i^2}
-\end{equation}
-
+\end{gather}
 When performing this hand calculation we also obtained a value of $\chi ^{2} = 16.8889$, verifying ROOT's ability to calculate $\chi ^{2}$.
 \begin{align*}
 \chi ^{2} =& \frac{(f(11.0) - 23.0)^{2}}{(0.5)^2} + \frac{(f(14.0) - 25.0)^{2}}{(0.5)^2} \\
 &+ \frac{(f(20.0) - 35.0)^2}{(0.5)^2} + \frac{(f(25.0) - 39.0)^{2}}{(0.5)^2} \\
 &= 16.8889
 \end{align*}
-
 \section{Analysis Code} \label{section:analysis_code}
-
 All of the analysis code used for this lab can be found in the following git repository: 
 \begin{verbatim}
 https://github.com/jlabounty/SeniorLab/tree
