@@ -146,7 +146,7 @@ int GetAmPeaks(
 	blank3->Draw();
 
 	TH1D *hist = new TH1D();
-	hist = (TH1D*)csFile->Get("h");
+	hist = (TH1D*)amFile->Get("h");
 	hist->Draw("SAME");
 	fStat_017->SetLineColor(kBlue);
 	fStat_017->Draw("SAME");
