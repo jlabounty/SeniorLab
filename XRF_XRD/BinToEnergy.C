@@ -22,6 +22,7 @@ int BinToEnergy()
 	//Run Fitting macros which write to file
 	GetAmPeaks("data/Am_241_100516_132724.root");	
 	GetAmPeaks("data/Am_241_100516_140641.root");	
+	GetFePeaks("data/Fe_055_100516_140912.root");	
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 
