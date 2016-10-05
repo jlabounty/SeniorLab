@@ -1,5 +1,5 @@
 int GetAmPeaks(
-	       TString infile = "data/Cs_137_Weak_090716_141039.root"
+	       TString infile = "data/Am_241_100516_132724.root"
 )
 {
   TFile *amFile = TFile::Open(infile); 
@@ -13,12 +13,12 @@ int GetAmPeaks(
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *amHist_013 = (TH1D*)h->Clone("amHraw");
   /*Define Spectrum Fit Function*/
-  TF1 *fSpec_013 = new TF1("fSpec_013", "gaus+pol2(3)", 20., 100.);
+  TF1 *fSpec_013 = new TF1("fSpec_013", "gaus", 375., 400.);
   /*Estimate Parameters of Fit*/
-  fSpec_013->SetParameters(100, 75, 2, 200, 1);
+  fSpec_013->SetParameters(400, 75, 2);
   TCanvas *c2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  amHist_013->Fit("fSpec_013", "Q", "", 20., 100.);
+  amHist_013->Fit("fSpec_013", "Q", "", 375., 400.);
 
   /*Obtain Fit Function from Histogram*/
   TF1 *fStat_013 = amHist_013->GetFunction("fSpec_013");
@@ -62,13 +62,13 @@ int GetAmPeaks(
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *amHist_017 = (TH1D*)h->Clone("amHraw");
   /*Define Spectrum Fit*/
-  TF1 *fSpec_017 = new TF1("fSpec_017", "gaus+pol0(3)+expo(4)", 650., 2000.);
+  TF1 *fSpec_017 = new TF1("fSpec_017", "gaus", 440., 470.);
   /*Estimate Parameters of Fit Function*/
-  fSpec_017->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
-  fSpec_017->SetParameters(100, 1000, 2, 50, 0, 0);
+  // fSpec_017->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
+  fSpec_017->SetParameters(450., 1000, 2);
   TCanvas *c3 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  amHist_017->Fit("fSpec_017", "Q", "", 650., 2000.);
+  amHist_017->Fit("fSpec_017", "Q", "", 440., 470.);
 
   /*Obtain Fit Function from Histogram*/
   TF1 *fStat_017 = amHist_017->GetFunction("fSpec_017");

@@ -1,9 +1,7 @@
 #include "headers/exist_test.h"
 
-#include "GetCsPeaks.C"
-#include "GetNaPeaks.C"
-#include "GetBaPeaks.C"
-#include "GetCo60Peaks.C"
+#include "GetAmPeaks.C"
+#include "GetFePeaks.C"
 
 int BinToEnergy()
 {
@@ -22,18 +20,8 @@ int BinToEnergy()
 	f.Close();
 
 	//Run Fitting macros which write to file
-	GetCsPeaks("data/Cs_137_Weak_091216_122105.root");
-	GetCsPeaks("data/Cs_137_Weak_091216_124114.root");
-	GetBaPeaks("data/Ba_133_Weak_091216_132314.root");
-	GetBaPeaks("data/Ba_133_Weak_091216_133430.root");
-	GetBaPeaks("data/Ba_133_Weak_091216_134204.root");
-	GetNaPeaks("data/Na_22_Weak_091216_142051.root");
-	GetNaPeaks("data/Na_22_Weak_091216_142706.root");
-	GetNaPeaks("data/Na_22_Weak_091216_143229.root");
-	GetCo60Peaks("data/Co_60_Weak_091216_131604.root");
-	GetCo60Peaks("data/Co_60_Weak_091216_130411.root");
-	GetCo60Peaks("data/Co_60_Weak_091216_131036.root");
-	
+	GetAmPeaks("data/Am_241_100516_132724.root");	
+	GetAmPeaks("data/Am_241_100516_140641.root");	
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 
@@ -75,14 +63,13 @@ int BinToEnergy()
 	TGraphErrors *gr = new TGraphErrors(err_energy.size(), &(mean[0]),  &(energy[0]), &(stdev[0]), &(err_energy[0]) );
 	gr->Draw("p SAME");
 
-	TF1 *fit1 = new TF1("fit1","pol2", 0, 2048);
-	fit1->SetParameters(10, 2, 0.00012);
+	TF1 *fit1 = new TF1("fit1","pol1", 0, 2048);
+	fit1->SetParameters(10, 2);
 	gr->Fit("fit1", "0");
 	
-	TF1 *f1 = new TF1("f1", "pol2", 0, 2048);
+	TF1 *f1 = new TF1("f1", "pol1", 0, 2048);
 		f1->SetParameter(0, fit1->GetParameter(0));
 		f1->SetParameter(1, fit1->GetParameter(1));
-		f1->SetParameter(2, fit1->GetParameter(2));
 		f1->SetLineStyle(7);
 	f1->Draw("l SAME");
 	
@@ -91,7 +78,7 @@ int BinToEnergy()
 	TCanvas *c2 = new TCanvas();
 
         TH1F *h_CS137 = new TH1F("h_CS137","^{137}Cs Calibrated Spectrum",10, 0, 1000);
-       	h_CS137->GetYaxis()->SetRangeUser(0, 2800);
+       	h_CS137->GetYaxis()->SetRangeUser(0, 1000);
 	h_CS137->GetXaxis()->SetTitle("Energy (keV)");
 	h_CS137->GetYaxis()->SetTitle("Photon Count");
 	h_CS137->GetYaxis()->SetTitleOffset(1.65);
@@ -100,7 +87,7 @@ int BinToEnergy()
 	h_CS137->SetLineColor(0);
         h_CS137->Draw();
 
-	TFile *csFile = TFile::Open("data/Cs_137_Weak_091216_122105.root");
+	TFile *csFile = TFile::Open("data/Rh_045_100516_125309.root");
         TTree *t2 = (TTree*)csFile->Get("t");
         t2->Draw("Count:Bin","","goff");
         vector<double> v_count, v_bin;

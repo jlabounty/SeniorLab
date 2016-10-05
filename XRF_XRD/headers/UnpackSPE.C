@@ -24,7 +24,7 @@ int UnpackSPE(std::string file_name)
 			if(file >> live_time >> measurement_time) 
 			{
 				time.push_back(measurement_time);
-				cout << measurement_time << endl;
+				// cout << measurement_time << endl;
 			}
 		}
 		else if(line_count > 12 && line_count < 2060)
