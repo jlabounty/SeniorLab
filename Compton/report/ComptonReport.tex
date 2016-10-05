@@ -191,9 +191,34 @@ This gaussian integral gives us our value for $Y(\theta)$. $N_\gamma$ is found i
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{KNvsThompson_DataOnly.png}
-	\caption{Data from experimental measurement of $d\sigma/d\Omega$.}
+	\caption{Data from experimental measurement of $d\sigma/d\Omega$. Raw data can be found in Table \ref{table:dsigma}}
 	\label{KN}
 \end{figure}
+
+\begin{table}[htbp]
+\begin{center}
+\begin{tabular}{|r|r|r|r|}
+\hline
+\multicolumn{1}{|l|}{Angle (Deg.)} & \multicolumn{1}{l|}{$Y(\theta)$)} & \multicolumn{1}{l|}{$d\sigma / d\Omega$ ($cm^2/st.$)} & \multicolumn{1}{l|}{$\delta d\sigma / d\Omega$} \\ \hline
+18 & 44.909 & 7.16E-026 & 7.31E-027 \\ \hline
+20 & 41.283 & 6.59E-026 & 6.79E-027 \\ \hline
+25 & 34.968 & 5.58E-026 & 5.76E-027 \\ \hline
+30 & 29.668 & 4.73E-026 & 4.82E-027 \\ \hline
+45 & 19.257 & 3.07E-026 & 3.13E-027 \\ \hline
+50 & 15.691 & 2.50E-026 & 2.74E-027 \\ \hline
+60 & 11.509 & 1.84E-026 & 1.91E-027 \\ \hline
+70 & 10.178 & 1.62E-026 & 1.69E-027 \\ \hline
+80 & 8.794 & 1.40E-026 & 1.54E-027 \\ \hline
+90 & 5.985 & 9.55E-027 & 1.26E-027 \\ \hline
+100 & 7.860 & 1.25E-026 & 1.31E-027 \\ \hline
+110 & 6.013 & 9.59E-027 & 9.86E-028 \\ \hline
+\end{tabular}
+\end{center}
+\caption{Values of $d\sigma / d\Omega$ collected over the course of the experiment with their statistical errors.  ($Y(\theta)$ units $count/(cm^2*s)$)}
+\label{table:dsigma}
+\end{table}
+
+
 
 \noindent At a glance, we can see that the data does not appear to exhibit the $(1 - \cos{\theta})$ dependence predicted by the Thompson formula, a feature most prominent at angles $\ge 90^\circ$, and appears to be roughly consistent with the shape predicted by the Klein-Nishina Formula. The error bars in $d \sigma / d\Omega$ were calculated by propagating through the errors in each of its components (Equation \ref{eq:y_theta}) using techniques from \cite{bevington} and assuming an error in the position of the detector of $\pm 2^\circ$ due to the poor markings on the table. A link to a repository containing the source code for these calculations can be found in Appendix \ref{section:analysis_code}. In the coming sections, we will compare this data in a more rigorous way to the results predicted by both the Thompson and Klein-Nishina Formulae.
 
