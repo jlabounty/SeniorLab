@@ -2,6 +2,10 @@
 
 #include "GetAmPeaks.C"
 #include "GetFePeaks.C"
+#include "GetAuPeaks.C"
+#include "GetAgPeaks.C"
+#include "GetCoPeaks.C"
+#include "GetCuPeaks.C"
 
 int BinToEnergy()
 {
@@ -20,9 +24,14 @@ int BinToEnergy()
 	f.Close();
 
 	//Run Fitting macros which write to file
-	GetAmPeaks("data/Am_241_100516_132724.root");	
-	GetAmPeaks("data/Am_241_100516_140641.root");	
+	// GetAmPeaks("data/Am_241_100516_132724.root");	
+	// GetAmPeaks("data/Am_241_100516_140641.root");	
+	GetAmPeaks("data/Am_241_101016_144743.root");	
 	GetFePeaks("data/Fe_055_100516_140912.root");	
+	GetAuPeaks();
+	GetAgPeaks();
+	GetCoPeaks();
+	GetCuPeaks();
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 
@@ -53,7 +62,7 @@ int BinToEnergy()
 		//		c->SetFixedAspectRatio();
         //Use blank histogram to set the parameters of the canvas
         TH1F *hcalib = new TH1F("hcalib",title.c_str(),10, 0, 2048);
-                hcalib->GetYaxis()->SetRangeUser(0, 2048);
+                hcalib->GetYaxis()->SetRangeUser(0, 30);
                 hcalib->GetXaxis()->SetTitle("Bin Number");
                 hcalib->GetYaxis()->SetTitle("Energy (keV)");
                 hcalib->GetXaxis()->SetNdivisions(505);
@@ -67,6 +76,8 @@ int BinToEnergy()
 	TF1 *fit1 = new TF1("fit1","pol1", 0, 2048);
 	fit1->SetParameters(10, 2);
 	gr->Fit("fit1", "0");
+	cout << "Chi-Squared: " << fit1->GetChisquare() << endl;
+	cout << "NDF: " << fit1->GetNDF() << endl; 
 	
 	TF1 *f1 = new TF1("f1", "pol1", 0, 2048);
 		f1->SetParameter(0, fit1->GetParameter(0));
@@ -79,7 +90,7 @@ int BinToEnergy()
 	TCanvas *c2 = new TCanvas();
 
         TH1F *h_CS137 = new TH1F("h_CS137","^{137}Cs Calibrated Spectrum",10, 0, 1000);
-       	h_CS137->GetYaxis()->SetRangeUser(0, 1000);
+       	h_CS137->GetYaxis()->SetRangeUser(0.0, 200.);
 	h_CS137->GetXaxis()->SetTitle("Energy (keV)");
 	h_CS137->GetYaxis()->SetTitle("Photon Count");
 	h_CS137->GetYaxis()->SetTitleOffset(1.65);

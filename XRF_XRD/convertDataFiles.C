@@ -20,6 +20,7 @@ int convertDataFiles()
  	// UnpackSPE(data_path+"Scattering_Cu_100516_144030.Spe");
 
 	/*Data from 10/10*/
+	UnpackSPE(data_path+"Am_241_101016_144743.Spe");
  	UnpackSPE(data_path+"Scattering_Fe_101016_122756.Spe");
  	UnpackSPE(data_path+"Scattering_Mo_101016_142121.Spe");
  	UnpackSPE(data_path+"Scattering_Ni_101016_125209.Spe");
