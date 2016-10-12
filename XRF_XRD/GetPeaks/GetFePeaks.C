@@ -18,7 +18,7 @@ int GetFePeaks(
   fSpec_005->SetParameters(240, 75, 2);
   TCanvas *c2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  feHist_005->Fit("fSpec_005", "Q", "", 235., 250.);
+  feHist_005->Fit("fSpec_005", "Q", "", 237., 250.);
 
   /*Obtain Fit Function from Histogram*/
   TF1 *fStat_005 = feHist_005->GetFunction("fSpec_005");
@@ -155,10 +155,10 @@ int GetFePeaks(
 
 //	c22->Print("./plots/CsBinnedSpectrum.png");
 
-  // c1->Close();
-  // c2->Close();
-  // c3->Close();
-  // c22->Close();
+  c1->Close();
+  c2->Close();
+  c3->Close();
+  c22->Close();
 
 
 
