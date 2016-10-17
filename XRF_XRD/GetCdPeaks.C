@@ -1,33 +1,33 @@
-int GetMoPeaks(
-	       TString infile = "data/Scattering_Mo_101016_142121.root"
+int GetCdPeaks(
+	       TString infile = "data/Scattering_Cd_101216_143714.root"
 )
 {
-  TFile *moFile = TFile::Open(infile); 
-  TH1D *moHraw = new TH1D();
-  moHraw = (TH1D*)moFile->Get("h");
-  TCanvas *c_Mo = new TCanvas();
-  moHraw->Draw();
+  TFile *cdFile = TFile::Open(infile); 
+  TH1D *cdHraw = new TH1D();
+  cdHraw = (TH1D*)cdFile->Get("h");
+  TCanvas *c_Cd = new TCanvas();
+  cdHraw->Draw();
   vector<double> mean, stdev, energy, Z;
 
   cout << "=======================" << endl;
   cout << "!                     !" << endl;
-  cout << "!       Mo-97        !" << endl;
+  cout << "!       Cd-112        !" << endl;
   cout << "!                     !" << endl;
   cout << "=======================" << endl;
 
-  /*==============Mo-97 K1 Peak==============*/
+  /*==============Cd-112 K1 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
-  TH1D *moHist_K1 = (TH1D*)h->Clone("moHraw");
+  TH1D *cdHist_K1 = (TH1D*)h->Clone("cdHraw");
   /*Define Spectrum Fit Function*/
-  TF1 *fSpec_K1 = new TF1("fSpec_K1", "gaus", 705., 723.);
+  TF1 *fSpec_K1 = new TF1("fSpec_K1", "gaus", 930., 955.);
   /*Estimate Parameters of Fit*/
-  fSpec_K1->SetParameters(710, 10, 2);
-  TCanvas *c_MoK1 = new TCanvas();
+  fSpec_K1->SetParameters(940, 10, 2);
+  TCanvas *c_CdK1 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  moHist_K1->Fit("fSpec_K1", "Q", "", 705., 723.);
+  cdHist_K1->Fit("fSpec_K1", "Q", "", 930., 955.);
 
   /*Obtain Fit Function from Histogram*/
-  TF1 *fStat_K1 = moHist_K1->GetFunction("fSpec_K1");
+  TF1 *fStat_K1 = cdHist_K1->GetFunction("fSpec_K1");
 
   /*Assign Fit Parameters to Variables*/
   double Peak_K1 = fStat_K1->GetParameter(1);
@@ -52,27 +52,27 @@ int GetMoPeaks(
   cout << "=======================" << endl;
 
   /*Append Values to Vectors*/
-  energy.push_back(17.48);
-  Z.push_back(42.);
+  energy.push_back(23.17);
+  Z.push_back(48.);
   mean.push_back(Peak_K1);
   stdev.push_back(Stdv_K1);
 
   /*===================================*/
 
-  /*===========Mo-97 K2 Peak==========*/
+  /*===========Cd-112 K2 Peak==========*/
   /*Clone Histogram of Spectrum from Data File*/
-  TH1D *moHist_K2 = (TH1D*)h->Clone("moHraw");
+  TH1D *cdHist_K2 = (TH1D*)h->Clone("cdHraw");
   /*Define Spectrum Fit*/
-  TF1 *fSpec_K2 = new TF1("fSpec_K2", "gaus", 790., 810.);
+  TF1 *fSpec_K2 = new TF1("fSpec_K2", "gaus", 1050., 1080);
   /*Estimate Parameters of Fit Function*/
   // fSpec_K2->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
-  fSpec_K2->SetParameters(800., 1000, 2);
-  TCanvas *c_MoK2 = new TCanvas();
+  fSpec_K2->SetParameters(1065., 1000, 2);
+  TCanvas *c_CdK2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  moHist_K2->Fit("fSpec_K2", "Q", "", 790., 810.);
+  cdHist_K2->Fit("fSpec_K2", "Q", "", 1050., 1080.);
 
   /*Obtain Fit Function from Histogram*/
-  TF1 *fStat_K2 = moHist_K2->GetFunction("fSpec_K2");
+  TF1 *fStat_K2 = cdHist_K2->GetFunction("fSpec_K2");
 
   /*Assign Fit Parameters to Variables*/
   double Peak_K2 = fStat_K2->GetParameter(1);
@@ -97,26 +97,26 @@ int GetMoPeaks(
   cout << "=======================" << endl;
   
   /*Append Values to Vectors*/
-  energy.push_back(19.61);
-  Z.push_back(42.);
+  energy.push_back(26.09);
+  Z.push_back(48.);
   mean.push_back(Peak_K2);
   stdev.push_back(Stdv_K2);
 
   /*===================================*/
 
-  /*==============Mo-97 L1 Peak==============*/
+  /*==============Cd-112 L1 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
-  // TH1D *moHist_L1 = (TH1D*)h->Clone("moHraw");
+  // TH1D *cdHist_L1 = (TH1D*)h->Clone("cdHraw");
   // /*Define Spectrum Fit Function*/
   // TF1 *fSpec_L1 = new TF1("fSpec_L1", "landau", 9., 15.);
   // /*Estimate Parameters of Fit*/
   // fSpec_L1->SetParameters(12, 75);
-  // TCanvas *c_MoL1 = new TCanvas();
+  // TCanvas *c_CdL1 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
-  // moHist_L1->Fit("fSpec_L1", "Q", "", 9., 15.);
+  // cdHist_L1->Fit("fSpec_L1", "Q", "", 9., 15.);
 
   // /*Obtain Fit Function from Histogram*/
-  // TF1 *fStat_L1 = moHist_L1->GetFunction("fSpec_L1");
+  // TF1 *fStat_L1 = cdHist_L1->GetFunction("fSpec_L1");
 
   // /*Assign Fit Parameters to Variables*/
   // double Peak_L1 = fStat_L1->GetParameter(1);
@@ -141,25 +141,26 @@ int GetMoPeaks(
   // cout << "=======================" << endl;
 
   // /*Append Values to Vectors*/
-  // // energy.push_back(2.98);
+  // // energy.push_back(3.13);
+  // Z.push_back(48.);
   // // mean.push_back(Peak_L1);
   // // stdev.push_back(Stdv_L1);
 
   // /*===================================*/
 
-  // /*==============Mo-97 L2 Peak==============*/
+  // /*==============Cd-112 L2 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
-  // TH1D *moHist_L2 = (TH1D*)h->Clone("moHraw");
+  // TH1D *cdHist_L2 = (TH1D*)h->Clone("cdHraw");
   // /*Define Spectrum Fit Function*/
   // TF1 *fSpec_L2 = new TF1("fSpec_L2", "gaus", 700., 720.);
   // /*Estimate Parameters of Fit*/
   // fSpec_L2->SetParameters(710, 75, 2);
-  // TCanvas *c_MoL2 = new TCanvas();
+  // TCanvas *c_CdL2 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
-  // moHist_L2->Fit("fSpec_L2", "Q", "", 700., 720.);
+  // cdHist_L2->Fit("fSpec_L2", "Q", "", 700., 720.);
 
   // /*Obtain Fit Function from Histogram*/
-  // TF1 *fStat_L2 = moHist_L2->GetFunction("fSpec_L2");
+  // TF1 *fStat_L2 = cdHist_L2->GetFunction("fSpec_L2");
 
   // /*Assign Fit Parameters to Variables*/
   // double Peak_L2 = fStat_L2->GetParameter(1);
@@ -184,25 +185,26 @@ int GetMoPeaks(
   // cout << "=======================" << endl;
 
   /*Append Values to Vectors*/
-  // energy.push_back(3.15);
+  // energy.push_back(3.32);
+  // Z.push_back(48.);
   // mean.push_back(Peak_L2);
   // stdev.push_back(Stdv_L2);
 
   /*===================================*/
 
-  // /*==============Mo-97 L3 Peak==============*/
+  // /*==============Cd-112 L3 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
-  // TH1D *moHist_L3 = (TH1D*)h->Clone("moHraw");
+  // TH1D *cdHist_L3 = (TH1D*)h->Clone("cdHraw");
   // /*Define Spectrum Fit Function*/
   // TF1 *fSpec_L3 = new TF1("fSpec_L3", "gaus", 700., 720.);
   // /*Estimate Parameters of Fit*/
   // fSpec_L3->SetParameters(710, 75, 2);
-  // TCanvas *c_MoL3 = new TCanvas();
+  // TCanvas *c_CdL3 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
-  // moHist_L3->Fit("fSpec_L3", "Q", "", 700., 720.);
+  // cdHist_L3->Fit("fSpec_L3", "Q", "", 700., 720.);
 
   // /*Obtain Fit Function from Histogram*/
-  // TF1 *fStat_L3 = moHist_L3->GetFunction("fSpec_L3");
+  // TF1 *fStat_L3 = cdHist_L3->GetFunction("fSpec_L3");
 
   // /*Assign Fit Parameters to Variables*/
   // double Peak_L3 = fStat_L3->GetParameter(1);
@@ -228,6 +230,7 @@ int GetMoPeaks(
 
   // /*Append Values to Vectors*/
   // // energy.push_back(13.6);
+  // Z.push_back(48.);
   // // mean.push_back(Peak_L3);
   // // stdev.push_back(Stdv_L3);
 
@@ -261,25 +264,25 @@ int GetMoPeaks(
 
 
 	gStyle->SetOptStat(0);
-	std::string title = "^{97}Mo Uncalibrated Spectrum";
+	std::string title = "^{112}Cd Uncalibrated Spectrum";
 
-	TCanvas *c_MoSpec = new TCanvas("c_MoSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
-		c_MoSpec->cd();
-		c_MoSpec->SetGridx(1);
-		c_MoSpec->SetGridy(1);
+	TCanvas *c_CdSpec = new TCanvas("c_CdSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
+		c_CdSpec->cd();
+		c_CdSpec->SetGridx(1);
+		c_CdSpec->SetGridy(1);
 	//Use blank histogram to set the parameters of the canvas
-	TH1F *blankMo = new TH1F("blankMo",title.c_str(),10, 0, 2048);
-		blankMo->GetYaxis()->SetRangeUser(0, 600);
-		blankMo->GetXaxis()->SetTitle("Bin Number");
-		blankMo->GetYaxis()->SetTitle("Photon Count");
-		blankMo->GetYaxis()->SetTitleOffset(1.65);
-		blankMo->GetXaxis()->SetNdivisions(505);
-		blankMo->GetYaxis()->SetNdivisions(505);
-		blankMo->SetLineColor(0);
-	blankMo->Draw();
+	TH1F *blankCd = new TH1F("blankCd",title.c_str(),10, 0, 2048);
+		blankCd->GetYaxis()->SetRangeUser(0, 600);
+		blankCd->GetXaxis()->SetTitle("Bin Number");
+		blankCd->GetYaxis()->SetTitle("Photon Count");
+		blankCd->GetYaxis()->SetTitleOffset(1.65);
+		blankCd->GetXaxis()->SetNdivisions(505);
+		blankCd->GetYaxis()->SetNdivisions(505);
+		blankCd->SetLineColor(0);
+	blankCd->Draw();
 
 	TH1D *hist = new TH1D();
-	hist = (TH1D*)moFile->Get("h");
+	hist = (TH1D*)cdFile->Get("h");
 	hist->Draw("SAME");
 	fStat_K1->SetLineColor(kRed);
 	fStat_K1->Draw("SAME");
@@ -292,15 +295,15 @@ int GetMoPeaks(
 	// fStat_L3->SetLineColor(kViolet);
 	// fStat_L3->Draw("SAME");
 
-	// c_MoSpec->Print("./plots/MoBinnedSpectrum.png");
+	// c_CdSpec->Print("./plots/CdBinnedSpectrum.png");
 
-  c_Mo->Close();
-  c_MoK1->Close();
-  c_MoK2->Close();
-  // c_MoL1->Close();
-  // c_MoL2->Close();
-  // c_MoL3->Close();
-  c_MoSpec->Close();
+	c_Cd->Close();
+	c_CdK1->Close();
+	c_CdK2->Close();
+	// c_CdL1->Close();
+	// c_CdL2->Close();
+	// c_CdL3->Close();
+	c_CdSpec->Close();
 
   return 0;
 }

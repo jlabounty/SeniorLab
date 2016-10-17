@@ -3,8 +3,11 @@
 
 #include "GetAuPeaks.C"
 #include "GetAgPeaks.C"
+#include "GetCdPeaks.C"
 #include "GetCoPeaks.C"
 #include "GetCuPeaks.C"
+#include "GetGdPeaks.C"
+#include "GetMoPeaks.C"
 
 int makePlot_EvZ()
 {
@@ -24,10 +27,13 @@ int makePlot_EvZ()
 	f.Close();
 
 	//Run Fitting macros which write to file
-	GetAuPeaks();
 	GetAgPeaks();
+	GetAuPeaks();
+	GetCdPeaks();
 	GetCoPeaks();
 	GetCuPeaks();
+	GetGdPeaks();
+	GetMoPeaks();
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 
@@ -36,13 +42,16 @@ int makePlot_EvZ()
 	TTree *t = (TTree*)f.Get("t");
 	t->Draw("mean:stdev:energy:Z","","goff");
 	vector<double> err_energy;
-	vector<double> mean, stdev, energy, Z, err_Z;
+	vector<double> mean, stdev, energy, Z, err_Z, X, err_X;
 	for(int i = 0; i < t->GetEntries(); i++) 
 	{
-		err_energy.push_back(0.00000);
-		mean.push_back(sqrt((t->GetV1())[i] / TMath::H()) / 10**16.);
-		stdev.push_back(TMath::Abs((t->GetV2())[i]));
 		energy.push_back((t->GetV3())[i]);
+		err_energy.push_back(0.00000);
+		// mean.push_back(sqrt(((( 1.6*(10**(-16.))*((0.0245642*(t->GetV1())[i]) - 0.0446728))) / TMath::H() )/ 10**16.));
+		mean.push_back((t->GetV1())[i]);
+		stdev.push_back(TMath::Abs((t->GetV2())[i]));
+		X.push_back(sqrt(((( 1.6*(10**(-16.))*((0.0245642*(mean[i]) - 0.0446728))) / TMath::H() )/ 10**16.)));
+		err_X.push_back((stdev[i]*X[i]) / (2.*mean[i]) );
 		Z.push_back((t->GetV4())[i]);
 		err_Z.push_back(0.00000);
 
@@ -59,7 +68,7 @@ int makePlot_EvZ()
 		c31->SetGridy(1);
 		//		c->SetFixedAspectRatio();
         //Use blank histogram to set the parameters of the canvas
-        TH1F *hcalibZ = new TH1F("hcalibZ",titleZ.c_str(),10, 0, 200);
+        TH1F *hcalibZ = new TH1F("hcalibZ",titleZ.c_str(),10, 0, 30);
                 hcalibZ->GetYaxis()->SetRangeUser(0, 100);
                 hcalibZ->GetXaxis()->SetTitle("#sqrt{#nu}");
                 hcalibZ->GetYaxis()->SetTitle("Z");
@@ -68,7 +77,8 @@ int makePlot_EvZ()
                 hcalibZ->SetLineColor(0);
         hcalibZ->Draw();
 
-	TGraphErrors *grZ = new TGraphErrors(err_energy.size(), &(mean[0]), &(Z[0]), &(stdev[0]), &(err_Z[0]) );
+	TGraphErrors *grZ = new TGraphErrors(err_energy.size(), &(X[0]), &(Z[0]), &(err_X[0]), &(err_Z[0]) );
+	grZ->SetMarkerColor(kRed);
 	grZ->Draw("p SAME");
 
 	return 0;

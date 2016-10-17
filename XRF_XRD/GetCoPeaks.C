@@ -5,9 +5,15 @@ int GetCoPeaks(
   TFile *coFile = TFile::Open(infile); 
   TH1D *coHraw = new TH1D();
   coHraw = (TH1D*)coFile->Get("h");
-  TCanvas *c1 = new TCanvas();
+  TCanvas *c_Co = new TCanvas();
   coHraw->Draw();
   vector<double> mean, stdev, energy, Z;
+
+  cout << "=======================" << endl;
+  cout << "!                     !" << endl;
+  cout << "!       Co-59         !" << endl;
+  cout << "!                     !" << endl;
+  cout << "=======================" << endl;
 
   /*===============Co-59 K1 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
@@ -16,7 +22,7 @@ int GetCoPeaks(
   TF1 *fSpec_K1 = new TF1("fSpec_K1", "gaus", 275., 290.);
   /*Estimate Parameters of Fit*/
   fSpec_K1->SetParameters(280, 75, 2);
-  TCanvas *c2 = new TCanvas();
+  TCanvas *c_CoK1 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
   coHist_K1->Fit("fSpec_K1", "Q", "", 275., 290.);
 
@@ -32,12 +38,6 @@ int GetCoPeaks(
   double Red_K1 = Chi_K1/NDF_K1;
 
   /*Output Results to Terminal*/
-  cout << "=======================" << endl;
-  cout << "!                     !" << endl;
-  cout << "!       Co-59         !" << endl;
-  cout << "!                     !" << endl;
-  cout << "=======================" << endl;
-
   cout << "=======================" << endl;
   cout << "!   Finding K1 Peak   !" << endl;
   cout << "-----------------------" << endl;
@@ -67,7 +67,7 @@ int GetCoPeaks(
   /*Estimate Parameters of Fit Function*/
   // fSpec_K2->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
   fSpec_K2->SetParameters(310., 1000, 2);
-  TCanvas *c3 = new TCanvas();
+  TCanvas *c_CoK2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
   coHist_K2->Fit("fSpec_K2", "Q", "", 305., 320.);
 
@@ -111,7 +111,7 @@ int GetCoPeaks(
   // TF1 *fSpec_L1 = new TF1("fSpec_L1", "gaus", 385., 405.);
   // /*Estimate Parameters of Fit*/
   // fSpec_L1->SetParameters(390, 75, 2);
-  // TCanvas *c2 = new TCanvas();
+  // TCanvas *c_CoL1 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
   // coHist_L1->Fit("fSpec_L1", "Q", "", 385., 405.);
 
@@ -155,7 +155,7 @@ int GetCoPeaks(
   // TF1 *fSpec_L2 = new TF1("fSpec_L2", "gaus", 460., 480.);
   // /*Estimate Parameters of Fit*/
   // fSpec_L2->SetParameters(470, 75, 2);
-  // TCanvas *c2 = new TCanvas();
+  // TCanvas *c_CoL2 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
   // coHist_L2->Fit("fSpec_L2", "Q", "", 460., 480.);
 
@@ -199,7 +199,7 @@ int GetCoPeaks(
   // TF1 *fSpec_L3 = new TF1("fSpec_L3", "gaus", 530., 560.);
   // /*Estimate Parameters of Fit*/
   // fSpec_L3->SetParameters(550, 75, 2);
-  // TCanvas *c2 = new TCanvas();
+  // TCanvas *c_CoL3 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
   // coHist_L3->Fit("fSpec_L3", "Q", "", 530., 560.);
 
@@ -266,21 +266,20 @@ int GetCoPeaks(
 	gStyle->SetOptStat(0);
 	std::string title = "^{63}Co Uncalibrated Spectrum";
 
-	TCanvas *c22 = new TCanvas("c22",title.c_str(),750,750);     //Makes canvas large enough for png printing.
-		c22->cd();
-		c22->SetGridx(1);
-		c22->SetGridy(1);
-//		c->SetFixedAspectRatio();
+	TCanvas *c_CoSpec = new TCanvas("c_CoSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
+		c_CoSpec->cd();
+		c_CoSpec->SetGridx(1);
+		c_CoSpec->SetGridy(1);
 	//Use blank histogram to set the parameters of the canvas
-	TH1F *blank3 = new TH1F("blank",title.c_str(),10, 0, 2048);
-		blank3->GetYaxis()->SetRangeUser(0, 600);
-		blank3->GetXaxis()->SetTitle("Bin Number");
-		blank3->GetYaxis()->SetTitle("Photon Count");
-		blank3->GetYaxis()->SetTitleOffset(1.65);
-		blank3->GetXaxis()->SetNdivisions(505);
-		blank3->GetYaxis()->SetNdivisions(505);
-		blank3->SetLineColor(0);
-	blank3->Draw();
+	TH1F *blankCo = new TH1F("blankCo",title.c_str(),10, 0, 2048);
+		blankCo->GetYaxis()->SetRangeUser(0, 600);
+		blankCo->GetXaxis()->SetTitle("Bin Number");
+		blankCo->GetYaxis()->SetTitle("Photon Count");
+		blankCo->GetYaxis()->SetTitleOffset(1.65);
+		blankCo->GetXaxis()->SetNdivisions(505);
+		blankCo->GetYaxis()->SetNdivisions(505);
+		blankCo->SetLineColor(0);
+	blankCo->Draw();
 
 	TH1D *hist = new TH1D();
 	hist = (TH1D*)coFile->Get("h");
@@ -296,14 +295,15 @@ int GetCoPeaks(
 	// fStat_L3->SetLineColor(kViolet);
 	// fStat_L3->Draw("SAME");
 
-//	c22->Print("./plots/CoBinnedSpectrum.png");
+	// c_CoSpec->Print("./plots/CoBinnedSpectrum.png");
 
-  c1->Close();
-  c2->Close();
-  c3->Close();
-  c22->Close();
-
-
+  c_Co->Close();
+  c_CoK1->Close();
+  c_CoK2->Close();
+  // c_CoL1->Close();
+  // c_CoL2->Close();
+  // c_CoL3->Close();
+  c_CoSpec->Close();
 
   return 0;
 }

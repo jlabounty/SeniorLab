@@ -2,10 +2,14 @@
 
 #include "GetAmPeaks.C"
 #include "GetFePeaks.C"
-#include "GetAuPeaks.C"
+
 #include "GetAgPeaks.C"
+#include "GetAuPeaks.C"
+#include "GetCdPeaks.C"
 #include "GetCoPeaks.C"
 #include "GetCuPeaks.C"
+#include "GetGdPeaks.C"
+#include "GetMoPeaks.C"
 
 int BinToEnergy()
 {
@@ -29,10 +33,13 @@ int BinToEnergy()
 	// GetAmPeaks("data/Am_241_100516_140641.root");	
 	GetAmPeaks("data/Am_241_101016_144743.root");	
 	GetFePeaks("data/Fe_055_100516_140912.root");	
-	GetAuPeaks();
 	GetAgPeaks();
+	GetAuPeaks();
+	GetCdPeaks();
+	GetGdPeaks();
 	GetCoPeaks();
 	GetCuPeaks();
+	GetMoPeaks();
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 

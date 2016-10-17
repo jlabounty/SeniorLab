@@ -5,9 +5,15 @@ int GetAgPeaks(
   TFile *agFile = TFile::Open(infile); 
   TH1D *agHraw = new TH1D();
   agHraw = (TH1D*)agFile->Get("h");
-  TCanvas *c1 = new TCanvas();
+  TCanvas *c_Ag = new TCanvas();
   agHraw->Draw();
   vector<double> mean, stdev, energy, Z;
+
+  cout << "=======================" << endl;
+  cout << "!                     !" << endl;
+  cout << "!       Ag-107        !" << endl;
+  cout << "!                     !" << endl;
+  cout << "=======================" << endl;
 
   /*==============Ag-107 K1 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
@@ -16,7 +22,7 @@ int GetAgPeaks(
   TF1 *fSpec_K1 = new TF1("fSpec_K1", "gaus", 890., 920.);
   /*Estimate Parameters of Fit*/
   fSpec_K1->SetParameters(900, 10, 2);
-  TCanvas *c2 = new TCanvas();
+  TCanvas *c_AgK1 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
   agHist_K1->Fit("fSpec_K1", "Q", "", 890., 920.);
 
@@ -32,12 +38,6 @@ int GetAgPeaks(
   double Red_K1 = Chi_K1/NDF_K1;
 
   /*Output Results to Terminal*/
-  cout << "=======================" << endl;
-  cout << "!                     !" << endl;
-  cout << "!       Ag-107        !" << endl;
-  cout << "!                     !" << endl;
-  cout << "=======================" << endl;
-
   cout << "=======================" << endl;
   cout << "!   Finding K1 Peak   !" << endl;
   cout << "-----------------------" << endl;
@@ -67,7 +67,7 @@ int GetAgPeaks(
   /*Estimate Parameters of Fit Function*/
   // fSpec_K2->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
   fSpec_K2->SetParameters(1020., 1000, 2);
-  TCanvas *c3 = new TCanvas();
+  TCanvas *c_AgK2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
   agHist_K2->Fit("fSpec_K2", "Q", "", 1005., 1030.);
 
@@ -111,7 +111,7 @@ int GetAgPeaks(
   TF1 *fSpec_L1 = new TF1("fSpec_L1", "landau", 9., 15.);
   /*Estimate Parameters of Fit*/
   fSpec_L1->SetParameters(12, 75);
-  TCanvas *c2 = new TCanvas();
+  TCanvas *c_AgL1 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
   agHist_L1->Fit("fSpec_L1", "Q", "", 9., 15.);
 
@@ -155,7 +155,7 @@ int GetAgPeaks(
   TF1 *fSpec_L2 = new TF1("fSpec_L2", "gaus", 700., 720.);
   /*Estimate Parameters of Fit*/
   fSpec_L2->SetParameters(710, 75, 2);
-  TCanvas *c2 = new TCanvas();
+  TCanvas *c_AgL2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
   agHist_L2->Fit("fSpec_L2", "Q", "", 700., 720.);
 
@@ -199,7 +199,7 @@ int GetAgPeaks(
   // TF1 *fSpec_L3 = new TF1("fSpec_L3", "gaus", 700., 720.);
   // /*Estimate Parameters of Fit*/
   // fSpec_L3->SetParameters(710, 75, 2);
-  // TCanvas *c2 = new TCanvas();
+  // TCanvas *c_AgL3 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
   // agHist_L3->Fit("fSpec_L3", "Q", "", 700., 720.);
 
@@ -266,21 +266,20 @@ int GetAgPeaks(
 	gStyle->SetOptStat(0);
 	std::string title = "^{107}Ag Uncalibrated Spectrum";
 
-	TCanvas *c22 = new TCanvas("c22",title.c_str(),750,750);     //Makes canvas large enough for png printing.
-		c22->cd();
-		c22->SetGridx(1);
-		c22->SetGridy(1);
-//		c->SetFixedAspectRatio();
+	TCanvas *c_AgSpec = new TCanvas("c_AgSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
+		c_AgSpec->cd();
+		c_AgSpec->SetGridx(1);
+		c_AgSpec->SetGridy(1);
 	//Use blank histogram to set the parameters of the canvas
-	TH1F *blank3 = new TH1F("blank",title.c_str(),10, 0, 2048);
-		blank3->GetYaxis()->SetRangeUser(0, 600);
-		blank3->GetXaxis()->SetTitle("Bin Number");
-		blank3->GetYaxis()->SetTitle("Photon Count");
-		blank3->GetYaxis()->SetTitleOffset(1.65);
-		blank3->GetXaxis()->SetNdivisions(505);
-		blank3->GetYaxis()->SetNdivisions(505);
-		blank3->SetLineColor(0);
-	blank3->Draw();
+	TH1F *blankAg = new TH1F("blankAg",title.c_str(),10, 0, 2048);
+		blankAg->GetYaxis()->SetRangeUser(0, 600);
+		blankAg->GetXaxis()->SetTitle("Bin Number");
+		blankAg->GetYaxis()->SetTitle("Photon Count");
+		blankAg->GetYaxis()->SetTitleOffset(1.65);
+		blankAg->GetXaxis()->SetNdivisions(505);
+		blankAg->GetYaxis()->SetNdivisions(505);
+		blankAg->SetLineColor(0);
+	blankAg->Draw();
 
 	TH1D *hist = new TH1D();
 	hist = (TH1D*)agFile->Get("h");
@@ -296,14 +295,15 @@ int GetAgPeaks(
 	// fStat_L3->SetLineColor(kViolet);
 	// fStat_L3->Draw("SAME");
 
-//	c22->Print("./plots/AgBinnedSpectrum.png");
+	// c_AgSpec->Print("./plots/AgBinnedSpectrum.png");
 
-  c1->Close();
-  c2->Close();
-  c3->Close();
-  c22->Close();
-
-
+  c_Ag->Close();
+  c_AgK1->Close();
+  c_AgK2->Close();
+  c_AgL1->Close();
+  c_AgL2->Close();
+  // c_AgL3->Close();
+  c_AgSpec->Close();
 
   return 0;
 }

@@ -5,9 +5,15 @@ int GetCuPeaks(
   TFile *cuFile = TFile::Open(infile); 
   TH1D *cuHraw = new TH1D();
   cuHraw = (TH1D*)cuFile->Get("h");
-  TCanvas *c1 = new TCanvas();
+  TCanvas *c_Cu = new TCanvas();
   cuHraw->Draw();
   vector<double> mean, stdev, energy, Z;
+
+  cout << "=======================" << endl;
+  cout << "!                     !" << endl;
+  cout << "!       Cu-63         !" << endl;
+  cout << "!                     !" << endl;
+  cout << "=======================" << endl;
 
   /*===============Cu-63 K1 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
@@ -16,7 +22,7 @@ int GetCuPeaks(
   TF1 *fSpec_K1 = new TF1("fSpec_K1", "gaus", 320., 340.);
   /*Estimate Parameters of Fit*/
   fSpec_K1->SetParameters(330, 75, 2);
-  TCanvas *c2 = new TCanvas();
+  TCanvas *c_CuK1 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
   cuHist_K1->Fit("fSpec_K1", "Q", "", 320., 340.);
 
@@ -32,12 +38,6 @@ int GetCuPeaks(
   double Red_K1 = Chi_K1/NDF_K1;
 
   /*Output Results to Terminal*/
-  cout << "=======================" << endl;
-  cout << "!                     !" << endl;
-  cout << "!       Cu-63         !" << endl;
-  cout << "!                     !" << endl;
-  cout << "=======================" << endl;
-
   cout << "=======================" << endl;
   cout << "!   Finding K1 Peak   !" << endl;
   cout << "-----------------------" << endl;
@@ -67,7 +67,7 @@ int GetCuPeaks(
   /*Estimate Parameters of Fit Function*/
   // fSpec_K2->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
   fSpec_K2->SetParameters(365., 1000, 2);
-  TCanvas *c3 = new TCanvas();
+  TCanvas *c_CuK2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
   cuHist_K2->Fit("fSpec_K2", "Q", "", 355., 375.);
 
@@ -111,7 +111,7 @@ int GetCuPeaks(
   // TF1 *fSpec_L1 = new TF1("fSpec_L1", "gaus", 385., 405.);
   // /*Estimate Parameters of Fit*/
   // fSpec_L1->SetParameters(390, 75, 2);
-  // TCanvas *c2 = new TCanvas();
+  // TCanvas *c_CuL1 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
   // cuHist_L1->Fit("fSpec_L1", "Q", "", 385., 405.);
 
@@ -155,7 +155,7 @@ int GetCuPeaks(
   // TF1 *fSpec_L2 = new TF1("fSpec_L2", "gaus", 460., 480.);
   // /*Estimate Parameters of Fit*/
   // fSpec_L2->SetParameters(470, 75, 2);
-  // TCanvas *c2 = new TCanvas();
+  // TCanvas *c_CuL2 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
   // cuHist_L2->Fit("fSpec_L2", "Q", "", 460., 480.);
 
@@ -199,7 +199,7 @@ int GetCuPeaks(
   // TF1 *fSpec_L3 = new TF1("fSpec_L3", "gaus", 530., 560.);
   // /*Estimate Parameters of Fit*/
   // fSpec_L3->SetParameters(550, 75, 2);
-  // TCanvas *c2 = new TCanvas();
+  // TCanvas *c_CuL3 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
   // cuHist_L3->Fit("fSpec_L3", "Q", "", 530., 560.);
 
@@ -266,21 +266,20 @@ int GetCuPeaks(
 	gStyle->SetOptStat(0);
 	std::string title = "^{63}Cu Uncalibrated Spectrum";
 
-	TCanvas *c22 = new TCanvas("c22",title.c_str(),750,750);     //Makes canvas large enough for png printing.
-		c22->cd();
-		c22->SetGridx(1);
-		c22->SetGridy(1);
-//		c->SetFixedAspectRatio();
+	TCanvas *c_CuSpec = new TCanvas("c_CuSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
+		c_CuSpec->cd();
+		c_CuSpec->SetGridx(1);
+		c_CuSpec->SetGridy(1);
 	//Use blank histogram to set the parameters of the canvas
-	TH1F *blank3 = new TH1F("blank",title.c_str(),10, 0, 2048);
-		blank3->GetYaxis()->SetRangeUser(0, 600);
-		blank3->GetXaxis()->SetTitle("Bin Number");
-		blank3->GetYaxis()->SetTitle("Photon Count");
-		blank3->GetYaxis()->SetTitleOffset(1.65);
-		blank3->GetXaxis()->SetNdivisions(505);
-		blank3->GetYaxis()->SetNdivisions(505);
-		blank3->SetLineColor(0);
-	blank3->Draw();
+	TH1F *blankCu = new TH1F("blankCu",title.c_str(),10, 0, 2048);
+		blankCu->GetYaxis()->SetRangeUser(0, 600);
+		blankCu->GetXaxis()->SetTitle("Bin Number");
+		blankCu->GetYaxis()->SetTitle("Photon Count");
+		blankCu->GetYaxis()->SetTitleOffset(1.65);
+		blankCu->GetXaxis()->SetNdivisions(505);
+		blankCu->GetYaxis()->SetNdivisions(505);
+		blankCu->SetLineColor(0);
+	blankCu->Draw();
 
 	TH1D *hist = new TH1D();
 	hist = (TH1D*)cuFile->Get("h");
@@ -296,14 +295,15 @@ int GetCuPeaks(
 	// fStat_L3->SetLineColor(kViolet);
 	// fStat_L3->Draw("SAME");
 
-//	c22->Print("./plots/CuBinnedSpectrum.png");
+	// c_CuSpec->Print("./plots/CuBinnedSpectrum.png");
 
-  c1->Close();
-  c2->Close();
-  c3->Close();
-  c22->Close();
-
-
+  c_Cu->Close();
+  c_CuK1->Close();
+  c_CuK2->Close();
+  // c_CuL1->Close();
+  // c_CuL2->Close();
+  // c_CuL3->Close();
+  c_CuSpec->Close();
 
   return 0;
 }
