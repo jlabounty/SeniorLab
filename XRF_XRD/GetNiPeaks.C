@@ -8,6 +8,7 @@ int GetNiPeaks(
   TCanvas *c_Ni = new TCanvas();
   niHraw->Draw();
   vector<double> mean, stdev, energy, Z;
+  vector<int> line;
 
   cout << "=======================" << endl;
   cout << "!                     !" << endl;
@@ -56,6 +57,7 @@ int GetNiPeaks(
   Z.push_back(28.);
   mean.push_back(Peak_K1);
   stdev.push_back(Stdv_K1);
+  line.push_back(1);
 
   /*===================================*/
 
@@ -101,6 +103,7 @@ int GetNiPeaks(
   Z.push_back(28.);
   mean.push_back(Peak_K2);
   stdev.push_back(Stdv_K2);
+  line.push_back(2);
 
   /*===================================*/
 
@@ -144,6 +147,7 @@ int GetNiPeaks(
   // // energy.push_back(2.98);
   // // mean.push_back(Peak_L1);
   // // stdev.push_back(Stdv_L1);
+  // line.push_back(11);
 
   // /*===================================*/
 
@@ -187,6 +191,7 @@ int GetNiPeaks(
   // energy.push_back(3.15);
   // mean.push_back(Peak_L2);
   // stdev.push_back(Stdv_L2);
+  // line.push_back(12);
 
   /*===================================*/
 
@@ -230,6 +235,7 @@ int GetNiPeaks(
   // // energy.push_back(13.6);
   // // mean.push_back(Peak_L3);
   // // stdev.push_back(Stdv_L3);
+  // line.push_back(13);
 
   // /*===================================*/
 
@@ -240,11 +246,13 @@ int GetNiPeaks(
   TFile f(("./"+file_root).c_str(),"UPDATE");
   TTree *t = (TTree*)f.Get("t");
   double mean_i, stdev_i, energy_i, Z_i; 
+  int line_i;
 
   t->SetBranchAddress("mean",&mean_i);
   t->SetBranchAddress("stdev",&stdev_i);
   t->SetBranchAddress("energy",&energy_i);
   t->SetBranchAddress("Z",&Z_i);
+  t->SetBranchAddress("Ident",&line_i);
 
   /*Fill the output file branches with the data from the file*/
   for(int i = 0; i < mean.size(); i++)
@@ -253,6 +261,7 @@ int GetNiPeaks(
       Z_i = Z[i];
       energy_i = energy[i];
       stdev_i = stdev[i];
+      line_i = line[i];
       t->Fill();
     }
 
