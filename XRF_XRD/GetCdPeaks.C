@@ -11,11 +11,11 @@ int GetCdPeaks(
 
   cout << "=======================" << endl;
   cout << "!                     !" << endl;
-  cout << "!       Cd-112        !" << endl;
+  cout << "!        Cd-48        !" << endl;
   cout << "!                     !" << endl;
   cout << "=======================" << endl;
 
-  /*==============Cd-112 K1 Peak==============*/
+  /*==============Cd-48 K1 Peak===============*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *cdHist_K1 = (TH1D*)h->Clone("cdHraw");
   /*Define Spectrum Fit Function*/
@@ -59,7 +59,7 @@ int GetCdPeaks(
 
   /*===================================*/
 
-  /*===========Cd-112 K2 Peak==========*/
+  /*==============Cd-48 K2 Peak===============*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *cdHist_K2 = (TH1D*)h->Clone("cdHraw");
   /*Define Spectrum Fit*/
@@ -104,7 +104,7 @@ int GetCdPeaks(
 
   /*===================================*/
 
-  /*==============Cd-112 L1 Peak==============*/
+  /*==============Cd-48 L1 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *cdHist_L1 = (TH1D*)h->Clone("cdHraw");
   // /*Define Spectrum Fit Function*/
@@ -148,7 +148,7 @@ int GetCdPeaks(
 
   // /*===================================*/
 
-  // /*==============Cd-112 L2 Peak==============*/
+  // /*==============Cd-48 L2 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *cdHist_L2 = (TH1D*)h->Clone("cdHraw");
   // /*Define Spectrum Fit Function*/
@@ -192,7 +192,7 @@ int GetCdPeaks(
 
   /*===================================*/
 
-  // /*==============Cd-112 L3 Peak==============*/
+  // /*==============Cd-48 L3 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *cdHist_L3 = (TH1D*)h->Clone("cdHraw");
   // /*Define Spectrum Fit Function*/
@@ -264,7 +264,7 @@ int GetCdPeaks(
 
 
 	gStyle->SetOptStat(0);
-	std::string title = "^{112}Cd Uncalibrated Spectrum";
+	std::string title = "^{48}Cd Uncalibrated Spectrum";
 
 	TCanvas *c_CdSpec = new TCanvas("c_CdSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
 		c_CdSpec->cd();

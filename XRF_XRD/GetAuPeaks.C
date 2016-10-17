@@ -11,11 +11,11 @@ int GetAuPeaks(
 
   cout << "=======================" << endl;
   cout << "!                     !" << endl;
-  cout << "!       Au-197        !" << endl;
+  cout << "!        Au-79        !" << endl;
   cout << "!                     !" << endl;
   cout << "=======================" << endl;
 
-  // /*==============Au-197 K1 Peak==============*/
+  // /*==============Au-79 K1 Peak===============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *auHist_K1 = (TH1D*)h->Clone("auHraw");
   // /*Define Spectrum Fit Function*/
@@ -57,9 +57,9 @@ int GetAuPeaks(
   // // mean.push_back(Peak_K1);
   // // stdev.push_back(Stdv_K1);
 
-  // /*===================================*/
+  // /*==========================================*/
 
-  // /*===========Au-197 K2 Peak==========*/
+  // /*===============Au-79 K2 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *auHist_K2 = (TH1D*)h->Clone("auHraw");
   // /*Define Spectrum Fit*/
@@ -102,9 +102,9 @@ int GetAuPeaks(
   // // mean.push_back(Peak_K2);
   // // stdev.push_back(Stdv_K2);
 
-  // /*===================================*/
+  // /*======================================*/
 
-  /*==============Au-197 L1 Peak==============*/
+  /*==============Au-79 L1 Peak===============*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *auHist_L1 = (TH1D*)h->Clone("auHraw");
   /*Define Spectrum Fit Function*/
@@ -146,9 +146,9 @@ int GetAuPeaks(
   mean.push_back(Peak_L1);
   stdev.push_back(Stdv_L1);
 
-  /*===================================*/
+  /*==========================================*/
 
-  /*==============Au-197 L2 Peak==============*/
+  /*==============Au-79 L2 Peak===============*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *auHist_L2 = (TH1D*)h->Clone("auHraw");
   /*Define Spectrum Fit Function*/
@@ -190,9 +190,9 @@ int GetAuPeaks(
   mean.push_back(Peak_L2);
   stdev.push_back(Stdv_L2);
 
-  /*===================================*/
+  /*==========================================*/
 
-  /*==============Au-197 L3 Peak==============*/
+  /*==============Au-79 L3 Peak===============*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *auHist_L3 = (TH1D*)h->Clone("auHraw");
   /*Define Spectrum Fit Function*/
@@ -264,7 +264,7 @@ int GetAuPeaks(
 
 
 	gStyle->SetOptStat(0);
-	std::string title = "^{197}Au Uncalibrated Spectrum";
+	std::string title = "^{79}Au Uncalibrated Spectrum";
 
 	TCanvas *c_AuSpec = new TCanvas("c_AuSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
 		c_AuSpec->cd();

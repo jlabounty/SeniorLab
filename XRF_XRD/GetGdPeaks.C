@@ -11,11 +11,11 @@ int GetGdPeaks(
  
   cout << "=======================" << endl;
   cout << "!                     !" << endl;
-  cout << "!       Gd-158        !" << endl;
+  cout << "!        Gd-64        !" << endl;
   cout << "!                     !" << endl;
   cout << "=======================" << endl;
 
-  // /*==============Gd-158 K1 Peak==============*/
+  // /*==============Gd-64 K1 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *gdHist_K1 = (TH1D*)h->Clone("gdHraw");
   // /*Define Spectrum Fit Function*/
@@ -59,7 +59,7 @@ int GetGdPeaks(
 
   // /*===================================*/
 
-  // /*===========Gd-158 K2 Peak==========*/
+  // /*===========Gd-64 K2 Peak==========*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *gdHist_K2 = (TH1D*)h->Clone("gdHraw");
   // /*Define Spectrum Fit*/
@@ -104,7 +104,7 @@ int GetGdPeaks(
 
   /*===================================*/
 
-  /*==============Gd-158 L1 Peak==============*/
+  /*==============Gd-64 L1 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *gdHist_L1 = (TH1D*)h->Clone("gdHraw");
   /*Define Spectrum Fit Function*/
@@ -148,7 +148,7 @@ int GetGdPeaks(
 
   /*===================================*/
 
-  /*==============Gd-158 L2 Peak==============*/
+  /*==============Gd-64 L2 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *gdHist_L2 = (TH1D*)h->Clone("gdHraw");
   /*Define Spectrum Fit Function*/
@@ -192,7 +192,7 @@ int GetGdPeaks(
 
   /*==========================================*/
 
-  /*==============Gd-158 L3 Peak==============*/
+  /*==============Gd-64 L3 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *gdHist_L3 = (TH1D*)h->Clone("gdHraw");
   /*Define Spectrum Fit Function*/
@@ -264,7 +264,7 @@ int GetGdPeaks(
 
 
 	gStyle->SetOptStat(0);
-	std::string title = "^{158}Gd Uncalibrated Spectrum";
+	std::string title = "^{64}Gd Uncalibrated Spectrum";
 
 	TCanvas *c_GdSpec = new TCanvas("c_GdSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
 		c_GdSpec->cd();

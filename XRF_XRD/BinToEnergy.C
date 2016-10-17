@@ -9,7 +9,10 @@
 #include "GetCoPeaks.C"
 #include "GetCuPeaks.C"
 #include "GetGdPeaks.C"
+#include "GetInPeaks.C"
 #include "GetMoPeaks.C"
+#include "GetNbPeaks.C"
+#include "GetNiPeaks.C"
 
 int BinToEnergy()
 {
@@ -36,10 +39,13 @@ int BinToEnergy()
 	GetAgPeaks();
 	GetAuPeaks();
 	GetCdPeaks();
-	GetGdPeaks();
 	GetCoPeaks();
 	GetCuPeaks();
+	GetGdPeaks();
+	GetInPeaks();
 	GetMoPeaks();
+	GetNbPeaks();
+	GetNiPeaks();
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 

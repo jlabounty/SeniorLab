@@ -11,11 +11,11 @@ int GetCoPeaks(
 
   cout << "=======================" << endl;
   cout << "!                     !" << endl;
-  cout << "!       Co-59         !" << endl;
+  cout << "!       Co-27         !" << endl;
   cout << "!                     !" << endl;
   cout << "=======================" << endl;
 
-  /*===============Co-59 K1 Peak==============*/
+  /*===============Co-27 K1 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *coHist_K1 = (TH1D*)h->Clone("coHraw");
   /*Define Spectrum Fit Function*/
@@ -59,7 +59,7 @@ int GetCoPeaks(
 
   /*===================================*/
 
-  /*===========Co-59  K2 Peak==========*/
+  /*===========Co-27  K2 Peak==========*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *coHist_K2 = (TH1D*)h->Clone("coHraw");
   /*Define Spectrum Fit*/
@@ -104,7 +104,7 @@ int GetCoPeaks(
 
   /*===================================*/
 
-  // /*==============Co-59  L1 Peak==============*/
+  // /*==============Co-27  L1 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *coHist_L1 = (TH1D*)h->Clone("coHraw");
   // /*Define Spectrum Fit Function*/
@@ -148,7 +148,7 @@ int GetCoPeaks(
 
   // /*===================================*/
 
-  // /*==============Co-59  L2 Peak==============*/
+  // /*==============Co-27  L2 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *coHist_L2 = (TH1D*)h->Clone("coHraw");
   // /*Define Spectrum Fit Function*/
@@ -192,7 +192,7 @@ int GetCoPeaks(
 
   // /*===================================*/
 
-  // /*==============Co-59  L3 Peak==============*/
+  // /*==============Co-27  L3 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *coHist_L3 = (TH1D*)h->Clone("coHraw");
   // /*Define Spectrum Fit Function*/
@@ -264,7 +264,7 @@ int GetCoPeaks(
 
 
 	gStyle->SetOptStat(0);
-	std::string title = "^{63}Co Uncalibrated Spectrum";
+	std::string title = "^{27}Co Uncalibrated Spectrum";
 
 	TCanvas *c_CoSpec = new TCanvas("c_CoSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
 		c_CoSpec->cd();

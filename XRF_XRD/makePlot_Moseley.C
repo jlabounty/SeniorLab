@@ -7,7 +7,10 @@
 #include "GetCoPeaks.C"
 #include "GetCuPeaks.C"
 #include "GetGdPeaks.C"
+#include "GetInPeaks.C"
 #include "GetMoPeaks.C"
+#include "GetNbPeaks.C"
+#include "GetNiPeaks.C"
 
 int makePlot_Moseley()
 {
@@ -33,7 +36,10 @@ int makePlot_Moseley()
 	GetCoPeaks();
 	GetCuPeaks();
 	GetGdPeaks();
+	GetInPeaks();
 	GetMoPeaks();
+	GetNbPeaks();
+	GetNiPeaks();
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 
@@ -50,7 +56,7 @@ int makePlot_Moseley()
 		// mean.push_back(sqrt(((( 1.6*(10**(-16.))*((0.0245642*(t->GetV1())[i]) - 0.0446728))) / TMath::H() )/ 10**16.));
 		mean.push_back((t->GetV1())[i]);
 		stdev.push_back(TMath::Abs((t->GetV2())[i]));
-		X.push_back(sqrt(((( 1.6*(10**(-16.))*((0.0245642*(mean[i]) - 0.0446728))) / TMath::H() )/ 10**16.)));
+		X.push_back(sqrt(((( 1.6*(10**(-16.))*((0.0245664*(mean[i]) - 0.0532302))) / TMath::H() )/ 10**16.)));
 		err_X.push_back((stdev[i]*X[i]) / (2.*mean[i]) );
 		Z.push_back((t->GetV4())[i]);
 		err_Z.push_back(0.00000);

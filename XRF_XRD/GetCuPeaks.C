@@ -11,11 +11,11 @@ int GetCuPeaks(
 
   cout << "=======================" << endl;
   cout << "!                     !" << endl;
-  cout << "!       Cu-63         !" << endl;
+  cout << "!       Cu-29         !" << endl;
   cout << "!                     !" << endl;
   cout << "=======================" << endl;
 
-  /*===============Cu-63 K1 Peak==============*/
+  /*===============Cu-29 K1 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *cuHist_K1 = (TH1D*)h->Clone("cuHraw");
   /*Define Spectrum Fit Function*/
@@ -59,7 +59,7 @@ int GetCuPeaks(
 
   /*===================================*/
 
-  /*===========Cu-63  K2 Peak==========*/
+  /*===========Cu-29  K2 Peak==========*/
   /*Clone Histogram of Spectrum from Data File*/
   TH1D *cuHist_K2 = (TH1D*)h->Clone("cuHraw");
   /*Define Spectrum Fit*/
@@ -104,7 +104,7 @@ int GetCuPeaks(
 
   /*===================================*/
 
-  // /*==============Cu-63  L1 Peak==============*/
+  // /*==============Cu-29  L1 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *cuHist_L1 = (TH1D*)h->Clone("cuHraw");
   // /*Define Spectrum Fit Function*/
@@ -148,7 +148,7 @@ int GetCuPeaks(
 
   // /*===================================*/
 
-  // /*==============Cu-63  L2 Peak==============*/
+  // /*==============Cu-29  L2 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *cuHist_L2 = (TH1D*)h->Clone("cuHraw");
   // /*Define Spectrum Fit Function*/
@@ -192,7 +192,7 @@ int GetCuPeaks(
 
   // /*===================================*/
 
-  // /*==============Cu-63  L3 Peak==============*/
+  // /*==============Cu-29  L3 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
   // TH1D *cuHist_L3 = (TH1D*)h->Clone("cuHraw");
   // /*Define Spectrum Fit Function*/
@@ -264,7 +264,7 @@ int GetCuPeaks(
 
 
 	gStyle->SetOptStat(0);
-	std::string title = "^{63}Cu Uncalibrated Spectrum";
+	std::string title = "^{29}Cu Uncalibrated Spectrum";
 
 	TCanvas *c_CuSpec = new TCanvas("c_CuSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
 		c_CuSpec->cd();
