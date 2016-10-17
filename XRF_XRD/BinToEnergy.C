@@ -14,11 +14,12 @@ int BinToEnergy()
         std::string file_root = "OutputFile.root";
         TFile f(("./"+file_root).c_str(),"RECREATE");
         TTree *t = new TTree("t","Peaks of Functions and their Standard Deviations");
-        double mean_i, stdev_i, energy_i; 
+        double mean_i, stdev_i, energy_i, Z_i;
 
         TBranch *b_mean = t->Branch("mean",&mean_i,"Mean bin of the energy peak/D");
         TBranch *b_stdev = t->Branch("stdev",&stdev_i,"Standard deviation of gaussian fit to the energy peak/D");
         TBranch *b_energy = t->Branch("energy",&energy_i,"Known energy of the peak/D");
+        TBranch *b_Z = t->Branch("Z",&Z_i,"Atomic Number of the Element/D");
 
 	f.Write();
 	f.Close();
