@@ -9,7 +9,7 @@
 #include "GetGdPeaks.C"
 #include "GetMoPeaks.C"
 
-int makePlot_EvZ()
+int makePlot_Moseley()
 {
 
 	//Create Empty Root File
