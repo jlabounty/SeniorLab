@@ -7,7 +7,7 @@ int GetCuPeaks(
   cuHraw = (TH1D*)cuFile->Get("h");
   TCanvas *c1 = new TCanvas();
   cuHraw->Draw();
-  vector<double> mean, stdev, energy;
+  vector<double> mean, stdev, energy, Z;
 
   /*===============Cu-63 K1 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
@@ -53,6 +53,7 @@ int GetCuPeaks(
 
   /*Append Values to Vectors*/
   energy.push_back(8.05);
+  Z.push_back(29.);
   mean.push_back(Peak_K1);
   stdev.push_back(Stdv_K1);
 
@@ -97,6 +98,7 @@ int GetCuPeaks(
   
   /*Append Values to Vectors*/
   energy.push_back(8.91);
+  Z.push_back(29.);
   mean.push_back(Peak_K2);
   stdev.push_back(Stdv_K2);
 
@@ -140,6 +142,7 @@ int GetCuPeaks(
 
   // /*Append Values to Vectors*/
   // energy.push_back(13.6);
+  // Z.push_back(29.);
   // mean.push_back(Peak_L1);
   // stdev.push_back(Stdv_L1);
 
@@ -183,6 +186,7 @@ int GetCuPeaks(
 
   // /*Append Values to Vectors*/
   // energy.push_back(13.6);
+  // Z.push_back(29.);
   // mean.push_back(Peak_L2);
   // stdev.push_back(Stdv_L2);
 
@@ -226,6 +230,7 @@ int GetCuPeaks(
 
   // /*Append Values to Vectors*/
   // energy.push_back(13.6);
+  // Z.push_back(29.);
   // mean.push_back(Peak_L3);
   // stdev.push_back(Stdv_L3);
 
@@ -237,17 +242,19 @@ int GetCuPeaks(
   std::string file_root = "OutputFile.root";
   TFile f(("./"+file_root).c_str(),"UPDATE");
   TTree *t = (TTree*)f.Get("t");
-  double mean_i, stdev_i, energy_i; 
+  double mean_i, stdev_i, energy_i, Z_i; 
 
   t->SetBranchAddress("mean",&mean_i);
   t->SetBranchAddress("stdev",&stdev_i);
   t->SetBranchAddress("energy",&energy_i);
+  t->SetBranchAddress("Z",&Z_i);
 
   /*Fill the output file branches with the data from the file*/
   for(int i = 0; i < mean.size(); i++)
     {
       mean_i = mean[i];
       energy_i = energy[i];
+      Z_i = Z[i];
       stdev_i = stdev[i];
       t->Fill();
     }

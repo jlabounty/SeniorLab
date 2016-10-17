@@ -8,7 +8,7 @@ int GetAmPeaks(
   amHraw = (TH1D*)amFile->Get("h");
   TCanvas *c1 = new TCanvas();
   amHraw->Draw();
-  vector<double> mean, stdev, energy;
+  vector<double> mean, stdev, energy, Z;
 
   /*========Am-241 13.6 keV Peak=========*/
   /*Clone Histogram of Spectrum from Data File*/
@@ -54,6 +54,7 @@ int GetAmPeaks(
 
   /*Append Values to Vectors*/
   energy.push_back(13.6);
+  Z.push_back(95.);
   mean.push_back(Peak_013);
   stdev.push_back(Stdv_013);
 
@@ -98,6 +99,7 @@ int GetAmPeaks(
   
   /*Append Values to Vectors*/
   energy.push_back(17.8);
+  Z.push_back(95.);
   mean.push_back(Peak_017);
   stdev.push_back(Stdv_017);
 
@@ -108,17 +110,19 @@ int GetAmPeaks(
   std::string file_root = "OutputFile.root";
   TFile f(("./"+file_root).c_str(),"UPDATE");
   TTree *t = (TTree*)f.Get("t");
-  double mean_i, stdev_i, energy_i; 
+  double mean_i, stdev_i, energy_i, Z_i; 
 
   t->SetBranchAddress("mean",&mean_i);
   t->SetBranchAddress("stdev",&stdev_i);
   t->SetBranchAddress("energy",&energy_i);
+  t->SetBranchAddress("Z",&Z_i);
 
   /*Fill the output file branches with the data from the file*/
   for(int i = 0; i < mean.size(); i++)
     {
       mean_i = mean[i];
       energy_i = energy[i];
+      Z_i = Z[i];
       stdev_i = stdev[i];
       t->Fill();
     }
