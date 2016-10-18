@@ -13,6 +13,7 @@
 #include "GetMoPeaks.C"
 #include "GetNbPeaks.C"
 #include "GetNiPeaks.C"
+#include "GetWXPeaks.C"
 
 int BinToEnergy()
 {
@@ -48,6 +49,7 @@ int BinToEnergy()
 	GetMoPeaks();
 	GetNbPeaks();
 	GetNiPeaks();
+	GetWXPeaks();
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 

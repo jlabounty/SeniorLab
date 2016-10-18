@@ -11,6 +11,7 @@
 #include "GetMoPeaks.C"
 #include "GetNbPeaks.C"
 #include "GetNiPeaks.C"
+#include "GetWXPeaks.C"
 
 int makePlot_Moseley()
 {
@@ -42,6 +43,7 @@ int makePlot_Moseley()
 	GetMoPeaks();
 	GetNbPeaks();
 	GetNiPeaks();
+	GetWXPeaks();
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 
