@@ -1,35 +1,34 @@
-int GetAuPeaks(
-	       TString infile = "data/Scattering_Au_100516_141827.root"
+int GetPbPeaks(
+	       TString infile = "data/Scattering_Pb_101016_143318.root"
 )
 {
-  TFile *auFile = TFile::Open(infile); 
-  TH1D *auHraw = new TH1D();
-  auHraw = (TH1D*)auFile->Get("h");
-  auHraw->SetTitle("");
-  TCanvas *c_Au = new TCanvas();
-  auHraw->Draw();
+  TFile *pbFile = TFile::Open(infile); 
+  TH1D *pbHraw = new TH1D();
+  pbHraw = (TH1D*)pbFile->Get("h");
+  TCanvas *c_Pb = new TCanvas();
+  pbHraw->Draw();
   vector<double> mean, stdev, energy, Z;
   vector<int> line;
 
   cout << "=======================" << endl;
   cout << "!                     !" << endl;
-  cout << "!        Au-79        !" << endl;
+  cout << "!       Pb-82        !" << endl;
   cout << "!                     !" << endl;
   cout << "=======================" << endl;
 
-  // /*==============Au-79 K1 Peak===============*/
+  // /*==============Pb-82 K1 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
-  // TH1D *auHist_K1 = (TH1D*)h->Clone("auHraw");
+  // TH1D *pbHist_K1 = (TH1D*)h->Clone("pbHraw");
   // /*Define Spectrum Fit Function*/
-  // TF1 *fSpec_K1 = new TF1("fSpec_K1", "gaus", 890., 920.);
+  // TF1 *fSpec_K1 = new TF1("fSpec_K1", "gaus", 670., 695.);
   // /*Estimate Parameters of Fit*/
-  // fSpec_K1->SetParameters(900, 75, 2);
-  // TCanvas *c_AuK1 = new TCanvas();
+  // fSpec_K1->SetParameters(680, 10, 2);
+  // TCanvas *c_PbK1 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
-  // auHist_K1->Fit("fSpec_K1", "Q", "", 890., 920.);
+  // pbHist_K1->Fit("fSpec_K1", "Q", "", 670., 695.);
 
   // /*Obtain Fit Function from Histogram*/
-  // TF1 *fStat_K1 = auHist_K1->GetFunction("fSpec_K1");
+  // TF1 *fStat_K1 = pbHist_K1->GetFunction("fSpec_K1");
 
   // /*Assign Fit Parameters to Variables*/
   // double Peak_K1 = fStat_K1->GetParameter(1);
@@ -54,28 +53,28 @@ int GetAuPeaks(
   // cout << "=======================" << endl;
 
   // /*Append Values to Vectors*/
-  // // energy.push_back(13.6);
-  // Z.push_back(79.);
-  // // mean.push_back(Peak_K1);
-  // // stdev.push_back(Stdv_K1);
-  //line.push_back(1);
+  // energy.push_back(72.86);
+  // Z.push_back(82.);
+  // mean.push_back(Peak_K1);
+  // stdev.push_back(Stdv_K1);
+  // line.push_back(1);
 
-  // /*==========================================*/
+  // /*===================================*/
 
-  // /*===============Au-79 K2 Peak==============*/
+  // /*===========Pb-82 K2 Peak==========*/
   // /*Clone Histogram of Spectrum from Data File*/
-  // TH1D *auHist_K2 = (TH1D*)h->Clone("auHraw");
+  // TH1D *pbHist_K2 = (TH1D*)h->Clone("pbHraw");
   // /*Define Spectrum Fit*/
-  // TF1 *fSpec_K2 = new TF1("fSpec_K2", "gaus", 1005., 1030.);
+  // TF1 *fSpec_K2 = new TF1("fSpec_K2", "gaus", 755., 770.);
   // /*Estimate Parameters of Fit Function*/
   // // fSpec_K2->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
-  // fSpec_K2->SetParameters(1020., 1000, 2);
-  // TCanvas *c_AuK2 = new TCanvas();
+  // fSpec_K2->SetParameters(760., 1000, 2);
+  // TCanvas *c_PbK2 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
-  // auHist_K2->Fit("fSpec_K2", "Q", "", 1005., 1030.);
+  // pbHist_K2->Fit("fSpec_K2", "Q", "", 755., 770.);
 
   // /*Obtain Fit Function from Histogram*/
-  // TF1 *fStat_K2 = auHist_K2->GetFunction("fSpec_K2");
+  // TF1 *fStat_K2 = pbHist_K2->GetFunction("fSpec_K2");
 
   // /*Assign Fit Parameters to Variables*/
   // double Peak_K2 = fStat_K2->GetParameter(1);
@@ -100,27 +99,27 @@ int GetAuPeaks(
   // cout << "=======================" << endl;
   
   // /*Append Values to Vectors*/
-  // // energy.push_back(17.8);
-  // Z.push_back(79.);
-  // // mean.push_back(Peak_K2);
-  // // stdev.push_back(Stdv_K2);
-  //line.push_back(2);
+  // energy.push_back(84.92);
+  // Z.push_back(82.);
+  // mean.push_back(Peak_K2);
+  // stdev.push_back(Stdv_K2);
+  // line.push_back(2);
 
-  // /*======================================*/
+  // /*===================================*/
 
-  /*==============Au-79 L1 Peak===============*/
+  /*==============Pb-82 L1 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
-  TH1D *auHist_L1 = (TH1D*)h->Clone("auHraw");
+  TH1D *pbHist_L1 = (TH1D*)h->Clone("pbHraw");
   /*Define Spectrum Fit Function*/
-  TF1 *fSpec_L1 = new TF1("fSpec_L1", "gaus", 385., 405.);
+  TF1 *fSpec_L1 = new TF1("fSpec_L1", "gaus", 425., 440.);
   /*Estimate Parameters of Fit*/
-  fSpec_L1->SetParameters(390, 75, 2);
-  TCanvas *c_AuL1 = new TCanvas();
+  fSpec_L1->SetParameters(430, 75, 2);
+  TCanvas *c_PbL1 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  auHist_L1->Fit("fSpec_L1", "Q", "", 385., 405.);
+  pbHist_L1->Fit("fSpec_L1", "Q", "", 425., 440.);
 
   /*Obtain Fit Function from Histogram*/
-  TF1 *fStat_L1 = auHist_L1->GetFunction("fSpec_L1");
+  TF1 *fStat_L1 = pbHist_L1->GetFunction("fSpec_L1");
 
   /*Assign Fit Parameters to Variables*/
   double Peak_L1 = fStat_L1->GetParameter(1);
@@ -145,27 +144,27 @@ int GetAuPeaks(
   cout << "=======================" << endl;
 
   /*Append Values to Vectors*/
-  energy.push_back(9.71);
-  Z.push_back(79.);
+  energy.push_back(10.55);
+  Z.push_back(82.);
   mean.push_back(Peak_L1);
   stdev.push_back(Stdv_L1);
   line.push_back(11);
 
-  /*==========================================*/
+  /*===================================*/
 
-  /*==============Au-79 L2 Peak===============*/
+  /*==============Pb-82 L2 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
-  TH1D *auHist_L2 = (TH1D*)h->Clone("auHraw");
+  TH1D *pbHist_L2 = (TH1D*)h->Clone("pbHraw");
   /*Define Spectrum Fit Function*/
-  TF1 *fSpec_L2 = new TF1("fSpec_L2", "gaus", 460., 480.);
+  TF1 *fSpec_L2 = new TF1("fSpec_L2", "gaus", 510., 525.);
   /*Estimate Parameters of Fit*/
-  fSpec_L2->SetParameters(470, 75, 2);
-  TCanvas *c_AuL2 = new TCanvas();
+  fSpec_L2->SetParameters(515, 75, 2);
+  TCanvas *c_PbL2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  auHist_L2->Fit("fSpec_L2", "Q", "", 460., 480.);
+  pbHist_L2->Fit("fSpec_L2", "Q", "", 510., 525.);
 
   /*Obtain Fit Function from Histogram*/
-  TF1 *fStat_L2 = auHist_L2->GetFunction("fSpec_L2");
+  TF1 *fStat_L2 = pbHist_L2->GetFunction("fSpec_L2");
 
   /*Assign Fit Parameters to Variables*/
   double Peak_L2 = fStat_L2->GetParameter(1);
@@ -190,27 +189,27 @@ int GetAuPeaks(
   cout << "=======================" << endl;
 
   /*Append Values to Vectors*/
-  energy.push_back(11.44);
-  Z.push_back(79.);
+  energy.push_back(12.61);
+  Z.push_back(82.);
   mean.push_back(Peak_L2);
   stdev.push_back(Stdv_L2);
   line.push_back(12);
 
-  /*==========================================*/
+  /*===================================*/
 
-  /*==============Au-79 L3 Peak===============*/
+  /*==============Pb-82 L3 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
-  TH1D *auHist_L3 = (TH1D*)h->Clone("auHraw");
+  TH1D *pbHist_L3 = (TH1D*)h->Clone("pbHraw");
   /*Define Spectrum Fit Function*/
-  TF1 *fSpec_L3 = new TF1("fSpec_L3", "gaus", 530., 560.);
+  TF1 *fSpec_L3 = new TF1("fSpec_L3", "gaus", 595., 610.);
   /*Estimate Parameters of Fit*/
-  fSpec_L3->SetParameters(550, 75, 2);
-  TCanvas *c_AuL3 = new TCanvas();
+  fSpec_L3->SetParameters(600, 75, 2);
+  TCanvas *c_PbL3 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  auHist_L3->Fit("fSpec_L3", "Q", "", 530., 560.);
+  pbHist_L3->Fit("fSpec_L3", "Q", "", 595., 610.);
 
   /*Obtain Fit Function from Histogram*/
-  TF1 *fStat_L3 = auHist_L3->GetFunction("fSpec_L3");
+  TF1 *fStat_L3 = pbHist_L3->GetFunction("fSpec_L3");
 
   /*Assign Fit Parameters to Variables*/
   double Peak_L3 = fStat_L3->GetParameter(1);
@@ -235,8 +234,8 @@ int GetAuPeaks(
   cout << "=======================" << endl;
 
   /*Append Values to Vectors*/
-  energy.push_back(13.38);
-  Z.push_back(79.);
+  energy.push_back(14.76);
+  Z.push_back(82.);
   mean.push_back(Peak_L3);
   stdev.push_back(Stdv_L3);
   line.push_back(13);
@@ -274,27 +273,25 @@ int GetAuPeaks(
 
 
 	gStyle->SetOptStat(0);
-	// std::string title = "_{79}Au Uncalibrated Spectrum";
-	std::string title = "";
+	std::string title = "^{82}Pb Uncalibrated Spectrum";
 
-	TCanvas *c_AuSpec = new TCanvas("c_AuSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
-		c_AuSpec->cd();
-		c_AuSpec->SetGridx(1);
-		c_AuSpec->SetGridy(1);
-//		c->SetFixedAspectRatio();
+	TCanvas *c_PbSpec = new TCanvas("c_PbSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
+		c_PbSpec->cd();
+		c_PbSpec->SetGridx(1);
+		c_PbSpec->SetGridy(1);
 	//Use blank histogram to set the parameters of the canvas
-	TH1F *blankAu = new TH1F("blankAu",title.c_str(),10, 0, 2048);
-		blankAu->GetYaxis()->SetRangeUser(0, 600);
-		blankAu->GetXaxis()->SetTitle("Bin Number");
-		blankAu->GetYaxis()->SetTitle("Photon Count");
-		blankAu->GetYaxis()->SetTitleOffset(1.65);
-		blankAu->GetXaxis()->SetNdivisions(505);
-		blankAu->GetYaxis()->SetNdivisions(505);
-		blankAu->SetLineColor(0);
-	blankAu->Draw();
+	TH1F *blankPb = new TH1F("blankPb",title.c_str(),10, 0, 2048);
+		blankPb->GetYaxis()->SetRangeUser(0, 600);
+		blankPb->GetXaxis()->SetTitle("Bin Number");
+		blankPb->GetYaxis()->SetTitle("Photon Count");
+		blankPb->GetYaxis()->SetTitleOffset(1.65);
+		blankPb->GetXaxis()->SetNdivisions(505);
+		blankPb->GetYaxis()->SetNdivisions(505);
+		blankPb->SetLineColor(0);
+	blankPb->Draw();
 
 	TH1D *hist = new TH1D();
-	hist = (TH1D*)auFile->Get("h");
+	hist = (TH1D*)pbFile->Get("h");
 	hist->Draw("SAME");
 	// fStat_K1->SetLineColor(kRed);
 	// fStat_K1->Draw("SAME");
@@ -307,17 +304,15 @@ int GetAuPeaks(
 	fStat_L3->SetLineColor(kViolet);
 	fStat_L3->Draw("SAME");
 
-	// c_Au->Print("../../Plots/XRF_XRD/AuSpectrum.png");
-	// c_AuSpec->Print("../../Plots/XRF_XRD/AuBinnedSpectrum.png");
+	// c_PbSpec->Print("./plots/PbBinnedSpectrum.png");
 
-	c_Au->Close();
-	// c_AuK1->Close();
-	// c_AuK2->Close();
-	c_AuL1->Close();
-	c_AuL2->Close();
-	c_AuL3->Close();
-	c_AuSpec->Close();
-
+  c_Pb->Close();
+  // c_PbK1->Close();
+  // c_PbK2->Close();
+  c_PbL1->Close();
+  c_PbL2->Close();
+  c_PbL3->Close();
+  c_PbSpec->Close();
 
   return 0;
 }

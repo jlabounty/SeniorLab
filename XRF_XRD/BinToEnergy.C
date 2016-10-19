@@ -13,7 +13,16 @@
 #include "GetMoPeaks.C"
 #include "GetNbPeaks.C"
 #include "GetNiPeaks.C"
+#include "GetPbPeaks.C"
+#include "GetSnPeaks.C"
+#include "GetTaPeaks.C"
+#include "GetTiPeaks.C"
+#include "GetUXPeaks.C"
+#include "GetVXPeaks.C"
 #include "GetWXPeaks.C"
+#include "GetYXPeaks.C"
+#include "GetZnPeaks.C"
+#include "GetZrPeaks.C"
 
 int BinToEnergy()
 {
@@ -49,7 +58,16 @@ int BinToEnergy()
 	GetMoPeaks();
 	GetNbPeaks();
 	GetNiPeaks();
+	GetPbPeaks();
+	GetSnPeaks();
+	GetTaPeaks();
+	GetTiPeaks();
+	GetUXPeaks();
+	GetVXPeaks();
 	GetWXPeaks();
+	GetYXPeaks();
+	GetZnPeaks();
+	GetZrPeaks();
 	//Perform analysis on output data
 	gStyle->SetOptStat(0); 
 
@@ -79,7 +97,7 @@ int BinToEnergy()
 		c->SetGridy(1);
 		//		c->SetFixedAspectRatio();
         //Use blank histogram to set the parameters of the canvas
-        TH1F *hcalib = new TH1F("hcalib",title.c_str(),10, 0, 2048);
+        TH1F *hcalib = new TH1F("hcalib",title.c_str(),10, 0, 1500);
                 hcalib->GetYaxis()->SetRangeUser(0, 30);
                 hcalib->GetXaxis()->SetTitle("Bin Number");
                 hcalib->GetYaxis()->SetTitle("Energy (keV)");
@@ -91,16 +109,16 @@ int BinToEnergy()
 	TGraphErrors *gr = new TGraphErrors(err_energy.size(), &(mean[0]),  &(energy[0]), &(stdev[0]), &(err_energy[0]) );
 	gr->Draw("p SAME");
 
-	TF1 *fit1 = new TF1("fit1","pol1", 0, 2048);
+	TF1 *fit1 = new TF1("fit1","pol1", 0, 1500);
 	fit1->SetParameters(10, 2);
 	gr->Fit("fit1", "0");
 	cout << "Chi-Squared: " << fit1->GetChisquare() << endl;
 	cout << "NDF: " << fit1->GetNDF() << endl; 
 	
-	TF1 *f1 = new TF1("f1", "pol1", 0, 2048);
+	TF1 *f1 = new TF1("f1", "pol1", 0, 1500);
 		f1->SetParameter(0, fit1->GetParameter(0));
 		f1->SetParameter(1, fit1->GetParameter(1));
-		f1->SetLineStyle(7);
+		f1->SetLineStyle(2);
 	f1->Draw("l SAME");
 	
 	c->Update();
@@ -129,6 +147,9 @@ int BinToEnergy()
 	  }
         TGraph *gr1 = new TGraph(v_count.size(), &(v_bin[0]), &(v_count[0]));
         gr1->Draw("p SAME");
+
+	// c->Print("../../Plots/XRF_XRD/EvsBin.eps");
+	// c->Print("../../Plots/XRF_XRD/EvsBin.png");
 
 	return 0;
 }

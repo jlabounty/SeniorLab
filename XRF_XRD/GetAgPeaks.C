@@ -304,7 +304,8 @@ int GetAgPeaks(
 	// fStat_L3->SetLineColor(kViolet);
 	// fStat_L3->Draw("SAME");
 
-	// c_AgSpec->Print("./plots/AgBinnedSpectrum.png");
+	// c_Ag->Print("../../Plots/XRF_XRD/AgSpectrum.png");
+	// c_AgSpec->Print("../../Plots/XRF_XRD/AgBinnedSpectrum.png");
 
   c_Ag->Close();
   c_AgK1->Close();

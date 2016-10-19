@@ -1,34 +1,34 @@
-int GetNiPeaks(
-	       TString infile = "data/Scattering_Ni_101016_125209.root"
+int GetZnPeaks(
+	       TString infile = "data/Scattering_Zn_101016_133330.root"
 )
 {
-  TFile *niFile = TFile::Open(infile); 
-  TH1D *niHraw = new TH1D();
-  niHraw = (TH1D*)niFile->Get("h");
-  TCanvas *c_Ni = new TCanvas();
-  niHraw->Draw();
+  TFile *znFile = TFile::Open(infile); 
+  TH1D *znHraw = new TH1D();
+  znHraw = (TH1D*)znFile->Get("h");
+  TCanvas *c_Zn = new TCanvas();
+  znHraw->Draw();
   vector<double> mean, stdev, energy, Z;
   vector<int> line;
 
   cout << "=======================" << endl;
   cout << "!                     !" << endl;
-  cout << "!        Ni-28        !" << endl;
+  cout << "!       Zn-30         !" << endl;
   cout << "!                     !" << endl;
   cout << "=======================" << endl;
 
-  /*==============Ni-28 K1 Peak==============*/
+  /*===============Zn-30 K1 Peak==============*/
   /*Clone Histogram of Spectrum from Data File*/
-  TH1D *niHist_K1 = (TH1D*)h->Clone("niHraw");
+  TH1D *znHist_K1 = (TH1D*)h->Clone("znHraw");
   /*Define Spectrum Fit Function*/
-  TF1 *fSpec_K1 = new TF1("fSpec_K1", "gaus", 297., 315.);
+  TF1 *fSpec_K1 = new TF1("fSpec_K1", "gaus", 345., 365.);
   /*Estimate Parameters of Fit*/
-  fSpec_K1->SetParameters(300, 10, 2);
-  TCanvas *c_NiK1 = new TCanvas();
+  fSpec_K1->SetParameters(355, 75, 2);
+  TCanvas *c_ZnK1 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  niHist_K1->Fit("fSpec_K1", "Q", "", 297., 315.);
+  znHist_K1->Fit("fSpec_K1", "Q", "", 345., 365.);
 
   /*Obtain Fit Function from Histogram*/
-  TF1 *fStat_K1 = niHist_K1->GetFunction("fSpec_K1");
+  TF1 *fStat_K1 = znHist_K1->GetFunction("fSpec_K1");
 
   /*Assign Fit Parameters to Variables*/
   double Peak_K1 = fStat_K1->GetParameter(1);
@@ -53,28 +53,28 @@ int GetNiPeaks(
   cout << "=======================" << endl;
 
   /*Append Values to Vectors*/
-  energy.push_back(7.48);
-  Z.push_back(28.);
+  energy.push_back(8.64);
+  Z.push_back(30.);
   mean.push_back(Peak_K1);
   stdev.push_back(Stdv_K1);
   line.push_back(1);
 
   /*===================================*/
 
-  /*===========Ni-28 K2 Peak==========*/
+  /*===========Zn-30  K2 Peak==========*/
   /*Clone Histogram of Spectrum from Data File*/
-  TH1D *niHist_K2 = (TH1D*)h->Clone("niHraw");
+  TH1D *znHist_K2 = (TH1D*)h->Clone("znHraw");
   /*Define Spectrum Fit*/
-  TF1 *fSpec_K2 = new TF1("fSpec_K2", "gaus", 330., 345.);
+  TF1 *fSpec_K2 = new TF1("fSpec_K2", "gaus", 382., 400.);
   /*Estimate Parameters of Fit Function*/
   // fSpec_K2->SetParNames("Strength", "Mean","Sigma", "Back1", "Back2", "Back3"); 
-  fSpec_K2->SetParameters(340., 1000, 2);
-  TCanvas *c_NiK2 = new TCanvas();
+  fSpec_K2->SetParameters(390., 1000, 2);
+  TCanvas *c_ZnK2 = new TCanvas();
   /*Fit Pre-Defined Function to Spectrum*/
-  niHist_K2->Fit("fSpec_K2", "Q", "", 330., 345.);
+  znHist_K2->Fit("fSpec_K2", "Q", "", 382., 400.);
 
   /*Obtain Fit Function from Histogram*/
-  TF1 *fStat_K2 = niHist_K2->GetFunction("fSpec_K2");
+  TF1 *fStat_K2 = znHist_K2->GetFunction("fSpec_K2");
 
   /*Assign Fit Parameters to Variables*/
   double Peak_K2 = fStat_K2->GetParameter(1);
@@ -99,27 +99,27 @@ int GetNiPeaks(
   cout << "=======================" << endl;
   
   /*Append Values to Vectors*/
-  energy.push_back(8.26);
-  Z.push_back(28.);
+  energy.push_back(9.57);
+  Z.push_back(30.);
   mean.push_back(Peak_K2);
   stdev.push_back(Stdv_K2);
   line.push_back(2);
 
   /*===================================*/
 
-  /*==============Ni-28 L1 Peak==============*/
+  // /*==============Zn-30  L1 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
-  // TH1D *niHist_L1 = (TH1D*)h->Clone("niHraw");
+  // TH1D *znHist_L1 = (TH1D*)h->Clone("znHraw");
   // /*Define Spectrum Fit Function*/
-  // TF1 *fSpec_L1 = new TF1("fSpec_L1", "landau", 9., 15.);
+  // TF1 *fSpec_L1 = new TF1("fSpec_L1", "gaus", 385., 405.);
   // /*Estimate Parameters of Fit*/
-  // fSpec_L1->SetParameters(12, 75);
-  // TCanvas *c_NiL1 = new TCanvas();
+  // fSpec_L1->SetParameters(390, 75, 2);
+  // TCanvas *c_ZnL1 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
-  // niHist_L1->Fit("fSpec_L1", "Q", "", 9., 15.);
+  // znHist_L1->Fit("fSpec_L1", "Q", "", 385., 405.);
 
   // /*Obtain Fit Function from Histogram*/
-  // TF1 *fStat_L1 = niHist_L1->GetFunction("fSpec_L1");
+  // TF1 *fStat_L1 = znHist_L1->GetFunction("fSpec_L1");
 
   // /*Assign Fit Parameters to Variables*/
   // double Peak_L1 = fStat_L1->GetParameter(1);
@@ -144,26 +144,27 @@ int GetNiPeaks(
   // cout << "=======================" << endl;
 
   // /*Append Values to Vectors*/
-  // // energy.push_back(2.98);
-  // // mean.push_back(Peak_L1);
-  // // stdev.push_back(Stdv_L1);
+  // energy.push_back(13.6);
+  // Z.push_back(30.);
+  // mean.push_back(Peak_L1);
+  // stdev.push_back(Stdv_L1);
   // line.push_back(11);
 
   // /*===================================*/
 
-  // /*==============Ni-28 L2 Peak==============*/
+  // /*==============Zn-30  L2 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
-  // TH1D *niHist_L2 = (TH1D*)h->Clone("niHraw");
+  // TH1D *znHist_L2 = (TH1D*)h->Clone("znHraw");
   // /*Define Spectrum Fit Function*/
-  // TF1 *fSpec_L2 = new TF1("fSpec_L2", "gaus", 700., 720.);
+  // TF1 *fSpec_L2 = new TF1("fSpec_L2", "gaus", 460., 480.);
   // /*Estimate Parameters of Fit*/
-  // fSpec_L2->SetParameters(710, 75, 2);
-  // TCanvas *c_NiL2 = new TCanvas();
+  // fSpec_L2->SetParameters(470, 75, 2);
+  // TCanvas *c_ZnL2 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
-  // niHist_L2->Fit("fSpec_L2", "Q", "", 700., 720.);
+  // znHist_L2->Fit("fSpec_L2", "Q", "", 460., 480.);
 
   // /*Obtain Fit Function from Histogram*/
-  // TF1 *fStat_L2 = niHist_L2->GetFunction("fSpec_L2");
+  // TF1 *fStat_L2 = znHist_L2->GetFunction("fSpec_L2");
 
   // /*Assign Fit Parameters to Variables*/
   // double Peak_L2 = fStat_L2->GetParameter(1);
@@ -187,27 +188,28 @@ int GetNiPeaks(
   // cout << "Red Chi-Sq |  " << Red_L2 << endl;
   // cout << "=======================" << endl;
 
-  /*Append Values to Vectors*/
-  // energy.push_back(3.15);
+  // /*Append Values to Vectors*/
+  // energy.push_back(13.6);
+  // Z.push_back(30.);
   // mean.push_back(Peak_L2);
   // stdev.push_back(Stdv_L2);
   // line.push_back(12);
 
-  /*===================================*/
+  // /*===================================*/
 
-  // /*==============Ni-28 L3 Peak==============*/
+  // /*==============Zn-30  L3 Peak==============*/
   // /*Clone Histogram of Spectrum from Data File*/
-  // TH1D *niHist_L3 = (TH1D*)h->Clone("niHraw");
+  // TH1D *znHist_L3 = (TH1D*)h->Clone("znHraw");
   // /*Define Spectrum Fit Function*/
-  // TF1 *fSpec_L3 = new TF1("fSpec_L3", "gaus", 700., 720.);
+  // TF1 *fSpec_L3 = new TF1("fSpec_L3", "gaus", 530., 560.);
   // /*Estimate Parameters of Fit*/
-  // fSpec_L3->SetParameters(710, 75, 2);
-  // TCanvas *c_NiL3 = new TCanvas();
+  // fSpec_L3->SetParameters(550, 75, 2);
+  // TCanvas *c_ZnL3 = new TCanvas();
   // /*Fit Pre-Defined Function to Spectrum*/
-  // niHist_L3->Fit("fSpec_L3", "Q", "", 700., 720.);
+  // znHist_L3->Fit("fSpec_L3", "Q", "", 530., 560.);
 
   // /*Obtain Fit Function from Histogram*/
-  // TF1 *fStat_L3 = niHist_L3->GetFunction("fSpec_L3");
+  // TF1 *fStat_L3 = znHist_L3->GetFunction("fSpec_L3");
 
   // /*Assign Fit Parameters to Variables*/
   // double Peak_L3 = fStat_L3->GetParameter(1);
@@ -232,9 +234,10 @@ int GetNiPeaks(
   // cout << "=======================" << endl;
 
   // /*Append Values to Vectors*/
-  // // energy.push_back(13.6);
-  // // mean.push_back(Peak_L3);
-  // // stdev.push_back(Stdv_L3);
+  // energy.push_back(13.6);
+  // Z.push_back(30.);
+  // mean.push_back(Peak_L3);
+  // stdev.push_back(Stdv_L3);
   // line.push_back(13);
 
   // /*===================================*/
@@ -258,8 +261,8 @@ int GetNiPeaks(
   for(int i = 0; i < mean.size(); i++)
     {
       mean_i = mean[i];
-      Z_i = Z[i];
       energy_i = energy[i];
+      Z_i = Z[i];
       stdev_i = stdev[i];
       line_i = line[i];
       t->Fill();
@@ -270,25 +273,25 @@ int GetNiPeaks(
 
 
 	gStyle->SetOptStat(0);
-	std::string title = "^{28}Ni Uncalibrated Spectrum";
+	std::string title = "^{30}Zn Uncalibrated Spectrum";
 
-	TCanvas *c_NiSpec = new TCanvas("c_NiSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
-		c_NiSpec->cd();
-		c_NiSpec->SetGridx(1);
-		c_NiSpec->SetGridy(1);
+	TCanvas *c_ZnSpec = new TCanvas("c_ZnSpec",title.c_str(),750,750);     //Makes canvas large enough for png printing.
+		c_ZnSpec->cd();
+		c_ZnSpec->SetGridx(1);
+		c_ZnSpec->SetGridy(1);
 	//Use blank histogram to set the parameters of the canvas
-	TH1F *blankNi = new TH1F("blankNi",title.c_str(),10, 0, 2048);
-		blankNi->GetYaxis()->SetRangeUser(0, 600);
-		blankNi->GetXaxis()->SetTitle("Bin Number");
-		blankNi->GetYaxis()->SetTitle("Photon Count");
-		blankNi->GetYaxis()->SetTitleOffset(1.65);
-		blankNi->GetXaxis()->SetNdivisions(505);
-		blankNi->GetYaxis()->SetNdivisions(505);
-		blankNi->SetLineColor(0);
-	blankNi->Draw();
+	TH1F *blankZn = new TH1F("blankZn",title.c_str(),10, 0, 2048);
+		blankZn->GetYaxis()->SetRangeUser(0, 600);
+		blankZn->GetXaxis()->SetTitle("Bin Number");
+		blankZn->GetYaxis()->SetTitle("Photon Count");
+		blankZn->GetYaxis()->SetTitleOffset(1.65);
+		blankZn->GetXaxis()->SetNdivisions(505);
+		blankZn->GetYaxis()->SetNdivisions(505);
+		blankZn->SetLineColor(0);
+	blankZn->Draw();
 
 	TH1D *hist = new TH1D();
-	hist = (TH1D*)niFile->Get("h");
+	hist = (TH1D*)znFile->Get("h");
 	hist->Draw("SAME");
 	fStat_K1->SetLineColor(kRed);
 	fStat_K1->Draw("SAME");
@@ -301,15 +304,15 @@ int GetNiPeaks(
 	// fStat_L3->SetLineColor(kViolet);
 	// fStat_L3->Draw("SAME");
 
-	// c_NiSpec->Print("./plots/NiBinnedSpectrum.png");
+	// c_ZnSpec->Print("./plots/ZnBinnedSpectrum.png");
 
-  c_Ni->Close();
-  c_NiK1->Close();
-  c_NiK2->Close();
-  // c_NiL1->Close();
-  // c_NiL2->Close();
-  // c_NiL3->Close();
-  c_NiSpec->Close();
+  c_Zn->Close();
+  c_ZnK1->Close();
+  c_ZnK2->Close();
+  // c_ZnL1->Close();
+  // c_ZnL2->Close();
+  // c_ZnL3->Close();
+  c_ZnSpec->Close();
 
   return 0;
 }
