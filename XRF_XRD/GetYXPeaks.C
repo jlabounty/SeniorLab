@@ -306,9 +306,9 @@ int GetYXPeaks(
 
 	// c_YxSpec->Print("./plots/YxBinnedSpectrum.png");
 
-  // c_Yx->Close();
-  // c_YxK1->Close();
-  // c_YxK2->Close();
+  c_Yx->Close();
+  c_YxK1->Close();
+  c_YxK2->Close();
   // c_YxL1->Close();
   // c_YxL2->Close();
   // c_YxL3->Close();
