@@ -86,6 +86,40 @@ This experiment consists of three primary components: the x-ray source, the goni
 
 \subsection{X-Ray Florescence}
 
+Before performing an analysis of x-ray fluorescence, we had to calibrate the energy scale of the MCA to determine the conversion between the channel number ($n$) of a detected photon and its energy. In order to perform this calibration, x-ray fluorescence spectra were collected for various samples with known energy peaks. Fig.~\ref{} displays an example spectrum with fitted peaks.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{EvsBin.png}
+	\caption{Energy vs Channel Number Calibration Plot}
+	\label{Fig:Evsbin}
+\end{figure}
+
+Each peak on one of these spectra was fit with a Gaussian distribution to find the mean value of the peak. This mean value was stored as the bin number corresponding to the peak of known energy provided by external sources. We collected corresponding energies and bin numbers for several samples of different elements to generate the energy vs bin number plot in Fig.~\ref{Fig:Evsbin}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{EvsBin.png}
+	\caption{Energy vs Channel Number Calibration Plot}
+	\label{Fig:Evsbin}
+\end{figure}
+
+The linear fit on this plot provided us with the energy calibration in Eq.~\ref{eq:ECalib}.
+\begin{gather}\label{eq:ECalib}
+E = 0.0245644n - 0.0545754
+\end{gather}
+
+With this calibration, we could then calculate the energies of peaks in our x-ray fluorescence spectra.
+
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.48\textwidth]{MoseleyLawPlot.png}
+	\caption{Plot Displaying Moseley's Law for $K_{\alpha}$, $K_{\beta}$, $L_{\alpha}$, $L_{\beta}$, and $L_{\gamma}$ Transitions}
+	\label{Fig:Evsbin}
+\end{figure} 
+
 \subsection{X-Ray Diffraction}
 
 \subsubsection{Characterization of the Detector}
