@@ -57,6 +57,13 @@
 
 \section{Introduction}
 
+Moseley's Law:
+\begin{equation}\label{Eq:MLaw}
+E = h\nu = A Z_{eff}^{2} = A (Z - \sigma)^2
+\end{equation}
+
+where $A$ is a parameter derived from Rydberg's constant and $\sigma$ is a screening factor.
+
 \section{Review of Previous Work}
 
 \section{Experimental Setup}
@@ -116,7 +123,7 @@ The linear fit on this plot provided us with the energy calibration in Eq.~\ref{
 E = 0.0245644n - 0.0545754
 \end{gather}
 
-With this calibration, we could then calculate the energies of peaks in our x-ray fluorescence spectra. As previously discussed, peaks in the energy spectra for different elements were fit with a Gaussian distribution to find the mean value of the peaks which we converted to energy using our calibration. Each energy peak we analyzed corresponded to the $K_{\alpha}$, $K_{\beta}$, etc. transitions which we could confirm with outside sources. For each type of transition, we could record the atomic number, $Z$ and the energy of the emitted x-ray photon for several samples. For a more clear analysis of Moseley's Law, we derived Eq.~\ref{} in the following manner to obtain the linear relationship expressed in Eq.~\ref{Eq:MLawLinear}.
+With this calibration, we could then calculate the energies of peaks in our x-ray fluorescence spectra. As previously discussed, peaks in the energy spectra for different elements were fit with a Gaussian distribution to find the mean value of the peaks which we converted to energy using our calibration. Each energy peak we analyzed corresponded to the $K_{\alpha}$, $K_{\beta}$, etc. transitions which we could confirm with outside sources. For each type of transition, we could record the atomic number, $Z$ and the energy of the emitted x-ray photon for several samples. For a more clear analysis of Moseley's Law, we derived Eq.~\ref{Eq:MLaw} in the following manner to obtain the linear relationship expressed in Eq.~\ref{Eq:MLawLinear}.
 
 \begin{align*}
 A(Z - \sigma)^{2} &= E\\
@@ -146,11 +153,10 @@ As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}
 			\hline $L_{\beta}$ & $3.959 \pm 0.051$ & $0.423 \pm 0.011$ & $13.126 \pm 0.754$ \\
 			\hline $L_{\gamma}$ & $3.491 \pm 0.074$ & $0.544 \pm 0.023$ & $16.215 \pm 1.235$ \\
 			\hline
-			
 		\end{tabular}
 	\end{center}
 	\caption{Calculated Parameters in Moseley's Law for Each Type of Shell Transition}
-	\label{Tab:XSecCompare}
+	\label{Tab:MLawData}
 \end{table}
 
 \subsection{X-Ray Diffraction}
@@ -239,6 +245,30 @@ Using this method, and averaging the results, we obtain an average value for the
 \section{Theoretical Model}
 
 \subsection{X-Ray Florescence}
+
+Moseley's Law as described in Eq.~\ref{Eq:MLaw} relates the energy ($E$) of x-ray fluorescence photons emitted from a sample to the square of an effective nuclear charge ($Z_{eff}^{2}$) with a parameter $A$. This parameter is dependent on which energy levels are involved in the electron transition in x-ray fluorescence. For an electron that transitions from an excited state energy level $n_{i}$ to a lower energy level $n_{f}$, the $A$ parameter is defined by Eq.~\ref{Eq:RydbergParameter}, where $R = 1.097 \times 10^7$ is the Rydberg constant, $h$ is Planck's constant, and $c$ is the speed of light in a vacuum.
+
+\begin{equation}\label{Eq:RydbergParameter}
+A = hcR(\frac{1}{n_{f}} - \frac{1}{n_{i}})
+\end{equation}
+
+We calculated the theoretical values of $A$ for each of the different types of shell transitions and recorded these values in Table~\ref{Tab:RydParam}.
+
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline Transition & $n_{i}$  & $n_{f}$ & $A (10^{-18} J)$ \\
+			\hline $K_{\alpha}$ & $2$ & $1$ & $1.635$ \\
+			\hline $K_{\beta}$ & $3$ & $1$ & $1.938$ \\
+			\hline $L_{\alpha}$ & $3$ & $2$ & $0.303$ \\
+			\hline $L_{\beta}$ & $4$ & $2$ & $0.409$ \\
+			\hline $L_{\gamma}$ & $5$ & $2$ & $0.458$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Calculated Parameters in Moseley's Law for Each Type of Shell Transition}
+	\label{Tab:RydParam}
+\end{table}
 
 \subsection{X-Ray Diffraction}
 
