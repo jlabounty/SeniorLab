@@ -35,6 +35,7 @@
 %\usepackage[nottoc,numbib]{tocbibind} %Uncomment for bibliography to be its own numbered section
 \usepackage{units}
 \usepackage{listings}
+\usepackage{xfrac}
 
 \graphicspath{{./plots/}}
 
@@ -80,7 +81,11 @@ The apparatus used in our measurements of x-ray florescence consists primarily o
 	\label{fig:xrd_setup}
 \end{figure}
 
-This experiment consists of three primary components: the x-ray source, the goniometer, and the detector. The x-ray source uses the same method of x-ray production as the setup detailed above. However, instead of switching the samples out to change the characteristic x-rays of the system, here the target sample for the electrons is kept constant, and is composed of copper. This means that the characteristic x-rays we expect to see are those produced by copper: $K_\alpha = 8037.8 ~eV= 0.154358 ~nm$ and $K_\beta = 8905.29 ~eV = 0.139322 ~nm$. These x-rays are collimated by sheets of lead with small openings and then allowed to stream freely towards the sample. The second portion of the experiment is the goniometer, which keeps the relative angle of the sample and the detector constant: $\theta_{\text{detector}} = 2\theta_{\text{sample}}$ (relative to $\theta = 0$ defined by the path of the undiffracted x-rays). The x-rays which are diffracted off of the sample then enter the detector. This detector differs from the previous version in that it is 
+This experiment consists of three primary components: the x-ray source, the goniometer, and the detector. The x-ray source uses the same method of x-ray production as the setup detailed above. However, instead of switching the samples out to change the characteristic x-rays of the system, here the target sample for the electrons is kept constant, and is composed of copper. This means that the characteristic x-rays we expect to see are those produced by copper: $K_\alpha = 8037.8 ~eV= 0.154358 ~nm$ and $K_\beta = 8905.29 ~eV = 0.139322 ~nm$. These x-rays are collimated by sheets of lead with small openings and then allowed to stream freely towards the sample. The second portion of the experiment is the goniometer, which keeps the relative angle of the sample and the detector constant: $\theta_{\text{detector}} = 2\theta_{\text{sample}}$ (relative to $\theta = 0$ defined by the path of the undiffracted x-rays). The x-rays which are diffracted off of the sample then enter the detector. This detector differs from the previous version in that it is a Geiger-Muller detector. 
+
+In this detector, a low-pressure inert gas is encased in a cavity. At either end of this cavity is an anode and a cathode, across which a high voltage is applied. When ionizing radiation enters the cavity, molecules of the gas become ionized. The electron and nucleus then fly in opposite directions, accelerates towards the anode and cathode respectively. The ionized atom, being much more massive than the liberated electron, travels a much shorter distance, and thus stays relatively close to its original position.  As the electron travels through the gas, it causes the ionization of subsequent electrons in an 'avalanche', effectively multiplying its own signal. This flow of liberates electrons creates a fast pulse of charge which is read by the tube as a single event. After the pulse is complete, the atoms in the gas return to their neutral state and the detector is ready to detect another event. The time that the pulse takes is known as the \textit{dead time} of the detector, as events can only be detected one at a time, and the detector is 'dead' to the world until the initial pulse is completed. 
+
+This pulse of current is sent into a pre-amplification system, to increase its magnitude to levels which are more detectable, and from there into a counter, rate meter, and oscilloscope. The oscilloscope serves only to show a visual representation of the pulses, and we will use this output later to characterize the dead time of our detector. The rate meter gives us a measure of the counts/second the detector is seeing, and warns if the detector is becoming saturated (i.e. events are coming in too quickly to all be counted). The counter simply records the number of events in a specified amount of time. We will compare the output from the counter across a wide range of angles in order to determine the number flux of photons at each angle. We recorded this data manually and input it into an excel spreadsheet, so it could be plotted in real time. In order to perform our final analysis, this spreadsheet was converted into a \verb|.txt| file which we then read in to ROOT.
 
 \section{Measurements}
 
@@ -135,7 +140,20 @@ As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}
 
 \subsubsection{Characterization of the Detector}
 
+\subsubsection{Determination of the Dead Time}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{dead_time.png}
+	\caption{Illustration of the dead time of a Geiger-Muller tube. Image courtesy of Wikimedia Commons.}
+	\label{fig:dead_time}
+\end{figure}
+
+Using the oscilloscope readout, we determined the dead time of our detector at the settings we would be using for our subsequent data taking. We set the discriminator fine gain to $1.0$, the discriminator course gain to $\sfrac{1}{16}$, and the voltage of the detector to $V_{det} = 450~V$. At these settings, we observed pulses of similar shape to the one shown in Figure \ref{fig:dead_time}. We measured the width of those pulses in $t$ using the limes on the oscilloscope screen and determined them to be $\tau_{dead} = 0.1 \pm 0.01~ms$. This means that saturation count rate for our detector would be $1/\tau_{dead} = 10,000 \pm 1,000~\text{photons}/s$. Thus, during the subsequent experiments, we took care to keep our peak count rate under that value, or else we risked not being able to distinguish between closely spaced peaks.
+
 \subsubsection{Diffraction Spectra}
+
+After we characterized the detector, we
 
 \begin{figure}[H]
 	\centering
