@@ -93,13 +93,13 @@ This pulse of current is sent into a pre-amplification system, to increase its m
 
 \subsubsection{Characterization of the Detector}
 
-Before performing an analysis of x-ray fluorescence, we had to calibrate the energy scale of the MCA to determine the conversion between the channel number ($n$) of a detected photon and its energy. In order to perform this calibration, x-ray fluorescence spectra were collected for various samples with known energy peaks. Fig.~\ref{} displays an example spectrum with fitted peaks.
+Before performing an analysis of x-ray fluorescence, we had to calibrate the energy scale of the MCA to determine the conversion between the channel number ($n$) of a detected photon and its energy. In order to perform this calibration, x-ray fluorescence spectra were collected for various samples with known energy peaks. Fig.~\ref{Fig:InXRFSpec} displays an example spectrum with fitted peaks.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.45\textwidth]{EvsBin.png}
-	\caption{Energy vs Channel Number Calibration Plot}
-	\label{Fig:Evsbin}
+	\includegraphics[width=0.45\textwidth]{InBinnedSpectrum.png}
+	\caption{X-Ray Fluorescence Spectrum for Indium}
+	\label{Fig:InXRFSpec}
 \end{figure}
 
 Each peak on one of these spectra was fit with a Gaussian distribution to find the mean value of the peak. This mean value was stored as the bin number corresponding to the peak of known energy provided by external sources. We collected corresponding energies and bin numbers for several samples of different elements to generate the energy vs bin number plot in Fig.~\ref{Fig:Evsbin}.
@@ -135,6 +135,23 @@ As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}
 	\caption{Plot Displaying Moseley's Law for $K_{\alpha}$, $K_{\beta}$, $L_{\alpha}$, $L_{\beta}$, and $L_{\gamma}$ Transitions}
 	\label{Fig:MLawPlot}
 \end{figure} 
+
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline Transition & $\sqrt{\frac{h}{A}}$ ($ 10^{-8} s^{\frac{1}{2}}$)  & $A$ ($10^{-18} J$) & $\sigma$ \\
+			\hline $K_{\alpha}$ & $1.964 \pm 0.009$ & $1.717 \pm 0.016$ & $1.621 \pm 0.166$ \\
+			\hline $K_{\beta}$ & $1.824 \pm 0.007$ & $1.991 \pm 0.015$ & $2.240 \pm 0.141$ \\
+			\hline $L_{\alpha}$ & $4.668 \pm 0.056$ & $0.304 \pm 0.007$ & $7.470 \pm 0.814$ \\
+			\hline $L_{\beta}$ & $3.959 \pm 0.051$ & $0.423 \pm 0.011$ & $13.126 \pm 0.754$ \\
+			\hline $L_{\gamma}$ & $3.491 \pm 0.074$ & $0.544 \pm 0.023$ & $16.215 \pm 1.235$ \\
+			\hline
+			
+		\end{tabular}
+	\end{center}
+	\caption{Calculated Parameters in Moseley's Law for Each Type of Shell Transition}
+	\label{Tab:XSecCompare}
+\end{table}
 
 \subsection{X-Ray Diffraction}
 
