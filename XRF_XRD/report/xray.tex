@@ -171,7 +171,53 @@ We set the x-ray source to $I_{source} = 80~mA$ and $V_{source} = 20~kV$ for all
 	\label{fig:KCl}
 \end{figure}
 
-From this, we observe two key features. We first can see that there is a bremsstrahlung spectrum which underlays all other features, starting at $\approx10^\circ$ and extending out to the edge of the graph. At the far end ($\theta > 55^\circ$), we enter into a region where x-rays from the source start to enter the detector without scattering off of the crystal (simply due to positioning). This causes these points to be artificially higher than the bremsstrahlung background would otherwise have them. The second feature is the sets of two peaks beginning shortly after the bremsstrahlung spectrum. These are the characteristic x-rays of the source's anode, composed of Copper, scattering off of the crystal structure of the sample according to Bragg's Law, with $n = 1,~2,~3,...$ and an as yet unknown lattice spacing.
+From this, we observe two key features. We first can see that there is a bremsstrahlung spectrum which underlays all other features, starting at $\approx10^\circ$ and extending out to the edge of the graph. At the far end ($\theta > 55^\circ$), we enter into a region where x-rays from the source start to enter the detector without scattering off of the crystal (simply due to positioning). This causes these points to be artificially higher than the bremsstrahlung background would otherwise have them. The second feature is the sets of two peaks beginning shortly after the bremsstrahlung spectrum. These are the characteristic x-rays of the source's anode, composed of Copper, scattering off of the crystal structure of the sample according to Bragg's Law, with $n = 1,~2,~3,...$ and an as yet unknown lattice spacing. 
+\begin{gather}\label{eq:bragg}
+	2d\sin{\theta} = n \lambda
+\end{gather}
+Using the data gathered above, in concert with the known $K_\alpha$ and $K_\beta$ values, we can determine the experimental values for the lattice spacing:
+\begin{gather}
+	2d\sin{\theta} = n\lambda \rightarrow d = \frac{n\lambda}{d\sin{\theta}} \nonumber \\
+	\downarrow E_\gamma = \frac{hc}{\lambda} \rightarrow \lambda = \frac{hc}{E} \nonumber \\
+	d = \frac{n (hc/E)}{2 \sin{\theta}} = \frac{nhc}{2E\sin{\theta}}
+\end{gather}
+The known energy values for copper are:
+\begin{gather}
+	K_\alpha = 8037.8 ~eV \nonumber \\
+	K_\beta = 8905.29 ~eV \nonumber
+\end{gather}
+The value of $\theta$ was determined by using a gaussian fit combined with a polynomial background, which we calculated using ROOT. From the parameters of this fit, we can extract $\theta \pm \delta \theta$. Thus we construct the following table for LiF:
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|r|r|r|r|r|r|l|}
+		\hline
+		n & $\theta$ (Deg) & $\delta \theta$ (Deg) & $K$ & Energy (eV) & $d$ (nm) & \multicolumn{1}{r|}{$\delta d$ (nm)} \\ \hline
+		1 & 20.0293 & 0.61075 & $\beta$ & 8905.29 & 0.2034 & 0.005947 \\ \hline
+		1 & 22.3206 & 0.55230 & $\alpha$ & 8037.81 & 0.2032 & 0.004771 \\ \hline
+		2 & 43.3667 & 1.01729 & $\beta$ & 8905.29 & 0.2029 & 0.003814 \\ \hline
+		2 & 49.5563 & 0.59909 & $\alpha$ & 8037.81 & 0.2028 & 0.001808 \\ \hline
+	\end{tabular}
+	\end{center}
+	\caption{Calculated lattice spacing for LiF}
+	\label{table:LiF}
+\end{table}
+Using this method, and averaging the results, we obtain an average value for the lattice spacing for all three crystals:
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|r|r|}
+		\hline
+		Crystal & \multicolumn{1}{l|}{$d_{avg}$ (nm)} & \multicolumn{1}{l|}{$\delta d_{avg}$ (nm)} \\ \hline
+		LiF & 0.2031 & 0.002179 \\ \hline
+		Kcl & 0.3199 & 0.007197 \\ \hline
+		NaCl & 0.2875 & 0.004851 \\ \hline
+	\end{tabular}
+	\end{center}
+	\caption{Average value for the lattice spacing for all three crystals}
+	\label{table:d_average}
+\end{table}
+
+
+
 
 \section{Theoretical Model}
 
@@ -183,7 +229,7 @@ From this, we observe two key features. We first can see that there is a bremsst
 	\centering
 	\includegraphics[width=5cm]{nacl_lattice.png}
 	\caption{Structure of NaCl, a face centered cubic crystal.}
-	\label{fig:KCl}
+	\label{fig:lattice_nacl}
 \end{figure}
 
 \section{Comparison of Theory and Experiment}
