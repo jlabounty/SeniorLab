@@ -50,7 +50,7 @@
 \date{\today}
 
 \begin{abstract}
-	In this experiment, we investigate the characteristic x-rays produced by atomic transitions of various elements, according to Moseley's Law. Cool shit yo!
+	In this experiment, we investigate the characteristic x-rays produced by atomic transitions of various elements, according to Moseley's Law.
 \end{abstract}
 \maketitle
 
@@ -111,15 +111,24 @@ The linear fit on this plot provided us with the energy calibration in Eq.~\ref{
 E = 0.0245644n - 0.0545754
 \end{gather}
 
-With this calibration, we could then calculate the energies of peaks in our x-ray fluorescence spectra.
+With this calibration, we could then calculate the energies of peaks in our x-ray fluorescence spectra. As previously discussed, peaks in the energy spectra for different elements were fit with a Gaussian distribution to find the mean value of the peaks which we converted to energy using our calibration. Each energy peak we analyzed corresponded to the $K_{\alpha}$, $K_{\beta}$, etc. transitions which we could confirm with outside sources. For each type of transition, we could record the atomic number, $Z$ and the energy of the emitted x-ray photon for several samples. For a more clear analysis of Moseley's Law, we derived Eq.~\ref{} in the following manner to obtain the linear relationship expressed in Eq.~\ref{Eq:MLawLinear}.
 
+\begin{align*}
+A(Z - \sigma)^{2} &= E\\
+A(Z - \sigma)^{2} &= h \nu\\
+Z - \sigma &= \sqrt{\frac{h}{A}}\sqrt{\nu}
+\end{align*}
+\begin{equation}\label{Eq:MLawLinear}
+Z = \sqrt{\frac{h}{A}}\sqrt{\nu} + \sigma
+\end{equation}
 
+As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}$ should yield a linear relationship with a slope of $\sqrt{\frac{h}{A}}$ and an offset equal to the screening parameter $\sigma$. We performed this analysis for many samples of different elements to generate the plot in Fig.~\ref{Fig:MLawPlot}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.48\textwidth]{MoseleyLawPlot.png}
 	\caption{Plot Displaying Moseley's Law for $K_{\alpha}$, $K_{\beta}$, $L_{\alpha}$, $L_{\beta}$, and $L_{\gamma}$ Transitions}
-	\label{Fig:Evsbin}
+	\label{Fig:MLawPlot}
 \end{figure} 
 
 \subsection{X-Ray Diffraction}
