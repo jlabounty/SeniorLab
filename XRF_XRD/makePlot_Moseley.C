@@ -95,9 +95,9 @@ int makePlot_Moseley()
 		c31->SetGridy(1);
 		//		c->SetFixedAspectRatio();
         //Use blank histogram to set the parameters of the canvas
-        TH1F *hcalibZ = new TH1F("hcalibZ",titleZ.c_str(),10, 0, 30);
+        TH1F *hcalibZ = new TH1F("hcalibZ",titleZ.c_str(),10, 0, 29);
                 hcalibZ->GetYaxis()->SetRangeUser(0, 100);
-                hcalibZ->GetXaxis()->SetTitle("#sqrt{#nu}");
+                hcalibZ->GetXaxis()->SetTitle("#sqrt{#frac{#nu}{10^{16}}} [s^{- #frac{1}{2}}]");
                 hcalibZ->GetYaxis()->SetTitle("Z");
                 hcalibZ->GetXaxis()->SetNdivisions(505);
                 hcalibZ->GetYaxis()->SetNdivisions(505);
@@ -148,6 +148,12 @@ int makePlot_Moseley()
 	TGraphErrors *grK1 = new TGraphErrors(err_energyK1.size(), &(XK1[0]), &(ZK1[0]), &(err_XK1[0]), &(err_ZK1[0]) );
 	grK1->SetMarkerColor(kRed);
 	grK1->Draw("P SAME");
+	grK1->Fit("pol1", "Q");
+	TF1* K1Line = grK1->GetFunction("pol1");
+	K1Line->SetLineColor(kRed);
+	K1Line->SetLineStyle(2);
+	// cout << K1Line->GetChisquare() << endl;
+	// cout << K1Line->GetNDF() << endl;
 
 	/*========================*/
 
@@ -175,8 +181,14 @@ int makePlot_Moseley()
 	f.Close();
 
 	TGraphErrors *grK2 = new TGraphErrors(err_energyK2.size(), &(XK2[0]), &(ZK2[0]), &(err_XK2[0]), &(err_ZK2[0]) );
-	grK2->SetMarkerColor(kOrange+10);
+	grK2->SetMarkerColor(kOrange+7);
 	grK2->Draw("P SAME");
+	grK2->Fit("pol1", "Q");
+	TF1* K2Line = grK2->GetFunction("pol1");
+	K2Line->SetLineColor(kOrange+7);
+	K2Line->SetLineStyle(2);
+	// cout << K2Line->GetChisquare() << endl;
+	// cout << K2Line->GetNDF() << endl;
 
 	/*========================*/
 
@@ -206,6 +218,12 @@ int makePlot_Moseley()
 	TGraphErrors *grL1 = new TGraphErrors(err_energyL1.size(), &(XL1[0]), &(ZL1[0]), &(err_XL1[0]), &(err_ZL1[0]) );
 	grL1->SetMarkerColor(kGreen+3);
 	grL1->Draw("P SAME");
+	grL1->Fit("pol1", "Q");
+	TF1* L1Line = grL1->GetFunction("pol1");
+	L1Line->SetLineColor(kGreen+3);
+	L1Line->SetLineStyle(2);
+	// cout << L1Line->GetChisquare() << endl;
+	// cout << L1Line->GetNDF() << endl;
 
 	/*========================*/
 
@@ -235,6 +253,12 @@ int makePlot_Moseley()
 	TGraphErrors *grL2 = new TGraphErrors(err_energyL2.size(), &(XL2[0]), &(ZL2[0]), &(err_XL2[0]), &(err_ZL2[0]) );
 	grL2->SetMarkerColor(kBlue);
 	grL2->Draw("P SAME");
+	grL2->Fit("pol1", "Q");
+	TF1* L2Line = grL2->GetFunction("pol1");
+	L2Line->SetLineColor(kBlue);
+	L2Line->SetLineStyle(2);
+	// cout << L2Line->GetChisquare() << endl;
+	// cout << L2Line->GetNDF() << endl;
 
 	/*========================*/
 
@@ -264,10 +288,71 @@ int makePlot_Moseley()
 	TGraphErrors *grL3 = new TGraphErrors(err_energyL3.size(), &(XL3[0]), &(ZL3[0]), &(err_XL3[0]), &(err_ZL3[0]) );
 	grL3->SetMarkerColor(kViolet);
 	grL3->Draw("P SAME");
+	grL3->Fit("pol1", "Q");
+	TF1* L3Line = grL3->GetFunction("pol1");
+	L3Line->SetLineColor(kViolet);
+	L3Line->SetLineStyle(2);
+	// cout << L3Line->GetChisquare() << endl;
+	// cout << L3Line->GetNDF() << endl;
 
 	/*========================*/
 
+	TLegend *l_sep = new TLegend(0.20, 0.70, 0.40, 0.87);
+	l_sep->SetNColumns(1);
+	l_sep->AddEntry(grK1->GetFunction("pol1"), "K_{#alpha} Transitions", "l");
+	l_sep->AddEntry(grK2->GetFunction("pol1"), "K_{#beta} Transitions", "l");
+	l_sep->AddEntry(grL1->GetFunction("pol1"), "L_{#alpha} Transitions", "l");
+	l_sep->AddEntry(grL2->GetFunction("pol1"), "L_{#beta} Transitions", "l");
+	l_sep->AddEntry(grL3->GetFunction("pol1"), "L_{#gamma} Transitions", "l");
+	l_sep->Draw();
+
 	// c_sep->Print("../../Plots/XRF_XRD/MoseleySeperatedPlot.png");
+	// c_sep->Print("plots/MoseleyLawPlot.png");
+
+	cout << "!!!!!!!!!!!!!!!!!!!!!!!!" << endl;
+	cout << "========================" << endl;
+	cout << "=Moseley's Law Analysis=" << endl;
+	cout << "========================" << endl;
+
+	cout << "==Screening Parameters==" << endl;
+	cout << "K1: " << K1Line->GetParameter(0) << " +/- " << K1Line->GetParError(0) << endl;
+	cout << "K2: " << K2Line->GetParameter(0) << " +/- " << K2Line->GetParError(0) << endl;
+	cout << "L1: " << L1Line->GetParameter(0) << " +/- " << L1Line->GetParError(0) << endl;
+	cout << "L2: " << L2Line->GetParameter(0) << " +/- " << L2Line->GetParError(0) << endl;
+	cout << "L3: " << L3Line->GetParameter(0) << " +/- " << L3Line->GetParError(0) << endl;
+	cout << "========================" << endl;
+	cout << "====Rydberg Constant====" << endl;
+	cout << "1. Get slope..." << endl;
+	double slopeK1 = K1Line->GetParameter(1) / (10**8);
+	double ErrslopeK1 = K1Line->GetParError(1) / (10**8);
+	double slopeK2 = K2Line->GetParameter(1) / (10**8);
+	double ErrslopeK2 = K2Line->GetParError(1) / (10**8);
+	double slopeL1 = L1Line->GetParameter(1) / (10**8);
+	double ErrslopeL1 = L1Line->GetParError(1) / (10**8);
+	double slopeL2 = L2Line->GetParameter(1) / (10**8);
+	double ErrslopeL2 = L2Line->GetParError(1) / (10**8);
+	double slopeL3 = L3Line->GetParameter(1) / (10**8);
+	double ErrslopeL3 = L3Line->GetParError(1) / (10**8);
+	cout << "K1: " << slopeK1 << " +/- " << ErrslopeK1 << endl;
+	cout << "K2: " << slopeK2 << " +/- " << ErrslopeK2 << endl;
+	cout << "L1: " << slopeL1 << " +/- " << ErrslopeL1 << endl;
+	cout << "L2: " << slopeL2 << " +/- " << ErrslopeL2 << endl;
+	cout << "L3: " << slopeL3 << " +/- " << ErrslopeL3 << endl;
+
+	cout << "2. Calculate A..." << endl;
+	cout << "K1: " << TMath::H() / (slopeK1**2) << " +/- " << 2.*TMath::H()*ErrslopeK1/(slopeK1**3.) << endl;
+	cout << "K2: " << TMath::H() / (slopeK2**2) << " +/- " << 2.*TMath::H()*ErrslopeK2/(slopeK2**3.) << endl;
+	cout << "L1: " << TMath::H() / (slopeL1**2) << " +/- " << 2.*TMath::H()*ErrslopeL1/(slopeL1**3.) << endl;
+	cout << "L2: " << TMath::H() / (slopeL2**2) << " +/- " << 2.*TMath::H()*ErrslopeL2/(slopeL2**3.) << endl;
+	cout << "L3: " << TMath::H() / (slopeL3**2) << " +/- " << 2.*TMath::H()*ErrslopeL3/(slopeL3**3.) << endl;
+
+	cout << "3. Calculate Theory..." << endl;
+	double R = 1.097373156*(10**7);
+	cout << "K1: " << TMath::H()*TMath::C()*R*((1./1.)**2. - (1./2.)**2.) << endl;
+	cout << "K2: " << TMath::H()*TMath::C()*R*((1./1.)**2. - (1./3.)**2.) << endl;
+	cout << "L1: " << TMath::H()*TMath::C()*R*((1./2.)**2. - (1./3.)**2.) << endl;
+	cout << "L2: " << TMath::H()*TMath::C()*R*((1./2.)**2. - (1./4.)**2.) << endl;
+	cout << "L3: " << TMath::H()*TMath::C()*R*((1./2.)**2. - (1./5.)**2.) << endl;
 
 	return 0;
 }
