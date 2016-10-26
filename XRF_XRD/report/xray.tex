@@ -140,6 +140,8 @@ As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}
 
 \subsubsection{Characterization of the Detector}
 
+To begin this experiment, we needed to characterize the behavior of the detector with respect to each one of the variables.
+
 \subsubsection{Determination of the Dead Time}
 
 \begin{figure}[H]
@@ -155,7 +157,7 @@ Using the oscilloscope readout, we determined the dead time of our detector at t
 
 After we characterized the detector, we set out to measure the diffraction spectra of each of the three crystals: KCl, LiF, and NaCl. We placed each crystal in the mount on the goniometer and assured ourselves that the setup was aligned well. In particular, we ensured that the crystal was vertical, that the collimated beam would just skim over the surface of the crystal at $\theta = 0^\circ$, and that an angular change in the detector of $\theta_{det}$ corresponded to a change in the angle of the crystal of $\theta_{cry} = \theta_{det}/2$. Once all that was in place, we proceeded to do angular scans. 
 
-We set the x-ray source to $I_{source} = 80~mA$ and $V_{source} = 20~kV$ for all of these scans, and we observed drifts of $\approx \pm 5\%$ in these values over the course of our measurement. We scanned in $2.5^\circ$ increments outside the regions where there were diffraction peaks present, and in $0.5^\circ$ increments within the regions of interest. We estimated our systematic error in each of these measurements to be $0.25^\circ$, accounting to the 'play' in the gear system as well as for our error in the placement of the detector relative to the markings on the apparatus. The spectra we measured for LiF and KCl can be seen in Figures \ref{fig:LiF} and \ref{fig:KCl} below:
+We set the x-ray source to $I_{source} = 80~mA$ and $V_{source} = 20~kV$ for all of these scans, and we observed drifts of $\approx \pm 5\%$ in these values over the course of our measurement. We scanned in $2.5^\circ$ increments outside the regions where there were diffraction peaks present, and in $0.5^\circ$ increments within the regions of interest. We estimated our systematic error in each of these measurements to be $0.25^\circ$, accounting to the 'play' in the gear system as well as for our error in the placement of the detector relative to the markings on the apparatus. At each point, we took three measurements of 10 seconds each. If we observed $N$ counts in the measurement, the error in the measurement is $\sqrt{N}$, therefore the overall error in our measurement is $\delta N =\sqrt{N_1/N_1^2 + N_2/N_2^2 + N_3/N_3^2}$. The spectra, normalized for time, we measured for LiF and KCl can be seen in Figures \ref{fig:LiF} and \ref{fig:KCl} below:
 
 \begin{figure}[H]
 	\centering
@@ -191,11 +193,11 @@ The value of $\theta$ was determined by using a gaussian fit combined with a pol
 	\begin{center}
 	\begin{tabular}{|r|r|r|r|r|r|l|}
 		\hline
-		n & $\theta$ (Deg) & $\delta \theta$ (Deg) & $K$ & Energy (eV) & $d$ (nm) & \multicolumn{1}{r|}{$\delta d$ (nm)} \\ \hline
-		1 & 20.0293 & 0.61075 & $\beta$ & 8905.29 & 0.2034 & 0.005947 \\ \hline
-		1 & 22.3206 & 0.55230 & $\alpha$ & 8037.81 & 0.2032 & 0.004771 \\ \hline
-		2 & 43.3667 & 1.01729 & $\beta$ & 8905.29 & 0.2029 & 0.003814 \\ \hline
-		2 & 49.5563 & 0.59909 & $\alpha$ & 8037.81 & 0.2028 & 0.001808 \\ \hline
+		n & $\theta$ (Deg) & $\delta \theta$ (Deg) & $K$ &  $d$ (nm) & \multicolumn{1}{r|}{$\delta d$ (nm)} \\ \hline
+		1 & 20.0293 & 0.61075 & $\beta$ &  0.2034 & 0.005947 \\ \hline
+		1 & 22.3206 & 0.55230 & $\alpha$ &  0.2032 & 0.004771 \\ \hline
+		2 & 43.3667 & 1.01729 & $\beta$ &  0.2029 & 0.003814 \\ \hline
+		2 & 49.5563 & 0.59909 & $\alpha$ &  0.2028 & 0.001808 \\ \hline
 	\end{tabular}
 	\end{center}
 	\caption{Calculated lattice spacing for LiF}
@@ -215,9 +217,7 @@ Using this method, and averaging the results, we obtain an average value for the
 	\caption{Average value for the lattice spacing for all three crystals}
 	\label{table:d_average}
 \end{table}
-
-
-
+We will compare these values to their known values in the coming sections.
 
 \section{Theoretical Model}
 
