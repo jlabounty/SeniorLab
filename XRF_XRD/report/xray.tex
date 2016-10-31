@@ -52,7 +52,7 @@
 \date{\today}
 
 \begin{abstract}
-	\lipsum[1]
+	In this experiment, we explore the characteristic x-rays produced by various elements and use them to probe the crystal structure of a number of Alkali halide cubic crystals. Using an electron gun, we excite the characteristic transitions of a number of elements ranging in $Z$ from Lithium ($Z = 3$) to Uranium ($Z = 92$). We then use this data to recreate Moseley's Plot of Frequency vs. Atomic Number, and verify his eponymous empirical law. We then use these x-rays, produced from a copper anode, to probe the crystal structures of LiF, KCl, and NaCl and determine their lattice spacing. We find that our experimental lattice spacings are consistent with the known values.
 \end{abstract}
 \maketitle
 
@@ -84,7 +84,7 @@ While Laue had been primarily interested in using the diffracting crystals as a 
 \begin{gather}\label{eq:bragg}
 	d\sin\theta = n \lambda
 \end{gather}
-where $n = 1,2,3...$, $\lambda$ the wavelength of the characteristic x-ray, and $d$ the distance between the planes of the crystal. While the calculations of scattering angles in general Laue Diffraction experiments were incredibly complex, this simple case could be modeled by simply assuming the planes were parallel and going simple geometrical optics calculations\cite{bragg} (see Appendix \ref{section:bragg_derivation}). They could use this result to compare the spacing of atoms from crystal to crystal. They performed measurements of a number of samples, and showed that not only was this technique able to compare inter-atomic distances in crystal lattices, but was useful in determining the composition of unknown samples. This result earned the Bragg's the Nobel Prize in 1915.
+where $n = 1,2,3...$, $\lambda$ the wavelength of the characteristic x-ray, and $d$ the distance between the planes of the crystal. They were able to select for only certain x-ray wavelengths by using narrow band filters, which would only allow certain wavelengths on the order of their size through. While the calculations of scattering angles in general Laue Diffraction experiments were incredibly complex, this simple case could be modeled by simply assuming the planes were parallel and going simple geometrical optics calculations\cite{bragg} (see Appendix \ref{section:bragg_derivation}). They performed measurements of a number of samples, and showed that not only was this technique able to compare inter-atomic distances in crystal lattices, but was useful in determining the composition of unknown samples. This result earned the Bragg's the Nobel Prize in 1915.
 
 The Bragg's observed that these diffraction patterns were only consistent so long as the material which produced the x-rays stayed consistent between experiments. If the material of the anode in their x-ray tubes was changed, the pattern they observed from the same crystal would also be changed. This behavior is what prompted Henry Moseley to begin his investigation of the x-ray spectra of different elements. By taking the x-ray spectra from the same crystal, but with different anodes producing the x-rays, Moseley was able to determine an empirical law which linked the atomic number of an element with the frequency
 
@@ -96,6 +96,17 @@ E = h\nu = A Z_{eff}^{2} = A (Z - \sigma)^2
 where $A$ is a parameter derived from Rydberg's constant and $\sigma$ is a screening factor.
 
 \section{Review of Previous Work}
+
+As soon as they were discovered, measurements of x-rays became standard tools in the handbook of the experimental physicist, as well as the chemist and medical doctor. In particular, x-ray diffraction and florescence measurements were particularly useful for probing the composition of materials down to the atomic scale. 
+
+The Braggs pioneered the investigation of the crystal structure of simple crystals\cite{bragg, xray_history}, while many others built upon their work to examine the crystal structures of complex molecules. Less than 50 years after Laue's discovery, the crystal structures of DNA\cite{dna1, dna2}, Insulin\cite{insulin}, and many other important biological molecules were discovered\cite{scatter_medicine_1, scatter_medicine_2}. Recently, imaging of entire living cells with x-rays has also become feasible, opening new doors to understanding the flow of chemicals within the cells themselves\cite{whole_cells}. Measurements of Bragg scattering have also become a favorite of undergraduate physics laboratories, and thus the results of the scattering experiments have been replicated many times over\cite{scatter_lab_1, scatter_lab_2, jensen}. Bragg measurements of crystal structure, like those performed in this lab, are still used in condensed matter laboratories to probe the structures of new crystals in a search for high temperature superconductors\cite{aronson}.
+
+Because each element has its own unique set of characteristic x-rays, measurements of x-ray florescence are an important tool in the identification of the composition of unknown materials. Even as he was formulating his eponymous law, Moseley was applying his findings to the identification of unknown samples. With a single measurement, he was able to show that the 'element' Celtium, isolated by Carl Auer von Welsback in an Austrian castle, was actually a mixture of lutecium and ytterbium\cite{xray_history}. Many measurements of these characteristic x-rays have been undertaken over the years, and their energies are known to many decimal places\cite{database1, database2}. Measurements like the ones we do in this report were crucial to establishing these known values.
+
+Because the strength of the emission lines is also dependent on the concentration of the element in the sample\cite{miller}, it is also possible to determine relative concentrations of elements and not simply their presence. This allows the measurement of trace elements in samples to a great deal of precision, which has applications in a wide range of fields. It can be used in the identification of counterfeit works of art\cite{art1, art2, art3}, as the pigments differed throughout the ages and older biological materials (i.e. canvas) should have no traces of the radioelements produced by nuclear tests in the 1950's, as well as in determining the diet of ancient hominids from the elements in their bones\cite{art3, arch1, arch2, traces}.
+
+New techniques to utilize characteristic x-rays of a material are always being innovated. Using characteristic x-rays, scientists have been able to create holograms of the structure of a crystal sample\cite{hologram, hologram2}. These holographic techniques allow examination of the local structure of crystals, and thus is useful in understanding cases where the crystal lattice contains some imperfections or where no assumption of the overall structure is to be made. 
+
 
 \section{Experimental Setup}
 
@@ -303,12 +314,46 @@ We calculated the theoretical values of $A$ for each of the different types of s
 
 \subsection{X-Ray Diffraction}
 
+The hard sphere model of the atoms is a theory of crystal structure which states that the atoms in the lattice can be treated effectively as hard spheres which are directly in contact. Pauling calculated these values from an estimate of the effective nuclear charge of each ion\cite{hard_spheres_2}, the results of which were compiled and modified slightly by R.D. Shannon\cite{hard_spheres}. Estimates of the spacing for our crystals from Snannon's measurements can be seen in Table \ref{table:hardsphere_d} below:
+
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|r|r|r|}
+		\hline
+		\textbf{Crystal} & \multicolumn{1}{l|}{\textbf{$r_1$ (pm)}} & \multicolumn{1}{l|}{\textbf{$r_2$ (pm)}} & \multicolumn{1}{l|}{\textbf{$d$ (pm)}} \\ \hline
+		\textit{KCl } & 152 & 167 & 319 \\ \hline
+		\textit{NaCl} & 116 & 167 & 283 \\ \hline
+		\textit{LiF} & 90 & 119 & 209 \\ \hline
+	\end{tabular}
+	\end{center}
+	\caption{Values for d predicted by the hard sphere model\cite{hard_sphere}.}
+	\label{table:hardsphere_d}
+\end{table}
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5cm]{nacl_lattice.png}
-	\caption{Structure of NaCl, a face centered cubic crystal.}
+	\caption{Structure of NaCl, a face centered cubic crystal. In the hard sphere model of the crystal structure, the surfaces of the ions would be in direct constact.}
 	\label{fig:lattice_nacl}
 \end{figure}
+
+Known values\cite{lattice, lattice2, lattice3} of the lattice constants, measured using x-ray diffraction techniques, can be seen in Table \ref{table:known_d} below:
+
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|r|r|}
+		\hline
+		\textbf{Crystal} & \multicolumn{1}{l|}{\textbf{$a$ (pm)}} & \multicolumn{1}{l|}{\textbf{$d$ (pm)}} \\ \hline
+		\textit{KCl} & 629.2 & 314.6 \\ \hline
+		\textit{NaCl} & 564.02 & 282.01 \\ \hline
+		\textit{LiF} & 403.51 & 201.755 \\ \hline
+	\end{tabular}
+	\end{center}
+	\caption{Known values of the lattice constant for the three crystals}
+	\label{table:known_d}
+\end{table}
+
 
 \section{Comparison of Theory and Experiment}
 
@@ -373,10 +418,82 @@ The theoretical values
 	Nobelprize.org. Nobel Prize in Physics 1915 - Presentation Speech. (Nobel Media AB 2014. 31 Oct 2016.)
 	
 	\bibitem{dna1}
-	Watson, James D.; Crick, Francis (1953). "A Structure for Deoxyribose Nucleic Acid" (PDF). Nature. 171 (4356): 737–738.
+	Watson, James D.; Crick, Francis. "A Structure for Deoxyribose Nucleic Acid" (PDF). Nature. 171 (4356): 737–738. (1953)
 	
 	\bibitem{dna2}
 	 "Due credit". Nature. 496: 270. 18 April 2013.
+	 
+	 \bibitem{insulin}
+	 Crowfoot, Dorothy. X-Ray Single Crystal Photographs of Insulin. Nature, Volume 135, Issue 3415, pp. 591-592. (1935)
+	 
+	 \bibitem{scatter_medicine_1}
+	 Zhou, Wei. Application of X-Ray Diffraction to Material Analysis and Medical Imaging. SUNY at Albany. (2010)
+	 
+	 \bibitem{scatter_medicine_2}
+	 Chapman, D. et. al. Medical applications of diffraction enhanced imaging. Illinois Institute of Technology. (1998)
+	 
+	 \bibitem{whole_cells}
+	 Daewoong Nam et. al. Imaging Fully Hydrated Whole Cells by Coherent X-Ray Diffraction Microscopy. Phys. Rev. Lett. 110, 098103. (2013)
+	 
+	 \bibitem{scatter_lab_1}
+	 Larsen. POWDER X-RAY DIFFRACTION: STRUCTURAL DETERMINATION OF ALKALI HALIDE SALTS. Rutgers (2000).
+	 
+	 \bibitem{scatter_lab_2}
+	 Experiment 14: X-Ray Diffraction. California Polytechnic State University 
+	 
+	 \bibitem{jensen}
+	 George H. Stout and Lyle H. Jensen. X-ray structure determination: a practical guide. Macmillan (1968).
+	 
+	 \bibitem{aronson}
+	 Wang, Jiakui K. and Marcinkova, A. and Chen, Chih-Wei and He, Hua and Aronson, Meigan and Morosan, E. Magnetic and transport properties of the layered transition-metal pnictides ${R}_{3}{T}_{4}$As${}_{4}$O${}_{2\ensuremath{-}\ensuremath{\delta}}$ ($R$ = La, Ce, Pr, Nd, and Sm, $T=$ Ni, Cu). Phys. Rev. B ,(2014). \url{http://link.aps.org/doi/10.1103/PhysRevB.89.094405}
+	 
+	 \bibitem{hologram}
+	 Kouichi Hayashi, Naohisa Happo, Shinya Hosokawa, Wen Hu and Tomohiro Matsushita. X-ray fluorescence holography. Journal of Physics: Condensed Matter, Volume 24, Number 9 (2012).
+	 
+	 \bibitem{hologram2}
+	 F. N. Chukhovskii and A. M. Poliakov. X-ray fluorescence holography: a novel treatment for crystal structure determination. Acta Cryst. A59, 109-116 (2003).
+	 
+	 \bibitem{miller}
+	 Miller, M.C. X-Ray Fluorescence. Los Alamos National Laboratory. \url{http://www.lanl.gov/orgs/n/n1/panda/00326405.pdf}
+	 
+	 \bibitem{database1}
+	 National Institute of Standards and Technology. X-ray transition energies database. NIST, (2016).
+	 
+	 \bibitem{database2}
+	 J. A. Bearden, "X-Ray Wavelengths", Review of Modern Physics, (January 1967) pp. 86-99. \url{http://www.med.harvard.edu/jpnm/physics/refs/xrayemis.html}
+
+	\bibitem{art1}
+	R. Klockenkamper, A. von Bohlen, and L. Moens. Analysis of Pigments and Inks on Oil Paintings and Historical Manuscripts Using Total Reflection X-Ray Fluorescence Spectrometry. X-Ray Spectrom. 29, 119–129 (2000)
+	
+	\bibitem{art2}
+	Michael Mantler and Manfred Schreiner. X-Ray Fluorescence Spectrometry in Art and Archaeology. X-Ray Spectrom. 29, 3–17 (2000). \url{http://www.trajan.ru/papers/num8.pdf}
+	
+	\bibitem{art3}
+	Bruker. Art \& Archaeometry applications using pXRF. (2016)
+	
+	\bibitem{arch1}
+	M. Steven Shackley. An Introduction to X-Ray Fluorescence (XRF) Analysis in Archaeology. Springer Science+Business Media, LLC (2011)
+	
+	\bibitem{arch2}
+	M. Schreiner, B. Frühmann, D. Jembrih-Simbürger, and R. Linke. X-RAYS IN ART AND ARCHAEOLOGY – AN OVERVIEW.  International Centre for Diffraction Data (2004).
+	
+	\bibitem{traces}
+	L Vincze. Confocal X-ray Fluorescence Imaging and XRF Tomography for Three-Dimensional Trace Element Microanalysis. Microscopy and Microanalysis, Volume 11, Issue S02 (2005).
+	
+	\bibitem{hard_sphere}
+	Shannon, R. D. Revised effective ionic radii and systematic studies of interatomic distances in halides and chalcogenides. Acta Crystallographica Section A: Crystal Physics, Diffraction, Theoretical and General Crystallography, vol. 32, issue 5, pp. 751-767 (1976)
+	
+	\bibitem{hard_sphere2}
+	Pauling, L. The Nature of the Chemical Bond (3rd Edn.). Ithaca, NY: Cornell University Press (1960).
+	
+	\bibitem{lattice}
+	Minerology Database. Griceite. MinDat.org (2016). \url{http://www.mindat.org/min-1749.html}
+	
+	\bibitem{lattice2}
+	Minerology Database. Halite. MinDat.org (2016). \url{http://www.mindat.org/min-1804.html}
+	
+	\bibitem{lattice3}
+	Minerology Database. Sylvite. MinDat.org (2016). \url{http://www.mindat.org/min-3850.html}
 
 
 \end{thebibliography}
