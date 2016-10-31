@@ -26,6 +26,7 @@
 \usepackage{fullpage}
 \usepackage{epsfig}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{float}
@@ -51,11 +52,41 @@
 \date{\today}
 
 \begin{abstract}
-	In this experiment, we investigate the characteristic x-rays produced by atomic transitions of various elements, according to Moseley's Law.
+	\lipsum[1]
 \end{abstract}
 \maketitle
 
+\begin{center}
+\textit{Oh, if these rays should strike you and me,}
+
+\textit{Going through us without any pain,}
+
+\textit{Oh, what a fright they would give us to see}
+
+\textit{The mess which our stomachs contain!}
+\end{center}
+
+\begin{flushright}
+--- Homer C. Bennett,
+
+American X-ray Journal, 1897
+\end{flushright}
+
 \section{Introduction}
+
+In October of 1895, Wilhelm R\"{o}ntgen was undertaking a study of cathode rays (a new and exciting field of research at the time) when he observed something highly unusual. A florescent screen set a few meters away from his apparatus was glowing\cite{xray_history}. This was unusual, because the maximum distance for cathode rays to be able to cause noticeable florescence was less than $10~cm$. This unexplained glow caught his attention, and he spent a frantic six weeks in the laboratory examining his findings and exploring this new radiation. He emerged a scant six weeks later with a photograph of the bones in his wifes hand and announced to the world his discovery of a new type of radiation, the "x-ray"\cite{rontgen_paper, 50years}. These rays, R\"{o}ntgen determined, were caused by cathode rays impacting on a material object. 
+
+These rays caught the world by storm, and a flurry of new research into their properties quickly ensued. Very quickly, doctors realized that the ability of x-rays to penetrate human flesh would be a huge boon to every part of medicine, and within a month "R\"{o}ntgenograms" began to become a part of everyday medical practice --- used for everything from locating bullets to setting bones\cite{xray_history}.
+
+Some time later, Max von Laue, a student and friend of Max Planck, became interested in using x-rays to probe the structure of crystals. He had formulated a theory which described the diffraction behavior of light in parallel planes, and theorized that the "secondary" (i.e. not bremsstrahlung related) x-rays of a material would exhibit interference patterns after passing through the planes of a crystal. Experiments quickly showed that x-rays which passed through crystals emerged diffracted into a pattern of concentric circles. This result, which earned Laue the Nobel Prize in 1914, simultaneously demonstrated the wave properties of x-rays and birthed an entirely new discipline --- x-ray crystallography\cite{laue}. Crystallography would ultimately lead to the discovery of the structure of a great many biological structures, including that of DNA some 40 years later by Rosaland Franklin, James Watson, and Fancis Crick\cite{dna1, dna2}.
+
+While Laue had been primarily interested in using the diffracting crystals as a way to explore the properties of x-rays, many scientists soon realized that they could do exactly the opposite. In particular, William Lawrence Bragg and his father William Henry Bragg became interested in how a specific incidence of Laue Diffraction could be used to study the structure of crystalline materials. They found that x-rays which diffracted off of the surface of a crystal would exhibit interference patterns with maxima given by the following relation:
+\begin{gather}\label{eq:bragg}
+	d\sin\theta = n \lambda
+\end{gather}
+where $n = 1,2,3...$, $\lambda$ the wavelength of the characteristic x-ray, and $d$ the distance between the planes of the crystal. While the calculations of scattering angles in general Laue Diffraction experiments were incredibly complex, this simple case could be modeled by simply assuming the planes were parallel and going simple geometrical optics calculations\cite{bragg} (see Appendix \ref{section:bragg_derivation}). They could use this result to compare the spacing of atoms from crystal to crystal. They performed measurements of a number of samples, and showed that not only was this technique able to compare inter-atomic distances in crystal lattices, but was useful in determining the composition of unknown samples. This result earned the Bragg's the Nobel Prize in 1915.
+
+The Bragg's observed that these diffraction patterns were only consistent so long as the material which produced the x-rays stayed consistent between experiments. If the material of the anode in their x-ray tubes was changed, the pattern they observed from the same crystal would also be changed. This behavior is what prompted Henry Moseley to begin his investigation of the x-ray spectra of different elements. By taking the x-ray spectra from the same crystal, but with different anodes producing the x-rays, Moseley was able to determine an empirical law which linked the atomic number of an element with the frequency
 
 Moseley's Law:
 \begin{equation}\label{Eq:MLaw}
@@ -197,7 +228,7 @@ We set the x-ray source to $I_{source} = 80~mA$ and $V_{source} = 20~kV$ for all
 \end{figure}
 
 From this, we observe two key features. We first can see that there is a bremsstrahlung spectrum which underlays all other features, starting at $\approx10^\circ$ and extending out to the edge of the graph. At the far end ($\theta > 55^\circ$), we enter into a region where x-rays from the source start to enter the detector without scattering off of the crystal (simply due to positioning). This causes these points to be artificially higher than the bremsstrahlung background would otherwise have them. The second feature is the sets of two peaks beginning shortly after the bremsstrahlung spectrum. These are the characteristic x-rays of the source's anode, composed of Copper, scattering off of the crystal structure of the sample according to Bragg's Law, with $n = 1,~2,~3,...$ and an as yet unknown lattice spacing. 
-\begin{gather}\label{eq:bragg}
+\begin{gather}
 	2d\sin{\theta} = n \lambda
 \end{gather}
 Using the data gathered above, in concert with the known $K_\alpha$ and $K_\beta$ values, we can determine the experimental values for the lattice spacing:
@@ -305,11 +336,65 @@ We calculated the theoretical values of $A$ for each of the different types of s
 	
 	\bibitem{xrd_report}
 	Mihaly, Laszlo and PMK. X-Ray Diffraction. (Stony Brook University, 2001)
+	
+	\bibitem{xray_history}
+	Assmus, Alexi. Early History of X Rays. (SLAC, 1995).
+	
+	\bibitem{rontgen_paper}
+	R\"{o}ntgen, W.C. Uber eine neue Art von Strahlen. (University of Wurzburg, December 1895)
+	
+	\bibitem{50years}
+	Ewald, P.P. et. al. Fifty Years of X-Ray Diffraction. (International Union of Crystallography, 1999)
+	
+	\bibitem{laue}
+	Nobelprize.org. Max von Laue.  (Nobel Media AB 2014. 30 Oct 2016.)
+	
+	\bibitem{bragg}
+	Nobelprize.org. Nobel Prize in Physics 1915 - Presentation Speech. (Nobel Media AB 2014. 31 Oct 2016.)
+	
+	\bibitem{dna1}
+	Watson, James D.; Crick, Francis (1953). "A Structure for Deoxyribose Nucleic Acid" (PDF). Nature. 171 (4356): 737–738.
+	
+	\bibitem{dna2}
+	 "Due credit". Nature. 496: 270. 18 April 2013.
 
 
 \end{thebibliography}
 
 \begin{appendix}
+
+\section{Simple Derivation of the Bragg Diffraction Criterion}\label{section:bragg_derivation}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{bragg_derivation.png}
+	\caption{Ray tracing diagram showing the derivation of Bragg's diffraction law.}
+	\label{fig:bragg_derivation}
+\end{figure}
+
+One of the simplest cases of Laue diffraction is to imagine the x-rays as monochromatic plane waves incident at an angle $\theta$ on a crystal lattice composed of flat planes separated by a distance $d$. If we make these assumptions, then we can use simple geometric optics in order to determine the behavior of the diffracted waves, as well as the criterion for the maxima of the resultant interference pattern.
+
+The only cause of interference in this approximation is the path length difference between the wave which is reflected by the first plane, and the wave which is reflected by the subsequent planes. Since we assume uniform spacing, we only need to look to the first two planes to get a picture of this behaviour (the behaviour of planes 2 and 3 would mirror that of planes 1 and 2, and so on). The path length difference between these two waves, shown graphically in Figure \ref{fig:bragg_derivation}, is:
+\begin{gather}
+	(AB + BA) - (AC') \nonumber
+\end{gather}
+For constructive interference, the waves should arrive at the plane defined by $CC'$ in phase, and so the path length difference at this point should be equal to $n \lambda$ where $n = 1,2,3...$. From trigonometry of right triangles, we find:
+\begin{gather}
+	\sin\theta = \frac{\text{Opposite}}{\text{Hypotenuse}} = \frac{d}{AB} = \frac{d}{BC} \nonumber \\
+	\tan \theta = \frac{\text{Opposite}}{\text{Adjacent}} = \frac{d}{AC/2} \nonumber 
+\end{gather}
+Therefore:
+\begin{gather}
+	AC' = AC\cos\theta = \frac{2d}{\tan\theta}\cos\theta = \frac{2d \cos^2\theta}{\sin\theta} \nonumber
+\end{gather}
+And thus:
+\begin{gather}
+n \lambda = (AB + BA) - (AC') \nonumber \\
+n\lambda \frac{2d}{\sin \theta} - \frac{2d \cos^2\theta}{\sin\theta} = \frac{2d \sin^2\theta}{\sin\theta} \nonumber \\
+\downarrow \nonumber \\
+n \lambda = 2d\sin\theta \nonumber \qed
+\end{gather}
+Which is precisely the Bragg condition for diffraction maxima.
 
 \section{Validation of the $\chi^2$ Minimization in ROOT} \label{section:root}
 For this experiment, we used ROOT, a c++ based data analysis software, to plot and fit functions to our data. To verify that ROOT calculates a correct value for $\chi^{2}$, we performed a hand calculation cross check with a simple set of data. The data set we used for this cross check was $\{ (11.0 \pm 0.0, 23.0 \pm 0.5), (14.0 \pm 0.0, 25.0 \pm 0.5), (20.0 \pm 0.0, 35.0 \pm 0.5), (25.0 \pm 0.0, 39.0 \pm 0.5) \}$. We plotted this data and fit it to a linear function $f(x) = [0] + [1]*x$. This plot is shown in Fig.~\ref{Fig:rootproof}.
