@@ -314,12 +314,46 @@ We calculated the theoretical values of $A$ for each of the different types of s
 
 \subsection{X-Ray Diffraction}
 
+The hard sphere model of the atoms is a theory of crystal structure which states that the atoms in the lattice can be treated effectively as hard spheres which are directly in contact. Pauling calculated these values from an estimate of the effective nuclear charge of each ion\cite{hard_spheres_2}, the results of which were compiled and modified slightly by R.D. Shannon\cite{hard_spheres}. Estimates of the spacing for our crystals from Snannon's measurements can be seen in Table \ref{table:hardsphere_d} below:
+
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|r|r|r|}
+		\hline
+		\textbf{Crystal} & \multicolumn{1}{l|}{\textbf{$r_1$ (pm)}} & \multicolumn{1}{l|}{\textbf{$r_2$ (pm)}} & \multicolumn{1}{l|}{\textbf{$d$ (pm)}} \\ \hline
+		\textit{KCl } & 152 & 167 & 319 \\ \hline
+		\textit{NaCl} & 116 & 167 & 283 \\ \hline
+		\textit{LiF} & 90 & 119 & 209 \\ \hline
+	\end{tabular}
+	\end{center}
+	\caption{Values for d predicted by the hard sphere model\cite{hard_sphere}.}
+	\label{table:hardsphere_d}
+\end{table}
+
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=5cm]{nacl_lattice.png}
-	\caption{Structure of NaCl, a face centered cubic crystal.}
+	\caption{Structure of NaCl, a face centered cubic crystal. In the hard sphere model of the crystal structure, the surfaces of the ions would be in direct constact.}
 	\label{fig:lattice_nacl}
 \end{figure}
+
+Known values\cite{lattice, lattice2, lattice3} of the lattice constants, measured using x-ray diffraction techniques, can be seen in Table \ref{table:known_d} below:
+
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|r|r|}
+		\hline
+		\textbf{Crystal} & \multicolumn{1}{l|}{\textbf{$a$ (pm)}} & \multicolumn{1}{l|}{\textbf{$d$ (pm)}} \\ \hline
+		\textit{KCl} & 629.2 & 314.6 \\ \hline
+		\textit{NaCl} & 564.02 & 282.01 \\ \hline
+		\textit{LiF} & 403.51 & 201.755 \\ \hline
+	\end{tabular}
+	\end{center}
+	\caption{Known values of the lattice constant for the three crystals}
+	\label{table:known_d}
+\end{table}
+
 
 \section{Comparison of Theory and Experiment}
 
@@ -425,6 +459,21 @@ We calculated the theoretical values of $A$ for each of the different types of s
 	
 	\bibitem{traces}
 	L Vincze. Confocal X-ray Fluorescence Imaging and XRF Tomography for Three-Dimensional Trace Element Microanalysis. Microscopy and Microanalysis, Volume 11, Issue S02 (2005).
+	
+	\bibitem{hard_sphere}
+	Shannon, R. D. Revised effective ionic radii and systematic studies of interatomic distances in halides and chalcogenides. Acta Crystallographica Section A: Crystal Physics, Diffraction, Theoretical and General Crystallography, vol. 32, issue 5, pp. 751-767 (1976)
+	
+	\bibitem{hard_sphere2}
+	Pauling, L. The Nature of the Chemical Bond (3rd Edn.). Ithaca, NY: Cornell University Press (1960).
+	
+	\bibitem{lattice}
+	Minerology Database. Griceite. MinDat.org (2016). \url{http://www.mindat.org/min-1749.html}
+	
+	\bibitem{lattice2}
+	Minerology Database. Halite. MinDat.org (2016). \url{http://www.mindat.org/min-1804.html}
+	
+	\bibitem{lattice3}
+	Minerology Database. Sylvite. MinDat.org (2016). \url{http://www.mindat.org/min-3850.html}
 
 
 \end{thebibliography}
