@@ -330,7 +330,7 @@ We calculated the theoretical values of $A$ for each of the different types of s
 
 \subsection{X-Ray Diffraction}
 
-The hard sphere model of the atoms is a theory of crystal structure which states that the atoms in the lattice can be treated effectively as hard spheres which are directly in contact. Pauling calculated these values from an estimate of the effective nuclear charge of each ion\cite{hard_sphere2}, the results of which were compiled and modified slightly by R.D. Shannon\cite{hard_sphere}. Estimates of the spacing for our crystals from Snannon's tables can be seen in Table \ref{table:hardsphere_d} below:
+The hard sphere model of the atoms is a theory of crystal structure which states that the atoms in the lattice can be treated effectively as hard spheres which are directly in contact. The distance between the crystal planes then simply becomes the sum of the radii of the two spheres. Pauling calculated these radii from an estimate of the effective nuclear charge of each ion\cite{hard_sphere2}, the results of which were compiled and modified slightly by R.D. Shannon\cite{hard_sphere}. Estimates of the spacing for our crystals from Snannon's tables can be seen in Table \ref{table:hardsphere_d} below:
 
 \begin{table}[htbp]
 	\begin{center}
@@ -399,19 +399,23 @@ The theoretical values
 
 \subsection{X-Ray Diffraction}
 
+Tables \ref{table:xrd_comparison_hard_sphere} and \ref{table:xrd_comparison_known} show the comparison between the experimental values determined above and the known values. Table \ref{table:xrd_comparison_hard_sphere} shows the comparison with the hard sphere model of the atoms, and Table \ref{table:xrd_comparison_known} shows the comparison with tables of known, well-tested, values.
+
 \begin{table}[htbp]
 	\begin{center}
 	\begin{tabular}{|l|r|r|l|l|}
 		\hline
 		Crystal & \multicolumn{1}{l|}{$d_{avg}$ (nm)}  & \multicolumn{1}{l|}{$d_{HS}$ (pm)} & Cons? & $\%$ Diff. \\ \hline
 		LiF & 0.2031 $\pm$ 0.002179 & 0.209 & No & \multicolumn{1}{r|}{3.87} \\ \hline
-		Kcl & 0.3199 $\pm$ 0.007197 & 0.319 & Yes & --- \\ \hline
-		NaCl & 0.2875 $\pm$ 0.004851 & 0.283 & No & \multicolumn{1}{r|}{0.123} \\ \hline
+		KCl & 0.3199 $\pm$ 0.007197 & 0.319 & Yes & --- \\ \hline
+		NaCl & 0.2875 $\pm$ 0.005546 & 0.283 & Yes & --- \\ \hline
 	\end{tabular}
 	\end{center}
 	\caption{Comparison of theoretical and experimental values of lattice spacing for the three crystals, using the hard sphere model of the atom.}
 	\label{table:xrd_comparison_hard_sphere}
 \end{table}
+
+We will first compare the hard sphere predictions with our experimental values. From the values in Table \ref{table:xrd_comparison_hard_sphere} we can see that our experimental results for KCl and NaCl are consistent with the theory. However, the lattice spacing result from LiF is off by almost $4\%$. We could attribute this difference to measurement error, but we should first look to the known measured values to make sure they themselves are consistent with the theory.
 
 \begin{table}[htbp]
 	\begin{center}
@@ -419,17 +423,41 @@ The theoretical values
 		\hline
 		Crystal & \multicolumn{1}{l|}{$d_{avg}$ (nm)} & \multicolumn{1}{l|}{$d_{xrd}$ (nm)} & Cons? & $\%$ Diff. \\ \hline
 		LiF & 0.2031 $\pm$ 0.002179 & 0.2013 & Yes & --- \\ \hline
-		Kcl & 0.3199 $\pm$ 0.007197 & 0.3146 & Yes & --- \\ \hline
-		NaCl & 0.2875 $\pm$ 0.004851 & 0.2820 & No & \multicolumn{1}{r|}{0.228} \\ \hline
+		KCl & 0.3199 $\pm$ 0.007197 & 0.3146 & Yes & --- \\ \hline
+		NaCl & 0.2875 $\pm$ 0.005546 & 0.2820 & Yes & --- \\ \hline
 	\end{tabular}
 	\end{center}
 	\caption{Comparison of known values (measured using high precision experiments) and experimental values of lattice spacing for the three crystals.}
 	\label{table:xrd_comparison_known}
 \end{table}
 
-\section{Discussion}
+From the data in Figure \ref{table:xrd_comparison_known}, we can see that our measurements of $d$ are all consistent with the known values to within the bounds of their own uncertainty.
+
+\section{Discussion and Conclusion}
+
+In the x-ray diffraction section of this lab, we verified the Bragg condition for constructive interference from scattering off of crystal planes. We also measured the value of the interplanar spacing of cubic alkali-halide crystals, and found that they were consistent with the known values. However, we also found that our result for LiF was not consistent with the 'hard spheres' model of the atom (detailed in \cite{hard_sphere, hard_sphere2}) while the measurements of the other two crystals were consistent. Because both crystals are alkali-halides and have the same charges, the main difference between this crystal and the other two is in the atomic number of the elements. For LiF, $Z_{Li} = 3$ and $Z_{F} = 9$, for NaCl, $Z_{Cl} = 17$ and $Z_{Na} = 11$, and for KCl, $Z_{Cl} = 17$ and $Z_{K} = 19$. From this, we speculate that the hard spheres model of the atom is only a good approximation at higher $Z$ values, and fails at low $Z$. If given additional crystals, with a wider range of $Z$ values, we could test this hypothesis by constructing a plot of deviation from the 'hard sphere' model vs. $\Sigma Z$.
 
 \section{Author Contributions}
+
+Both authors believe that the work for this project was split equally, and each offered valuable insight to every section of this report. However, the sections when divided up by principle author are as follows:
+
+\noindent \textbf{Joshua LaBounty}:
+\begin{enumerate}
+	\item Section 1: Introduction
+	\item Section 2: Review of Previous Work
+	\item Section 3: Experimental Setup
+	\item Section 4b: Measurements, XRD
+	\item Section 5b: Theoretical Model, XRD
+	\item Section 6b: Comparison, XRD
+	\item Appendix A: Bragg Derivation
+\end{enumerate}
+
+\noindent \textbf{Thomas Krahulik}:
+\begin{enumerate}
+	\item Section 
+\end{enumerate}
+
+\noindent Lab time was also split equally, with one partner often taking measurements while the other developed the analysis software used in this report.
 
 \begin{thebibliography}{6}
 	
@@ -532,6 +560,9 @@ The theoretical values
 	\bibitem{hard_sphere2}
 	Pauling, L. The Nature of the Chemical Bond (3rd Edn.). Ithaca, NY: Cornell University Press (1960).
 	
+	\bibitem{hard_sphere3}
+	Roumen Tsekov. HARD SPHERES MODEL OF THE ATOM. University of Sofia. (2015)
+	
 	\bibitem{lattice}
 	Minerology Database. Griceite. MinDat.org (2016). \url{http://www.mindat.org/min-1749.html}
 	
@@ -605,7 +636,7 @@ When performing this hand calculation we also obtained a value of $\chi ^{2} = 1
 All of the analysis code used for this lab can be found in the following git repository: 
 \begin{verbatim}
 https://github.com/jlabounty/SeniorLab/tree
-/master/XRF_XRD
+/master/XRF_XRD/
 \end{verbatim}
 
 \end{appendix}
