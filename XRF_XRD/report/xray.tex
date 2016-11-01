@@ -203,11 +203,16 @@ As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}
 
 \subsection{X-Ray Diffraction}
 
-\subsubsection{Characterization of the Detector}
+\subsubsection{Analysis of the Detector}
 
-To begin this experiment, we needed to characterize the behavior of the detector with respect to each one of the variables.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{xrd_setup_investigation.png}
+	\caption{Investigation of the properties of the x-ray diffraction GM detector and x-ray source}
+	\label{fig:xrf_setup_investigation}
+\end{figure}
 
-\subsubsection{Determination of the Dead Time}
+To begin this experiment, we needed to characterize the behavior of the detector with respect to the Voltage and Current of the x-ray source, the Voltage to the detector, and the gain settings of the amplification. We positioned the detector with no crystal at a slight angle $\approx 2^\circ$. We performed a series of analyses in which we fixed all but one of these variables and varied the others. We found that the minimum voltage required for the detector to function was $320~V$. At any level below that, the detector would read no counts. We also determined that increasing the voltage and the current of the source both produced increases in counts/second, but produced diminishing returns after a certain amount of time. A selection of these plots can be seen in Figure \ref{fig:xrf_setup_investigation}.
 
 \begin{figure}[H]
 	\centering
@@ -216,7 +221,9 @@ To begin this experiment, we needed to characterize the behavior of the detector
 	\label{fig:dead_time}
 \end{figure}
 
-Using the oscilloscope readout, we determined the dead time of our detector at the settings we would be using for our subsequent data taking. We set the discriminator fine gain to $1.0$, the discriminator course gain to $\sfrac{1}{16}$, and the voltage of the detector to $V_{det} = 450~V$. At these settings, we observed pulses of similar shape to the one shown in Figure \ref{fig:dead_time}. We measured the width of those pulses in $t$ using the limes on the oscilloscope screen and determined them to be $\tau_{dead} = 0.1 \pm 0.01~ms$. This means that saturation count rate for our detector would be $1/\tau_{dead} = 10,000 \pm 1,000~\text{photons}/s$. Thus, during the subsequent experiments, we took care to keep our peak count rate under that value, or else we risked not being able to distinguish between closely spaced peaks.
+One important quantity that we needed to determine is the dead time of the detector. Using the oscilloscope readout, we determined the dead time of our detector at the settings we would be using for our subsequent data taking. We set the discriminator fine gain to $1.0$, the discriminator course gain to $\sfrac{1}{16}$, and the voltage of the detector to $V_{det} = 450~V$. At these settings, we observed pulses of similar shape to the one shown in Figure \ref{fig:dead_time}. We measured the width of those pulses in $t$ using the limes on the oscilloscope screen and determined them to be $\tau_{dead} = 0.1 \pm 0.01~ms$. This means that saturation count rate for our detector would be $1/\tau_{dead} = 10,000 \pm 1,000~\text{photons}/s$. Thus, during the subsequent experiments, we took care to keep our peak count rate under that value, or else we risked not being able to distinguish between closely spaced peaks.
+
+Using this dead time determination alongside the data in Figure \ref{fig:xrf_setup_investigation}, we determined the settings for the detector which would optimize our particle count at the peaks to be just under the limit imposed by the dead time. The settings we chose were: $I_{source} = 80~mA$, $V_{source} = 20~kV$, $V_{detector} = 450~V$, $Gain_{Fine} = 1.0$, and $Gain_{Course} = \sfrac{1}{16}$. We found that these numbers produced counts which were high enough to get a good resolution of the peaks, but not high enough to saturate the detector.
 
 \subsubsection{Diffraction Spectra}
 
