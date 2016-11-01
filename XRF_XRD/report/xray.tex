@@ -52,7 +52,7 @@
 \date{\today}
 
 \begin{abstract}
-	In this experiment, we explore the characteristic x-rays produced by various elements and use them to probe the crystal structure of a number of Alkali halide cubic crystals. Using an electron gun, we excite the characteristic transitions of a number of elements ranging in $Z$ from Lithium ($Z = 3$) to Uranium ($Z = 92$). We then use this data to recreate Moseley's Plot of Frequency vs. Atomic Number, and verify his eponymous empirical law. We then use these x-rays, produced from a copper anode, to probe the crystal structures of LiF, KCl, and NaCl and determine their lattice spacing. We find that our experimental lattice spacings are consistent with the known values.
+In this experiment, we explore the characteristic x-rays produced by various elements and use them to probe the crystal structure of a number of Alkali halide cubic crystals. Using an electron gun, we excite the characteristic transitions of a number of elements ranging in $Z$ from Lithium ($Z = 3$) to Uranium ($Z = 92$). We then use this data to recreate Moseley's Plot of Frequency vs. Atomic Number, and verify his eponymous empirical law. We then use these x-rays, produced from a copper anode, to probe the crystal structures of LiF, KCl, and NaCl and determine their lattice spacing. We find that our experimental lattice spacings are consistent with the known values.
 \end{abstract}
 \maketitle
 
@@ -78,7 +78,7 @@ In October of 1895, Wilhelm R\"{o}ntgen was undertaking a study of cathode rays 
 
 These rays caught the world by storm, and a flurry of new research into their properties quickly ensued. Very quickly, doctors realized that the ability of x-rays to penetrate human flesh would be a huge boon to every part of medicine, and within a month "R\"{o}ntgenograms" began to become a part of everyday medical practice --- used for everything from locating bullets to setting bones\cite{xray_history}.
 
-Some time later, Max von Laue, a student and friend of Max Planck, became interested in using x-rays to probe the structure of crystals. He had formulated a theory which described the diffraction behavior of light in parallel planes, and theorized that the "secondary" (i.e. not bremsstrahlung related) x-rays of a material would exhibit interference patterns after passing through the planes of a crystal. Experiments quickly showed that x-rays which passed through crystals emerged diffracted into a pattern of concentric circles. This result, which earned Laue the Nobel Prize in 1914, simultaneously demonstrated the wave properties of x-rays and birthed an entirely new discipline --- x-ray crystallography\cite{laue}. Crystallography would ultimately lead to the discovery of the structure of a great many biological structures, including that of DNA some 40 years later by Rosaland Franklin, James Watson, and Fancis Crick\cite{dna1, dna2}.
+Some time later, Max von Laue, a student and friend of Max Planck, became interested in using x-rays to probe the structure of crystals. He had formulated a theory which described the diffraction behavior of light in parallel planes, and theorized that the "secondary" (i.e. non-bremsstrahlung) x-rays of a material would exhibit interference patterns after passing through the planes of a crystal. Experiments quickly showed that x-rays which passed directly through crystals emerged diffracted into a pattern of concentric circles. This result, which earned Laue the Nobel Prize in 1914, simultaneously demonstrated the wave properties of x-rays and birthed an entirely new discipline --- x-ray crystallography\cite{laue}. 
 
 While Laue had been primarily interested in using the diffracting crystals as a way to explore the properties of x-rays, many scientists soon realized that they could do exactly the opposite. In particular, William Lawrence Bragg and his father William Henry Bragg became interested in how a specific incidence of Laue Diffraction could be used to study the structure of crystalline materials. They found that x-rays which diffracted off of the surface of a crystal would exhibit interference patterns with maxima given by the following relation:
 \begin{gather}\label{eq:bragg}
@@ -86,7 +86,11 @@ While Laue had been primarily interested in using the diffracting crystals as a 
 \end{gather}
 where $n = 1,2,3...$, $\lambda$ the wavelength of the characteristic x-ray, and $d$ the distance between the planes of the crystal. They were able to select for only certain x-ray wavelengths by using narrow band filters, which would only allow certain wavelengths on the order of their size through. While the calculations of scattering angles in general Laue Diffraction experiments were incredibly complex, this simple case could be modeled by simply assuming the planes were parallel and going simple geometrical optics calculations\cite{bragg} (see Appendix \ref{section:bragg_derivation}). They performed measurements of a number of samples, and showed that not only was this technique able to compare inter-atomic distances in crystal lattices, but was useful in determining the composition of unknown samples. This result earned the Bragg's the Nobel Prize in 1915.
 
-The Bragg's observed that these diffraction patterns were only consistent so long as the material which produced the x-rays stayed consistent between experiments. If the material of the anode in their x-ray tubes was changed, the pattern they observed from the same crystal would also be changed. This behavior is what prompted Henry Moseley to begin his investigation of the x-ray spectra of different elements. By taking the x-ray spectra from the same crystal, but with different anodes producing the x-rays, Moseley was able to determine an empirical law which linked the atomic number of an element with the frequency
+The Bragg's observed that these diffraction patterns were only consistent so long as the material which produced the x-rays stayed consistent between experiments. If the material of the anode in their x-ray tubes was changed, the pattern they observed from the same crystal would also be changed. This behavior is what prompted Henry Moseley to begin his investigation of the x-ray spectra of different elements. By taking the x-ray spectra from the same crystal, but with different anodes producing the x-rays, Moseley was able to determine an empirical law which linked the atomic number of an element with the frequency of its characteristic x-rays.
+
+\begin{Large}
+\textbf{ADD MOSELEYS LAW}
+\end{Large}
 
 Moseley's Law:
 \begin{equation}\label{Eq:MLaw}
@@ -112,6 +116,8 @@ New techniques to utilize characteristic x-rays of a material are always being i
 
 \subsection{X-Ray Florescence}
 
+The apparatus used in our measurements of x-ray florescence consists primarily of two components, an electron gun and a solid state detector, as shown in Figure \ref{fig:xrf_setup}. The electron gun operates by running a current through a filament, typically made out of tungsten due to its resilience to high temperatures, in a potential. Electrons are 'boiled off' the filament (a process known as thermionic emission) and are accelerated towards the anode. Some of the electrons strike the anode, but the rest escape through the opening into a collimated beam of particles. The energy of these electrons is defined by their accelerating voltage: $E_{e^-} = qV$, while their number is defined by the current.  These electrons impact the sample and cause it to emit photons, which are then picked up by the detector. 
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.25\textwidth]{xrf_experiment.png}
@@ -119,7 +125,7 @@ New techniques to utilize characteristic x-rays of a material are always being i
 	\label{fig:xrf_setup}
 \end{figure}
 
-The apparatus used in our measurements of x-ray florescence consists primarily of two components, an electron gun and a solid state detector, as shown in Figure \ref{fig:xrf_setup}. The electron gun operates by running a current through a filament, typically made out of tungsten due to its resilience to high temperatures, in a potential. Electrons are 'boiled off' the filament (a process known as thermionic emission) and are accelerated towards the anode. Some of the electrons strike the anode, but the rest escape through the opening into a collimated beam of particles. The energy of these electrons is defined by their accelerating voltage: $E_{e^-} = qV$, while their number is defined by the current.  These electrons impact the sample and cause it to emit photons, which are then picked up by the detector. The detector is a Silicon p-i-n diode manufactured by Amptek. Photons which are incident on the detector are first met with a window made of Beryllium, which is opaque to photons whose energies are below $\approx ~1~keV$. Photons whose energies are high enough to pass through this window then deposit their energy in the sensitive volume of the detector, ionizing the silicon atoms and creating a number of electron-hole pairs in the lattice structure. A bias voltage across the diode causes these electron/holes to flow and be read into the detector as a pulse of charge, whose magnitude is directly proportional to the energy which was deposited in the detector by the photons. This pulse is passed through an amplifier, which is then passed into the multi-channel analyzer (MCA), and then from there into the computer system. From there, the information is saved in a format which can be read into our data analysis software, ROOT. This software is developed and maintained by scientists at CERN, and contains many useful fitting and histogram manipulation packages. We also performed independent cross checks of its $\chi^2$ minimization techniques, which can be found in Appendix \ref{section:root}.
+The detector is a Silicon p-i-n diode manufactured by Amptek. Photons which are incident on the detector are first met with a window made of Beryllium, which is opaque to photons whose energies are below $\approx ~1~keV$. Photons whose energies are high enough to pass through this window then deposit their energy in the sensitive volume of the detector, ionizing the silicon atoms and creating a number of electron-hole pairs in the lattice structure. A bias voltage across the diode causes these electron/holes to flow and be read into the detector as a pulse of charge, whose magnitude is directly proportional to the energy which was deposited in the detector by the photons. This pulse is passed through an amplifier, which is then passed into the multi-channel analyzer (MCA), and then from there into the computer system. From there, the information is saved in a format which can be read into our data analysis software, ROOT. This software is developed and maintained by scientists at CERN, and contains many useful fitting and histogram manipulation packages. We also performed independent cross checks of its $\chi^2$ minimization techniques, which can be found in Appendix \ref{section:root}.
 
 \subsection{X-Ray Diffraction}
 
@@ -207,12 +213,12 @@ As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=8cm]{xrd_setup_investigation.png}
+	\includegraphics[width=7.5cm]{xrd_setup_investigation.png}
 	\caption{Investigation of the properties of the x-ray diffraction GM detector and x-ray source}
 	\label{fig:xrf_setup_investigation}
 \end{figure}
 
-To begin this experiment, we needed to characterize the behavior of the detector with respect to the Voltage and Current of the x-ray source, the Voltage to the detector, and the gain settings of the amplification. We positioned the detector with no crystal at a slight angle $\approx 2^\circ$. We performed a series of analyses in which we fixed all but one of these variables and varied the others. We found that the minimum voltage required for the detector to function was $320~V$. At any level below that, the detector would read no counts. We also determined that increasing the voltage and the current of the source both produced increases in counts/second, but produced diminishing returns after a certain amount of time. A selection of these plots can be seen in Figure \ref{fig:xrf_setup_investigation}.
+To begin this experiment, we needed to characterize the behavior of the detector with respect to the Voltage and Current of the x-ray source, the Voltage to the detector, and the gain settings of the amplification. We positioned the detector with no crystal at a slight angle $\approx 2^\circ$. We performed a series of analyses in which we fixed all but one of these variables and varied the others. We found that the minimum voltage required for the detector to function was $320~V$. At any level below that, the detector would read no counts. We also determined that increasing the voltage and the current of the source both produced increases in counts/second, but produced diminishing returns after a certain amount of time. A subset of these plots can be seen in Figure \ref{fig:xrf_setup_investigation}.
 
 \begin{figure}[H]
 	\centering
@@ -233,19 +239,19 @@ We set the x-ray source to $I_{source} = 80~mA$ and $V_{source} = 20~kV$ for all
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=8cm]{Diffraction_LiF.png}
+	\includegraphics[width=7cm]{Diffraction_LiF.png}
 	\caption{Angular diffraction of Lithium Fluoride. Here, $\theta$ refers to the angle of the crystal, so the overall angular displacement of the detector is $2 \theta$.}
 	\label{fig:LiF}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=8cm]{Diffraction_KCl.png}
+	\includegraphics[width=7cm]{Diffraction_KCl.png}
 	\caption{Angular diffraction of Potassium Chloride. Here, $\theta$ refers to the angle of the crystal, so the overall angular displacement of the detector is $2 \theta$.}
 	\label{fig:KCl}
 \end{figure}
 
-From this, we observe two key features. We first can see that there is a bremsstrahlung spectrum which underlays all other features, starting at $\approx10^\circ$ and extending out to the edge of the graph. At the far end ($\theta > 55^\circ$), we enter into a region where x-rays from the source start to enter the detector without scattering off of the crystal (simply due to positioning). This causes these points to be artificially higher than the bremsstrahlung background would otherwise have them. The second feature is the sets of two peaks beginning shortly after the bremsstrahlung spectrum. These are the characteristic x-rays of the source's anode, composed of Copper, scattering off of the crystal structure of the sample according to Bragg's Law, with $n = 1,~2,~3,...$ and an as yet unknown lattice spacing. 
+From these Figures, we observe two key features. We first can see that there is a bremsstrahlung spectrum which underlays all other features, starting at $\approx10^\circ$ and extending out to the edge of the graph. At the far end ($\theta > 55^\circ$), we enter into a region where x-rays from the source start to enter the detector without scattering off of the crystal (simply due to positioning). This causes these points to be artificially higher than the bremsstrahlung background would otherwise have them. The second feature is the sets of two peaks beginning shortly after the bremsstrahlung spectrum. These are the characteristic $K_\alpha$ and $K_\beta$ x-rays of the source's anode, composed of Copper, scattering off of the crystal structure of the sample according to Bragg's Law, with $n = 1,~2,~3,...$ and an as yet unknown lattice spacing. 
 \begin{gather}
 	2d\sin{\theta} = n \lambda
 \end{gather}
@@ -275,21 +281,24 @@ The value of $\theta$ was determined by using a gaussian fit combined with a pol
 	\caption{Calculated lattice spacing for LiF}
 	\label{table:LiF}
 \end{table}
-Using this method, and averaging the results, we obtain an average value for the lattice spacing for all three crystals:
+
+\noindent Using this method, and averaging the results, we obtain an average value for the lattice spacing for all three crystals:
+
 \begin{table}[htbp]
 	\begin{center}
 	\begin{tabular}{|l|r|r|}
 		\hline
 		Crystal & \multicolumn{1}{l|}{$d_{avg}$ (nm)} & \multicolumn{1}{l|}{$\delta d_{avg}$ (nm)} \\ \hline
-		LiF & 0.2031 & 0.002179 \\ \hline
-		Kcl & 0.3199 & 0.007197 \\ \hline
-		NaCl & 0.2875 & 0.004851 \\ \hline
+		\textit{LiF} & 0.2031 & 0.002179 \\ \hline
+		\textit{KCl} & 0.3199 & 0.007197 \\ \hline
+		\textit{NaCl} & 0.2875 & 0.004851 \\ \hline
 	\end{tabular}
 	\end{center}
 	\caption{Average value for the lattice spacing for all three crystals}
 	\label{table:d_average}
 \end{table}
-We will compare these values to their known values in the coming sections.
+
+\noindent We will compare these values to their known values in the coming sections.
 
 \section{Theoretical Model}
 
@@ -345,7 +354,7 @@ The hard sphere model of the atoms is a theory of crystal structure which states
 	\label{fig:lattice_nacl}
 \end{figure}
 
-Known values\cite{lattice, lattice2, lattice3} of the lattice constants, measured using x-ray diffraction techniques, can be seen in Table \ref{table:known_d} below:
+Known values\cite{lattice, lattice2, lattice3} of the lattice constants, measured using x-ray diffraction, can be seen in Table \ref{table:known_d} below:
 
 \begin{table}[htbp]
 	\begin{center}
@@ -361,7 +370,7 @@ Known values\cite{lattice, lattice2, lattice3} of the lattice constants, measure
 	\label{table:known_d}
 \end{table}
 
-In the coming section, we will compare these two theoretical values with out experimental data.
+We can see that these known values are not perfectly in line with the 'hard-sphere' model of the atom. Corrections to this model exist, the so called 'soft-sphere' models\cite{soft_sphere}, but the differences are often so small that they are often negligible. In the coming section, we will compare these two theoretical values with out experimental data.
 
 
 \section{Comparison of Theory and Experiment}
@@ -389,6 +398,34 @@ Table ~\ref{Tab:MoseLawSummary} contains a summary of the experimental values de
 The theoretical values 
 
 \subsection{X-Ray Diffraction}
+
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|r|r|l|l|}
+		\hline
+		Crystal & \multicolumn{1}{l|}{$d_{avg}$ (nm)}  & \multicolumn{1}{l|}{$d_{HS}$ (pm)} & Cons? & $\%$ Diff. \\ \hline
+		LiF & 0.2031 $\pm$ 0.002179 & 0.209 & No & \multicolumn{1}{r|}{3.87} \\ \hline
+		Kcl & 0.3199 $\pm$ 0.007197 & 0.319 & Yes & --- \\ \hline
+		NaCl & 0.2875 $\pm$ 0.004851 & 0.283 & No & \multicolumn{1}{r|}{0.123} \\ \hline
+	\end{tabular}
+	\end{center}
+	\caption{Comparison of theoretical and experimental values of lattice spacing for the three crystals, using the hard sphere model of the atom.}
+	\label{table:xrd_comparison_hard_sphere}
+\end{table}
+
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|l|r|r|r|l|l|}
+		\hline
+		Crystal & \multicolumn{1}{l|}{$d_{avg}$ (nm)} & \multicolumn{1}{l|}{$d_{xrd}$ (nm)} & Cons? & $\%$ Diff. \\ \hline
+		LiF & 0.2031 $\pm$ 0.002179 & 0.2013 & Yes & --- \\ \hline
+		Kcl & 0.3199 $\pm$ 0.007197 & 0.3146 & Yes & --- \\ \hline
+		NaCl & 0.2875 $\pm$ 0.004851 & 0.2820 & No & \multicolumn{1}{r|}{0.228} \\ \hline
+	\end{tabular}
+	\end{center}
+	\caption{Comparison of known values (measured using high precision experiments) and experimental values of lattice spacing for the three crystals.}
+	\label{table:xrd_comparison_known}
+\end{table}
 
 \section{Discussion}
 
@@ -503,6 +540,9 @@ The theoretical values
 	
 	\bibitem{lattice3}
 	Minerology Database. Sylvite. MinDat.org (2016). \url{http://www.mindat.org/min-3850.html}
+	
+	\bibitem{soft_sphere}
+	Lang, Peter F. and Smitha, Barry C. Ionic radii for Group 1 and Group 2 halide, hydride, fluoride, oxide, sulfide, selenide and telluride crystals. Dalton Trans. ,39, 7786-7791 (2010).
 
 
 \end{thebibliography}
