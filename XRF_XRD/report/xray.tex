@@ -125,7 +125,7 @@ The apparatus used in our measurements of x-ray florescence consists primarily o
 	\label{fig:xrf_setup}
 \end{figure}
 
-The detector is a Silicon p-i-n diode manufactured by Amptek. Photons which are incident on the detector are first met with a window made of Beryllium, which is opaque to photons whose energies are below $\approx ~1~keV$. Photons whose energies are high enough to pass through this window then deposit their energy in the sensitive volume of the detector, ionizing the silicon atoms and creating a number of electron-hole pairs in the lattice structure. A bias voltage across the diode causes these electron/holes to flow and be read into the detector as a pulse of charge, whose magnitude is directly proportional to the energy which was deposited in the detector by the photons. This pulse is passed through an amplifier, which is then passed into the multi-channel analyzer (MCA), and then from there into the computer system. From there, the information is saved in a format which can be read into our data analysis software, ROOT. This software is developed and maintained by scientists at CERN, and contains many useful fitting and histogram manipulation packages. We also performed independent cross checks of its $\chi^2$ minimization techniques, which can be found in Appendix \ref{section:root}.
+The detector is a Silicon p-i-n diode manufactured by Amptek. Photons incident on the detector are first met with a window made of Beryllium, which is opaque to photons whose energies are below $\approx ~1~keV$. Photons whose energies are high enough to pass through this window then deposit their energy in the sensitive volume of the detector, ionizing the silicon atoms and creating a number of electron-hole pairs in the lattice structure. A bias voltage across the diode causes these electron/holes to flow and be read into the detector as a pulse of charge, whose magnitude is directly proportional to the energy which was deposited in the detector by the photons. This pulse is passed through an amplifier, which is then passed into the multi-channel analyzer (MCA), and then from there into the computer system. From there, the information is saved in a format which can be read into our data analysis software, ROOT. This software is developed and maintained by scientists at CERN, and contains many useful fitting and histogram manipulation packages. We also performed independent cross checks of its $\chi^2$ minimization techniques, which can be found in Appendix \ref{section:root}.
 
 \subsection{X-Ray Diffraction}
 
@@ -138,7 +138,7 @@ The detector is a Silicon p-i-n diode manufactured by Amptek. Photons which are 
 
 This experiment consists of three primary components: the x-ray source, the goniometer, and the detector. The x-ray source uses the same method of x-ray production as the setup detailed above. However, instead of switching the samples out to change the characteristic x-rays of the system, here the target sample for the electrons is kept constant, and is composed of copper. This means that the characteristic x-rays we expect to see are those produced by copper: $K_\alpha = 8037.8 ~eV= 0.154358 ~nm$ and $K_\beta = 8905.29 ~eV = 0.139322 ~nm$. These x-rays are collimated by sheets of lead with small openings and then allowed to stream freely towards the sample. The second portion of the experiment is the goniometer, which keeps the relative angle of the sample and the detector constant: $\theta_{\text{detector}} = 2\theta_{\text{sample}}$ (relative to $\theta = 0$ defined by the path of the undiffracted x-rays). The x-rays which are diffracted off of the sample then enter the detector. This detector differs from the previous version in that it is a Geiger-Muller detector. 
 
-In this detector, a low-pressure inert gas is encased in a cavity. At either end of this cavity is an anode and a cathode, across which a high voltage is applied. When ionizing radiation enters the cavity, molecules of the gas become ionized. The electron and nucleus then fly in opposite directions, accelerates towards the anode and cathode respectively. The ionized atom, being much more massive than the liberated electron, travels a much shorter distance, and thus stays relatively close to its original position.  As the electron travels through the gas, it causes the ionization of subsequent electrons in an 'avalanche', effectively multiplying its own signal. This flow of liberates electrons creates a fast pulse of charge which is read by the tube as a single event. After the pulse is complete, the atoms in the gas return to their neutral state and the detector is ready to detect another event. The time that the pulse takes is known as the \textit{dead time} of the detector, as events can only be detected one at a time, and the detector is 'dead' to the world until the initial pulse is completed. 
+In this detector, a low-pressure inert gas is encased in a cavity. At either end of this cavity is an anode and a cathode, across which a high voltage is applied. When ionizing radiation enters the cavity, molecules of the gas become ionized. The electron and nucleus then fly in opposite directions, accelerates towards the anode and cathode respectively. As the electron travels through the gas, it causes the ionization of subsequent electrons in an 'avalanche', effectively multiplying its own signal. This flow of liberates electrons creates a fast pulse of charge which is read by the tube as a single event. After the pulse is complete, the atoms in the gas return to their neutral state and the detector is ready to detect another event. The time that the pulse takes is known as the \textit{dead time} of the detector, as events can only be detected one at a time, and the detector is 'dead' to the world until the initial pulse is completed. 
 
 This pulse of current is sent into a pre-amplification system, to increase its magnitude to levels which are more detectable, and from there into a counter, rate meter, and oscilloscope. The oscilloscope serves only to show a visual representation of the pulses, and we will use this output later to characterize the dead time of our detector. The rate meter gives us a measure of the counts/second the detector is seeing, and warns if the detector is becoming saturated (i.e. events are coming in too quickly to all be counted). The counter simply records the number of events in a specified amount of time. We will compare the output from the counter across a wide range of angles in order to determine the number flux of photons at each angle. We recorded this data manually and input it into an excel spreadsheet, so it could be plotted in real time. In order to perform our final analysis, this spreadsheet was converted into a \verb|.txt| file which we then read in to ROOT.
 
@@ -218,7 +218,7 @@ As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}
 	\label{fig:xrf_setup_investigation}
 \end{figure}
 
-To begin this experiment, we needed to characterize the behavior of the detector with respect to the Voltage and Current of the x-ray source, the Voltage to the detector, and the gain settings of the amplification. We positioned the detector with no crystal at a slight angle $\approx 2^\circ$. We performed a series of analyses in which we fixed all but one of these variables and varied the others. We found that the minimum voltage required for the detector to function was $320~V$. At any level below that, the detector would read no counts. We also determined that increasing the voltage and the current of the source both produced increases in counts/second, but produced diminishing returns after a certain amount of time. A subset of these plots can be seen in Figure \ref{fig:xrf_setup_investigation}.
+To begin this experiment, we needed to characterize the behavior of the detector with respect to the Voltage and Current of the x-ray source, the Voltage of the detector, and the gain settings of the signal amplification. We positioned the detector with no crystal at a slight angle $\approx 2^\circ$. We performed a series of measurements in which we fixed all but one of these variables and varied the others. We found that the minimum voltage required for the detector to function was $320~V$. At any level below that, the detector would read no counts. We also determined that increasing the voltage and the current of the source both produced increases in counts/second, but produced diminishing returns after a certain amount of time. A subset of these plots can be seen in Figure \ref{fig:xrf_setup_investigation}.
 
 \begin{figure}[H]
 	\centering
@@ -227,15 +227,15 @@ To begin this experiment, we needed to characterize the behavior of the detector
 	\label{fig:dead_time}
 \end{figure}
 
-One important quantity that we needed to determine is the dead time of the detector. Using the oscilloscope readout, we determined the dead time of our detector at the settings we would be using for our subsequent data taking. We set the discriminator fine gain to $1.0$, the discriminator course gain to $\sfrac{1}{16}$, and the voltage of the detector to $V_{det} = 450~V$. At these settings, we observed pulses of similar shape to the one shown in Figure \ref{fig:dead_time}. We measured the width of those pulses in $t$ using the limes on the oscilloscope screen and determined them to be $\tau_{dead} = 0.1 \pm 0.01~ms$. This means that saturation count rate for our detector would be $1/\tau_{dead} = 10,000 \pm 1,000~\text{photons}/s$. Thus, during the subsequent experiments, we took care to keep our peak count rate under that value, or else we risked not being able to distinguish between closely spaced peaks.
+One important quantity that we needed to determine is the dead time of the detector. Using the oscilloscope readout, we determined the dead time of our detector at the settings we would be using for our subsequent data taking. We set the discriminator fine gain to $1.0$, the discriminator course gain to $\sfrac{1}{16}$, and the voltage of the detector to $V_{det} = 450~V$. At these settings, we observed pulses of similar shape to the one shown in Figure \ref{fig:dead_time}. We measured the width of those pulses in $t$ using the lines on the oscilloscope screen and determined them to be $\tau_{dead} = 0.1 \pm 0.01~ms$. This means that saturation count rate for our detector would be $1/\tau_{dead} = 10,000 \pm 1,000~\text{photons}/s$. Thus, during the subsequent experiments, we took care to keep our peak count rate under that value, or else we risk not being able to distinguish between closely spaced peaks.
 
 Using this dead time determination alongside the data in Figure \ref{fig:xrf_setup_investigation}, we determined the settings for the detector which would optimize our particle count at the peaks to be just under the limit imposed by the dead time. The settings we chose were: $I_{source} = 80~mA$, $V_{source} = 20~kV$, $V_{detector} = 450~V$, $Gain_{Fine} = 1.0$, and $Gain_{Course} = \sfrac{1}{16}$. We found that these numbers produced counts which were high enough to get a good resolution of the peaks, but not high enough to saturate the detector.
 
 \subsubsection{Diffraction Spectra}
 
-After we characterized the detector, we set out to measure the diffraction spectra of each of the three crystals: KCl, LiF, and NaCl. We placed each crystal in the mount on the goniometer and assured ourselves that the setup was aligned well. In particular, we ensured that the crystal was vertical, that the collimated beam would just skim over the surface of the crystal at $\theta = 0^\circ$, and that an angular change in the detector of $\theta_{det}$ corresponded to a change in the angle of the crystal of $\theta_{cry} = \theta_{det}/2$. Once all that was in place, we proceeded to do angular scans. 
+After we characterized the detector, we set out to measure the diffraction spectra of each of the three crystals: KCl, LiF, and NaCl. We placed each crystal in the mount on the goniometer and aligned the system. In particular, we ensured that the crystal was vertical, that the collimated beam would just skim over the surface of the crystal at $\theta = 0^\circ$, and that an angular change in the detector of $\theta_{det}$ corresponded to a change in the angle of the crystal of $\theta_{cry} = \theta_{det}/2$. 
 
-We set the x-ray source to $I_{source} = 80~mA$ and $V_{source} = 20~kV$ for all of these scans, and we observed drifts of $\approx \pm 5\%$ in these values over the course of our measurement. We scanned in $2.5^\circ$ increments outside the regions where there were diffraction peaks present, and in $0.5^\circ$ increments within the regions of interest. We estimated our systematic error in each of these measurements to be $0.25^\circ$, accounting to the 'play' in the gear system as well as for our error in the placement of the detector relative to the markings on the apparatus. At each point, we took three measurements of 10 seconds each. If we observed $N$ counts in the measurement, the error in the measurement is $\sqrt{N}$, therefore the overall error in our measurement is $\delta N =\sqrt{N_1/N_1^2 + N_2/N_2^2 + N_3/N_3^2}$. The spectra, normalized for time, we measured for LiF and KCl can be seen in Figures \ref{fig:LiF} and \ref{fig:KCl} below:
+We set the x-ray source to $I_{source} = 80~mA$ and $V_{source} = 20~kV$ for all of these scans, and we observed drifts of $\approx \pm 5\%$ in these values over the course of our measurement. We scanned in $2.5^\circ$ increments outside the regions where there were diffraction peaks present, and in $0.5^\circ$ increments within the regions of interest. We estimated our systematic error in each of these measurements to be $0.25^\circ$, accounting to the 'play' in the gear system as well as for our error in the placement of the detector. At each point, we took three measurements of 10 seconds each. If we observed $N$ counts in the measurement, the error in the measurement is $\sqrt{N}$, therefore the overall error in our measurement is $\delta N =\sqrt{N_1/N_1^2 + N_2/N_2^2 + N_3/N_3^2}$. The spectra, normalized for time, we measured for LiF and KCl can be seen in Figures \ref{fig:LiF} and \ref{fig:KCl} below:
 
 \begin{figure}[H]
 	\centering
@@ -251,17 +251,13 @@ We set the x-ray source to $I_{source} = 80~mA$ and $V_{source} = 20~kV$ for all
 	\label{fig:KCl}
 \end{figure}
 
-From these Figures, we observe two key features. We first can see that there is a bremsstrahlung spectrum which underlays all other features, starting at $\approx10^\circ$ and extending out to the edge of the graph. At the far end ($\theta > 55^\circ$), we enter into a region where x-rays from the source start to enter the detector without scattering off of the crystal (simply due to positioning). This causes these points to be artificially higher than the bremsstrahlung background would otherwise have them. The second feature is the sets of two peaks beginning shortly after the bremsstrahlung spectrum. These are the characteristic $K_\alpha$ and $K_\beta$ x-rays of the source's anode, composed of Copper, scattering off of the crystal structure of the sample according to Bragg's Law, with $n = 1,~2,~3,...$ and an as yet unknown lattice spacing. 
-\begin{gather}
-	2d\sin{\theta} = n \lambda
-\end{gather}
-Using the data gathered above, in concert with the known $K_\alpha$ and $K_\beta$ values, we can determine the experimental values for the lattice spacing:
+From these Figures, we observe two key features. We first can see that there is a bremsstrahlung spectrum which underlays all other features, starting at $\approx10^\circ$ and extending out to the edge of the graph. At the far end ($\theta > 55^\circ$), we enter into a region where x-rays from the source start to enter the detector without scattering off of the crystal (simply due to positioning). This causes these points to be artificially higher than the bremsstrahlung background would otherwise have them. The second feature is the sets of two peaks beginning shortly after the bremsstrahlung spectrum. These are the characteristic $K_\alpha$ and $K_\beta$ x-rays of the source's anode, composed of Copper, scattering off of the crystal structure of the sample according to Bragg's Law, with $n = 1,~2,~3,...$ and an as yet unknown lattice spacing. Using the data gathered above, in concert with the known $K_\alpha$ and $K_\beta$ values, we can determine the experimental values for the lattice spacing:
 \begin{gather}
 	2d\sin{\theta} = n\lambda \rightarrow d = \frac{n\lambda}{d\sin{\theta}} \nonumber \\
 	\downarrow E_\gamma = \frac{hc}{\lambda} \rightarrow \lambda = \frac{hc}{E} \nonumber \\
 	d = \frac{n (hc/E)}{2 \sin{\theta}} = \frac{nhc}{2E\sin{\theta}}
 \end{gather}
-The known energy values for copper are:
+The known energy values for copper are\cite{database1, database2}:
 \begin{gather}
 	K_\alpha = 8037.8 ~eV \nonumber \\
 	K_\beta = 8905.29 ~eV \nonumber
@@ -282,7 +278,7 @@ The value of $\theta$ was determined by using a gaussian fit combined with a pol
 	\label{table:LiF}
 \end{table}
 
-\noindent Using this method, and averaging the results, we obtain an average value for the lattice spacing for all three crystals:
+\noindent Similar tables were constructed for KCl and NaCl. Using this data, we obtain an average value for the lattice spacing for all three crystals:
 
 \begin{table}[htbp]
 	\begin{center}
@@ -291,7 +287,7 @@ The value of $\theta$ was determined by using a gaussian fit combined with a pol
 		Crystal & \multicolumn{1}{l|}{$d_{avg}$ (nm)} & \multicolumn{1}{l|}{$\delta d_{avg}$ (nm)} \\ \hline
 		\textit{LiF} & 0.2031 & 0.002179 \\ \hline
 		\textit{KCl} & 0.3199 & 0.007197 \\ \hline
-		\textit{NaCl} & 0.2875 & 0.004851 \\ \hline
+		\textit{NaCl} & 0.2875 & 0.005546 \\ \hline
 	\end{tabular}
 	\end{center}
 	\caption{Average value for the lattice spacing for all three crystals}
@@ -370,7 +366,7 @@ Known values\cite{lattice, lattice2, lattice3} of the lattice constants, measure
 	\label{table:known_d}
 \end{table}
 
-We can see that these known values are not perfectly in line with the 'hard-sphere' model of the atom. Corrections to this model exist, the so called 'soft-sphere' models\cite{soft_sphere}, but the differences are often so small that they are often negligible. In the coming section, we will compare these two theoretical values with out experimental data.
+We can see that these known values are not perfectly in line with the 'hard-sphere' model of the atom. In the coming section, we will compare these two theoretical values with out experimental data.
 
 
 \section{Comparison of Theory and Experiment}
@@ -431,11 +427,17 @@ We will first compare the hard sphere predictions with our experimental values. 
 	\label{table:xrd_comparison_known}
 \end{table}
 
-From the data in Figure \ref{table:xrd_comparison_known}, we can see that our measurements of $d$ are all consistent with the known values to within the bounds of their own uncertainty.
+From the data in Figure \ref{table:xrd_comparison_known}, we can see that our measurements of $d$ are all consistent with the known values to within the bounds of their own uncertainty. 
+
+From the combination of these data sets, we conclude that the hard-sphere model of the atom does not provide a perfect description of the lattice spacing in our crystals. Corrections to this model exist, the so called 'soft-sphere' models\cite{soft_sphere}, which alter the formula of the hard-sphere model to include an extra factor of $k$:
+\begin{gather}
+	d = r_1 + r_2 \rightarrow d^k = r_1^k + r_2^k \nonumber
+\end{gather}
+Where $k$ is a constant which depends on the crystal structure and varies $1 \le k \le 2$. The values of $d$ calculated from this soft sphere model are in good agreement with experimental values. But since this $k$ factor is an experimentally determined quantity, with no solid theoretical backing, the model soon becomes an exercise in overfitting.
 
 \section{Discussion and Conclusion}
 
-In the x-ray diffraction section of this lab, we verified the Bragg condition for constructive interference from scattering off of crystal planes. We also measured the value of the interplanar spacing of cubic alkali-halide crystals, and found that they were consistent with the known values. However, we also found that our result for LiF was not consistent with the 'hard spheres' model of the atom (detailed in \cite{hard_sphere, hard_sphere2}) while the measurements of the other two crystals were consistent. Because both crystals are alkali-halides and have the same charges, the main difference between this crystal and the other two is in the atomic number of the elements. For LiF, $Z_{Li} = 3$ and $Z_{F} = 9$, for NaCl, $Z_{Cl} = 17$ and $Z_{Na} = 11$, and for KCl, $Z_{Cl} = 17$ and $Z_{K} = 19$. From this, we speculate that the hard spheres model of the atom is only a good approximation at higher $Z$ values, and fails at low $Z$. If given additional crystals, with a wider range of $Z$ values, we could test this hypothesis by constructing a plot of deviation from the 'hard sphere' model vs. $\Sigma Z$.
+In the x-ray diffraction section of this lab, we verified the Bragg condition for constructive interference from scattering off of crystal planes. We also measured the value of the interplanar spacing of cubic alkali-halide crystals, and found that they were consistent with the known values. However, we also found that our result for LiF was not consistent with the 'hard spheres' model of the atom (detailed in \cite{hard_sphere, hard_sphere2}) while the measurements of the other two crystals were consistent. Because both crystals are alkali-halides and have the same charges, the main difference between this crystal and the other two is in the atomic number of the elements. For LiF, $Z_{Li} = 3$ and $Z_{F} = 9$, for NaCl, $Z_{Cl} = 17$ and $Z_{Na} = 11$, and for KCl, $Z_{Cl} = 17$ and $Z_{K} = 19$. From this, we speculate that the hard spheres model of the atom is only a good approximation at higher $Z$ values, and fails at low $Z$. With additional time, and if given additional crystals, with a wider range of $Z$ values, we could test this hypothesis by constructing a plot of deviation from the 'hard sphere' model vs. $\Sigma Z$.
 
 \section{Author Contributions}
 
