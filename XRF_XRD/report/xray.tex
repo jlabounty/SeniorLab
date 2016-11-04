@@ -97,14 +97,14 @@ Because the strength of the emission lines is also dependent on the concentratio
 
 \subsection{X-Ray Florescence}
 
-The apparatus used in our measurements of x-ray florescence consists primarily of two components, an electron gun and a solid state detector, as shown in Figure \ref{fig:xrf_setup}. The electron gun operates by running current through a filament in a potential. As the filament heats, electrons are 'boiled off' (a process known as thermionic emission) and are accelerated towards the anode by the potential. Some of the electrons strike the anode, but the rest escape through the opening into a collimated beam of particles. The energy of these electrons is defined by their accelerating voltage: $E_{e^-} = qV$, while their number is defined by the current. These electrons impact the sample and cause it to emit photons, which are then picked up by the detector. 
-
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.25\textwidth]{xrf_experiment.png}
 	\caption{Experimental Setup used in XRF portion of the experiment.}
 	\label{fig:xrf_setup}
 \end{figure}
+
+The apparatus used in our measurements of x-ray florescence consists primarily of two components, an electron gun and a solid state detector, as shown in Figure \ref{fig:xrf_setup}. The electron gun operates by running current through a filament in a potential. As the filament heats, electrons are 'boiled off' (a process known as thermionic emission) and are accelerated towards the anode by the potential. Some of the electrons strike the anode, but the rest escape through the opening into a collimated beam of particles. The energy of these electrons is defined by their accelerating voltage: $E_{e^-} = qV$, while their number is defined by the current. These electrons impact the sample and cause it to emit photons, which are then picked up by the detector. 
 
 The detector is a Silicon p-i-n diode manufactured by Amptek. Photons incident on the detector are first met with a window made of Beryllium, which is opaque to photons with $E_\gamma <1~keV$. Photons whose energies are high enough to pass through this window then deposit their energy in the sensitive volume of the detector, ionizing the silicon atoms and creating a number of electron-hole pairs in the lattice structure. A bias voltage across the diode causes these electron/holes to flow and be read into the detector as a pulse of charge, whose magnitude is directly proportional to the energy which was deposited in the detector by the photons. This pulse is passed through an amplifier, which is then passed into the multi-channel analyzer (MCA), and then from there into the computer system. From there, the information is saved in a format which can be read into our data analysis software, ROOT. This software is developed and maintained by scientists at CERN, and contains many useful fitting and histogram manipulation packages. We also performed independent cross checks of its $\chi^2$ minimization techniques, which can be found in Appendix \ref{section:root}.
 
@@ -192,14 +192,14 @@ As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}
 
 \subsubsection{Analysis of the Detector}
 
+To begin this experiment, we needed to characterize the behavior of the detector with respect to the Voltage and Current of the x-ray source, the Voltage of the detector, and the gain settings of the signal amplification. We positioned the detector with no crystal at a slight angle $\approx 2^\circ$. We performed a series of measurements in which we fixed all but one of these variables and varied the others. We found that the minimum voltage required for the detector to function was $320~V$. At any level below that, the detector would read no counts. We also determined that increasing the voltage and the current of the source both produced increases in counts/second, but produced diminishing returns after a certain amount of time. A subset of these plots can be seen in Figure \ref{fig:xrf_setup_investigation}.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=7.5cm]{xrd_setup_investigation.png}
 	\caption{Investigation of the properties of the x-ray diffraction GM detector and x-ray source}
 	\label{fig:xrf_setup_investigation}
 \end{figure}
-
-To begin this experiment, we needed to characterize the behavior of the detector with respect to the Voltage and Current of the x-ray source, the Voltage of the detector, and the gain settings of the signal amplification. We positioned the detector with no crystal at a slight angle $\approx 2^\circ$. We performed a series of measurements in which we fixed all but one of these variables and varied the others. We found that the minimum voltage required for the detector to function was $320~V$. At any level below that, the detector would read no counts. We also determined that increasing the voltage and the current of the source both produced increases in counts/second, but produced diminishing returns after a certain amount of time. A subset of these plots can be seen in Figure \ref{fig:xrf_setup_investigation}.
 
 \begin{figure}[H]
 	\centering
