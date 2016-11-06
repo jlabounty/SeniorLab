@@ -144,7 +144,14 @@ Z = \sqrt{\frac{h}{A}}\sqrt{\nu} + \sigma
 \end{equation}
 
 As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}$ should yield a linear relationship with a slope of $\sqrt{\sfrac{h}{A}}$ and an offset equal to the screening parameter $\sigma$. We performed this analysis for many samples of different elements to generate the plot in Fig.~\ref{Fig:MLawPlot}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.48\textwidth]{MoseleyLawPlot.png}
+	\caption{Plot Displaying Moseley's Law for $K_{\alpha}$, $K_{\beta}$, $L_{\alpha}$, $L_{\beta}$, and $L_{\gamma}$ Transitions}
+	\label{Fig:MLawPlot}
+\end{figure} 
 
+The data for each series ($K_{\alpha}$, $K_{\beta}$, etc.) of transition was fit to a line to observe its consistency with Moseley's Law. Table~\ref{Tab:MLawData} presents the parameters determined from each of the linear fit functions while Table~\ref{MLawChiSq} shows the reduced chi-squared values for each of these fits.
 \begin{table}[htbp]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|}
@@ -161,12 +168,23 @@ As demonstrated by Eq.~\ref{Eq:MLawLinear}, plotting data of $Z$ vs. $\sqrt{\nu}
 	\label{Tab:MLawData}
 \end{table}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.48\textwidth]{MoseleyLawPlot.png}
-	\caption{Plot Displaying Moseley's Law for $K_{\alpha}$, $K_{\beta}$, $L_{\alpha}$, $L_{\beta}$, and $L_{\gamma}$ Transitions}
-	\label{Fig:MLawPlot}
-\end{figure} 
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline Transition & $\chi_{red}^2$ \\
+			\hline $K_{\alpha}$ & $0.1916$ \\
+			\hline $K_{\beta}$ & $0.31316$ \\
+			\hline $L_{\alpha}$ & $0.138634$ \\
+			\hline $L_{\beta}$ & $1.1486$ \\
+			\hline $L_{\gamma}$ & $0.405954$ \\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Calculated Parameters in Moseley's Law for Each Type of Shell Transition}
+	\label{Tab:MLawChiSq}
+\end{table}
+
+The low $\chi_{red}^2$ values for each of these fits demonstrates that the x-ray fluorescence spectra collected during the experiment do behave according to Moseley's Law. The next step is to test the experimentally measured parameters in Table~\ref{Tab:MLawData} against theoretically expected values.
 
 \subsection{X-Ray Diffraction}
 
