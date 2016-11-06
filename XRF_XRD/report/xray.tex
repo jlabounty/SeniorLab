@@ -281,7 +281,7 @@ The value of $\theta$ was determined by using a gaussian fit combined with a pol
 
 \subsection{X-Ray Florescence}
 
-Moseley's Law as described in Eq.~\ref{Eq:MLaw} relates the energy ($E$) of x-ray fluorescence photons emitted from a sample to the square of an effective nuclear charge ($Z_{eff}^{2}$) with a parameter $A$. This parameter is dependent on which energy levels are involved in the electron transition in x-ray fluorescence. For an electron that transitions from an excited state energy level $n_{i}$ to a lower energy level $n_{f}$, the $A$ parameter is defined by Eq.~\ref{Eq:RydbergParameter}, where the Rydberg constant $R = 1.097 \times 10^7~m^{-1}$, $h$ is Planck's constant, and $c$ is the speed of light in a vacuum.
+Moseley's Law as described in Eq.~\ref{Eq:MLaw} relates the energy ($E$) of x-ray fluorescence photons emitted from a sample to the square of an effective nuclear charge ($Z_{eff}^{2}$) with a parameter $A$. This parameter is dependent on which energy levels are involved in the electron transition in x-ray fluorescence. To determine a set of theoretical values for comparison with experimental results, we used the Bohr model of the atom as Moseley had done. For an electron that transitions from an excited state energy level $n_{i}$ to a lower energy level $n_{f}$, the $A$ parameter is defined by Eq.~\ref{Eq:RydbergParameter}, where the Rydberg constant $R = 1.097 \times 10^7~m^{-1}$, $h$ is Planck's constant, and $c$ is the speed of light in a vacuum.
 
 \begin{equation}\label{Eq:RydbergParameter}
 A = hcR \left( \frac{1}{n_{f}^{2}} - \frac{1}{n_{i}^{2}} \right)
@@ -305,7 +305,7 @@ We calculated the theoretical values of $A$ for each of the different types of s
 	\label{Tab:RydParam}
 \end{table}
 
-
+As previously mentioned, the Bohr model of the atom does not account for further quantum mechanical effects such as fine structure splitting. This means that the behavior of x-rays predicted by this model will show some deviation from experimental data.
 
 \subsection{X-Ray Diffraction}
 
@@ -371,7 +371,9 @@ Table ~\ref{Tab:MoseLawSummary} contains a summary of the experimental values de
 	\label{Tab:MoseLawSummary}
 \end{table}
 
-The theoretical values 
+Table~\ref{Tab:MoseLawSummary} demonstrates how the Bohr model of the atom can provide an approximate explanation for the values of the parameters in Moseley's Law. This model predicts that these parameters depend on the type of transition electrons undergo to emit x-rays in x-ray fluorescence. The different types of transitions are defined by the energy levels (and therefore principal quantum numbers) of the electrons' initial and final states. The experimental values we calculated are sufficiently close to the theoretical values from the Bohr model to show that this model can provide a general trend for Moseley's Law. There are inconsistencies in between some of the experimental and theoretical values. As was discussed earlier, these differences can be attributed to additional quantum mechanical effects such as fine structure splitting that are not accounted for in the Bohr model.
+
+When considering the screening parameter $\sigma$, the Bohr model can again be used to estimate theoretical values. When an electron transitions down to the K shell, the screening factor will depend on the effects of the charges of electrons in this shell. This shell can contain a maximum of 2 electrons so the screening parameters for a $K_{\alpha}$ transition will be $\sim 1-2$, with a $K_{\beta}$ transition having a slightly larger screening factor. This is consistent with the data presented in Table~\ref{Tab:MoseLawSummary}. When L series transitions are considered, there can be up to 8 electrons that contribute to nuclear charge shielding from the 8 possible electrons that can occupy the L shell. This causes the $L_{\alpha}$ transition to have a screening parameter in the range of 7.4 to 9.4 with $L_{\beta}$ and $L_{\gamma}$ having successively larger values. Again, this trend is consistent with experimentally measured values recorded in Table~\ref{Tab:MoseLawSummary}.
 
 \subsection{X-Ray Diffraction}
 
@@ -419,6 +421,8 @@ Where $k$ is a constant which depends on the crystal structure and varies $1 \le
 
 In the x-ray diffraction section of this lab, we verified the Bragg condition for constructive interference from scattering off of crystal planes. We also measured the value of the interplanar spacing of cubic alkali-halide crystals, and found that they were consistent with the known values. However, we also found that our result for LiF was not consistent with the 'hard spheres' model of the atom (detailed in \cite{hard_sphere, hard_sphere2}) while the measurements of the other two crystals were consistent. Because both crystals are alkali-halides and have the same charges, the main difference between this crystal and the other two is in the atomic number of the elements. For LiF, $Z_{Li} = 3$ and $Z_{F} = 9$, for NaCl, $Z_{Cl} = 17$ and $Z_{Na} = 11$, and for KCl, $Z_{Cl} = 17$ and $Z_{K} = 19$. From this, we speculate that the hard spheres model of the atom is only a good approximation at higher $Z$ values, and fails at low $Z$.
 
+In the x-ray fluorescence portion of this experiment, we confirmed Moseley's Law, demonstrating the relationship between the energy of emitted x-rays and the effective nuclear charge of an atom. We collected x-ray fluorescence spectra for a variety of elements to experimentally observe this relationship. We used the Bohr model of the atom to provide an approximate explanation of the parameters of Moseley's Law. We found that this model could predict the general trend of these parameters for the different series of transitions. There were some inconsistencies between the Bohr model predictions and the experimental data which could be attributed to additional quantum mechanical effects that are not included in the Bohr model. 
+
 \section{Author Contributions}
 
 Both authors believe that the work for this project was split equally, and each offered valuable insight to every section of this report. However, the sections when divided up by principle author are as follows:
@@ -436,7 +440,10 @@ Both authors believe that the work for this project was split equally, and each 
 
 \noindent \textbf{Thomas Krahulik}:
 \begin{enumerate}
-	\item Section 
+	\item Section 4a: Measurements, XRF
+	\item Section 5a: Theoretical Model, XRF
+	\item Section 6a: Comparison, XRF
+	\item Appendix B: Validation of ROOT Data Analysis Software
 \end{enumerate}
 
 \noindent Lab time was also split equally, with one partner often taking measurements while the other developed the analysis software used in this report.
