@@ -53,9 +53,27 @@
 
 Like gravity, phase transition are phenomena which have long been observed, but only recently have they been understood scientifically. The freezing, melting, and evaporation of water has long been central to human life, controlling the availability of food and the need for shelter, but only in the past two centuries has any real effort been put into a scientific understanding of how matter transitions between these phases. The first serious attempt to understand this type of phenomenon was undertaken by Charles Caignard de la Tour in 1822. In his study, he classified the 'solid $\leftrightarrow$ liquid $\leftrightarrow$ gas' phase transitions of alcohol according to the Temperature, Pressure, and Volume at which they occurred \cite{phase_history}. Later, in 1873, Josiah Willard Gibbs built on this work to introduce the concept of the phase diagram\cite{phase_history, gibbs}. With this diagram came the notion that phase transitions could be understood from a purely thermodynamic transition. And, with the discovery of the ferromagnetic phase transition by Peter Curie in 1895 (along with its formal description by Peter Weiss in 1907), the race was on to find and classify phase transitions in a wide variety of systems. However, it wasn't until the discovery of the phase transition of liquid helium to a superfluid state that a solid classification system was able to take hold. It was observed experimentally that, during this transition, there was no latent heat and no visible boundary between the two phases \cite{phase_history}. Instead, it was found that there was a discontinuity in the second derivative of the free energy of the system, which showed itself in the famous lambda plot of heat capacity vs. temperature (Figure \ref{fig:lambda_point_helium}). This observation spurred Ehrenfest to introduce the first comprehensive classification system for phase transitions. The system was constructed around the 'order' of the discontinuity of the free energy of the system. Classically known phase transitions (water $\leftrightarrow$ ice, etc.) as well as others like the ferromagnetic transition of iron studied by Weiss and Curie are classified as first order phase transitions, while the newly discovered HeI $\leftrightarrow$ HeII transition is a second order transition. This classification scheme was soon validated, as superconductivity was proven to accompany the helium superfluid transition in the second order category. Landau built on this classification system to create much of the theory of phase transitions we still use today \cite{manual}.
 
-We study an example of both a first and a second order transition in this lab. The first order transition we examine is the ferroelectric transition of BaTiO$_3$. This is quite similar to the ferromagnetic transition in 
+The two main types of phase transitions, and the only two we concern ourselves with here, are phase transitions of the first and second order. Third and higher order transitions exist, but are much less common than either of the lower orders \cite{thirdorder}. First order transitions, as stated above, are characterized by a discontinuity in the derivative of the free energy. This gives rise to two different functions for the free energy, $F_1$ and $F_2$, above and below the critical temperature $T_C$ \cite{manual, physics_of_phase}. If there were no energy cost to the material switching between the two phases, we would expect to see the phase transition of the entire material occur at exactly $T_C$. However, because the transition between phases often involves a physical rearrangement of the system, there must be some energy cost. Because of this, local energy minima can form (and remain stable for a good deal of time) where the original phase exists even above $T_C$. Extra heat is required to overcome the energy of the kinetic barrier between the regions of differing phases, and so the transition will happen at $T_C + T^*$ \cite{manual}. The same phenomenon occurs when cooling, and the transition will take place at $T_C - T^*$. This will result in a hysteresis curve. We study this first order hysteretic phenomenon in Vanadium Dioxide (VO$_2$), which undergoes a first order Metal-Insulator transition.
+
+Second order transitions, by contrast, have a continuous function of $F$ across all temperature ranges (barring the material being subject to an unrelated first order transition). Thus, from the transition, there is no change in latent heat ($Q = 0$) and $\Delta U = 0$ \cite{manual}. Thus, we have an order parameter which is $0$ at $T_C$ and increases as $T$ moves away from $T_C$. This fact allowed Landau to construct his theory of second order phase transitions by expanding $F(T)$ as a function of the order parameter $m$ in the vicinity of $T_C$ \cite{manual, phase_1}. Omitting odd powers in the expansion due to symmetry considerations \cite{manual}, the expression reads:
+\begin{gather}
+	\begin{align}
+	F\left(T\right) 	& = F_0\left(T\right)+\alpha(T) m^2+\frac{1}{2}\beta(T) m^4 \nonumber \\
+	\downarrow 		& ~~~~~~~~~~~~~~~ \frac{d^2F}{dm^2} > 0 \nonumber \\
+					& =F_0\left(T\right)+\alpha_0(T - T_C) m^2+\frac{1}{2}\beta_0 m^4 \nonumber
+	\end{align}
+\end{gather}
+In order to find the value of the order parameter corresponding to the phase transition, we wish to minimize this function with respect to $m$. Doing this, we find that:
+\begin{gather}
+	m = 	\begin{cases}
+			0 & T < T_C \\
+			\pm \sqrt{\frac{\alpha_0 (TC - T)}{\beta_0}} & T \ge T_C
+		\end{cases} \nonumber
+\end{gather}
 
 \section{Review of Previous Work}
+
+Phase transitions have long been the subject of intense study, and their importance to solid-state physics and materials science cannot be overstated.
 
 \section{Experimental Setup}
 
@@ -167,6 +185,9 @@ Scientific, (2004)
 	
 	\bibitem{gibbs}
 	Gibbs, J.W. On the Equilibrium of Heterogeneous Substances. Connecticut Academy of Arts and Sciences, 1874. \url{https://archive.org/details/Onequilibriumhe00Gibb}
+	
+	\bibitem{thirdorder}
+	E.C. Ekuma; G.C. Asomba and M.I. Okoye. Thermodynamics of Third Order Phase Transition: A Solution to the Euler -- Lagrange Equations. 	Physica B: Condensed Matter, Volume 405, Issue 9, Pages 2290-2293 (May 2010).
 
 \end{thebibliography}
 
