@@ -38,17 +38,34 @@
 \date{\today}
 
 \begin{abstract}
-	\lipsum[1]
+	In this experiment, we explore the properties of the first order metal-insulator transition of VO$_2$ and the second order ferroelectric transition of BaTiO$_3$. We do this by measuring the voltage across these samples as they are heated above and beyond the critical temperatures ($T_C$). We use these experiments to explore and verify important foundations of phase transition theory, such as the Curie-Weiss law, and to compare our data to known values.
 \end{abstract}
 \maketitle
 
 \section{Introduction}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\textwidth]{lambda.png}
+	\caption{Diagram showing the discontinuity in the heat capacity of liquid helium. Image courtesy of Wikimedia Commons.}
+	\label{fig:lambda_point_helium}
+\end{figure}
 
+Like gravity, phase transition are phenomena which have long been observed, but only recently have they been understood scientifically. The freezing, melting, and evaporation of water has long been central to human life, controlling the availability of food and the need for shelter, but only in the past two centuries has any real effort been put into a scientific understanding of how matter transitions between these phases. The first serious attempt to understand this type of phenomenon was undertaken by Charles Caignard de la Tour in 1822. In his study, he classified the 'solid $\leftrightarrow$ liquid $\leftrightarrow$ gas' phase transitions of alcohol according to the Temperature, Pressure, and Volume at which they occurred \cite{phase_history}. Later, in 1873, Josiah Willard Gibbs built on this work to introduce the concept of the phase diagram\cite{phase_history, gibbs}. With this diagram came the notion that phase transitions could be understood from a purely thermodynamic transition. And, with the discovery of the ferromagnetic phase transition by Peter Curie in 1895 (along with its formal description by Peter Weiss in 1907), the race was on to find and classify phase transitions in a wide variety of systems. However, it wasn't until the discovery of the phase transition of liquid helium to a superfluid state that a solid classification system was able to take hold. It was observed experimentally that, during this transition, there was no latent heat and no visible boundary between the two phases \cite{phase_history}. Instead, it was found that there was a discontinuity in the second derivative of the free energy of the system, which showed itself in the famous lambda plot of heat capacity vs. temperature (Figure \ref{fig:lambda_point_helium}). This observation spurred Ehrenfest to introduce the first comprehensive classification system for phase transitions. The system was constructed around the 'order' of the discontinuity of the free energy of the system. Classically known phase transitions (water $\leftrightarrow$ ice, etc.) as well as others like the ferromagnetic transition of iron studied by Weiss and Curie are classified as first order phase transitions, while the newly discovered HeI $\leftrightarrow$ HeII transition is a second order transition. This classification scheme was soon validated, as superconductivity was proven to accompany the helium superfluid transition in the second order category. Landau built on this classification system to create much of the theory of phase transitions we still use today \cite{manual}.
+
+We study an example of both a first and a second order transition in this lab. The first order transition we examine is the ferroelectric transition of BaTiO$_3$. This is quite similar to the ferromagnetic transition in 
 
 \section{Review of Previous Work}
 
 \section{Experimental Setup}
+
+Our experimental setup consists of three main components: the lock-in amplifier, the sample chamber, and (during the resistance measurements) the limiting resistor.
+
+\subsection{Resistance Measurements}
+
+\subsubsection{Four Probe Method}
+
+\subsection{Capacitance Measurements}
 
 \subsection{Calibration and Measurement of Internal Resistance of Lock-In Amplifier}
 
@@ -129,8 +146,27 @@ Both authors believe that the work for this project was split equally, and each 
 	\bibitem{bevington}
 	Philip R. Bevington and D. Keith Robinson, Data Reduction and Error Analysis 3rd edition (McGraw-Hill, 2003).
 	
-	\bibitem{lab_manual}
+	\bibitem{manual}
 	Mihaly, Laszlo and Gurvitch, Micheal. Phase Transitions: Metal-Insulator Transition in VO$_2$ and Ferroelectric Transition in BaTiO$_3$. (Stony Brook University, Nov. 14, 2014)
+	
+	\bibitem{phase_1}
+	Hadley, P. Advanced Solid State Physics: Landau theory of second order phase transitions. (Institute of Solid State Physics, 2011). \url{http://lampx.tugraz.at/~hadley/ss2/landau/second_order.php}
+	
+	\bibitem{modern_apps}
+	M. Gittrman, V. Halpern, “Phase Transitions; A brief account with modern applications” World
+Scientific, (2004)
+
+	\bibitem{physics_of_phase}
+	P. Papon, J. Leblond, P.H.E. Meijer, “The Physics of Phase Transitions”, Springer, (2001)
+	
+	\bibitem{phase_2}
+	V. Dobrosavljevic, “Introduction to Metal-Insulator Transitions” (2011), arXiv:1112.6166v1
+	
+	\bibitem{phase_history}
+	Jaeger, G. The Ehrenfest Classification of Phase Transitions: Introduction and Evolution. Archive for History of Exact Sciences. (1 May 1998). doi:10.1007/s004070050021.
+	
+	\bibitem{gibbs}
+	Gibbs, J.W. On the Equilibrium of Heterogeneous Substances. Connecticut Academy of Arts and Sciences, 1874. \url{https://archive.org/details/Onequilibriumhe00Gibb}
 
 \end{thebibliography}
 
