@@ -13,7 +13,8 @@ int makePlot_VvT_VO2(
       V.push_back(TData->GetV1()[i]);
       T.push_back(TData->GetV2()[i]);
 
-      R.push_back(V[i]*(9970000. + 1029) / (1.99 - V[i]));
+      // R.push_back(V[i]*(9970000. + 1029) / (1.99 - V[i]));
+      R.push_back(V[i]*(997000. + 1029) / (1.99 - V[i]));
 
       C1.push_back(TMath::Abs(V[i]/1.99) / (2*TMath::Pi()*25000.*1029));
       C2.push_back(1.99*(1 - sqrt(1 - 4*(V[i]/1.99)**2. )) / (2*TMath::Pi()*25000.*1029*2*TMath::Abs(V[i])));
@@ -40,12 +41,38 @@ int makePlot_VvT_VO2(
   TCanvas *c3 = new TCanvas();  
   TGraph *g_RvT = new TGraph(n, &T[0], &R[0]);
   c3->SetLogy();
+  g_RvT->SetTitle("");
+  g_RvT->GetXaxis()->SetTitle("T ( ^{#circ}C)");
+  g_RvT->GetYaxis()->SetTitle("R (#Omega)");
   g_RvT->Draw("AP");
 
+  TLine *TcLO = new TLine(66.5, 4*10**3., 66.5, 2*10**6.);
+  TcLO->SetLineStyle(2);
+  TcLO->SetLineColor(kBlue);
+  TcLO->Draw();
+
+  TLine *TcUP = new TLine(82.5, 4*10**3., 82.5, 2*10**6.);
+  TcUP->SetLineStyle(2);
+  TcUP->SetLineColor(kBlue);
+  TcUP->Draw();
+
+  TLine *Tc = new TLine(74.5, 4*10**3., 74.5, 2*10**6.);
+  Tc->SetLineStyle(2);
+  Tc->SetLineColor(kRed);
+  Tc->Draw();
+
+  TLegend *leg = new TLegend(0.2, 0.2, 0.44, 0.43);
+  leg->SetNColumns(1);
+  leg->AddEntry(g_RvT, "VO_{2} R vs T", "p");
+  leg->AddEntry(Tc, "T_{C} = 74.5^{#circ}C", "l");
+  leg->AddEntry(TcUP, "T_{C} #pm T*", "l");
+  leg->Draw();
 
   // TCanvas *c4 = new TCanvas();  
   // TGraph *g_kvT = new TGraph(n, &T[0], &k[0]);
   // g_kvT->Draw("AP");
+
+  // c3->Print("report/plots/VO2_RvT_withTC.png");
 
   return 0;
 }
