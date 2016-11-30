@@ -86,9 +86,13 @@ The mathematical underpinnings of phase transitions have also been extended to d
 
 \section{Experimental Setup}
 
-Our experimental setup consists of three main components: the lock-in amplifier, the sample chamber, and (during the resistance measurements) the limiting resistor. 
+Our experimental setup consists of three main components: a Princeton Applied Research Model 5209 lock-in amplifier, a sample chamber connected to a voltage controlled heating coil, and (during the resistance measurements) a limiting resistor. 
 
-The lock-in, essentially, consists of a frequency generator and a measuring input which is tuned only to that specific frequency. It is capable of generating a signal at a very specific frequency and phase and holding it there with great precision. The inputs are then tuned to that frequency, but can also be tuned to measure the voltage in an out of phase with the measurement. Thus, as dictated by phasor theory,
+The lock-in, essentially, consists of a frequency generator and a measuring input which is tuned only to that specific frequency. It is capable of generating a signal at a very specific frequency and phase and holding it there with great precision. The readout is then tuned to that frequency alone, but it can also be set to measure this frequency at any phase with respect to the original. Phasor theory tells us that the voltages across resistors  will be in-phase with the driving frequency, while voltages across capacitors will be $90^\circ$ out of phase. Thus, by looking at the in-phase and out-of-phase components of the input signal with the lock-in, we can determine the voltage across the resistive and capacitive portions of the system respectively.
+
+The samples are mounted in a sample chamber (shown in Figure \ref{fig:sample:inplace}) which consists of an insulated double-walled aluminum container with leads which run into it. Wires run through the insulated walls and terminated in double-prong connections to which the VO$_2$ and BaTiO$_3$ samples can be attached. These wires also run out of the sample chamber an have connections to which the lock-in can be attached to provide input. A heater is wrapped around the sample chamber which we directly control with a Staco Energy voltage source. A temperature sensor is also placed inside the sample chamber to monitor the internal temperature. Both the voltage from the lock-in and the temperature measurements are fed into a LabView program, which records the data in a format which can be read in by our analysis software.
+
+In previous years, a temperature controller was used which could ramp the temperature of the system up and down automatically, and at a much slower rate, but this system was not used for our experiments. As such, our ramps may have occurred at a faster speed than was ideal, and an artificial hysteresis-like effect may be introduced in our measurements due to a lag between measured temperature and sample temperature. 
 
 Depending on the quantity being measured, resistance or capacitance, the system is set up in one of two different ways.
 
@@ -101,7 +105,7 @@ Depending on the quantity being measured, resistance or capacitance, the system 
 	\label{fig:ResistanceMeasurements}
 \end{figure}
 
-For the resistance measurements, we set up the system as shown in Figure \ref{fig:ResistanceMeasurements}. We first connected the oscillator voltage out to a limiting resistor (a decade resistor set to $1~M\Omega$) in series with our sample, which was placed in the chamber.
+For the resistance measurements, we set up the system as shown in Figure \ref{fig:ResistanceMeasurements}. We first connected the oscillator voltage out to a limiting resistor (a decade resistor set to $1~M\Omega$) in series with our sample, which was placed in the chamber. This was done to protect the delicate VO$_2$ sample from the potentially large currents which could otherwise pass through it.
 
 \subsubsection{Four Probe Method}
 
