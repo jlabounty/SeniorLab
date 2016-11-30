@@ -93,13 +93,15 @@ Our experimental setup consists of three main components: the lock-in amplifier,
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=5cm]{diagram_res.png}
-	\caption{Circuit diagram showing the four-prong resistance measurement of a sample.}
+	\caption{Circuit diagram showing the four-probe resistance measurement of a sample.}
 	\label{fig:ResistanceMeasurements}
 \end{figure}
 
+For the resistance measurements, we set up the system as shown in Figure \ref{fig:ResistanceMeasurements}. We first connected the oscillator voltage out
+
 \subsubsection{Four Probe Method}
 
-\subsubsection{Calibration and Measurement of Internal Resistance of Lock-In Amplifier}
+Because the resistances of our samples may be small (or comparable to our contact resistances), we have chosen to employ the four-probe resistance measurement method shown in Figure \ref{fig:ResistanceMeasurements} over the simpler two-probe method we employed extensively in PHY 335. The advantage of the four probe method is that it effectively removes the influence of the contact resistances from our measurements. The reason for this is as follows. In a two-probe sensor, where the current and the voltage leads connect at the same point, the full ammeter current flows through the contacts of the voltmeter. This means that the voltage drop across the ammeter will be equal to $V = I_{Ammeter}*(R_{Sample} + 2R_{Contact})$. However, when the connections of the voltmeter and ammeter are separated as in the four-probe method, the full current will only flow through the ammeter connections (which will not alter the measurement of current). The flow of current through the voltmeter connections will then only be the small ($\sim pA$) current through the voltmeter itself, limited by its large internal resistance. Now, the voltmeter voltage is $V = I_{Ammeter}*R_{Sample} + I_{Voltmeter} + 2R_{Contact} \approx I_{Ammeter}*R_{Sample}$. So long as the contact resistances are much lower than the internal resistance of the measurement device, then their effect on the measurement can be neglected. This method will allow us to examine the resistances of our samples without having to worry about the effect of the quality of our connections (in our lock in, the "Measuring input" functions as the voltmeter while the "Oscillator voltage out" acts as the ammeter).
 
 \subsection{Capacitance Measurements}
 
@@ -154,6 +156,25 @@ These values are consistent with our rough approximations taken during the lab p
 	\end{align}
 \end{gather}
 where k is the relative dielectric permeability of the sample. 
+
+\subsection{Isolation of Extraneous Factors}
+
+In order to accurately measure the resistance and capacitance of our samples, we need to account for any extraneous factors in our measurement apparatus which may distort the results. The two main factors we have isolated and accounted for are the internal resistance of the lock-in and the parasitic capacitance of our BNC cables. In order to isolate the internal resistance of the lock-in, we measured the lock-in voltage a number of known resistors with a known limiting resistance. Thus, by rearranging Ohm's Law, we can arrive at a simple expression for the internal resistance of the lock-in. We found the average value of this over many measurements to be:
+\begin{gather}
+	I = \frac{V_{output}}{R_{internal} + R_{limit} + R_{sample}} = \frac{V_{measured}}{R_{sample}} \nonumber \\
+	\downarrow \nonumber \\
+	\begin{align}
+		R_{internal} 		& = \frac{V_{output}R_{sample}}{V_{measured}} - R_{sample} - R_{limit} \nonumber \\
+		\bar{R}_{internal} 	& = 1028.7090 \pm 19.6005 \nonumber
+	\end{align}
+\end{gather}
+We will use this value when evaluating the resistance of our VO$_2$ samples later in the report.
+
+Similarly, we used a systematic approach to quantify the capacitance of our BNC cables. We connected the setup as if for a capacitance measurement, but instead of a BaTiO$_3$ sample we inserted an open-ended BNC cable. We measured the voltage across the lock-in for a number of different lengths of cable and then using the expression $C = \delta/(\omega*R_{int})$ found a value for the average capacitance per unit length:
+\begin{gather}
+	\frac{C}{1~meter} = 113.3195 \pm 2.5618~pF/m \nonumber
+\end{gather}
+This capacitance will add linearly with the capacitance of our samples, and is on a similar order, and so is important to be able to isolate this effect.
 
 \section{Measurements}
 \subsection{Metal-Insulator Transition in $VO_{2}$}
