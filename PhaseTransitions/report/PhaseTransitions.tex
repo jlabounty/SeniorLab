@@ -157,14 +157,31 @@ where k is the relative dielectric permeability of the sample.
 
 \section{Measurements}
 \subsection{Metal-Insulator Transition in $VO_{2}$}
-We began with our study of the first order metal-insulator transition of $VO_{2}$. After tuning the lock in amplifier, we connected it to our sample to measure the voltage across the $VO_{2}$. We set the heater to increase the temperature of the sample chamber at a rate slow enough to...
+We began with our study of the first order metal-insulator transition of $VO_{2}$. After tuning the lock in amplifier, we connected it to our sample to measure the voltage across the $VO_{2}$. We set the heater to increase the temperature of the sample chamber at a rate slow enough to allow for any time delay between the heating of the chamber and the heating of the sample itself. Since the sample is conductively heated, the temperature of the $VO_{2}$ itself may be lower than the temperature measured inside the chamber. Therefore, allowing the heater to increase the temperature at a slow enough rate ensures that the temperature read by the temperature sensor is consistent with that of the sample. As we increased the temperature we measured and recorded the temperature of and voltage across our $VO_{2}$ sample. The current in the circuit does not change so the variation in voltage as a function of temperature is due to the temperature dependence of the resistivity of the sample. To demonstrate this, we calculated the resistance ,$R_{VO_{2}}$, of the sample from the voltage, $V_{out}$, across it using Eq.~\ref{Eq:VtoR}.
+
+\begin{equation}\label{Eq:VtoR}
+R_{VO_{2}} = \frac{V_{out}}{I} = \frac{V_{out} (R_{Lim} + R_{Int})}{(V_{In} - V_{Out})} 
+\end{equation}
+
+where $V_{in}$ is the voltage output by the lock in amplifier, $R_{Int}$ is the internal resistance of the lock in amplifier, and $R_{Lim}$ is the limiting resistance in the circuit which we set as $R_{Lim} = 997 k\Omega$. For each value of voltage measured, we calculated the resistance of our sample and plotted this data as a function of temperature in Figure~\ref{Fig:RvT1}.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.4\textwidth]{VO2_RvT_withTC.png}
 	\caption{Resistance vs Temperature Plot for $VO_{2}$ with Vertical Lines Identifying $T_{C}$ (Red) and $T_{C} \pm T^{*}$ (Blue)}
 	\label{Fig:RvT1}
 \end{figure}
+
+The resistances of the sample are plotted on a logarithmic scale in order to better demonstrate at what temperature $V0_{2}$ exhibits a decrease in resistivity of a few orders of magnitude. 
+
 \subsection{Ferroelectric Transition in $BaTiO_{3}$}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{BaTiO3_CvT_withTC.png}
+	\caption{Resistance vs Temperature Plot for $BaTiO_{3}$ with a Vertical Line Identifying $T_{C}$ (Red)}
+	\label{Fig:CvT1}
+\end{figure}
 
 \section{Theoretical Model}
 
