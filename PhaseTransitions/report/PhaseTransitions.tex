@@ -44,14 +44,14 @@
 
 \section{Introduction}
 
+Like gravity, phase transition are phenomena which have long been observed, but only recently have they been understood scientifically. The freezing, melting, and evaporation of water has long been central to human life, controlling the availability of food and the need for shelter, but only in the past two centuries has any real effort been put into a scientific understanding of how matter transitions between these phases. The first serious attempt to understand this type of phenomenon was undertaken by Charles Caignard de la Tour in 1822. In his study, he classified the 'solid $\leftrightarrow$ liquid $\leftrightarrow$ gas' phase transitions of alcohol according to the Temperature, Pressure, and Volume at which they occurred \cite{phase_history}. Later, in 1873, Josiah Willard Gibbs built on this work to introduce the concept of the phase diagram\cite{phase_history, gibbs}. With this diagram came the notion that phase transitions could be understood from a purely thermodynamic perspective. And, with the discovery of the ferromagnetic phase transition by Peter Curie in 1895 (along with its formal description by Peter Weiss in 1907), the race was on to find and classify phase transitions in a wide variety of systems. However, it wasn't until the discovery of the phase transition of liquid helium to a superfluid state that a solid classification system was able to take hold. It was observed experimentally that, during this transition, there was no latent heat and no visible boundary between the two phases \cite{phase_history}. Instead, it was found that there was a discontinuity in the second derivative of the free energy of the system, which showed itself in the famous lambda plot of heat capacity vs. temperature (Figure \ref{fig:lambda_point_helium}). This observation spurred Ehrenfest to introduce the first comprehensive classification system for phase transitions. The system was constructed around the 'order' of the discontinuity of the free energy of the system. Classically known phase transitions (water $\leftrightarrow$ ice, etc.) as well as others like the ferromagnetic transition of iron are classified as first order phase transitions, while the newly discovered HeI $\leftrightarrow$ HeII transition is a second order transition \cite{physics_of_phase, manual}. This classification scheme was soon validated, as superconductivity was proven to accompany the helium superfluid transition in the second order category. Landau built on this classification system to create much of the theory of phase transitions we still use today \cite{manual}.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{lambda.png}
 	\caption{Diagram showing the discontinuity in the heat capacity of liquid helium. Image courtesy of Wikimedia Commons.}
 	\label{fig:lambda_point_helium}
 \end{figure}
-
-Like gravity, phase transition are phenomena which have long been observed, but only recently have they been understood scientifically. The freezing, melting, and evaporation of water has long been central to human life, controlling the availability of food and the need for shelter, but only in the past two centuries has any real effort been put into a scientific understanding of how matter transitions between these phases. The first serious attempt to understand this type of phenomenon was undertaken by Charles Caignard de la Tour in 1822. In his study, he classified the 'solid $\leftrightarrow$ liquid $\leftrightarrow$ gas' phase transitions of alcohol according to the Temperature, Pressure, and Volume at which they occurred \cite{phase_history}. Later, in 1873, Josiah Willard Gibbs built on this work to introduce the concept of the phase diagram\cite{phase_history, gibbs}. With this diagram came the notion that phase transitions could be understood from a purely thermodynamic transition. And, with the discovery of the ferromagnetic phase transition by Peter Curie in 1895 (along with its formal description by Peter Weiss in 1907), the race was on to find and classify phase transitions in a wide variety of systems. However, it wasn't until the discovery of the phase transition of liquid helium to a superfluid state that a solid classification system was able to take hold. It was observed experimentally that, during this transition, there was no latent heat and no visible boundary between the two phases \cite{phase_history}. Instead, it was found that there was a discontinuity in the second derivative of the free energy of the system, which showed itself in the famous lambda plot of heat capacity vs. temperature (Figure \ref{fig:lambda_point_helium}). This observation spurred Ehrenfest to introduce the first comprehensive classification system for phase transitions. The system was constructed around the 'order' of the discontinuity of the free energy of the system. Classically known phase transitions (water $\leftrightarrow$ ice, etc.) as well as others like the ferromagnetic transition of iron studied by Weiss and Curie are classified as first order phase transitions, while the newly discovered HeI $\leftrightarrow$ HeII transition is a second order transition. This classification scheme was soon validated, as superconductivity was proven to accompany the helium superfluid transition in the second order category. Landau built on this classification system to create much of the theory of phase transitions we still use today \cite{manual}.
 
 The two main types of phase transitions, and the only two we concern ourselves with here, are phase transitions of the first and second order. Third and higher order transitions exist, but are much less common than either of the lower orders \cite{thirdorder}. First order transitions, as stated above, are characterized by a discontinuity in the derivative of the free energy. This gives rise to two different functions for the free energy, $F_1$ and $F_2$, above and below the critical temperature $T_C$ \cite{manual, physics_of_phase}. If there were no energy cost to the material switching between the two phases, we would expect to see the phase transition of the entire material occur at exactly $T_C$. However, because the transition between phases often involves a physical rearrangement of the system, there must be some energy cost. Because of this, local energy minima can form (and remain stable for a good deal of time) where the original phase exists even above $T_C$. Extra heat is required to overcome the energy of the kinetic barrier between the regions of differing phases, and so the transition will happen at $T_C + T^*$ \cite{manual}. The same phenomenon occurs when cooling, and the transition will take place at $T_C - T^*$. This will result in a hysteresis curve. We study this first order hysteretic phenomenon in Vanadium Dioxide (VO$_2$), which undergoes a first order Metal-Insulator transition.
 
@@ -66,26 +66,49 @@ Second order transitions, by contrast, have a continuous function of $F$ across 
 In order to find the value of the order parameter corresponding to the phase transition, we wish to minimize this function with respect to $m$. Doing this, we find that:
 \begin{gather}
 	m = 	\begin{cases}
-			0 & T < T_C \\
-			\pm \sqrt{\frac{\alpha_0 (TC - T)}{\beta_0}} & T \ge T_C
+			0 & T > T_C \\
+			\pm \sqrt{\frac{\alpha_0 (TC - T)}{\beta_0}} & T \le T_C
 		\end{cases} \nonumber
 \end{gather}
+Physically, this means that above the critical temperature, there is only one state for the system to be in, which corresponds to $m = 0$. Below the critical temperature, this symmetry is broken into two states, one with $+m$ and one with $-m$, each with its own stable minima of $F(T)$. We will measure this parameter, and relate it to important quantities like succeptability $\chi$ and the Curie-Weiss constant, later in the lab. The second order transition we will be studying is the ferroelectric transition of Barium Titanate (BaTiO$_3$) due to its perovskite crystal structure.
 
 \section{Review of Previous Work}
 
-Phase transitions have long been the subject of intense study, and their importance to solid-state physics and materials science cannot be overstated.
+Phase transitions have long been the subject of intense study, and their importance to solid-state physics and materials science cannot be overstated. Early studies of the phase transitions of alcohol paved the way for thermodynamics as we know it to take shape \cite{phase_history}. More recently, phase transitions have been used successfully in a wide variety of industrial applications.
+
+The superconducting phase transition is the subject of much study, and with good reasons. Superconductors have applications ranging from the construction of magnets \cite{magnets} to the construction of magnetic cloaks \cite{rapheal}, from quantum computers \cite{quantum_super, quantum_super2} to trains \cite{trains} --- the list is endless. And understanding the phase transition of superconductors is the first step in being able to harness their unique abilities. The superconducting transition is of the second order, and much painstaking effort has been taken to understand the theory of the transition exactly (beyond the mean field approach allowed by the Ginzburg-Landau model) \cite{superconductor, supercond2, supercond3}.
+
+The applications of the metal-insulator transition, studied here, is itself far reaching. It has been shown that an ultra-fast electronic switch can be constructed from vanadium dioxide (among other MIT materials) \cite{switching}. Its applications also extend beyond this into computer memory and optical shutters \cite{memory}, as the MIT also changes the transparency of VO$_2$ to infrared light.
+
+Barium Titanate, too, has many applications in electronics. It has long been used in the constuction of capacitors, particularly those where a high dielectric constant is desired ($k \sim 7000$) \cite{capacitors}. Additionally, as we will show in the lab, the capacitance of a BaTiO$_3$ capacitor will drop as it is heated across its critical temperature. This can be useful for systems where a temperature dependent capacitance is desired. Because of its ferroelectric properties, Barium Titanate can also be used in a wide variety of thermal imaging systems, non-linear optics, and other advanced electronic devices \cite{thermals}.
+
+The mathematical underpinnings of phase transitions have also been extended to describe a wide range of phenomena. In the earliest moments of the Universe, cosmologists believe that the cosmos underwent a period of superluminal inflation \cite{cosmo}. The cause of this inflationary period has been theorized to be a phase transition brought about by fluctuations in the Higgs field \cite{cosmo2, cosmo3, cosmo4, cosmo5}. Thus, the mathematical underpinnings we discuss here have wide ranging applications throughout the natural sciences.
 
 \section{Experimental Setup}
 
-Our experimental setup consists of three main components: the lock-in amplifier, the sample chamber, and (during the resistance measurements) the limiting resistor.
+Our experimental setup consists of three main components: the lock-in amplifier, the sample chamber, and (during the resistance measurements) the limiting resistor. Depending on the quantity being measured, resistance or capacitance, the system is set up in one of two different ways.
 
 \subsection{Resistance Measurements}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=5cm]{diagram_res.png}
+	\caption{Circuit diagram showing the four-prong resistance measurement of a sample.}
+	\label{fig:ResistanceMeasurements}
+\end{figure}
+
 \subsubsection{Four Probe Method}
+
+\subsubsection{Calibration and Measurement of Internal Resistance of Lock-In Amplifier}
 
 \subsection{Capacitance Measurements}
 
-\subsection{Calibration and Measurement of Internal Resistance of Lock-In Amplifier}
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=5cm]{diagram_cap.png}
+	\caption{Circuit diagram showing the measurement of the capacitance of a sample.}
+	\label{fig:CapMeasurements}
+\end{figure}
 
 \subsection{Preparation of Samples}
 
@@ -135,6 +158,10 @@ where k is the relative dielectric permeability of the sample.
 \section{Measurements}
 
 \section{Theoretical Model}
+
+\subsection{Metal-Insulator Transition of Vanadium Dioxide}
+
+\subsection{Ferroelectric Transition of Barium Titanate}
 
 \section{Comparison of Theory and Experiment}
 
@@ -188,6 +215,60 @@ Scientific, (2004)
 	
 	\bibitem{thirdorder}
 	E.C. Ekuma; G.C. Asomba and M.I. Okoye. Thermodynamics of Third Order Phase Transition: A Solution to the Euler -- Lagrange Equations. 	Physica B: Condensed Matter, Volume 405, Issue 9, Pages 2290-2293 (May 2010).
+	
+	\bibitem{mott}
+	Mott, N.F. Metal-Insulator Transitions. University of Cambridge (1990).
+	
+	\bibitem{switching}
+	Chudnovskiy, F., Luryi, S., and Spivak B. Switching device based on first-order metal-insulator transition induced by external electric field. SUNY Stony Brook (2002).
+	
+	\bibitem{memory}
+	Elliman, Robert. The metal-insulator transition (MIT) and its application as a selector device for nonvolatile memory. Australian National University (June 2016).
+	
+	\bibitem{cosmo}
+	Ryden, B. Introduction to Cosmology. Addison-Wesley (2002).
+	
+	\bibitem{cosmo2}
+	Starobinsky, A.A. Dynamics of phase transition in the new inflationary universe scenario and generation of perturbations. Physics Letters B Volume 117, Issues 3–4, Pages 175-178 (November 1982).
+	
+	\bibitem{cosmo3}
+	Gene F. Mazenko, William G. Unruh, and Robert M. Wald. Does a phase transition in the early universe produce the conditions needed for inflation? Phys. Rev. D 31, 273 (January 1985).
+	
+	\bibitem{cosmo4}
+	Daile La and Paul J. Steinhardt. Extended Inflationary Cosmology. Phys. Rev. Lett. 62, 376, 1066 (1989).
+	
+	\bibitem{cosmo5}
+	J. Barriga, E. Gaztañaga, M.G. Santos and S. Sarkar.On the APM power spectrum and the CMB anisotropy: evidence for a phase transition during inflation? MNRAS 324 (4): 977-987 (2001). 
+	
+	\bibitem{superconductor}
+	Kleinert, H. Order of superconductive phase transition. Condensed Matter Physics, Vol. 8, No. 1(41), pp. 75–86 (2005).
+	
+	\bibitem{supercond2}
+	Maximenko, Y. Superconducting phase transition. University of Illinois, Urbana-Champaign (2011).
+	
+	\bibitem{supercond3}
+	Cyrot, M. Ginzburg-landau theory for superconductors. Rep. Prog. Phys., 36:103 (1973).
+	
+	\bibitem{rapheal}
+	Cervantes, R. A Compact Magnetic Field Cloaking Device. Stony Brook University (2015).
+	
+	\bibitem{magnets}
+	Wilson, M.N. Superconducting magnets. Clarendon Press; Oxford (1983).
+	
+	\bibitem{quantum_super}
+	Lev B. Ioffe, Vadim B. Geshkenbein, Mikhail V. Feigel'man, Alban L. Fauchere, and Gianni Blatter. Environmentally decoupled sds-wave Josephson junctions for quantum computing. Nature 398, 679-681 (22 April 1999).
+	
+	\bibitem{quantum_super2}
+	MJ Feldman and X. Zhou. SUPERCONDUCTING QUANTUM COMPUTING WITHOUT SWITCHES. University of Rochester (2002).
+	
+	\bibitem{trains}
+	K Ushio and K Hiroshi. High speed train utilizing hard superconductor. US Patent 3,662,689 (1972)
+	
+	\bibitem{capacitors}
+	Waugh, Mark D. Design solutions for DC bias in multilayer ceramic capacitors. Electronic Engineering Times.(2010)
+	
+	\bibitem{thermals}
+	Vipul Bansal, Pankaj Poddar, Absar Ahmad, and Murali Sastry. Room-Temperature Biosynthesis of Ferroelectric Barium Titanate Nanoparticles. J. Am. Chem. Soc., 128 (36), pp 11958–11963 (2006).
 
 \end{thebibliography}
 
