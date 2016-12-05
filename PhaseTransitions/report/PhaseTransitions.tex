@@ -261,6 +261,26 @@ C_{BaTiO_{3}} = \frac{C_{b}C}{C_{b} - C}
 	\label{Fig:kvT}
 \end{figure}
 
+With a plot of $k$ vs. $T$, we could use our data to study the Curie-Weiss Law. This law says that on either side of the Curie temperature $T_{C}$, the relative dielectric constant of the BaTiO$_{3}$ sample will follow one of two forms of the Curie-Weiss Law for temperatures near $T_{C}$. Above the Curie temperature ($T > T_{C}$), the Curie-Weiss Law says $k = \frac{C_{CW}}{\epsilon_{0} (T-T_{C})}$ while below this temperature ($T < T_{C}$) it is $k = \frac{C_{CW}}{\epsilon_{0} (T_{C} - T)}$. In these equations, $C_{CW}$ is a constant related to the thermal expansion coefficient, $a$, of the sample. For $T > T_{C}$, $C_{CW_{1}} = \frac{1}{4a}$ and for $T < T_{C}$, $C_{CW_{2}} = \frac{1}{2a}$. We fit each of these versions of the Curie-Weiss Law to the respective data on either side of the transition temperature. From these fits we were able to obtain the values for $C_{CW}$ of:
+\begin{gather*}
+C_{CW_{1}} = 10523.8 \pm 23.8 K,  T > T_{C} \\
+C_{CW_{2}} = 19677.3 \pm 249.7 K, T < T_{C}
+\end{gather*}
+\noindent The ratio between these two values is $\frac{C_{CW_{2}}}{C_{CW_{1}}} = 1.9$, which demonstrates the factor of 2 difference in the coefficients' relation to the thermal expansion coefficient.
+
+With our fit from the Curie-Weiss Law, we were able to extract $C_{CW}$ for $T > T_{C}$ to determine some of the microscopic properties of our BaTiO$_{3}$ sample. After the Curie temperature, the sample exhibited a polarization indicating a microscopic dipole moment, $p$, of the BaTiO$_{3}$ crystal. This dipole moment can be calculated using the coefficient of the Curie-Weiss Law through Eq.~\ref{Eq:MicroDipMom}. In this equation, $q = 6e$ is the effective electric charge of the dipole and $a$ is the length of the unit cell of BaTiO$_{3}$. 
+
+\begin{equation}\label{Eq:MicroDipMom}
+p = qx = (6e)x = \sqrt{\frac{\epsilon_{0} k_{B} C_{CW}}{a^3}}
+\end{equation}
+
+\noindent From this equation we were able to calculate values for the dipole moment and atomic displacement causing the polarization of our BaTiO$_{3}$ sample of:
+
+\begin{align*}
+p &= 9.1 \times 10^{-30} Cm\\
+x &= 9.4 pm
+\end{align*}
+
 \section{Theoretical Model}
 
 \subsection{Metal-Insulator Transition of Vanadium Dioxide}
