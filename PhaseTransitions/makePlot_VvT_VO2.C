@@ -99,11 +99,11 @@ int makePlot_VvT_VO2(
 
   cout << 2*8.62*(10**(-5.))*g_RvTEGap2->GetFunction("pol1")->GetParameter(1) << endl;
 
-  TLegend *leg2 = new TLegend(0.55, 0.2, 0.8, 0.35);
+  TLegend *leg2 = new TLegend(0.5, 0.2, 0.85, 0.34);
   leg2->SetNColumns(1);
   leg2->AddEntry(g_RvT, "VO_{2} R vs T", "p");
   leg2->AddEntry(g_RvTEGap2->GetFunction("pol1"), "#splitline{Semiconductor}{Resistivity Law}", "l");
-  leg2->AddEntry((TObject*)0 ,"E_{G} = 0.573 eV", "");
+  leg2->AddEntry((TObject*)0 ,"E_{g} = 0.573 #pm 0.002 eV", "");
   leg2->Draw();
   /*=====================*/
 

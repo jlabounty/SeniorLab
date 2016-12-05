@@ -90,7 +90,7 @@ Our experimental setup consists of three main components: a Princeton Applied Re
 
 The lock-in, essentially, consists of a frequency generator and a measuring input which is tuned only to that specific frequency. It is capable of generating a signal at a very specific frequency and phase and holding it there with great precision. The readout is then tuned to that frequency alone, but it can also be set to measure this frequency at any phase with respect to the original. Phasor theory tells us that the voltages across resistors  will be in-phase with the driving frequency, while voltages across capacitors will be $90^\circ$ out of phase. Thus, by looking at the in-phase and out-of-phase components of the input signal with the lock-in, we can determine the voltage across the resistive and capacitive portions of the system respectively. We began each measurement by 'tuning' the lock-in. We did this by hooking the output directly up to the input with a BNC cable. We then activated the autotune function, which seeks to maximize the in-phase signal. After this cycle completed, we manually adjusted the phase settings until the out of phase signal was as close to zero as we could obtain. We then hooked up the resistive or capacitive sample as detailed below.
 
-The samples are mounted in a sample chamber (shown in Figure \ref{fig:sample:inplace}) which consists of an insulated double-walled aluminum container with leads which run into it. Wires run through the insulated walls and terminated in double-prong connections to which the VO$_2$ and BaTiO$_3$ samples can be attached. These wires also run out of the sample chamber an have connections to which the lock-in can be attached to provide input. A heater is wrapped around the sample chamber which we directly control with a Staco Energy voltage source. A temperature sensor is also placed inside the sample chamber to monitor the internal temperature. Both the voltage from the lock-in and the temperature measurements are fed into a LabView program, which records the data in a format which can be read in by our analysis software ROOT.
+The samples are mounted in a sample chamber (shown in Figure \ref{fig:sample:inplace}) which consists of an insulated double-walled aluminum container with leads which run into it. Wires run through the insulated walls and terminated in double-prong connections to which the VO$_2$ and BaTiO$_3$ samples can be attached. These wires also run out of the sample chamber and have connections to which the lock-in can be attached to provide input. A heater is wrapped around the sample chamber which we directly control with a Staco Energy voltage source. A temperature sensor is also placed inside the sample chamber to monitor the internal temperature. Both the voltage from the lock-in and the temperature measurements are fed into a LabView program, which records the data in a format which can be read in by our analysis software ROOT.
 
 In previous years, a temperature controller was used which could ramp the temperature of the system up and down automatically, and at a much slower rate, but this system was not used for our experiments. As such, our ramps may have occurred at a faster speed than was ideal, and an artificial hysteresis-like effect may be introduced in our measurements due to a lag between measured temperature and sample temperature. 
 
@@ -185,13 +185,13 @@ This capacitance will add linearly with the capacitance of our samples, and is o
 
 \section{Measurements}
 \subsection{Metal-Insulator Transition in $VO_{2}$}
-We began with our study of the first order metal-insulator transition of $VO_{2}$. After tuning the lock in amplifier, we connected it to our sample to measure the voltage across the $VO_{2}$. We set the heater to increase the temperature of the sample chamber at a rate slow enough to allow for any time delay between the heating of the chamber and the heating of the sample itself. Since the sample is conductively heated, the temperature of the $VO_{2}$ itself may be lower than the temperature measured inside the chamber. Therefore, allowing the heater to increase the temperature at a slow enough rate ensures that the temperature read by the temperature sensor is consistent with that of the sample. As we increased the temperature we measured and recorded the temperature of and voltage across our $VO_{2}$ sample. The current in the circuit does not change so the variation in voltage as a function of temperature is due to the temperature dependence of the resistivity of the sample. To demonstrate this, we calculated the resistance ,$R_{VO_{2}}$, of the sample from the voltage, $V_{out}$, across it using Eq.~\ref{Eq:VtoR}.
+We began with our study of the first order metal-insulator transition of $VO_{2}$. After tuning the lock in amplifier, we connected it to our sample to measure the voltage across the $VO_{2}$. We set the heater to increase the temperature of the sample chamber at a rate slow enough to allow for any time delay between the heating of the chamber and the heating of the sample itself. Since the sample is conductively heated, the temperature of the $VO_{2}$ itself may be lower than the temperature measured inside the chamber. Therefore, allowing the heater to increase the temperature at a slow enough rate ensures that the temperature read by the temperature sensor is consistent with that of the sample. As we increased the temperature we measured and recorded the temperature of and voltage across our $VO_{2}$ sample. The current in the circuit does not change so the variation in voltage as a function of temperature is due to the temperature dependence of the resistivity of the sample. To demonstrate this, we calculated the resistance, $R_{VO_{2}}$, of the sample from the voltage, $V_{out}$, across it using Eq.~\ref{Eq:VtoR}.
 
 \begin{equation}\label{Eq:VtoR}
 R_{VO_{2}} = \frac{V_{out}}{I} = \frac{V_{out} (R_{Lim} + R_{Int})}{(V_{In} - V_{Out})} 
 \end{equation}
 
-where $V_{in}$ is the voltage output by the lock in amplifier, $R_{Int}$ is the internal resistance of the lock in amplifier, and $R_{Lim}$ is the limiting resistance in the circuit which we set as $R_{Lim} = 997 k\Omega$. For each value of voltage measured, we calculated the resistance of our sample and plotted this data as a function of temperature in Figure~\ref{Fig:RvT1}.
+where $V_{in}$ is the voltage output by the lock in amplifier, $R_{Int}$ is the internal resistance of the lock in amplifier, and $R_{Lim}$ is the limiting resistance in the circuit which we set as $R_{Lim} = 997 k\Omega$. For each value of voltage measured, we calculated the resistance of our sample and plotted this data as a function of temperature in Fig.~\ref{Fig:RvT1}.
 
 \begin{figure}[H]
 	\centering
@@ -200,7 +200,15 @@ where $V_{in}$ is the voltage output by the lock in amplifier, $R_{Int}$ is the 
 	\label{Fig:RvT1}
 \end{figure}
 
-The resistances of the sample are plotted on a logarithmic scale in order to better demonstrate at what temperature $V0_{2}$ exhibits a decrease in resistivity of a few orders of magnitude. 
+The resistances of the sample are plotted on a logarithmic scale in order to better demonstrate at what temperature $V0_{2}$ exhibits a decrease in resistivity of a few orders of magnitude. As can be observed in Fig.~\ref{Fig:RvT1}, this drastic change in resistance occurs along two different curves. One of these curves is the change in resistance as the temperature of the sample was heated and the other curve is the resistance as the sample cooled down. The splitting of these curves was due to hysteresis and means that critical temperature must be found through a more analytical method. To find the transition point, we identified the inflection points of each curve. These points (identified in Fig.~\ref{Fig:RvT1} by vertical blue lines) indicate the coercive temperatures of the transition, $T_{C} \pm T*$. As the temperature of the sample increased, the metal-insulator transition occurred at $T_{C} + T* = 82.5 ^\circ C$, whereas when we decreased the temperature of the sample, hysteresis caused the transition to occur at $T_{C} - T* = 66.5 ^\circ C$. The critical temperature $T_{C}$ of the phase transition occurred at the average of these two points, $T_{C} = 74.5^\circ C$. At this temperature, we observed the resistivity of $VO_{2}$ change from $~10^{6}$ in the semiconducting phase to $~5 \times 10^3$ in its metallic phase, demonstrating a change in resistivity of about 2.5 to 3 orders of magnitude.
+
+In addition to observing the transition point of the $VO_{2}$, we also observed its semiconducting properties at low temperatures, before it transitioned to its metallic phase. In this regime, the resistivity of the sample demonstrated the temperature dependence typical of a semiconductor, which behaves according to Eq.~\ref{Eq:SemiEGap}.
+
+\begin{equation}\label{Eq:SemiEGap}
+\rho = \rho_{0} e^{\frac{E_{g}}{2kT}}
+\end{equation}
+
+\noindent In this equation, $E_{g}$ is the energy gap, the energy difference between the valence band and conduction band of electrons. We tested that $VO_{2}$ exhibited semiconducting behavior at low temperatures by verifying the size of $E_{g}$. In order to calculate this value, we plotted the data on a $Log(\frac{\rho}{\rho_{0}})$ vs. $T^{-1}$ graph and fitted the data to a line. The data we collected is plotted as such in Fig.~\ref{Fig:RvT2}. Since we were testing the behavior of $VO_{2}$ in its semiconducting phase, we only fitted a line to the low temperature regime where it would exhibit such behavior.
 
 \begin{figure}[H]
 	\centering
@@ -208,6 +216,8 @@ The resistances of the sample are plotted on a logarithmic scale in order to bet
 	\caption{$Log(\rho)$ vs. $\frac{1}{T}$ Plot to Find Semiconductor Energy Gap, $E_{g}$}
 	\label{Fig:RvT2}
 \end{figure}
+
+\noindent The slope of this line is related to the energy gap as $E_{g} = 2k*(slope)$, where $k$ is Boltzmann's constant. We calculated the value of the band gap to be $E_{g} = 0.573 \pm 0.002 eV$, which we will see later is consistent with semiconducting behavior.
 
 \subsection{Ferroelectric Transition in $BaTiO_{3}$}
 
