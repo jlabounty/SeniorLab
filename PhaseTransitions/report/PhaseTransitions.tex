@@ -44,7 +44,7 @@
 
 \section{Introduction}
 
-Like gravity, phase transition are phenomena which have long been observed, but only recently have they been understood scientifically. The freezing, melting, and evaporation of water has long been central to human life, controlling the availability of food and the need for shelter, but only in the past two centuries has any real effort been put into a scientific understanding of how matter transitions between these phases. The first serious attempt to understand this type of phenomenon was undertaken by Charles Caignard de la Tour in 1822. In his study, he classified the 'solid $\leftrightarrow$ liquid $\leftrightarrow$ gas' phase transitions of alcohol according to the Temperature, Pressure, and Volume at which they occurred \cite{phase_history}. Later, in 1873, Josiah Willard Gibbs built on this work to introduce the concept of the phase diagram\cite{phase_history, gibbs}. With this diagram came the notion that phase transitions could be understood from a purely thermodynamic perspective. And, with the discovery of the ferromagnetic phase transition by Peter Curie in 1895 (along with its formal description by Peter Weiss in 1907), the race was on to find and classify phase transitions in a wide variety of systems. However, it wasn't until the discovery of the phase transition of liquid helium to a superfluid state that a solid classification system was able to take hold. It was observed experimentally that, during this transition, there was no latent heat and no visible boundary between the two phases \cite{phase_history}. Instead, it was found that there was a discontinuity in the second derivative of the free energy of the system, which showed itself in the famous lambda plot of heat capacity vs. temperature (Figure \ref{fig:lambda_point_helium}). This observation spurred Ehrenfest to introduce the first comprehensive classification system for phase transitions. The system was constructed around the 'order' of the discontinuity of the free energy of the system. Classically known phase transitions (water $\leftrightarrow$ ice, etc.) as well as others like the ferromagnetic transition of iron are classified as first order phase transitions, while the newly discovered HeI $\leftrightarrow$ HeII transition is a second order transition \cite{physics_of_phase, manual}. This classification scheme was soon validated, as superconductivity was proven to accompany the helium superfluid transition in the second order category. Landau built on this classification system to create much of the theory of phase transitions we still use today \cite{manual}.
+Like gravity, phase transition are phenomena which have long been observed, but only recently have they been understood scientifically. The freezing, melting, and evaporation of water has long been central to human life, controlling the availability of food and the need for shelter, but only in the past two centuries has any real effort been put into a scientific understanding of how matter transitions between these phases. The first serious attempt to understand this type of phenomenon was undertaken by Charles Caignard de la Tour in 1822. In his study, he classified the 'solid $\leftrightarrow$ liquid $\leftrightarrow$ gas' phase transitions of alcohol according to the Temperature, Pressure, and Volume at which they occurred \cite{phase_history}. Later, in 1873, Josiah Willard Gibbs built on this work to introduce the concept of the phase diagram\cite{phase_history, gibbs}. With this diagram came the notion that phase transitions could be understood from a purely thermodynamic perspective. And, with the discovery of the ferromagnetic phase transition by Peter Curie in 1895 (along with its formal description by Peter Weiss in 1907), the race was on to find and classify phase transitions in a wide variety of systems. However, it wasn't until the discovery of the phase transition of liquid helium to a superfluid state that a solid classification system was able to take hold. It was observed experimentally that, during this transition, there was no latent heat and no visible boundary between the two phases \cite{phase_history}. Instead, it was found that there was a discontinuity in the second derivative of the free energy of the system, which showed itself in the famous lambda plot of heat capacity vs. temperature (Figure \ref{fig:lambda_point_helium}). This observation spurred Ehrenfest to introduce the first comprehensive classification system for phase transitions. The system was constructed around the 'order' of the discontinuity of the free energy of the system. Classically known phase transitions (water $\leftrightarrow$ ice, etc.) as well as others like the ferromagnetic transition of iron he classified classified as first order phase transitions, while the newly discovered HeI $\leftrightarrow$ HeII transition was a second order transition \cite{physics_of_phase, manual}. This classification scheme was soon validated, as superconductivity was proven to accompany the helium superfluid transition in the second order category. Landau built on this classification system to create much of the theory of phase transitions we still use today \cite{manual}.
 
 \begin{figure}[H]
 	\centering
@@ -239,13 +239,15 @@ In addition to observing the transition point of the $VO_{2}$, we also observed 
 
 \subsection{Metal-Insulator Transition of Vanadium Dioxide}
 
+The theory behind metal insulator transitions is well studied \cite{phase_2}, and the specific properties of the Vanadium Dioxide transition have long been a topic of scientific interest \cite{manual, vo2_1, vo2_2}. In fact, the 
+
 \subsection{Ferroelectric Transition of Barium Titanate}
 
 \section{Comparison of Theory and Experiment}
 
 \section{Discussion and Conclusions}
 
-During the course of our measurements, we found that even after repeated tuning of the phase and replacement of various cables the lock-in would drift erratically. During some periods the equipment would remain stable for hours before suddenly beginning to drift with no obvious external cause. We were able to take good measurements in spite of this, but further investigation of the cause and possible solutions to this problem should be investigated if this lab is to be performed by future students.
+During the course of our measurements, we found that even after repeated tuning of the phase and replacement of various cables the lock-in would drift erratically. During some periods the equipment would remain stable for hours before suddenly beginning to drift with no obvious external cause. Additionally, the internal resistance of the lock-in which we observed was almost double its original value of $600~\Omega$, which also indicates some internal damage to the equipment. We were able to take good measurements in spite of this, but further investigation of the cause and possible solutions to this problem should be investigated if this lab is to be performed by future students. 
 
 \section{Author Contributions}
 
@@ -253,12 +255,16 @@ Both authors believe that the work for this project was split equally, and each 
 
 \noindent \textbf{Joshua LaBounty}:
 \begin{enumerate}
-	\item 
+	\item Section 1: Introduction
+	\item Section 2: Review of Previous Work
+	\item Section 3: Experimental Setup
+	\item Appendix \ref{section:fourprobe}: Four Probe Method
 \end{enumerate}
 
 \noindent \textbf{Thomas Krahulik}:
 \begin{enumerate}
-	\item Section 
+	\item Section 4: Measurements
+	\item Appendix \ref{section:root}: Validation of the $\chi^2$ Minimization in ROOT
 \end{enumerate}
 
 \noindent Lab time was also split equally, with one partner often taking measurements while the other developed the analysis software used in this report.
@@ -349,6 +355,12 @@ Scientific, (2004)
 	
 	\bibitem{thermals}
 	Vipul Bansal, Pankaj Poddar, Absar Ahmad, and Murali Sastry. Room-Temperature Biosynthesis of Ferroelectric Barium Titanate Nanoparticles. J. Am. Chem. Soc., 128 (36), pp 11958–11963 (2006).
+	
+	\bibitem{vo2_1}
+	C. N. Bergland and H. J. Guggenheim, “Electronic properties of VO2 near the semiconductor metal transition”, Phys. Rev. 185 (3), pp. 1022-1033 (1969).
+	
+	\bibitem{vo2_2}
+	M. Gurvitch, Serge Luryi, A. Polyakov, A. Shabalov, “Nonhysteretic Phenomena in the Metal Semiconductor Phase-Transition Loop of VO2 Films for Bolometric Sensor Applications”, IEEE Transactions on Nanotechnology 9, pp. 647-652 (2010).
 
 \end{thebibliography}
 
