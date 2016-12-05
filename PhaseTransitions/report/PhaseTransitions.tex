@@ -67,7 +67,7 @@ In order to find the value of the order parameter corresponding to the phase tra
 \begin{gather}
 	m = 	\begin{cases}
 			0 & T > T_C \\
-			\pm \sqrt{\frac{\alpha_0 (TC - T)}{\beta_0}} & T \le T_C
+			\pm \sqrt{\frac{\alpha_0 (T_C - T)}{\beta_0}} & T \le T_C
 		\end{cases} \nonumber
 \end{gather}
 Physically, this means that above the critical temperature, there is only one state for the system to be in, which corresponds to $m = 0$. Below the critical temperature, this symmetry is broken into two states, one with $+m$ and one with $-m$, each with its own stable minima of $F(T)$. We will measure this parameter, and relate it to important quantities like succeptability $\chi$ and the Curie-Weiss constant, later in the lab. The second order transition we will be studying is the ferroelectric transition of Barium Titanate (BaTiO$_3$) due to its perovskite crystal structure.
@@ -202,6 +202,13 @@ where $V_{in}$ is the voltage output by the lock in amplifier, $R_{Int}$ is the 
 
 The resistances of the sample are plotted on a logarithmic scale in order to better demonstrate at what temperature $V0_{2}$ exhibits a decrease in resistivity of a few orders of magnitude. 
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{VO2_LogRvTInv.png}
+	\caption{$Log(\rho)$ vs. $\frac{1}{T}$ Plot to Find Semiconductor Energy Gap, $E_{g}$}
+	\label{Fig:RvT2}
+\end{figure}
+
 \subsection{Ferroelectric Transition in $BaTiO_{3}$}
 
 \begin{figure}[H]
@@ -209,6 +216,13 @@ The resistances of the sample are plotted on a logarithmic scale in order to bet
 	\includegraphics[width=0.4\textwidth]{BaTiO3_CvT_withTC.png}
 	\caption{Resistance vs Temperature Plot for $BaTiO_{3}$ with a Vertical Line Identifying $T_{C}$ (Red)}
 	\label{Fig:CvT1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.4\textwidth]{BaTiO3_kvT.png}
+	\caption{Relative Dielectric Constant vs Temperature Plot for $BaTiO_{3}$ with the Curie-Weiss Law both Above (Red) and Below (Blue) the Critical Temperature $T_{C}$}
+	\label{Fig:kvT}
 \end{figure}
 
 \section{Theoretical Model}

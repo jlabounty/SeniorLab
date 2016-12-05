@@ -120,7 +120,8 @@ int makePlot_VvT_BaTiO3(
   TH1 *h4 = c4->DrawFrame(30., 0., 150., 5000.);
   h4->SetTitle("");   
   h4->GetXaxis()->SetTitle("T (#circC)");
-  h4->GetYaxis()->SetTitle("k ");
+  h4->GetYaxis()->SetTitle("k");
+  h4->GetYaxis()->SetTitleOffset(1.8);
   TGraph *g_kvT = new TGraph(T.size(), &T[0], &k[0]);
 
   for(int iG = 0; iG < g_C2vT->GetN(); iG++)
@@ -149,12 +150,31 @@ int makePlot_VvT_BaTiO3(
   // fit->SetParameters(500., 126.2);
   g_kvT_CW->Fit("fit", "","", 130., 142.);
 
+  double ccw = (fit->GetParameter(0));
+  double p = sqrt( (8.85*10**(-12.))*1.38*10**(-23.)*(fit->GetParameter(0))*(0.4*10**(-9.))**3. );
+
+  cout << ccw << endl;
+  cout << "p = " << p << endl;
+  cout << "x = " << p  / (9.6*10**(-19.)) << endl;
+
+  // cout << "p = " << sqrt( 8.85*10**(-12.)*1.38*10**(-23.)*(fit->GetParameter(0))*(0.4*10**(-9.))**3. ) << endl;
+
+
   TF1* fit2 = new TF1("fit2", "[0]/([1]-x)", 90., 115.);
   fit2->SetParameters(500., 122.);
   g_kvT_Low->Fit("fit2", "","", 90., 115.);
   g_kvT_Low->GetFunction("fit2")->SetLineColor(kBlue);
 
-  // c3->Print("report/plots/BaTiO3_CvT_withTC.png");
+  TLegend *leg2 = new TLegend(0.2, 0.6, 0.55, 0.8);
+  leg2->SetNColumns(1);
+  leg2->AddEntry(g_kvT, "BaTiO_{3} k vs T", "p");
+  leg2->AddEntry(fit, "#splitline{Curie-Weiss Law for T > T_{C}}{C_{CW} = 10523 #pm 24}", "l");
+  leg2->AddEntry(g_kvT_Low->GetFunction("fit2"), "#splitline{Curie-Weiss Law for T < T_{C}}{C_{CW} = 19677 #pm 250}", "l");
+  leg2->Draw();
+
+
+  c3->Print("report/plots/BaTiO3_CvT_withTC.png");
+  c4->Print("report/plots/BaTiO3_kvT.png");
 
   return 0;
 }
