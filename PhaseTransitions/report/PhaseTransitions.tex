@@ -249,11 +249,32 @@ C = \frac{1}{\omega R} \frac{1 - \sqrt{1 - 4(\frac{V_{out}}{V_{in}})^2 }}{2\frac
 
 \subsection{Metal-Insulator Transition of Vanadium Dioxide}
 
-The theory behind metal insulator transitions is well studied \cite{phase_2}, and the specific properties of the Vanadium Dioxide transition have long been a topic of scientific interest \cite{manual, vo2_1, vo2_2}. In fact, the 
+The theory behind metal insulator transitions is well studied \cite{phase_2}, and the specific properties of the Vanadium Dioxide transition have long been a topic of scientific interest \cite{manual, vo2_1, vo2_2}. In fact, it is the general consensus that the Metal-Insulator transition present in VO$_2$ can be described completely by the \textit{Mott insulator} model \cite{manual}. In such a Mott insulator, the coulomb repulsion between the electrons of the material in the same orbitals keeps them from conducting freely within the material at low (below $T_C$) temperatures. However, at sufficiently high temperatures, this barrier can be overcome and a signifigant current can flow. Thus, Mott proved, these materials will experience a transition from a low-temperature insulating state to a high-temperature conductive state.
+
+The transition does not happen for the entire bulk material at once, however. Instead, like water freezing, 'nucleation' sites form somewhat at random within the material. These metal zones grow outwards from their points of origin as the temperature grows above $T_C$. At some point, these zones will connect to form a single unbroken conductive path through the material and the \textit{percolation transition} is said to have taken place \cite{perc}. For a 2D system, which is a good approximation for our thin VO$_2$ films, the spanning probability is found to be $\rho_c = 0.592 7460 \pm 0.000 0005 $ \cite{perc,perc2}. This means that, on average, when $59\%$ of the VO$_2$ has transitioned into a metal the entire length of the system will be spanned and the percolation transition will be complete.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.25\textwidth]{percolation.png}
+	\caption{Percolation of a general lattice with circular transition zones. In a MIT, these darker zones would represent the metal zones which, once connected all the way through the sample, form a single conductive path. Image courtesy of \cite{perc}.}
+	\label{fig:perc}
+\end{figure}
+
+The properties of VO$_2$ are well documented, and the known values for the transition parameters can be found in the table below:
+
+\begin{Huge}
+TOM ADD SOMETHING HERE
+\end{Huge}
+
+\noindent In the coming sections, we will compare these known results with the results from our own experiments.
 
 \subsection{Ferroelectric Transition of Barium Titanate}
 
 \section{Comparison of Theory and Experiment}
+
+\subsection{Metal-Insulator Transition of Vanadium Dioxide}
+
+\subsection{Ferroelectric Transition of Barium Titanate}
 
 \section{Discussion and Conclusions}
 
@@ -371,6 +392,12 @@ Scientific, (2004)
 	
 	\bibitem{vo2_2}
 	M. Gurvitch, Serge Luryi, A. Polyakov, A. Shabalov, “Nonhysteretic Phenomena in the Metal Semiconductor Phase-Transition Loop of VO2 Films for Bolometric Sensor Applications”, IEEE Transactions on Nanotechnology 9, pp. 647-652 (2010).
+	
+	\bibitem{perc}
+	Harvey Gould, Jan Tobochnik, and Wolfgang Christian. Chapter 13: Percolation. (April 2001).
+	
+	\bibitem{perc2}
+	Robert M. Ziff, “Spanning probability in 2D percolation,” Phys. Rev. Lett. 69, 2670 (1992).
 
 \end{thebibliography}
 
