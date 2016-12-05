@@ -88,9 +88,9 @@ The mathematical underpinnings of phase transitions have also been extended to d
 
 Our experimental setup consists of three main components: a Princeton Applied Research Model 5209 lock-in amplifier, a sample chamber connected to a voltage controlled heating coil, and (during the resistance measurements) a limiting resistor. 
 
-The lock-in, essentially, consists of a frequency generator and a measuring input which is tuned only to that specific frequency. It is capable of generating a signal at a very specific frequency and phase and holding it there with great precision. The readout is then tuned to that frequency alone, but it can also be set to measure this frequency at any phase with respect to the original. Phasor theory tells us that the voltages across resistors  will be in-phase with the driving frequency, while voltages across capacitors will be $90^\circ$ out of phase. Thus, by looking at the in-phase and out-of-phase components of the input signal with the lock-in, we can determine the voltage across the resistive and capacitive portions of the system respectively.
+The lock-in, essentially, consists of a frequency generator and a measuring input which is tuned only to that specific frequency. It is capable of generating a signal at a very specific frequency and phase and holding it there with great precision. The readout is then tuned to that frequency alone, but it can also be set to measure this frequency at any phase with respect to the original. Phasor theory tells us that the voltages across resistors  will be in-phase with the driving frequency, while voltages across capacitors will be $90^\circ$ out of phase. Thus, by looking at the in-phase and out-of-phase components of the input signal with the lock-in, we can determine the voltage across the resistive and capacitive portions of the system respectively. We began each measurement by 'tuning' the lock-in. We did this by hooking the output directly up to the input with a BNC cable. We then activated the autotune function, which seeks to maximize the in-phase signal. After this cycle completed, we manually adjusted the phase settings until the out of phase signal was as close to zero as we could obtain. We then hooked up the resistive or capacitive sample as detailed below.
 
-The samples are mounted in a sample chamber (shown in Figure \ref{fig:sample:inplace}) which consists of an insulated double-walled aluminum container with leads which run into it. Wires run through the insulated walls and terminated in double-prong connections to which the VO$_2$ and BaTiO$_3$ samples can be attached. These wires also run out of the sample chamber an have connections to which the lock-in can be attached to provide input. A heater is wrapped around the sample chamber which we directly control with a Staco Energy voltage source. A temperature sensor is also placed inside the sample chamber to monitor the internal temperature. Both the voltage from the lock-in and the temperature measurements are fed into a LabView program, which records the data in a format which can be read in by our analysis software.
+The samples are mounted in a sample chamber (shown in Figure \ref{fig:sample:inplace}) which consists of an insulated double-walled aluminum container with leads which run into it. Wires run through the insulated walls and terminated in double-prong connections to which the VO$_2$ and BaTiO$_3$ samples can be attached. These wires also run out of the sample chamber an have connections to which the lock-in can be attached to provide input. A heater is wrapped around the sample chamber which we directly control with a Staco Energy voltage source. A temperature sensor is also placed inside the sample chamber to monitor the internal temperature. Both the voltage from the lock-in and the temperature measurements are fed into a LabView program, which records the data in a format which can be read in by our analysis software ROOT.
 
 In previous years, a temperature controller was used which could ramp the temperature of the system up and down automatically, and at a much slower rate, but this system was not used for our experiments. As such, our ramps may have occurred at a faster speed than was ideal, and an artificial hysteresis-like effect may be introduced in our measurements due to a lag between measured temperature and sample temperature. 
 
@@ -105,11 +105,7 @@ Depending on the quantity being measured, resistance or capacitance, the system 
 	\label{fig:ResistanceMeasurements}
 \end{figure}
 
-For the resistance measurements, we set up the system as shown in Figure \ref{fig:ResistanceMeasurements}. We first connected the oscillator voltage out to a limiting resistor (a decade resistor set to $1~M\Omega$) in series with our sample, which was placed in the chamber. This was done to protect the delicate VO$_2$ sample from the potentially large currents which could otherwise pass through it.
-
-\subsubsection{Four Probe Method}
-
-Because the resistances of our samples may be small (or comparable to our contact resistances), we have chosen to employ the four-probe resistance measurement method shown in Figure \ref{fig:ResistanceMeasurements} over the simpler two-probe method we employed extensively in PHY 335. The advantage of the four probe method is that it effectively removes the influence of the contact resistances from our measurements. The reason for this is as follows. In a two-probe sensor, where the current and the voltage leads connect at the same point, the full ammeter current flows through the contacts of the voltmeter. This means that the voltage drop across the ammeter will be equal to $V = I_{Ammeter}*(R_{Sample} + 2R_{Contact})$. However, when the connections of the voltmeter and ammeter are separated as in the four-probe method, the full current will only flow through the ammeter connections (which will not alter the measurement of current). The flow of current through the voltmeter connections will then only be the small ($\sim pA$) current through the voltmeter itself, limited by its large internal resistance. Now, the voltmeter voltage is $V = I_{Ammeter}*R_{Sample} + I_{Voltmeter} + 2R_{Contact} \approx I_{Ammeter}*R_{Sample}$. So long as the contact resistances are much lower than the internal resistance of the measurement device, then their effect on the measurement can be neglected. This method will allow us to examine the resistances of our samples without having to worry about the effect of the quality of our connections (in our lock in, the "Measuring input" functions as the voltmeter while the "Oscillator voltage out" acts as the ammeter).
+For the resistance measurements, we set up the system as shown in Figure \ref{fig:ResistanceMeasurements}. We first connected the oscillator voltage out to a limiting resistor (a decade resistor set to $1~M\Omega$) in series with our sample, which was placed in the chamber. This was done to protect the delicate VO$_2$ sample from the potentially large currents which could otherwise pass through it. We then connected the sample to the input voltage leads In this configuration, known as the 'four-probe' resistance measurement method, the ammeter current does not pass through the contacts of the voltmeter. Thus the contact resistances do not effect out measurement to a large degree. A more in-depth explanation of this measurement method can be found in Appendix \ref{section:fourprobe}. We set the lock-in output to $V_{out} = 2.0~V$ and $\nu = 25~Hz$. The low frequency allows us to minimize the effect of the parasitic capacitance of the BNC cables (see Section \ref{section:factors}), as their reactance will be $X_C \sim 100~M\Omega$.
 
 \subsection{Capacitance Measurements}
 
@@ -120,9 +116,11 @@ Because the resistances of our samples may be small (or comparable to our contac
 	\label{fig:CapMeasurements}
 \end{figure}
 
+As opposed to the previous measurement, this setup does not make use of a limiting resistor, as the current through the sample will be nowhere near large enough to damage this capacitor. This also has the effect of making the (normally small) out-of-phase signal larger and thus easier to measure. The lock-in amplifier is also set to a much higher frequency for the capacitance measurements, $\nu = 25000~hZ$ rather than $25~Hz$. The rest of the setup remains unchanged, and a diagram of the lock-in portion can be seen in Figure \ref{fig:CapMeasurements}.
+
 \subsection{Preparation of Samples}
 
-In the course of this lab, we will make use of two different sample materials: Vanadium Dioxide (VO$_2$) and Barium Titanate (BaTiO$_3$). The Vanadium samples consist of a thin layer of VO$_2$ ($\sim 100~nm$) deposited on a silicon substrate. These Vanadium samples are pre-mounted on their electrical contacts, but we have prepared a Barium sample for our own use. Our goal with the Barium sample is to construct a parallel plate capacitor using silver paint on either side of a flat sample. In order to maximize the capacitance, in accordance with the known relation $C = \epsilon A/d$ where $\epsilon = k \epsilon_0$, we want to maximize the surface area of our sample and minimize its thickness. To that end, we chose the largest piece of Barium Titanate available and carved it down. We began by scraping thick layers of material off with a x-acto knife, and when the sample became sufficiently thin we switched to sandpaper to smooth the surface.
+Before we can take these measurements, however, we need to prepare the samples for measurement. In the course of this lab, we will make use of two different sample materials: Vanadium Dioxide (VO$_2$) and Barium Titanate (BaTiO$_3$). The Vanadium samples consist of a thin layer of VO$_2$ ($\sim 100~nm$) deposited on a silicon substrate. These Vanadium samples are pre-mounted on their electrical contacts, but we have prepared a Barium sample for our own use. Our goal with the Barium sample is to construct a parallel plate capacitor using silver paint on either side of a flat sample. In order to maximize the capacitance, in accordance with the known relation $C = \epsilon A/d$ where $\epsilon = k \epsilon_0$, we want to maximize the surface area of our sample and minimize its thickness. To that end, we chose the largest piece of Barium Titanate available and carved it down to a thin flat plate.
 
 \begin{figure}[H]
 	\centering
@@ -150,12 +148,12 @@ In the course of this lab, we will make use of two different sample materials: V
 	\label{fig:sample}
 \end{figure}
 
-Because we chose to maximize the area rather than creating a uniform geometric shape, whose area would have been simple to measure, we performed an indirect measurement of the area. Using a cell phone camera, we took an image with the sample and a ruler at the same distance. We used the photo editing tool GIMP to determine the surface area and thickness of the sample in pixels ($px$). We also measured the length of a section of the ruler to determine the $px$ to $mm$ conversion factor. From these measurements, we found that the area and thickness of the sample were:
+Because we chose to maximize the area rather than creating a uniform (and easy to measure) geometric shape, we performed an indirect measurement of the area. Using a cell phone camera, we took an image with the sample and a ruler at the same distance. We used the photo editing tool GIMP to determine the surface area and thickness of the sample in pixels ($px$). We also measured the length of a section of the ruler to determine the $px$ to $mm$ conversion factor. From these measurements, we found that the area and thickness of the sample were:
 \begin{gather}
 	A_{sample} = 77.464 \pm 1.5470*10^{-2} ~mm^2  \nonumber \\
 	d_{sample} = 1.8592 \pm 1.7820*10^{-3} ~mm	 \nonumber
 \end{gather}
-These values are consistent with our rough approximations taken during the lab period. From these we find that our equation for the capacitance of this sample is:
+These values are consistent with our rough approximations made during the lab period. From these we find that our equation for the capacitance of this sample is:
 \begin{gather}
 	\begin{align}
 		C = \frac{\epsilon A}{d} & = k \epsilon_0 \frac{77.464 \pm 1.5470*10^{-2} ~mm^2}{1.8592 \pm 1.7820*10^{-3} ~mm} \nonumber \\
@@ -165,7 +163,8 @@ These values are consistent with our rough approximations taken during the lab p
 \end{gather}
 where k is the relative dielectric permeability of the sample. 
 
-\subsection{Isolation of Extraneous Factors}
+
+\subsection{Isolation of Extraneous Factors}\label{section:factors}
 
 In order to accurately measure the resistance and capacitance of our samples, we need to account for any extraneous factors in our measurement apparatus which may distort the results. The two main factors we have isolated and accounted for are the internal resistance of the lock-in and the parasitic capacitance of our BNC cables. In order to isolate the internal resistance of the lock-in, we measured the lock-in voltage a number of known resistors with a known limiting resistance. Thus, by rearranging Ohm's Law, we can arrive at a simple expression for the internal resistance of the lock-in. We found the average value of this over many measurements to be:
 \begin{gather}
@@ -182,7 +181,7 @@ Similarly, we used a systematic approach to quantify the capacitance of our BNC 
 \begin{gather}
 	\frac{C}{1~meter} = 113.3195 \pm 2.5618~pF/m \nonumber
 \end{gather}
-This capacitance will add linearly with the capacitance of our samples, and is on a similar order, and so is important to be able to isolate this effect.
+This capacitance will add linearly with the capacitance of our samples, and is on a similar order, and so is important to be able to isolate this effect. Once these effects were accounted for, we 
 
 \section{Measurements}
 \subsection{Metal-Insulator Transition in $VO_{2}$}
@@ -235,6 +234,8 @@ The resistances of the sample are plotted on a logarithmic scale in order to bet
 \section{Comparison of Theory and Experiment}
 
 \section{Discussion and Conclusions}
+
+During the course of our measurements, we found that even after repeated tuning of the phase and replacement of various cables the lock-in would drift erratically. During some periods the equipment would remain stable for hours before suddenly beginning to drift with no obvious external cause. We were able to take good measurements in spite of this, but further investigation of the cause and possible solutions to this problem should be investigated if this lab is to be performed by future students.
 
 \section{Author Contributions}
 
@@ -342,6 +343,10 @@ Scientific, (2004)
 \end{thebibliography}
 
 \begin{appendix}
+
+\section{Four Probe Method}\label{section:fourprobe}
+
+Because the resistances of our samples may be small (or comparable to our contact resistances), we have chosen to employ the four-probe resistance measurement method shown in Figure \ref{fig:ResistanceMeasurements} over the simpler two-probe method we employed extensively in PHY 335. The advantage of the four probe method is that it effectively removes the influence of the contact resistances from our measurements. The reason for this is as follows. In a two-probe sensor, where the current and the voltage leads connect at the same point, the full ammeter current flows through the contacts of the voltmeter. This means that the voltage drop across the ammeter will be equal to $V = I_{Ammeter}*(R_{Sample} + 2R_{Contact})$. However, when the connections of the voltmeter and ammeter are separated as in the four-probe method, the full current will only flow through the ammeter connections (which will not alter the measurement of current). The flow of current through the voltmeter connections will then only be the small ($\sim pA$) current through the voltmeter itself, limited by its large internal resistance. Now, the voltmeter voltage is $V = I_{Ammeter}*R_{Sample} + I_{Voltmeter} + 2R_{Contact} \approx I_{Ammeter}*R_{Sample}$. So long as the contact resistances are much lower than the internal resistance of the measurement device, then their effect on the measurement can be neglected. This method will allow us to examine the resistances of our samples without having to worry about the effect of the quality of our connections (in our lock in, the "Measuring input" functions as the voltmeter while the "Oscillator voltage out" acts as the ammeter).
 
 \section{Validation of the $\chi^2$ Minimization in ROOT} \label{section:root}
 For this experiment, we used ROOT, a c++ based data analysis software, to plot and fit functions to our data. To verify that ROOT calculates a correct value for $\chi^{2}$, we performed a hand calculation cross check with a simple set of data. The data set we used for this cross check was $\{ (11.0 \pm 0.0, 23.0 \pm 0.5), (14.0 \pm 0.0, 25.0 \pm 0.5), (20.0 \pm 0.0, 35.0 \pm 0.5), (25.0 \pm 0.0, 39.0 \pm 0.5) \}$. We plotted this data and fit it to a linear function $f(x) = [0] + [1]*x$. This plot is shown in Fig.~\ref{Fig:rootproof}.
