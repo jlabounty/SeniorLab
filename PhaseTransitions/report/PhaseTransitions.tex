@@ -109,6 +109,8 @@ For the resistance measurements, we set up the system as shown in Figure \ref{fi
 
 \subsection{Capacitance Measurements}
 
+As opposed to the previous measurement, this setup does not make use of a limiting resistor, as the current through the sample will be nowhere near large enough to damage this capacitor. This also has the effect of making the (normally small) out-of-phase signal larger and thus easier to measure. The lock-in amplifier is also set to a much higher frequency for the capacitance measurements, $\nu = 25000~hZ$ rather than $25~Hz$. The rest of the setup remains unchanged, and a diagram of the lock-in portion can be seen in Figure \ref{fig:CapMeasurements}.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[height=5cm]{diagram_cap.png}
@@ -116,11 +118,15 @@ For the resistance measurements, we set up the system as shown in Figure \ref{fi
 	\label{fig:CapMeasurements}
 \end{figure}
 
-As opposed to the previous measurement, this setup does not make use of a limiting resistor, as the current through the sample will be nowhere near large enough to damage this capacitor. This also has the effect of making the (normally small) out-of-phase signal larger and thus easier to measure. The lock-in amplifier is also set to a much higher frequency for the capacitance measurements, $\nu = 25000~hZ$ rather than $25~Hz$. The rest of the setup remains unchanged, and a diagram of the lock-in portion can be seen in Figure \ref{fig:CapMeasurements}.
-
 \subsection{Preparation of Samples}
 
-Before we can take these measurements, however, we need to prepare the samples for measurement. In the course of this lab, we will make use of two different sample materials: Vanadium Dioxide (VO$_2$) and Barium Titanate (BaTiO$_3$). The Vanadium samples consist of a thin layer of VO$_2$ ($\sim 100~nm$) deposited on a silicon substrate. These Vanadium samples are pre-mounted on their electrical contacts, but we have prepared a Barium sample for our own use. Our goal with the Barium sample is to construct a parallel plate capacitor using silver paint on either side of a flat sample. In order to maximize the capacitance, in accordance with the known relation $C = \epsilon A/d$ where $\epsilon = k \epsilon_0$, we want to maximize the surface area of our sample and minimize its thickness. To that end, we chose the largest piece of Barium Titanate available and carved it down to a thin flat plate.
+Before we can take these measurements, however, we need to prepare the samples for measurement. In the course of this lab, we will make use of two different sample materials: Vanadium Dioxide (VO$_2$) and Barium Titanate (BaTiO$_3$). The Vanadium samples consist of a thin layer of VO$_2$ ($\sim 100~nm$) deposited on a silicon substrate. These Vanadium samples are pre-mounted on their electrical contacts, but we have prepared a Barium sample for our own use. Our goal with the Barium sample is to construct a parallel plate capacitor using silver paint on either side of a flat sample. In order to maximize the capacitance, in accordance with the known relation $C = \epsilon A/d$ where $\epsilon = k \epsilon_0$, we want to maximize the surface area of our sample and minimize its thickness. To that end, we chose the largest piece of BaTiO$_3$ available and carved it down to a thin flat plate.
+
+Because we chose to maximize the area rather than creating a uniform (and easy to measure) geometric shape, we performed an indirect measurement of the area. Using a cell phone camera, we took an image with the sample and a ruler at the same distance. We used the photo editing tool GIMP to determine the surface area and thickness of the sample in pixels ($px$). We also measured the length of a section of the ruler to determine the $px$ to $mm$ conversion factor. From these measurements, we found that the area and thickness of the sample were:
+\begin{gather}
+	A_{sample} = 77.464 \pm 1.5470*10^{-2} ~mm^2  \nonumber \\
+	d_{sample} = 1.8592 \pm 1.7820*10^{-3} ~mm	 \nonumber
+\end{gather}
 
 \begin{figure}[H]
 	\centering
@@ -148,11 +154,6 @@ Before we can take these measurements, however, we need to prepare the samples f
 	\label{fig:sample}
 \end{figure}
 
-Because we chose to maximize the area rather than creating a uniform (and easy to measure) geometric shape, we performed an indirect measurement of the area. Using a cell phone camera, we took an image with the sample and a ruler at the same distance. We used the photo editing tool GIMP to determine the surface area and thickness of the sample in pixels ($px$). We also measured the length of a section of the ruler to determine the $px$ to $mm$ conversion factor. From these measurements, we found that the area and thickness of the sample were:
-\begin{gather}
-	A_{sample} = 77.464 \pm 1.5470*10^{-2} ~mm^2  \nonumber \\
-	d_{sample} = 1.8592 \pm 1.7820*10^{-3} ~mm	 \nonumber
-\end{gather}
 These values are consistent with our rough approximations made during the lab period. From these we find that our equation for the capacitance of this sample is:
 \begin{gather}
 	\begin{align}
@@ -181,7 +182,7 @@ Similarly, we used a systematic approach to quantify the capacitance of our BNC 
 \begin{gather}
 	\frac{C}{1~meter} = 113.3195 \pm 2.5618~pF/m \nonumber
 \end{gather}
-This capacitance will add linearly with the capacitance of our samples, and is on a similar order, and so is important to be able to isolate this effect. Once these effects were accounted for, we 
+This capacitance will add linearly with the capacitance of our samples, and is on a similar order, and so is important to be able to isolate this effect. Once these effects were accounted for, we were able to take accurate measurements of the resistances and capacitances of our samples.
 
 \section{Measurements}
 \subsection{Metal-Insulator Transition in $VO_{2}$}
@@ -322,7 +323,7 @@ TOM ADD SOMETHING HERE
 	\label{fig:barium}
 \end{figure}
 
-Barium Titanate, BaTiO$_3$, is a perovskite material, meaning that the unit cell consists of a cation (Ti) surrounded by 6 smaller anions (O) and by an octahedron of cations (Ba). This structure is stable at high temperatures, but at low temperatures a lower energy state becomes available. In this state, four of the oxygen anions shift downwards by a few $pm$ while the titanium cation shifts upwards (or vice versa). This asymmetric structure gives rise to a dipole moment which can lead to a net polarization of the material.
+Barium Titanate, BaTiO$_3$, is a perovskite material, meaning that the unit cell consists of a cation (Ti) surrounded by 6 smaller anions (O) and by an octahedron of cations (Ba). This structure is stable at high temperatures, but at low temperatures a lower energy state becomes available. In this state, four of the oxygen anions shift downwards by a few $pm$ while the titanium cation shifts upwards (or vice versa). This asymmetric structure gives rise to a dipole moment in each unit cell which then align to give a macroscopic polarization $P$ \cite{manual}.
 
 The properties of BaTiO$_3$ are well documented, we will compare the known values in the table below to the experimental values we determined in previous sections:
 
@@ -342,7 +343,7 @@ During the course of our measurements, we found that even after repeated tuning 
 
 \section{Author Contributions}
 
-Both authors believe that the work for this project was split equally, and each offered valuable insight to every section of this report. However, the sections when divided up by principle author are as follows:
+Both authors believe that the work for this project was split equally, and each offered valuable insight to every section of this report. However, the sections when divided up by principle author are as follows (sections not listed were split equally):
 
 \noindent \textbf{Joshua LaBounty}:
 \begin{enumerate}
