@@ -18,7 +18,7 @@ int makePlot_VvT_VO2(
       R.push_back(V[i]*(997000. + 1029) / (1.99 - V[i]));
 
       pLOG.push_back(TMath::Log(R[i]));
-      TInv.push_back(1 / T[i]);
+      TInv.push_back(1 / (T[i] + 273.15));
 
     }
 
@@ -36,7 +36,7 @@ int makePlot_VvT_VO2(
       REGap.push_back(VEGap[iEGap]*(997000. + 1029) / (1.99 - VEGap[iEGap]));
 
       pLOGEGap.push_back(TMath::Log(REGap[iEGap]));
-      TInvEGap.push_back(1 / TEGap[iEGap]);
+      TInvEGap.push_back(1 / (TEGap[iEGap] + 273.12 ));
 
     }
 
@@ -57,7 +57,7 @@ int makePlot_VvT_VO2(
   TGraph *g_RvT = new TGraph(n, &T[0], &R[0]);
   c3->SetLogy();
   g_RvT->SetTitle("");
-  g_RvT->GetXaxis()->SetTitle("T ( ^{#circ}C)");
+  g_RvT->GetXaxis()->SetTitle("T (#circC)");
   g_RvT->GetYaxis()->SetTitle("R (#Omega)");
   g_RvT->Draw("AP");
 
@@ -88,6 +88,8 @@ int makePlot_VvT_VO2(
   // c4->SetLogy();
   TGraph *g_RvT2 = new TGraph(n, &TInv[0], &pLOG[0]);
   g_RvT2->SetTitle("");
+  g_RvT2->GetXaxis()->SetTitle("#frac{1}{T} (#circ C^{-1})");
+  g_RvT2->GetYaxis()->SetTitle("Log[#frac{#rho}{#rho _{0}}]");
   g_RvT2->Draw("AP");
   TGraph *g_RvTEGap2 = new TGraph(nEGap, &TInvEGap[0], &pLOGEGap[0]);
   g_RvTEGap2->SetMarkerColor(kRed);
@@ -95,21 +97,22 @@ int makePlot_VvT_VO2(
 
   g_RvTEGap2->Fit("pol1");
 
+  cout << 2*8.62*(10**(-5.))*g_RvTEGap2->GetFunction("pol1")->GetParameter(1) << endl;
 
   TLegend *leg2 = new TLegend(0.55, 0.2, 0.8, 0.35);
   leg2->SetNColumns(1);
   leg2->AddEntry(g_RvT, "VO_{2} R vs T", "p");
   leg2->AddEntry(g_RvTEGap2->GetFunction("pol1"), "#splitline{Semiconductor}{Resistivity Law}", "l");
-  leg2->AddEntry((TObject*)0 ,"E_{G} = ", "");
+  leg2->AddEntry((TObject*)0 ,"E_{G} = 0.573 eV", "");
   leg2->Draw();
   /*=====================*/
 
-  TCanvas *c5 = new TCanvas();
-  c5->SetLogy();
-  g_RvT->Draw("AP");
-  TGraph *g_RvTEGap = new TGraph(nEGap, &TEGap[0], &REGap[0]);
-  g_RvTEGap->SetMarkerColor(kRed);
-  g_RvTEGap->Draw("SAME, P");
+  // TCanvas *c5 = new TCanvas();
+  // c5->SetLogy();
+  // g_RvT->Draw("AP");
+  // TGraph *g_RvTEGap = new TGraph(nEGap, &TEGap[0], &REGap[0]);
+  // g_RvTEGap->SetMarkerColor(kRed);
+  // g_RvTEGap->Draw("SAME, P");
 
   // g_RvTEGap->Fit("expo");
 
@@ -123,7 +126,7 @@ int makePlot_VvT_VO2(
 
 
 
-  // c3->Print("report/plots/VO2_RvT_withTC.png");
-
+  c3->Print("report/plots/VO2_RvT_withTC.png");
+  c4->Print("report/plots/VO2_LogRvTInv.png");
   return 0;
 }
