@@ -188,10 +188,10 @@ This capacitance will add linearly with the capacitance of our samples, and is o
 We began with our study of the first order metal-insulator transition of $VO_{2}$. After tuning the lock in amplifier, we connected it to our sample to measure the voltage across the $VO_{2}$. We set the heater to increase the temperature of the sample chamber at a rate slow enough to allow for any time delay between the heating of the chamber and the heating of the sample itself. Since the sample is conductively heated, the temperature of the $VO_{2}$ itself may be lower than the temperature measured inside the chamber. Therefore, allowing the heater to increase the temperature at a slow enough rate ensures that the temperature read by the temperature sensor is consistent with that of the sample. As we increased the temperature we measured and recorded the temperature of and voltage across our $VO_{2}$ sample. The current in the circuit does not change so the variation in voltage as a function of temperature is due to the temperature dependence of the resistivity of the sample. To demonstrate this, we calculated the resistance, $R_{VO_{2}}$, of the sample from the voltage, $V_{out}$, across it using Eq.~\ref{Eq:VtoR}.
 
 \begin{equation}\label{Eq:VtoR}
-R_{VO_{2}} = \frac{V_{out}}{I} = \frac{V_{out} (R_{Lim} + R_{Int})}{(V_{In} - V_{Out})} 
+R_{VO_{2}} = \frac{V_{out}}{I} = \frac{V_{out} (R_{limit} + R_{internal})}{(V_{In} - V_{Out})} 
 \end{equation}
 
-where $V_{in}$ is the voltage output by the lock in amplifier, $R_{Int}$ is the internal resistance of the lock in amplifier, and $R_{Lim}$ is the limiting resistance in the circuit which we set as $R_{Lim} = 997 k\Omega$. For each value of voltage measured, we calculated the resistance of our sample and plotted this data as a function of temperature in Fig.~\ref{Fig:RvT1}.
+where $V_{in}$ is the voltage output by the lock in amplifier, $R_{internal}$ is the internal resistance of the lock in amplifier, and $R_{limit}$ is the limiting resistance in the circuit which we set as $R_{limit} = 997 k\Omega$. For each value of voltage measured, we calculated the resistance of our sample and plotted this data as a function of temperature in Fig.~\ref{Fig:RvT1}.
 
 \begin{figure}[H]
 	\centering
@@ -220,6 +220,16 @@ In addition to observing the transition point of the $VO_{2}$, we also observed 
 \noindent The slope of this line is related to the energy gap as $E_{g} = 2k*(slope)$, where $k$ is Boltzmann's constant. We calculated the value of the band gap to be $E_{g} = 0.573 \pm 0.002 eV$, which we will see later is consistent with semiconducting behavior.
 
 \subsection{Ferroelectric Transition in $BaTiO_{3}$}
+
+The next phase transition that we studied was the second order ferroelectric transition of barium titanate, BaTiO$_{3}$. In this portion of the experiment, we hoped to observe the immediate emergence of an electric polarization in the BaTiO$_{3}$ at the transition temperature, $T_{C}$, known as the Curie temperature. This polarization comes about as a result of the shifting of atoms in a crystal of BaTiO$_{3}$, creating a dipole. As crystals of BaTiO$_{3}$ become dipoles in a large quantities, a sample of BaTiO$_{3}$ acts as a capacitor separating positive and negative charges on its surface. Therefore, to measure the properties of a ferroelectric phase transition in BaTiO$_{3}$, we used the lock-in amplifier to measure the capacitance across our sample of BaTiO$_{3}$.
+
+To start, we again tuned the lock-in amplifier, and then set it to measure the voltage of the out-of-phase signal. As previously discussed, phasor theory says the voltage across a capacitor is $\approx 90^\circ$ out of phase with the signal output by the amplifier, so measuring this voltage provided us with the necessary information to analyze the capacitance of our BaTiO$_{3}$ sample. We recorded data of the voltage $V_{out}$ across our sample, versus its temperature, $T$. Using our measurements of the voltage, we could calculate the capacitance of the sample using Eq.~\ref{Eq:VtoC}.
+
+\begin{equation}\label{Eq:VtoC}
+C = \frac{1}{\omega R} \frac{1 - \sqrt{1 - 4(\frac{V_{out}}{V_{in}})^2 }}{2\frac{V_{out}}{V_{in}}}
+\end{equation}
+
+\noindent For our experiment, the input voltage of the lock-in amplifier was $V_{in} = 1.99V$, we set the frequency of the input signal as $f = \frac{\omega}{2\pi} = 25kHz$, and the resistance $R$ of the circuit was the internal resistance of the lock-in amplifier, $R_{internal}$.
 
 \begin{figure}[H]
 	\centering
