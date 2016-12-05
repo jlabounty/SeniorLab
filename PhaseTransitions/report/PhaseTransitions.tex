@@ -301,9 +301,19 @@ The transition does not happen for the entire bulk material at once, however. In
 
 The properties of VO$_2$ are well documented, and the known values for the transition parameters can be found in the table below:
 
-\begin{Huge}
-TOM ADD SOMETHING HERE
-\end{Huge}
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline Measurement & Value\\
+			\hline $T_{C}$ & $67^{\circ} C$\\
+			\hline $\frac{\rho_{Semiconductor}}{\rho_{Metal}}$ & $10^{2} - 10^{3}$ \\
+			\hline $E_{g}$ & 0.5-0.7 eV\\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Theoretical Values for Measurements from Metal-Insulator Transition of VO$_{2}$}
+	\label{Tab:VO2Theory}
+\end{table}
 
 \noindent In the coming sections, we will compare these known results with the results from our own experiments.
 
@@ -329,15 +339,58 @@ Barium Titanate, BaTiO$_3$, is a perovskite material, meaning that the unit cell
 
 The properties of BaTiO$_3$ are well documented, we will compare the known values in the table below to the experimental values we determined in previous sections:
 
-\begin{Huge}
-TOM ADD SOMETHING EVEN BETTER HERE
-\end{Huge}
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline Measurement & Value\\
+			\hline $T_{C}$ & $120^{\circ} C$\\
+			\hline $C_{CW}$ &  \\
+			\hline $p_{max}$ & $2 \times 10^{-28}Cm$\\
+			\hline $x_{max}$ & $0.2 nm$\\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Theoretical Values for Measurements from Metal-Insulator Transition of VO$_{2}$}
+	\label{Tab:BaTiO3Theory}
+\end{table}
 
 \section{Comparison of Theory and Experiment}
 
 \subsection{Metal-Insulator Transition of Vanadium Dioxide}
+When studying the metal-insulator transition of VO$_{2}$, we first hoped to determine $T_C$, the transition temperature of the system. As discussed previously, our analysis determined that this value was $74.5^{\circ} C$. The transition temperature for VO$_{2}$ has generally been accepted to be about $67^{\circ} C$ \cite{VO2temp, VO2BandTheory}. Taking this as a theoretical value, our calculated value differed by 11\%, but when we consider the range included by the coercive temperatures $T_{C} \pm T*$, the theoretical value is included in this range. The difference in the value we obtained can most likely be attributed to the problems with the heating rate of the sample chamber. As previously discussed, without the temperature control in the experimental setup, the heating rate had to be modified to be higher than normal in order to be able to take measurements at the appropriate times. This may have cause the temperature read from the sample chamber to be different from the actual temperature of our sample. Such an issue could have resulted in a shift in the measured temperature of the transition of our sample.
+
+Another aspect of our study of $VO_{2}$ was a measurement of the semiconducting energy gap. We found the value of the band gap by analyzing the exponential behavior of the resistivity of $VO_{2}$ when it was in its semiconducting phase. From this analysis, we calculated the energy gap to have a value of $0.573 eV$. This is consistent with previously measured values which have fallen into a range of 0.5 - 0.7eV. Many sources cite the energy gap as $E_g = 0.6eV$ \cite{VO2BandTheory}. Using this value for a theoretical comparison, our calculated value had a difference of 4.5\% from theory. This energy gap is much lower than the typical energy gap of an insulator in which $E_g \approx 2 - 3 eV$, demonstrating the semiconducting behavior of $VO_{2}$ in a certain temperature range. To collect the experimental and theoretical values of the $VO_{2}$ metal-insulator transition together, the table below compares what we measured to the known values.
+
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline Measurement & Experimental & Theory & \% Difference\\
+			\hline $T_{C}$ & $74.5^{\circ} C$ & $67^{\circ} C$ & 11\%\\
+			\hline $\frac{\rho_{Semiconductor}}{\rho_{Metal}}$ & $10^{2.5}$ & $10^{2} - 10^{3}$ & - \\
+			\hline $E_{g}$ & 0.573eV & 0.6 eV & 4.5\%\\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Theoretical Values for Measurements from Metal-Insulator Transition of VO$_{2}$}
+	\label{Tab:VO2Compare}
+\end{table}
 
 \subsection{Ferroelectric Transition of Barium Titanate}
+
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|c|c|c|c|}
+			\hline Measurement & Experiment & Theory & Consistent?\\
+			\hline $T_{C}$ & $126.2^{circ} C$ & $120^{\circ} C$ & -\\
+			\hline $C_{CW}$ & $10523 \pm 24$ & - & - \\
+			\hline $p$ & $9.1 \times 10^{-30} Cm$ & $2 \times 10^{-28}Cm$ & Yes\\
+			\hline $x$ & $9.4 pm$ &$x_{max} = 0.2 nm$ & Yes\\
+			\hline
+		\end{tabular}
+	\end{center}
+	\caption{Theoretical Values for Measurements from Metal-Insulator Transition of VO$_{2}$}
+	\label{Tab:BaTiO3Compare}
+\end{table}
 
 \section{Discussion and Conclusions}
 
@@ -466,6 +519,12 @@ Scientific, (2004)
 	
 	\bibitem{barium_phase}
 	University of Cambridge DoITPoMS. Barium titanate and phase changes. \url{http://www.doitpoms.ac.uk/tlplib/ferroelectrics/phase_changes.php} (2015)
+
+	\bibitem{VO2temp}
+	Materials Design. Accurate Band Gaps of Correlated Transition-Metal Oxides from MedeA-VASP with Hybrid Functonals. (2012)
+
+	\bibitem{VO2BandTheory}
+	Volker Eyert. "The Metal Insulator Transitions of VO$_{2}$: A Band Theoretical Approach", arXiv:cond-		mat/0210558v1 (2002)
 
 \end{thebibliography}
 
