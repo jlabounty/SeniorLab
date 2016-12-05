@@ -55,7 +55,7 @@ Like gravity, phase transitions are phenomena which have long been observed, but
 
 The two main types of phase transitions, and the only two we concern ourselves with here, are phase transitions of the first and second order. Third and higher order transitions exist, but are much less common than either of the lower orders \cite{thirdorder}. First order transitions, as stated above, are characterized by a discontinuity in the derivative of the free energy. This gives rise to two different functions for the free energy, $F_1$ and $F_2$, above and below the critical temperature $T_C$ \cite{manual, physics_of_phase}. If there were no energy cost to the material switching between the two phases, we would expect to see the phase transition of the entire material occur at exactly $T_C$. However, because the transition between phases often involves a physical rearrangement of the system, there must be some energy cost. Because of this, local energy minima can form (and remain stable for a good deal of time) where the original phase exists even above $T_C$. Extra heat is required to overcome the energy of the kinetic barrier between the regions of differing phases, and so the transition will happen at $T_C + T^*$ \cite{manual}. The same phenomenon occurs when cooling, and the transition will take place at $T_C - T^*$. This will result in a hysteresis curve. We study this first order hysteretic phenomenon in Vanadium Dioxide (VO$_2$), which undergoes a first order Metal-Insulator transition.
 
-Second order transitions, by contrast, have a continuous function of $F$ across all temperature ranges (barring the material being subject to an unrelated first order transition). Thus, from the transition, there is no change in latent heat ($Q = 0$) and $\Delta U = 0$ \cite{manual}. Thus, we have an order parameter which is $0$ at $T_C$ and increases as $T$ moves away from $T_C$. This fact allowed Landau to construct his theory of second order phase transitions by expanding $F(T)$ as a function of the order parameter $m$ in the vicinity of $T_C$ \cite{manual, phase_1}. Omitting odd powers in the expansion due to symmetry considerations \cite{manual}, the expression reads:
+Second order transitions, by contrast, have a continuous function of $F$ across all temperature ranges (barring the material being subject to an unrelated first order transition). Thus, from the transition, there is no change in latent heat ($Q = 0$) and $\Delta U = 0$ \cite{manual}. As a result of this, we observe an order parameter $m$ which is $0$ at $T_C$ and increases as $T$ moves away from $T_C$. This fact allowed Landau to construct his theory of second order phase transitions by expanding $F(T)$ as a function of $m$ in the vicinity of $T_C$ \cite{manual, phase_1}. Omitting odd powers in the expansion due to symmetry considerations \cite{manual}, the expression reads:
 \begin{gather}
 	\begin{align}
 	F\left(T\right) 	& = F_0\left(T\right)+\alpha(T) m^2+\frac{1}{2}\beta(T) m^4 \nonumber \\
@@ -88,7 +88,7 @@ The mathematical underpinnings of phase transitions have also been extended to d
 
 Our experimental setup consists of three main components: a Princeton Applied Research Model 5209 lock-in amplifier, a sample chamber connected to a voltage controlled heating coil, and (during the resistance measurements) a limiting resistor. 
 
-The lock-in, essentially, consists of a frequency generator and a measuring input which is tuned only to that specific frequency. It is capable of generating a signal at a very specific frequency and phase and holding it there with great precision. The readout is then tuned to that frequency alone, but it can also be set to measure this frequency at any phase with respect to the original. Phasor theory tells us that the voltages across resistors  will be in-phase with the driving frequency, while voltages across capacitors will be $90^\circ$ out of phase. Thus, by looking at the in-phase and out-of-phase components of the input signal with the lock-in, we can determine the voltage across the resistive and capacitive portions of the system respectively. We began each measurement by 'tuning' the lock-in. We did this by hooking the output directly up to the input with a BNC cable. We then activated the autotune function, which seeks to maximize the in-phase signal. After this cycle completed, we manually adjusted the phase settings until the out of phase signal was as close to zero as we could obtain. We then hooked up the resistive or capacitive sample as detailed below.
+The lock-in, essentially, consists of a frequency generator and a measuring input which is tuned only to that specific frequency. It is capable of generating a signal at a very specific frequency and phase and holding it there with great precision. The readout is then tuned to that frequency alone, but it can also be set to measure this frequency at any phase with respect to the generator output. Phasor theory tells us that the voltages across resistors  will be in-phase with the driving frequency, while voltages across capacitors will be $90^\circ$ out of phase \cite{manual}. Thus, by looking at the in-phase and out-of-phase components of the input signal with the lock-in, we can determine the voltage across the resistive and capacitive portions of the system respectively. We began each measurement by 'tuning' the lock-in. We did this by hooking the output directly up to the input with a BNC cable. We then activated the autotune function, which seeks to maximize the in-phase signal. After this cycle completed, we manually adjusted the phase settings until the out of phase signal was as close to zero as we could obtain. We then hooked up the resistive or capacitive sample as detailed below in Sections \ref{rmeas} and \ref{cmeas}.
 
 The samples are mounted in a sample chamber (shown in Figure \ref{fig:sample:inplace}) which consists of an insulated double-walled aluminum container with leads which run into it. Wires run through the insulated walls and terminated in double-prong connections to which the VO$_2$ and BaTiO$_3$ samples can be attached. These wires also run out of the sample chamber and have connections to which the lock-in can be attached to provide input. A heater is wrapped around the sample chamber which we directly control with a Staco Energy voltage source. A temperature sensor is also placed inside the sample chamber to monitor the internal temperature. Both the voltage from the lock-in and the temperature measurements are fed into a LabView program, which records the data in a format which can be read in by our analysis software ROOT.
 
@@ -96,7 +96,7 @@ In previous years, a temperature controller was used which could ramp the temper
 
 Depending on the quantity being measured, resistance or capacitance, the system is set up in one of two different ways.
 
-\subsection{Resistance Measurements}
+\subsection{Resistance Measurements}\label{rmeas}
 
 \begin{figure}[H]
 	\centering
@@ -107,7 +107,7 @@ Depending on the quantity being measured, resistance or capacitance, the system 
 
 For the resistance measurements, we set up the system as shown in Figure \ref{fig:ResistanceMeasurements}. We first connected the oscillator voltage out to a limiting resistor (a decade resistor set to $1~M\Omega$) in series with our sample, which was placed in the chamber. This was done to protect the delicate VO$_2$ sample from the potentially large currents which could otherwise pass through it. We then connected the sample to the input voltage leads In this configuration, known as the 'four-probe' resistance measurement method, the ammeter current does not pass through the contacts of the voltmeter. Thus the contact resistances do not effect out measurement to a large degree. A more in-depth explanation of this measurement method can be found in Appendix \ref{section:fourprobe}. We set the lock-in output to $V_{out} = 2.0~V$ and $f = 25~Hz$. The low frequency allows us to minimize the effect of the parasitic capacitance of the BNC cables (see Section \ref{section:factors}), as their reactance will be $X_C \sim 100~M\Omega$ \cite{manual}.
 
-\subsection{Capacitance Measurements}
+\subsection{Capacitance Measurements}\label{cmeas}
 
 As opposed to the previous measurement, this setup does not make use of a limiting resistor, as the current through the sample will be nowhere near large enough to damage this capacitor. This also has the effect of making the (normally small) out-of-phase signal larger and thus easier to measure. The lock-in amplifier is also set to a much higher frequency for the capacitance measurements, $f = 25000~Hz$ rather than $25~Hz$. The rest of the setup remains unchanged, and a diagram of the lock-in portion can be seen in Figure \ref{fig:CapMeasurements}.
 
@@ -218,7 +218,7 @@ In addition to observing the transition point of the $VO_{2}$, we also observed 
 
 \noindent In this equation, $E_{g}$ is the energy gap, the energy difference between the valence band and conduction band of electrons. We tested that $VO_{2}$ exhibited semiconducting behavior at low temperatures by verifying the size of $E_{g}$. In order to calculate this value, we plotted the data on a $Log(\frac{\rho}{\rho_{0}})$ vs. $T^{-1}$ graph and fitted the data to a line. The data we collected is plotted as such in Fig.~\ref{Fig:RvT2}. Since we were testing the behavior of $VO_{2}$ in its semiconducting phase, we only fitted a line to the low temperature regime where it would exhibit such behavior.
 
-The slope of this line is related to the energy gap as $E_{g} = 2k*(slope)$, where $k$ is Boltzmann's constant. We calculated the value of the band gap to be $E_{g} = 0.573 \pm 0.002 eV$, which we will see later is consistent with semiconducting behavior.
+The slope of this line is related to the energy gap as $E_{g} = 2k_B*(slope)$, where $k_B$ is Boltzmann's constant. We calculated the value of the band gap to be $E_{g} = 0.573 \pm 0.002 eV$, which we will see later is consistent with semiconducting behavior.
 
 \subsection{Ferroelectric Transition in $BaTiO_{3}$}
 
@@ -304,7 +304,7 @@ The properties of VO$_2$ are well documented, and the known values for the trans
 \begin{table}[htbp]
 	\begin{center}
 		\begin{tabular}{|c|c|}
-			\hline Measurement & Value\\
+			\hline \textbf{Measurement} & \textbf{Value} \\
 			\hline $T_{C}$ & $67^{\circ} C$\\
 			\hline $\frac{\rho_{Semiconductor}}{\rho_{Metal}}$ & $10^{2} - 10^{3}$ \\
 			\hline $E_{g}$ & 0.5-0.7 eV\\
@@ -337,12 +337,12 @@ The properties of VO$_2$ are well documented, and the known values for the trans
 
 Barium Titanate, BaTiO$_3$, is a perovskite material, meaning that the unit cell consists of a cation (Ti) surrounded by 6 smaller anions (O) and by an octahedron of cations (Ba). This structure is stable at high temperatures, but at low temperatures a lower energy state becomes available. In this state, four of the oxygen anions shift downwards by a few $pm$ while the titanium cation shifts upwards (or vice versa). This asymmetric structure gives rise to a dipole moment in each unit cell which then align to give a macroscopic polarization $P$ \cite{manual}. 
 
-The properties of BaTiO$_3$ are well documented, we will compare the known values in the table below to the experimental values we determined in previous sections:
+The properties of BaTiO$_3$ have been studied in depth for many years, and we will compare the known values in the table below to the experimental values we determined in previous sections:
 
 \begin{table}[htbp]
 	\begin{center}
 		\begin{tabular}{|c|c|}
-			\hline Measurement & Value\\
+			\hline \textbf{Measurement} & \textbf{Value} \\
 			\hline $T_{C}$ & $120^{\circ} C$\\
 			\hline $C_{CW}$ &  \\
 			\hline $p_{max}$ & $2 \times 10^{-28}Cm$\\
@@ -364,7 +364,7 @@ Another aspect of our study of $VO_{2}$ was a measurement of the semiconducting 
 \begin{table}[htbp]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|}
-			\hline Measurement & Experimental & Theory & \% Difference\\
+			\hline \textbf{Measurement} & \textbf{Experimental} & \textbf{Theory} & \% \textbf{Diff.} \\
 			\hline $T_{C}$ & $74.5^{\circ} C$ & $67^{\circ} C$ & 11\%\\
 			\hline $\frac{\rho_{Semiconductor}}{\rho_{Metal}}$ & $10^{2.5}$ & $10^{2} - 10^{3}$ & - \\
 			\hline $E_{g}$ & 0.573eV & 0.6 eV & 4.5\%\\
@@ -382,7 +382,7 @@ With a value determined for the coefficient in the Curie-Weiss Law, $C_{CW}$, we
 \begin{table}[htbp]
 	\begin{center}
 		\begin{tabular}{|c|c|c|c|}
-			\hline Measurement & Experiment & Theory & Consistent?\\
+			\hline \textbf{Measurement} & \textbf{Experiment} & \textbf{Theory} & \textbf{Cons?}\\
 			\hline $T_{C}$ & $126.2^{\circ} C$ & $120^{\circ} C$ & -\\
 			\hline $C_{CW}$ & $10523 \pm 24$ & - & - \\
 			\hline $p$ & $9.1 \times 10^{-30} Cm$ & $2 \times 10^{-28}Cm$ & Yes\\
@@ -527,6 +527,9 @@ Scientific, (2004)
 
 	\bibitem{VO2BandTheory}
 	Volker Eyert. "The Metal Insulator Transitions of VO$_{2}$: A Band Theoretical Approach", arXiv:cond-		mat/0210558v1 (2002)
+	
+	\bibitem{curie}
+	R. Flores-Ramirez , A. Huanosta , E. Amano , R. Valenzuela, and A. R. West. Curie-Weiss behavior in polycrystalline barium titanate from ac measurements. \url{http://dx.doi.org/10.1080/00150198908221452} (Aug 1988)
 
 \end{thebibliography}
 
